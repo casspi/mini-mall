@@ -1,0 +1,17 @@
+<wxs src="/wxs/filter.wxs" module="filter"/>
+<view class="wow-skeleton {{classes}}" style="padding-bottom: {{paddingBottom}}px">
+  <view wx:if="{{error}}" class="wow-skeleton-error">
+    <text class="wow-skeleton-error-tip">{{error}}</text>
+    <view class="wow-skeleton-error-btn"
+          data-event="refresh"
+          bindtap="inputEvent">
+      <text>{{ errorBtnText }}</text>
+    </view>
+  </view>
+  <image wx:elif="{{isLoading}}" class="wow-skeleton-loading" src="/assets/images/loading.gif"></image>
+  <view wx:else class="wow-skeleton-empty">
+    <image class="wow-skeleton-empty-icon" src="{{ filter.source('icon-null.png') }}"></image>
+    <text>{{ emptyPrompt }}</text>
+    <slot></slot>
+  </view>
+</view>

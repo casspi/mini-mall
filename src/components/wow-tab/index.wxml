@@ -1,0 +1,43 @@
+
+<scroll-view
+    wx:if="{{useScroll}}"
+    scroll-x
+    class="tab-wrap class-external scroll {{classes}}">
+    <slot name="left"></slot>
+    <view class="tab-cell {{i === index && 'active'}} {{item.checked && 'active'}}"
+          bindtap="handleChange"
+          data-index="{{i}}"
+          wx:for="{{data}}"
+          wx:for-index="i"
+          wx:key="i">
+        <view class="tab-cell-con">
+            <text>{{key ? item[key] : item}}</text>
+            <view class="tab-badge"
+                  wx:if="{{item.badge && item.badge != 0}}">
+                <text>{{item.badge > 99 ? '...' : item.badge}}</text>
+            </view>
+        </view>
+    </view>
+    <slot name="right"></slot>
+</scroll-view>
+
+<view
+    wx:else
+    class="tab-wrap class-external {{classes}}">
+    <slot name="left"></slot>
+    <view class="tab-cell {{i === index && 'active'}} {{item.checked && 'active'}}"
+          bindtap="handleChange"
+          data-index="{{i}}"
+          wx:for="{{data}}"
+          wx:for-index="i"
+          wx:key="i">
+        <view class="tab-cell-con">
+            <text>{{key ? item[key] : item}}</text>
+            <view class="tab-badge"
+                  wx:if="{{item.badge && item.badge != 0}}">
+                <text>{{item.badge > 99 ? '...' : item.badge}}</text>
+            </view>
+        </view>
+    </view>
+    <slot name="right"></slot>
+</view>

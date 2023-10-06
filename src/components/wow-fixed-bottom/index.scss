@@ -1,0 +1,31 @@
+@import 'src/assets/scss/wow-define';
+
+@include b(fixed-bottom) {
+  @extend %pf;
+  @extend %b0;
+  @extend %l0;
+  @extend %w100;
+  @extend %bsb;
+  border-radius: j(20) j(20) 0 0;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  &:after {
+    @extend %w100;
+    @extend %db;
+    content: '';
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  @include e(content) {
+    @extend %df;
+    @extend %aic;
+    padding: j(10) j(16);
+  }
+
+  @include e(seat) {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+}

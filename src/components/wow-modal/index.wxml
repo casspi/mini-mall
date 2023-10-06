@@ -1,0 +1,35 @@
+<view class="wow-modal {{ classes }}"
+      bindtap="handledOverlay"
+      wx:if="{{ visible || isShow }}">
+  <view class="wow-modal-inner"
+        catchtap="inputEvent">
+    <view class="wow-modal-title" wx:if="{{ title }}">
+      <text>{{ title }}</text>
+    </view>
+    <view class="wow-modal-content">
+      <text>{{ content }}</text>
+      <slot></slot>
+    </view>
+    <view class="wow-modal-button-group">
+      <view class="wow-modal-button is-cancel"
+            wx:if="{{ showCancel }}"
+            catchtap="hide">
+        <text>{{ cancelText }}</text>
+      </view>
+      <block wx:if="{{ sureText }}">
+        <button
+          wx:if="{{ openType === 'getPhoneNumber' }}"
+          class="wow-modal-button is-sure"
+          open-type="getPhoneNumber"
+          bindgetphonenumber="handleConfirm">
+          <text>{{ sureText }}</text>
+        </button>
+        <view wx:else
+              class="wow-modal-button is-sure"
+              catchtap="handleConfirm">
+          <text>{{ sureText }}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

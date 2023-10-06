@@ -1,0 +1,111 @@
+@import "~@daysnap/define-sass/index";
+
+$namespace: '';
+
+// 主题色
+//$color-primary: #0095d9;
+$color-primary: #C6DB47;
+$color-pink: #FACECB;
+$color-success: #67C23A;
+$color-danger: #fc3939;
+$color-warning: #FF9524;
+
+// 主题色
+$color-main: #B12C2C;
+
+// 背景色
+$color-bg: #f3f4f5;
+// 背景
+$color-background: #F3F8F9;
+
+@function j($px) {
+  @return $px * 2rpx;
+}
+
+%dan {
+  &:after {
+    @extend %dn;
+  }
+}
+
+%dbn {
+  &:before {
+    @extend %dn;
+  }
+}
+
+%boxs {
+  //box-shadow: 0 0 5px 5px rgba(0, 0, 0, .01);
+}
+
+%bw05 {
+  @extend %pr;
+
+  &:before {
+    @extend %pa;
+    @extend %t0;
+    @extend %l0;
+    @extend %bsb;
+    @include tft(scale(0.5, 0.5));
+    @include tfo(0, 0);
+    z-index: 0;
+    content: '';
+    pointer-events: none;
+    width: 200%;
+    height: 200%;
+  }
+
+  &:after {
+    @extend %dn;
+  }
+}
+
+%bwt {
+  &:before {
+    border-top: j(1) solid #ddd;
+  }
+}
+
+%bwr {
+  &:before {
+    border-right: j(1) solid #ddd;
+  }
+}
+
+%bwb {
+  &:before {
+    border-bottom: j(1) solid #ddd;
+  }
+}
+
+%bwl {
+  &:before {
+    border-left: j(1) solid #ddd;
+  }
+}
+
+@mixin bw05r($px) {
+  &:before {
+    border-radius: $px;
+  }
+}
+
+%bw05r {
+  &:before {
+    border-radius: 50%;
+  }
+}
+
+@mixin decorate($color: $color-primary) {
+  &:before {
+    @extend %pa;
+    content: '';
+    z-index: -1;
+    left: j(-10);
+    right: j(-10);
+    bottom: j(15);
+    height: j(20);
+    border-radius: j(30);
+    background-color: $color;
+  }
+}

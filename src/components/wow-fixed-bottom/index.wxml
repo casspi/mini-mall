@@ -1,0 +1,6 @@
+<view class="wow-fixed-bottom-seat" style="height: {{ height }}px"></view>
+<view class="wow-fixed-bottom" style="padding: {{ padding }}">
+  <view class="wow-fixed-bottom-content">
+    <slot></slot>
+  </view>
+</view>

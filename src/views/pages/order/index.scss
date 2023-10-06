@@ -1,0 +1,9 @@
+
+@import "~src/assets/scss/define";
+
+page{
+    @extend %h100;
+    &:before{
+        @extend %dn;
+    }
+}

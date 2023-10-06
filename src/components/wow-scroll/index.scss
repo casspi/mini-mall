@@ -1,0 +1,32 @@
+@import 'src/assets/scss/wow-define';
+
+@include b(scroll) {
+  @extend %w100;
+  @extend %h100;
+  @include tst(all, .3s);
+  @include e(header) {
+    @extend %pa;
+    @extend %df;
+    @extend %t0;
+    @extend %l0;
+    @extend %w100;
+    @extend %c9;
+    @extend %aic;
+    @extend %jcc;
+    @include tft(translate3d(0, -100%, 0));
+    pointer-events: none;
+    height: j(80);
+    font-size: j(14);
+  }
+
+  @include e(inner) {
+    @extend %pr;
+    @extend %h100;
+  }
+
+  @include e(icon) {
+    width: j(30);
+    height: j(30);
+    margin-right: j(5);
+  }
+}

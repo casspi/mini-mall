@@ -1,0 +1,10 @@
+<view class="wow-tabs-bar">
+  <view class="wow-tabs-bar-item {{ index === value && 'is-active' }}"
+        bindtap="handleSelect"
+        data-item="{{ item }}"
+        data-index="{{ index }}"
+        wx:for="{{ tabs }}"
+        wx:key="index">
+    <text class="wow-tabs-bar-text">{{ item[key] || item }}</text>
+  </view>
+</view>

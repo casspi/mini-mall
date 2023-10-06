@@ -1,0 +1,83 @@
+@import 'src/assets/scss/wow-define';
+
+@include b(modal) {
+  @extend %pf;
+  @extend %w100;
+  @extend %h100;
+  @extend %t0;
+  @extend %l0;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, .5);
+  &.center {
+    .wow-modal-content {
+      @extend %tac;
+    }
+  }
+  @include e(inner) {
+    @extend %df;
+    @extend %fdc;
+    @extend %aic;
+    @extend %bsb;
+    @extend %w100;
+    border-radius: j(10);
+    width: j(300);
+    padding: j(30) j(20) j(24);
+    background-color: #fff;
+  }
+  @include e(title) {
+    @extend %c3;
+    font-size: j(18);
+  }
+  @include e(content) {
+    @extend %w100;
+    @extend %bsb;
+    @extend %c6;
+    @extend %oya;
+    max-height: 70vh;
+    color: #5C5C5C;
+    line-height: 1.8;
+    font-size: j(16);
+    padding: j(10) 0 j(24);
+  }
+  @include e(button-group) {
+    @extend %df;
+    @extend %aic;
+    @extend %jcs;
+    @extend %w100;
+  }
+  @include e(button) {
+    @extend %df;
+    @extend %pr;
+    @extend %df1;
+    @extend %aic;
+    @extend %jcc;
+    @extend %cp;
+    @extend %bsb;
+    padding: 0;
+    font-size: j(16);
+    height: j(48);
+    border-radius: j(10);
+    background-color: transparent;
+    &:after {
+      border: none;
+    }
+    &:first-child {
+      margin-right: j(15);
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    @include when(sure) {
+      @extend %c3;
+      background-color: $color-primary;
+    }
+    @include when(cancel) {
+      @extend %c3;
+      background-color: #EBEBEB;
+    }
+  }
+}
+

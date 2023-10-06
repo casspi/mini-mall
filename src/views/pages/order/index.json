@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "订单",
+  "usingComponents": {
+    "wow-tab": "/components/wow-tab/index"
+  }
+}

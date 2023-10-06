@@ -1,0 +1,30 @@
+@import 'src/assets/scss/wow-define';
+
+@include b(end) {
+  @include e(loading) {
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    @extend %c9;
+    padding: j(30) 0;
+    font-size: j(14);
+  }
+
+  @include e(icon) {
+    @extend %db;
+    width: j(36);
+    height: j(36);
+  }
+
+  @include e(finish) {
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    @extend %ma;
+    @extend %c9;
+    padding: j(30) 0;
+    font-size: j(14);
+    //width: j(200);
+    //height: j(105);
+  }
+}

@@ -1,0 +1,22 @@
+<view class="wow-scroll"
+      bindtouchstart="handleTouchStart"
+      bindtouchend="handleTouchEnd"
+      bindtouchmove="handleTouchMove"
+      style="transform: translate3d(0, {{ numY + 'px' }} ,0)">
+  <view class="wow-scroll-header">
+    <image wx:if="{{isRefresh && strRefreshPrompt !== '刷新完成'}}" class="wow-scroll-icon"
+           src="/assets/images/loading.gif"></image>
+    <text>{{ isRefresh ? strRefreshPrompt || '正在刷新' : numY > numMin ? '↑ 释放刷新' : '↓ 下拉刷新'}}</text>
+  </view>
+  <scroll-view
+    scroll-top="{{ scrollTop }}"
+    scroll-y
+    lower-threshold="100"
+    bindscroll="handleScroll"
+    bindscrolltoupper="handleScrollToUpper"
+    bindscrolltolower="inputEvent"
+    data-event="scrolltolower"
+    class="wow-scroll-inner">
+    <slot></slot>
+  </scroll-view>
+</view>

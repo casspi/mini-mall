@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "wow-tabs-bar": "/components/wow-tabs-bar/index"
+  }
+}

@@ -1,0 +1,65 @@
+<view class="bg">
+  <image class="bg-image" src="/assets/images/mine-bg.png"></image>
+</view>
+
+<view class="user-wrap">
+  <image class="user-avatar" src="/assets/images/mine-bg.png"></image>
+  <view class="user-inner">
+    <!--    <view class="user-name-box">-->
+    <!--      <text class="user-name">{{user$ ? user$.nickName : '您好'}}</text>-->
+    <!--    </view>-->
+    <view class="user-phone">
+      <text>138****9999</text>
+      <!--      <text>{{user$ ? '138****9999' : '还未登录，点我登录'}}</text>-->
+    </view>
+  </view>
+</view>
+
+<view class="order-wrap">
+  <view class="order-head">
+    <text class="order-title">我的订单</text>
+    <view class="order-link"
+          bindtap="jumpPageOrFireFn"
+          data-sync="{{user$}}"
+          data-params="{{ {index: 0} }}"
+          data-url="order_index">
+      <text>全部订单</text>
+      <view class="iconfont iconMore"></view>
+    </view>
+  </view>
+  <view class="order-entry">
+    <view class="order-entry-item"
+          bindtap="jumpPageOrFireFn"
+          data-sync="{{user$}}"
+          data-item="{{item}}"
+          wx:for="{{objOrder}}"
+          wx:key="index">
+      <view class="order-entry-icon iconfont {{item.icon}}">
+        <view class="order-entry-badge"
+              wx:if="{{item.value !== '0' && item.value}}">
+          <text>{{item.value}}</text>
+        </view>
+      </view>
+      <view class="order-entry-label">
+        <text>{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="menu-wrap">
+  <view class="menu-item"
+        bindtap="jumpPageOrFireFn"
+        data-item="{{item}}"
+        wx:for="{{objMenu}}"
+        wx:key="index">
+    <view class="menu-label">
+      <text>{{item.label}}</text>
+    </view>
+    <view class="menu-value">
+      <text>{{item.value || ''}}</text>
+    </view>
+    <view class="iconfont iconMore"></view>
+  </view>
+</view>
+

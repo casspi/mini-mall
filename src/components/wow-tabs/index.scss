@@ -1,0 +1,14 @@
+@import 'src/assets/scss/wow-define';
+
+@include b(tabs) {
+
+  @extend %df;
+  @extend %fdc;
+  @extend %h100;
+  @extend %pr;
+
+  @include e(content) {
+    @extend %df1;
+  }
+
+}

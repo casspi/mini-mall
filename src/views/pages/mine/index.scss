@@ -1,0 +1,195 @@
+@import 'src/assets/scss/define';
+
+page {
+  background-color: $color-bg;
+
+  &:before {
+    @extend %dn;
+  }
+}
+
+.bg {
+  @extend %pa;
+  @extend %t0;
+  @extend %l0;
+  @extend %w100;
+  height: j(118);
+  z-index: -1;
+  background-color: #CD4545;
+
+  .bg-image {
+    @extend %w100;
+    @extend %h100;
+    @extend %db;
+  }
+}
+
+.user-wrap {
+  @extend %bsb;
+  @extend %df;
+  @extend %aic;
+  padding: j(16) j(20);
+  height: j(118);
+}
+
+.user-avatar {
+  @extend %br50;
+  background-color: #f2f2f2;
+  width: j(60);
+  height: j(60);
+  margin-right: j(12);
+}
+
+.user-inner {
+  @extend %df1;
+  @extend %df;
+  @extend %oh;
+  @extend %fdc;
+}
+
+.user-name-box {
+  @extend %cfff;
+  @extend %df;
+  @extend %aic;
+  font-size: j(24);
+  line-height: j(33);
+}
+
+.user-name {
+  @extend %twno;
+  max-width: j(150);
+  margin-right: j(10);
+}
+
+.user-icon {
+  @extend %db;
+  width: j(20);
+  height: j(21);
+}
+
+.user-phone {
+  @extend %cfff;
+  margin-top: j(2);
+  font-size: j(16);
+  line-height: j(20);
+}
+
+// 订单
+.order-wrap {
+  border-radius: j(4);
+  margin: j(8) j(10) 0;
+  background-color: #fff;
+  padding: j(16) 0 j(8);
+}
+
+.order-head {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  padding: 0 j(20);
+  height: j(20);
+}
+
+.order-title {
+  @extend %df1;
+  @extend %c3;
+  font-size: j(14);
+}
+
+.order-link {
+  @extend %c9;
+  @extend %df;
+  @extend %cp;
+  @extend %aic;
+  font-size: j(12);
+
+  .iconfont {
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    font-size: j(16);
+    width: j(20);
+    height: j(20);
+  }
+}
+
+.order-entry {
+  @extend %df;
+  @extend %aic;
+  padding: 0 j(10);
+  margin-top: j(8);
+}
+
+.order-entry-item {
+  @extend %df1;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %fdc;
+  @extend %cp;
+  @extend %c3;
+  height: j(80);
+}
+
+.order-entry-icon {
+  @extend %pr;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  font-size: j(28);
+  width: j(28);
+  height: j(28);
+}
+
+.order-entry-badge {
+  @extend %pa;
+  @extend %br50;
+  @extend %cfff;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  right: j(-8);
+  top: j(-8);
+  font-size: j(10);
+  background-color: #DD0000;
+  width: j(16);
+  height: j(16);
+}
+
+.order-entry-label {
+  margin-top: j(8);
+  line-height: j(17);
+  font-size: j(12);
+}
+
+//菜单
+.menu-wrap {
+  border-radius: j(4);
+  padding: j(10) 0;
+  margin: j(10) j(10) j(20);
+  background-color: #fff;
+}
+
+.menu-item {
+  @extend %df;
+  @extend %aic;
+  @extend %cp;
+  height: j(48);
+  padding: 0 j(20);
+
+  .iconfont {
+    @extend %c9;
+    font-size: j(18);
+  }
+}
+
+.menu-label {
+  @extend %df1;
+  @extend %c3;
+  font-size: j(14);
+}
+
+.menu-value {
+  @extend %c9;
+  font-size: j(14);
+}

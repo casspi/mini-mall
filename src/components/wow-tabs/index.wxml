@@ -1,0 +1,19 @@
+<view class="wow-tabs">
+  <wow-tabs-bar
+    tabs="{{ tabs }}"
+    key="{{ key }}"
+    use-control="{{ useControl }}"
+    value="{{ value }}"
+    bindchange="handleChange"
+  ></wow-tabs-bar>
+  <swiper
+    class="wow-tabs-content"
+    bindchange="handleChange"
+    current="{{ value }}"
+    duration="300"
+  >
+    <swiper-item wx:for="{{ tabs }}" wx:key="index">
+      <slot name="{{ index }}"></slot>
+    </swiper-item>
+  </swiper>
+</view>

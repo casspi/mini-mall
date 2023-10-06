@@ -1,0 +1,9 @@
+<view class="wow-end">
+  <view class="wow-end-loading" wx:if="{{ isLoading }}">
+    <image class="wow-end-icon" src="/assets/images/loading.gif" mode="aspectFill"></image>
+    <text>加载中...</text>
+  </view>
+  <view wx:else class="wow-end-finish">
+    <text>没有更多了~</text>
+  </view>
+</view>

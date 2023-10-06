@@ -1,0 +1,45 @@
+@import 'src/assets/scss/wow-define';
+
+@include b(tabs) {
+
+  @include e(bar) {
+    @extend %df;
+    @extend %w100;
+    @extend %aic;
+    height: j(50);
+    background-color: #fff;
+
+    @include m(text) {
+      @extend %pr;
+    }
+
+    @include m(item) {
+      @extend %df;
+      @extend %df1;
+      @extend %fdc;
+      @extend %aic;
+      @extend %jcc;
+      @extend %c3;
+      @extend %h100;
+      @extend %cp;
+      @extend %ao8;
+      @extend %pr;
+      font-size: j(16);
+
+      @include when(active) {
+        &:before {
+          @extend %pa;
+          @extend %l50;
+          bottom: j(10);
+          margin-left: j(-35);
+          content: '';
+          width: j(70);
+          height: j(12);
+          border-radius: j(6);
+          background-color: $color-primary;
+        }
+      }
+    }
+  }
+
+}
