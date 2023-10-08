@@ -1,0 +1,7 @@
+
+<view class="wrap {{isLoading && 'loading'}}">
+    <view class="inner">
+        <image wx:if="{{isLoading}}" class="icon" src="/assets/images/loading.gif" mode="aspectFill"></image>
+        <text>{{prompt}}</text>
+    </view>
+</view>

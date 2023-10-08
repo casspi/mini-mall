@@ -1,1 +1,24 @@
-@import 'src/assets/scss/define';
+@import "~src/assets/scss/define";
+
+page{
+    @extend %df;
+    @extend %w100;
+    @extend %h100;
+}
+.tab{
+    @extend %h100;
+    width: j(80);
+}
+.inner{
+    @extend %df1;
+    @extend %oh;
+    @extend %h100;
+}
+.content{
+    @extend %h100;
+    @extend %w100;
+    @extend %dn;
+    &.active{
+        @extend %db;
+    }
+}

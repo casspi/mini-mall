@@ -1,0 +1,10 @@
+@import '~src/assets/scss/define';
+
+.content{
+    @extend %df;
+    @extend %aic;
+    @extend %fww;
+    background-color: #fff;
+    margin-right: j(-20);
+    padding: $num-margin;
+}

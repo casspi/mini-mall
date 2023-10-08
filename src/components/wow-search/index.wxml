@@ -1,0 +1,9 @@
+
+<view class="wow-search class-external {{classes}}">
+    <view class="iconfont iconserch"></view>
+    <view class="inner">
+        <text class="text">{{placeholder}}</text>
+        <input class="input" type="text" placeholder-class="input-place" placeholder="{{placeholder}}"/>
+    </view>
+    <view class="iconfont iconClose"></view>
+</view>

@@ -1,8 +1,8 @@
-import './index.json'
-import './index.wxml'
-import './index.scss'
+import "./index.json"
+import "./index.wxml"
+import "./index.scss"
 
-import WowComponent from 'wow-wx/lib/component'
+import WowComponent from "wow-wx/lib/component"
 
 new WowComponent({
   mixins: [WowComponent.wow$.mixins.Input],
@@ -13,11 +13,11 @@ new WowComponent({
   properties: {
     error: {
       type: String,
-      value: '',
+      value: "",
     },
     errorBtnText: {
       type: String,
-      value: '重 试',
+      value: "重 试",
     },
     isLoading: {
       type: Boolean,
@@ -25,11 +25,11 @@ new WowComponent({
     },
     paddingBottom: {
       type: String,
-      value: '80',
+      value: "80",
     },
     emptyPrompt: {
       type: String,
-      value: '暂无数据~',
+      value: "暂无数据~",
     },
   },
 })

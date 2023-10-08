@@ -3,11 +3,8 @@
 </view>
 
 <view class="user-wrap">
-  <image class="user-avatar" src="/assets/images/mine-bg.png"></image>
+  <image class="user-avatar" src="/assets/images/doctor.png"></image>
   <view class="user-inner">
-    <!--    <view class="user-name-box">-->
-    <!--      <text class="user-name">{{user$ ? user$.nickName : '您好'}}</text>-->
-    <!--    </view>-->
     <view class="user-phone">
       <text>138****9999</text>
       <!--      <text>{{user$ ? '138****9999' : '还未登录，点我登录'}}</text>-->

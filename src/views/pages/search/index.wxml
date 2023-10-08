@@ -1,0 +1,14 @@
+<view class="header-section">
+  <view class="search-box">
+    <view class="iconfont iconserch"></view>
+    <input
+      bindconfirm="handleKeywordConfirm"
+      confirm-type="search"
+      value="{{ queryText }}"
+      bindinput="handleKeywordInput"
+      type="text"
+      class="search-input"
+      placeholder="搜索药品"
+    />
+  </view>
+</view>

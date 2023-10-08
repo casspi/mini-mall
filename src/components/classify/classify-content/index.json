@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wow-skeleton": "/components/wow-skeleton/index",
+        "wow-grid": "/components/wow-grid/index"
+    }
+}

@@ -1,0 +1,35 @@
+@import "~src/assets/scss/define";
+
+.wrap {
+  @extend %df;
+  @extend %aic;
+  @extend %fww;
+}
+.cell {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %fdc;
+  @extend %cp;
+  @extend %bsb;
+  padding: j(8) 0;
+  height: j(48);
+}
+.image {
+  width: j(48);
+  height: j(48);
+  border-radius: 50%;
+  background-color: #f2f2f2;
+}
+.text {
+  @extend %twno;
+  // @extend %tac;
+  @extend %w100;
+  @extend %bsb;
+  font-weight: 700;
+  padding-left: j(20);
+  margin-top: j(4);
+  font-size: j(12);
+  color: #333;
+  line-height: j(17);
+}

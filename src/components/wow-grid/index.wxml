@@ -1,0 +1,16 @@
+<view class="wrap class-external">
+  <view
+    wx:for="{{ data }}"
+    wx:key="index"
+    class="cell"
+    style="width: {{ 100 / columns }}%"
+    data-item="{{ item }}"
+    data-index="{{ index }}"
+    bindtap="handleSelect"
+  >
+    <!-- <image class="image" src="{{ item[iconKey] }}"></image> -->
+    <view class="text">
+      <text>{{ item[textKey] }}</text>
+    </view>
+  </view>
+</view>

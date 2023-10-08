@@ -1,0 +1,35 @@
+@import "src/assets/scss/define";
+// 搜索区域
+.header-section {
+  @extend %df;
+  @extend %aic;
+  @extend %bsb;
+  height: j(54);
+  padding: 0 j(15);
+  background-color: #fff;
+  width: 100%;
+}
+
+.search-box {
+  @extend %df;
+  @extend %df1;
+  @extend %aic;
+  height: j(36);
+  padding: 0 j(12);
+  background-color: #f6f7fa;
+  border-radius: j(4);
+
+  .iconfont {
+    @extend %c9;
+  }
+}
+
+.search-input {
+  @extend %df1;
+  @extend %h100;
+  @extend %c9;
+  height: j(36);
+  margin-left: j(8);
+  font-size: j(14);
+  font-weight: 300;
+}

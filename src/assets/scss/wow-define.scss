@@ -1,10 +1,10 @@
 @import "./define";
 
-$namespace: 'wow';
+$namespace: "wow";
 
 @function j($px, $r: 2) {
   @if ($px == 1) {
-    @return $px * 2rpx;
+    @return $px * 1rpx;
   }
-  @return $px * $r * 2rpx;
+  @return $px * $r * 1rpx;
 }

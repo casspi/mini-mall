@@ -1,11 +1,13 @@
 {
     "pages": [
         "pages/home/index",
+        "pages/ad/index",
         "pages/cart/index",
         "pages/classify/index",
         "pages/demo/index",
         "pages/mine/index",
-        "pages/order/index"
+        "pages/order/index",
+        "pages/search/index"
     ],
     "permission": {
         "scope.userLocation": {
@@ -19,7 +21,7 @@
     },
     "tabBar": {
         "color": "#707070",
-        "selectedColor": "#f0831f",
+        "selectedColor": "#CD4545",
         "backgroundColor": "#fff",
         "borderStyle": "black",
         "position": "bottom",

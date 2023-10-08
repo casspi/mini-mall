@@ -1,1 +1,21 @@
+<wow-skeleton
+  wx:if="{{ !arrData || !arrData.length }}"
+  is-loading="{{ !arrData }}"
+></wow-skeleton>
 
+<vertical-tab-switch
+  class="tab"
+  data="{{ arrData }}"
+  num-curr-index="{{ numCurrIndex }}"
+  bindchange="handleClassifyChange"
+></vertical-tab-switch>
+
+<view class="inner">
+  <classify-content
+    wx:for="{{ arrData }}"
+    wx:key="index"
+    class="content {{ numCurrIndex === index && 'active' }}"
+    data="{{ item }}"
+    store-id="{{ config$.SELF_STORE_ID }}"
+  ></classify-content>
+</view>

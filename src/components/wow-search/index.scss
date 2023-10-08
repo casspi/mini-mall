@@ -1,0 +1,53 @@
+@import "src/assets/scss/wow-define";
+
+.wow-search {
+  @extend %df;
+  @extend %aic;
+  background-color: #fff;
+  margin: 0 $num-margin;
+  height: j(36);
+  &.none-input {
+    .iconClose,
+    .input {
+      @extend %dn;
+    }
+    .text {
+      @extend %dib;
+    }
+  }
+}
+.iconfont {
+  @extend %h100;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %cp;
+  width: j(36);
+  color: #ddd;
+  &.iconClose {
+    font-size: j(14);
+  }
+  &.iconserch {
+    font-size: j(20);
+  }
+}
+.inner {
+  @extend %df1;
+  @extend %h100;
+  @extend %df;
+  @extend %aic;
+  color: #ddd;
+  font-size: j(14);
+}
+.text {
+  @extend %dn;
+}
+.input {
+  @extend %h100;
+  @extend %w100;
+  color: #f38a8a;
+  font-size: j(14);
+}
+.input-place {
+  color: #f38a8a;
+}

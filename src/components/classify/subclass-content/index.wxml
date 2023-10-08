@@ -1,0 +1,34 @@
+<scroll-view bindscrolltolower="handleLoad" class="s-wiper-item" scroll-y>
+  <wow-skeleton
+    wx:if="{{ total < 1 }}"
+    is-loading="{{ total === -1 }}"
+  ></wow-skeleton>
+
+  <!--    <view class="content"-->
+  <!--          wx:if="{{arrData.length}}">-->
+  <!--    </view>-->
+
+  <view class="content" wx:if="{{ total > 0 }}">
+    <block
+      wx:for="{{ arrArrData }}"
+      wx:for-item="arrData"
+      wx:for-index="arrIndex"
+      wx:key="arrIndex"
+    >
+      <text class="" selectable="false" space="false" decode="false">
+        {{ item }}
+      </text>
+      <!-- <goods-item
+                wx:for="{{arrData}}"
+                wx:key="index"
+                data="{{item}}"
+            ></goods-item> -->
+    </block>
+  </view>
+
+  <wow-loading-footer
+    wx:if="{{ total > 0 }}"
+    is-loading="{{ total > numTotal }}"
+    prompt="{{ total > numTotal ? '加载中...' : '到底了哦' }}"
+  ></wow-loading-footer>
+</scroll-view>

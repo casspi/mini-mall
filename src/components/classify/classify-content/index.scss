@@ -1,0 +1,18 @@
+@import "src/assets/scss/define";
+
+.wrap {
+  @extend %h100;
+  background-color: #fff;
+}
+.banner-box {
+  @extend %df;
+  @extend %w100;
+  @extend %jcc;
+  @extend %aic;
+  padding: $num-padding 0;
+}
+.banner {
+  width: j(255);
+  height: j(88);
+  background-color: #f2f2f2;
+}

@@ -1,11 +1,11 @@
-import Curl from 'wow-wx/curl'
-import Loading from 'wow-wx/mixins/wx/loading.mixin'
-import User from 'wow-wx/mixins/utils/user.mixin'
-import Router from 'wow-wx/mixins/wx/router.mixin'
-import ApiConfig, { isProd } from 'src/config/api.config'
+import Curl from "wow-wx/curl"
+import Loading from "wow-wx/mixins/wx/loading.mixin"
+import User from "wow-wx/mixins/utils/user.mixin"
+import Router from "wow-wx/mixins/wx/router.mixin"
+import ApiConfig, { isProd } from "src/config/api.config"
 
 const curl = new Curl({
-  baseURI: isProd ? 'https://rochecrm.g2digi.com/' : 'https://roche.jiappo.cn/',
+  baseURI: isProd ? "https://rochecrm.g2digi.com/" : "https://roche.jiappo.cn/",
 })
 
 // 日志输出
@@ -40,11 +40,11 @@ curl.interceptors.request.use(
           if (AccessToken) {
             config.header = Object.assign({ AccessToken }, header)
           }
-          if (typeof extend === 'function') {
+          if (typeof extend === "function") {
             config.data = Object.assign(config.data, extend(objUser) || {})
           }
           if (useAuth && (!config.header || !config.header.AccessToken)) {
-            return reject('')
+            return reject("")
           }
           resolve(config)
         })
@@ -64,28 +64,28 @@ curl.interceptors.response.use(
       console.log(`${url} [${method}] 请求返回 => `, respData)
       let { Status, Data, Extend, Message } = respData
       if ([201].indexOf(Status) > -1) {
-        reject(Message || 'token已过期，请重新登录')
+        reject(Message || "token已过期，请重新登录")
         return gotoLogin()
       }
       if (Status === 202) {
-        reject('')
-        return Router.routerPush('webview_index', {
+        reject("")
+        return Router.routerPush("webview_index", {
           link: Extend,
-          title: '关注公众号',
+          title: "关注公众号",
         })
       }
       if (Status !== 0) {
         return reject(respData)
       }
-      if (Extend && typeof Extend === 'object' && typeof Data === 'object') {
+      if (Extend && typeof Extend === "object" && typeof Data === "object") {
         Data = Object.assign({}, Extend, Data)
       }
       resolve(Data)
     }),
   (error) => {
     if (error && error.errMsg) {
-      if (error.errMsg === 'request:fail timeout') {
-        error.errMsg = '请求超时，请稍后再试'
+      if (error.errMsg === "request:fail timeout") {
+        error.errMsg = "请求超时，请稍后再试"
       }
     }
     return Promise.reject(error)
@@ -96,7 +96,7 @@ export default {
   data: {
     api$: ApiConfig,
     isProd,
-    error: '',
+    error: "",
   },
 
   curl(url, data = {}, options = {}) {
@@ -105,7 +105,7 @@ export default {
       Loading.loadingShow()
     }
     if (useError) {
-      this.setData({ error: '' })
+      this.setData({ error: "" })
     }
     return curl
       .request({
@@ -118,7 +118,7 @@ export default {
           this.setData({
             error: err.errMsg || err.msg || err.message || JSON.stringify(err),
           })
-          err = ''
+          err = ""
         }
         throw err
       })
@@ -142,14 +142,14 @@ function gotoLogin() {
     const pages = getCurrentPages()
     const { route } = pages[pages.length - 1] || {}
     // 如果已经进入到了登录页面，则无需执行后续操作
-    if (route === 'pages/login/index') return
+    if (route === "pages/login/index") return
     User.userLogout().finally(() => {
-      if (route !== 'pages/home/index') {
+      if (route !== "pages/home/index") {
         // 如果是其他页面 先切回首页
-        Router.routerRoot('home_index', {}, true)
+        Router.routerRoot("home_index", {}, true)
       }
       // 去登录
-      setTimeout(() => Router.routerPush('login_index'), 400)
+      setTimeout(() => Router.routerPush("login_index"), 400)
     })
   }, 1000)
 }

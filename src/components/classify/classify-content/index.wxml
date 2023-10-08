@@ -1,0 +1,19 @@
+<scroll-view scroll-y class="wrap class-external">
+  <wow-skeleton
+    wx:if="{{ data && (!data.subData || !data.subData.length) }}"
+    is-loading="{{ !data.subData }}"
+  ></wow-skeleton>
+
+  <block wx:if="{{ data && data.subData && data.subData.length }}">
+    <view class="c-bar"></view>
+
+    <wow-grid
+      columns="1"
+      data="{{ data.subData }}"
+      text-key="name"
+      bindselect="handleSelect"
+    ></wow-grid>
+
+    <view class="c-bar"></view>
+  </block>
+</scroll-view>

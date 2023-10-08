@@ -1,107 +1,107 @@
-@import '~src/assets/scss/define';
+@import "~src/assets/scss/define";
 
-.tab-wrap{
-    @extend %df;
-    @extend %aic;
-    @extend %bw05;
-    @extend %bwb;
-    background-color: #fff;
-    &.scroll {
+.tab-wrap {
+  @extend %df;
+  @extend %aic;
+  @extend %bw05;
+  @extend %bwb;
+  background-color: #fff;
+  &.scroll {
+    @extend %db;
+    white-space: nowrap;
+    .tab-cell {
+      @extend %dib;
+      @extend %h100;
+      flex: none;
+      padding: 0 j(10);
+      line-height: j(48);
+    }
+  }
+  &.mode2 {
+    background-color: $color-primary;
+    &:before {
+      @extend %dn;
+    }
+    .tab-cell {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: j(16);
+      &.active {
+        @extend %cfff;
+      }
+      .tab-cell-con {
+        &:after {
+          @extend %dn;
+        }
+      }
+    }
+  }
+  &.mode3 {
+    background-color: $color-primary;
+    .tab-cell {
+      color: rgba(255, 255, 255, 0.5);
+      &.active {
+        @extend %cfff;
+      }
+      .tab-cell-con {
+        &:after {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}
+.tab-cell {
+  @extend %df;
+  @extend %pr;
+  @extend %df1;
+  @extend %aic;
+  @extend %cp;
+  @extend %jcc;
+  @extend %h100;
+  height: j(48);
+  color: #acacac;
+  font-size: j(14);
+  &.active {
+    @extend %c3;
+    .tab-cell-con {
+      &:after {
         @extend %db;
-        white-space: nowrap;
-        .tab-cell{
-            @extend %dib;
-            @extend %h100;
-            flex: none;
-            padding: 0 j(10);
-            line-height: j(48);
-        }
+      }
     }
-    &.mode2{
-        background-color: $color-main;
-        &:before{
-            @extend %dn;
-        }
-        .tab-cell{
-            color: rgba(255,255,255,0.50);
-            font-size: j(16);
-            &.active{
-                @extend %cfff;
-            }
-            .tab-cell-con{
-                &:after{
-                    @extend %dn;
-                }
-            }
-        }
+    .tab-badge {
+      background-color: #fff;
     }
-    &.mode3{
-        background-color: $color-main;
-        .tab-cell{
-            color: rgba(255,255,255,0.50);
-            &.active{
-                @extend %cfff;
-            }
-            .tab-cell-con{
-                &:after{
-                    background-color: #fff;
-                }
-            }
-        }
-    }
+  }
 }
-.tab-cell{
-    @extend %df;
-    @extend %pr;
-    @extend %df1;
-    @extend %aic;
-    @extend %cp;
-    @extend %jcc;
-    @extend %h100;
-    height: j(48);
-    color: #acacac;
-    font-size: j(14);
-    &.active{
-        @extend %c3;
-        .tab-cell-con{
-            &:after{
-                @extend %db;
-            }
-        }
-        .tab-badge{
-            background-color: #fff;
-        }
-    }
-}
-.tab-cell-con{
-    @extend %h100;
-    @extend %df;
-    @extend %aic;
-    @extend %jcc;
-    @extend %pr;
-    padding: 0 j(10);
-    &:after{
-        @extend %pa;
-        @extend %dn;
-        @extend %l0;
-        @extend %r0;
-        @extend %b0;
-        background-color: $color-main;
-        height: j(3);
-        content: '';
-    }
-}
-.tab-badge{
+.tab-cell-con {
+  @extend %h100;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %pr;
+  padding: 0 j(10);
+  &:after {
     @extend %pa;
-    @extend %df;
-    @extend %aic;
-    @extend %jcc;
-    @extend %br50;
-    right: j(-4);
-    top: j(4);
-    font-size: j(10);
-    color: $color-main;
-    width: j(16);
-    height: j(16);
-    background-color: rgba(255,255,255,0.50);
+    @extend %dn;
+    @extend %l0;
+    @extend %r0;
+    @extend %b0;
+    background-color: $color-primary;
+    height: j(3);
+    content: "";
+  }
+}
+.tab-badge {
+  @extend %pa;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %br50;
+  right: j(-4);
+  top: j(4);
+  font-size: j(10);
+  color: $color-primary;
+  width: j(16);
+  height: j(16);
+  background-color: rgba(255, 255, 255, 0.5);
 }

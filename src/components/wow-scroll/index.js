@@ -1,8 +1,8 @@
-import './index.json'
-import './index.wxml'
-import './index.scss'
+import "./index.json"
+import "./index.wxml"
+import "./index.scss"
 
-import WowComponent from 'wow-wx/lib/component'
+import WowComponent from "wow-wx/lib/component"
 
 let prevTime = 0
 new WowComponent({
@@ -10,7 +10,7 @@ new WowComponent({
   data: {
     numY: 0,
     isRefresh: false,
-    strRefreshPrompt: '',
+    strRefreshPrompt: "",
     scrollTop: 0,
   },
   properties: {
@@ -52,7 +52,7 @@ new WowComponent({
       if (isRefresh) return null
       let [objStart] = event.touches
       if (objStart) this.startClientY = objStart.clientY
-      this.setData({ strRefreshPrompt: '', isRefresh: false })
+      this.setData({ strRefreshPrompt: "", isRefresh: false })
     },
     handleTouchMove(event) {
       let { isRefresh, numY } = this.data
@@ -83,9 +83,9 @@ new WowComponent({
       if (!isRefresh) {
         return this.setData({ numY: 0 })
       }
-      this.triggerEvent('refresh', {
+      this.triggerEvent("refresh", {
         callback: (res) => {
-          let { strPrompt = '刷新完成' } = res || {}
+          let { strPrompt = "刷新完成" } = res || {}
           this.setData({ strRefreshPrompt: strPrompt })
           setTimeout(() => this.setData({ numY: 0 }), 300)
           setTimeout(() => this.setData({ isRefresh: false }), 550)
