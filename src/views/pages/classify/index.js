@@ -66,7 +66,7 @@ new WowPage({
         ],
       },
     ],
-    numCurrIndex: 1,
+    numCurrIndex: 0,
   },
   onload(options) {
     this.routerGetParams(options)
@@ -77,7 +77,9 @@ new WowPage({
     // eslint-disable-next-line no-undef
     const appInstance = getApp()
     console.log("options=>", appInstance.globalData)
-    this.setData({ numCurrIndex: appInstance.globalData.classifyId })
+    this.setData({ numCurrIndex: appInstance.globalData.classifyId }, () => {
+      appInstance.globalData.classifyId = 0
+    })
     // this.reqClassifyList()
   },
   handleClassifyChange(event) {
