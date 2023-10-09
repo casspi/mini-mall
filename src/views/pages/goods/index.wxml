@@ -9,7 +9,7 @@
 </goods-banner>
 <view class="base-info">
   <view class="left">
-    <view class="price"> <text>￥</text>99.00 </view>
+    <view class="price"><text>￥99.00</text> </view>
     <view class="name"><text>健胃消食片(成人)(合糖)(江中)</text> </view>
   </view>
 

@@ -14,8 +14,8 @@ page {
     .price {
       color: red;
       font-size: j(16);
-      text {
-        font-size: j(10);
+      &:first-letter {
+        font-size: j(12);
       }
     }
     .name {

@@ -68,6 +68,8 @@
       >{{ item.name }}
       <!-- {{item.subName?`(${item.subName})`:''}} -->
     </text>
-    <view class="price"><text>￥</text>{{ item.price }}</view>
+    <view class="price"
+      ><text>￥{{ item.price }}</text></view
+    >
   </view>
 </view>
