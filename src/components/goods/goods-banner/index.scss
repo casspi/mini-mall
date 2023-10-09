@@ -1,0 +1,47 @@
+@import "src/assets/scss/wow-define";
+
+.wrap {
+  @extend %pr;
+  @extend %w100;
+  height: j(375);
+  background-color: #fff;
+}
+.swiper-cell {
+  @extend %w100;
+  @extend %h100;
+}
+.image {
+  @extend %w100;
+  @extend %h100;
+}
+.otc {
+  @extend %pa;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %c3;
+  top: j(20);
+  right: j(20);
+  font-size: j(12);
+  width: j(44);
+  height: j(24);
+  border-radius: j(4);
+  color: #fff;
+  background-color: #52a849;
+  z-index: 1;
+}
+.indicator {
+  @extend %pa;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %c3;
+  bottom: j(20);
+  right: j(20);
+  font-size: j(12);
+  width: j(40);
+  height: j(24);
+  border-radius: j(8);
+  color: #fff;
+  background-color: rgba(153, 153, 153, 0.6);
+}

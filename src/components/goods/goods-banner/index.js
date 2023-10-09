@@ -5,15 +5,25 @@ import "./index.scss"
 import WowComponent from "wow-wx/lib/component"
 
 new WowComponent({
+  mixins: [WowComponent.wow$.mixins.Input],
   externalClasses: ["class-external"],
   options: {
     multipleSlots: true,
     addGlobalClass: true,
   },
+  data: {
+    index: 1,
+  },
   properties: {
-    isLoading: {
-      type: Boolean,
-      value: true,
+    data: {
+      type: Array,
+      value: [],
+    },
+  },
+  methods: {
+    handleChange(event) {
+      let { current } = this.inputParams(event)
+      this.setData({ index: current + 1 })
     },
   },
 })

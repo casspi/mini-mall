@@ -1,0 +1,35 @@
+<view class="detail-warp">
+  <view class="detail-tab">
+    <text class="detail-tab-title" bindtap="handleChange" data-index="{{ 0 }}"
+      >图文详情
+    </text>
+    <text class="line"> | </text>
+    <text class="detail-tab-title" bindtap="handleChange" data-index="{{ 1 }}"
+      >药师用药指导
+    </text>
+  </view>
+  <view class="detail-tab-item {{ 0 === index && 'active' }}">
+    <image
+      class="detail-img"
+      src="https://img30.360buyimg.com/sku/jfs/t1/182790/35/35200/131661/6470484bF49db5b64/f93f741e4dbefd41.jpg"
+      mode="widthFix"
+      lazy-load="true"
+    ></image>
+    <image
+      class="detail-img"
+      src="https://img30.360buyimg.com/sku/jfs/t1/182790/35/35200/131661/6470484bF49db5b64/f93f741e4dbefd41.jpg"
+      mode="widthFix"
+      lazy-load="true"
+    ></image>
+  </view>
+  <view class="detail-tab-item guidance-item {{ 1 === index && 'active' }}">
+    <view class="detail-table">
+      <view class="detail-table-col" wx:for="{{ 9 }}" wx:key="item">
+        <view class="detail-table-row"> 名称</view>
+        <view class="detail-table-row row-value">
+          值：https://img30.360buyimg.com/sku/jfs/t1/182790/35/35200/131661/6470484bF49db5b64/f93f741e4dbefd41.jpg</view
+        >
+      </view>
+    </view>
+  </view>
+</view>

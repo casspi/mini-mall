@@ -5,6 +5,7 @@
         "pages/cart/index",
         "pages/classify/index",
         "pages/demo/index",
+        "pages/goods/index",
         "pages/mine/index",
         "pages/order/index",
         "pages/search/index"

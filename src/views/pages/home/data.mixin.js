@@ -13,16 +13,19 @@ export default {
           name: "儿科",
           id: 0,
           icon: "/assets/images/home/erke.png",
+          fn: "handleClassify",
         },
         {
           name: "妇科",
           id: 1,
           icon: "/assets/images/home/fuke.png",
+          fn: "handleClassify",
         },
         {
           name: "骨科",
           id: 2,
           icon: "/assets/images/home/guke.png",
+          fn: "handleClassify",
         },
         {
           name: "内分泌科",

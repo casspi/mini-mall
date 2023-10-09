@@ -1,0 +1,24 @@
+<view class="wrap">
+  <view class="otc">
+    <text>OTC</text>
+  </view>
+  <swiper bindchange="handleChange" class="wrap" circular>
+    <swiper-item
+      class="swiper-cell"
+      wx:for="{{ data }}"
+      wx:key="index"
+      data-item="{{ item }}"
+      bindtap="handleSelect"
+    >
+      <image
+        class="image"
+        src="{{ item[key] || item }}"
+        mode="aspectFill"
+      ></image>
+    </swiper-item>
+  </swiper>
+  <view class="indicator">
+    <text>{{ index }}/{{ data.length }}</text>
+  </view>
+  <slot></slot>
+</view>

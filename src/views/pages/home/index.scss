@@ -16,16 +16,19 @@ page {
   z-index: 9;
 }
 .space-block {
-  height: j(48);
+  height: j(58);
   background-color: #fff;
 }
 
 // 分类
 .classify-warp {
-  width: 100%;
+  width: j(355);
   height: j(200);
   white-space: nowrap;
   background-color: #fff;
+  margin: j(10) auto 0;
+  border-radius: j(8);
+  box-shadow: j(0) j(0) j(50) #f2f2f2;
   .classify-block {
     width: 100%;
     height: 100%;
@@ -41,7 +44,7 @@ page {
     @extend %oh;
   }
   .classify-item {
-    width: j(65);
+    width: j(61);
     @extend %df;
     @extend %fdc;
     align-items: center;

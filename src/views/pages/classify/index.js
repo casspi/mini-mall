@@ -10,9 +10,19 @@ new WowPage({
     WowPage.wow$.mixins.Input,
     WowPage.wow$.mixins.Http,
     WowPage.wow$.mixins.Config,
+    WowPage.wow$.mixins.Router,
   ],
   data: {
     arrData: [
+      {
+        name: "儿科",
+        value: 0,
+        subData: [
+          { name: "感冒", value: 11 },
+          { name: "咳嗽", value: 12 },
+          { name: "清热解毒", value: 13 },
+        ],
+      },
       {
         name: "呼吸系统",
         value: 1,
@@ -58,7 +68,16 @@ new WowPage({
     ],
     numCurrIndex: 1,
   },
-  onLoad() {
+  onload(options) {
+    this.routerGetParams(options)
+    const { params$ } = this.data
+    console.log("params$=>", params$)
+  },
+  onShow() {
+    // eslint-disable-next-line no-undef
+    const appInstance = getApp()
+    console.log("options=>", appInstance.globalData)
+    this.setData({ numCurrIndex: appInstance.globalData.classifyId })
     // this.reqClassifyList()
   },
   handleClassifyChange(event) {

@@ -1,1 +1,39 @@
+<goods-banner data="{{ arrBanner }}">
+  <!-- <view
+    class="count-down"
+    wx:if="{{ config$.GOODS_TYPE.FLASH === objData.goodsType }}"
+  >
+    <text>距离秒杀结束还剩：</text>
+    <wow-count-down end-time="{{ objData.flashEndTime }}"></wow-count-down>
+  </view> -->
+</goods-banner>
+<view class="base-info">
+  <view class="left">
+    <view class="price"> <text>￥</text>99.00 </view>
+    <view class="name"><text>健胃消食片(成人)(合糖)(江中)</text> </view>
+  </view>
 
+  <button open-type="share" class="c-button-normal share-button">
+    <view class="iconfont iconShare"></view>
+    <text>分享</text>
+  </button>
+</view>
+<view class="other-info">
+  <view class="cell-group">
+    <view class="cell">
+      <text class="label">功效</text>
+      <text class="value"
+        >用于预防和治疗维生素A及D的缺乏用于预防和治疗维生素A及D的缺乏用于预防和治疗维生素A及D的缺乏</text
+      >
+    </view>
+    <view class="cell">
+      <text class="label">厂家</text>
+      <text class="value">上海医药有限责任公司</text>
+    </view>
+    <view class="cell">
+      <text class="label">规格</text>
+      <text class="value">10*50mg</text>
+    </view>
+  </view>
+</view>
+<goods-detail></goods-detail>

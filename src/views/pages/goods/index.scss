@@ -1,1 +1,70 @@
-@import 'src/assets/scss/define';
+@import "src/assets/scss/define";
+page {
+  background-color: #f2f2f2;
+  height: 100%;
+}
+.base-info {
+  @extend %df;
+  background-color: #fff;
+  padding: j(20) j(10);
+  .left {
+    @extend %df;
+    @extend %fdc;
+    flex: 1;
+    .price {
+      color: red;
+      font-size: j(16);
+      text {
+        font-size: j(10);
+      }
+    }
+    .name {
+      font-size: j(20);
+      margin-top: j(5);
+    }
+  }
+  .share-button {
+    @extend %df;
+    @extend %aic;
+    @extend %fdc;
+    @extend %cp;
+    @extend %jcc;
+    @extend %c9;
+    font-size: j(12);
+    line-height: j(17);
+    background-color: inherit;
+    border: none;
+    outline: none;
+    &::after {
+      border: none;
+    }
+    .iconfont {
+      @extend %df;
+      @extend %aic;
+      @extend %jcc;
+      font-size: j(18);
+      margin-bottom: j(8);
+      width: j(28);
+      height: j(28);
+      color: $color-primary;
+    }
+  }
+}
+.other-info {
+  background-color: #fff;
+  margin-top: j(10);
+}
+.cell {
+  @extend %df;
+  align-items: flex-start;
+  padding: j(10) j(20);
+  font-size: j(14);
+  line-height: j(20);
+  .label {
+    color: #999;
+    width: j(60);
+  }
+  .value {
+    flex: 1;
+  }
+}

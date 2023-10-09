@@ -1,0 +1,54 @@
+@import "src/assets/scss/wow-define";
+
+.detail-warp {
+  @extend %pr;
+  @extend %w100;
+  margin-top: j(10);
+  background-color: #fff;
+}
+.detail-tab {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  padding: j(20);
+  font-size: j(18);
+  border-bottom: j(1) solid #eee;
+  .line {
+    margin: 0 j(15);
+    color: #eee;
+  }
+}
+.detail-tab-item {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+.detail-img {
+  width: 100%;
+}
+
+.guidance-item {
+  padding: j(15) j(20);
+}
+.detail-table {
+  border-top: j(1) solid #999;
+  border-left: j(1) solid #999;
+  font-size: j(14);
+  color: #666;
+}
+.detail-table-col {
+  border-bottom: j(1) solid #999;
+  width: 100%;
+  @extend %df;
+}
+.detail-table-row {
+  border-right: j(1) solid #999;
+  padding: j(10) j(20);
+  @extend %df;
+  @extend %aic;
+  &.row-value {
+    flex: 1;
+    word-break: break-all;
+  }
+}

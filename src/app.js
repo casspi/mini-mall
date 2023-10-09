@@ -42,6 +42,9 @@ if (typeof Array.prototype.flat !== "function") {
 }
 
 wowApp.init({
+  globalData: {
+    classifyId: 0,
+  },
   onError(msg) {
     console.log("[APP ERROR] => ", msg)
   },

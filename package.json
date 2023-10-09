@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Woshiajuana/wow-wx.git"
+    "url": "git+https://github.com/casspi/mini-mall.git"
   },
   "keywords": [
     "webpack"
@@ -19,9 +19,9 @@
   "author": "kassadin &#60;369642339@qq.com&#62;",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Woshiajuana/wow-wx/issues"
+    "url": "https://github.com/casspi/mini-mall/issues"
   },
-  "homepage": "https://github.com/Woshiajuana/wow-wx#readme",
+  "homepage": "https://github.com/casspi/mini-mall#readme",
   "dependencies": {
     "@daysnap/define-sass": "0.0.9",
     "wow-wx": "^0.1.15"
