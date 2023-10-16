@@ -37,3 +37,8 @@
   </view>
 </view>
 <goods-detail></goods-detail>
+<wow-fixed-bottom height="50">
+  <button open-type="contact" class="iconfont iconweixin contact-icon"></button>
+  <button class="iconfont iconcart"></button>
+  <button class="iconfont iconweixin contact-icon"></button>
+</wow-fixed-bottom>

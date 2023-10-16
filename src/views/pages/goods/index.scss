@@ -1,7 +1,7 @@
 @import "src/assets/scss/define";
 page {
   background-color: #f2f2f2;
-  height: 100%;
+  @extend %h100;
 }
 .base-info {
   @extend %df;
@@ -67,4 +67,9 @@ page {
   .value {
     flex: 1;
   }
+}
+
+.contact-icon {
+  color: #07c160;
+  height: j(40);
 }

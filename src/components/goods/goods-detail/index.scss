@@ -20,6 +20,7 @@
 }
 .detail-tab-item {
   display: none;
+  min-height: j(500);
   &.active {
     display: block;
   }

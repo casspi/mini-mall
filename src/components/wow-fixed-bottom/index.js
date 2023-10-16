@@ -1,8 +1,8 @@
-import './index.json'
-import './index.wxml'
-import './index.scss'
+import "./index.json"
+import "./index.wxml"
+import "./index.scss"
 
-import WowComponent from 'wow-wx/lib/component'
+import WowComponent from "wow-wx/lib/component"
 
 new WowComponent({
   options: {
@@ -12,11 +12,11 @@ new WowComponent({
   properties: {
     height: {
       type: String,
-      value: '0',
+      value: "0",
     },
     padding: {
       type: String,
-      value: '0',
+      value: "0",
     },
   },
 })

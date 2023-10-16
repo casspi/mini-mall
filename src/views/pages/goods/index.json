@@ -2,6 +2,7 @@
   "navigationBarTitleText": "商品详情",
   "usingComponents": {
     "goods-banner": "/components/goods/goods-banner/index",
-    "goods-detail": "/components/goods/goods-detail/index"
+    "goods-detail": "/components/goods/goods-detail/index",
+    "wow-fixed-bottom": "/components/wow-fixed-bottom/index"
   }
 }

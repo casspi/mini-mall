@@ -1,3 +1,5 @@
 <view class="ad-page">
   <image mode="widthFix" src="{{ params$.img }}"> </image>
+  <image mode="widthFix" src="{{ params$.img }}"> </image>
+  <image mode="widthFix" src="{{ params$.img }}"> </image>
 </view>
