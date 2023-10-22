@@ -61,7 +61,7 @@ new WowComponent({
       } else if (index === 1) {
         orderByType = "SALE"
       } else if (index === 2) {
-        if (numTypeIndex === 1) {
+        if (numTypeIndex === 2) {
           if (orderByType === "PRICE_ASC") {
             orderByType = "PRICE_DESC"
           } else {
