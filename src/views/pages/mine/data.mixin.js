@@ -26,7 +26,7 @@ export default {
     objMenu: {
       address: {
         label: "收货地址",
-        url: "mine_address_index",
+        url: "address_index",
         from: "mine_index",
       },
       help: {

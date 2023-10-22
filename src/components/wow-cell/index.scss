@@ -1,0 +1,68 @@
+@import "~src/assets/scss/define";
+$cell-padding: j(20);
+.wow-cell {
+  @extend %df;
+  @extend %pr;
+  @extend %aic;
+  @extend %bsb;
+  @extend %bw05;
+  font-size: j(14);
+  padding: j(14) $cell-padding;
+  background-color: #fff;
+  &.mode-input {
+    padding-right: 0;
+    .value-text {
+      @extend %dn;
+    }
+    .value-input {
+      @extend %db;
+    }
+    .icon-right {
+      margin-right: $cell-padding;
+    }
+  }
+  &.cursor-pointer {
+    @extend %cp;
+  }
+  &.border-top {
+    @extend %bwt;
+  }
+  &.border-bottom {
+    @extend %bwb;
+  }
+  .label {
+    @extend %pr;
+    @extend %c3;
+    line-height: j(20);
+  }
+  .value {
+    @extend %pr;
+    @extend %tar;
+    @extend %df1;
+    @extend %c9;
+    line-height: j(20);
+  }
+  .value-input {
+    @extend %w100;
+    @extend %dn;
+    @extend %h100;
+    @extend %bsb;
+    @extend %c9;
+    padding-left: $cell-padding;
+    &.padding-right {
+      padding-right: $cell-padding;
+    }
+  }
+  .value-place {
+    color: #dedede;
+  }
+  .iconfont {
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    @extend %c9;
+    font-size: j(20);
+    width: j(20);
+    height: j(20);
+  }
+}

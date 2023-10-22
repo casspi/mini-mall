@@ -1,7 +1,7 @@
 {
     "component": true,
     "usingComponents": {
-        "wow-skeleton": "/components/wow-skeleton/index",
-        "wow-loading-footer": "/components/wow-loading-footer/index"
+        "wow-end": "/components/wow-end/index",
+        "wow-skeleton": "/components/wow-skeleton/index"
     }
 }

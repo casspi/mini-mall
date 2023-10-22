@@ -1,4 +1,4 @@
-import routes from 'src/config/router.config'
+import routes from "src/config/router.config"
 
 export default {
   routes,

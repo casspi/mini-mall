@@ -1,9 +1,14 @@
-
 @import "~src/assets/scss/define";
 
-page{
-    @extend %h100;
-    &:before{
-        @extend %dn;
-    }
+page {
+  @extend %h100;
+  @extend %df;
+  @extend %fdc;
+  background-color: $color-bg;
+  &:before {
+    @extend %dn;
+  }
+}
+.s-wiper-box {
+  flex: 1;
 }

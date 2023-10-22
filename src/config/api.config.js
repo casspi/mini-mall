@@ -5,7 +5,7 @@ export const isProd = (() => {
       const accountInfo = wx.getAccountInfoSync()
       const { envVersion } = accountInfo.miniProgram
       // develop trial release
-      if (['develop', 'trial'].includes(envVersion)) {
+      if (["develop", "trial"].includes(envVersion)) {
         result = false
       }
     }
@@ -16,5 +16,7 @@ export const isProd = (() => {
 })()
 
 export default {
-  H5_BASE_URL: isProd ? '' : '',
+  H5_BASE_URL: isProd ? "" : "",
+  // 商品列表查询
+  REQ_GOODS_LIST: "api/product/query/list",
 }

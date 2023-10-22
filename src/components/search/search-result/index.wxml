@@ -1,0 +1,38 @@
+<view class="s-wiper-page">
+  <wow-tab
+    wx:if="{{ !params.storeId }}"
+    data="{{ arrData }}"
+    index="{{ numCurrIndex }}"
+    data-item="numIndex"
+    data-valkey="index"
+    bindchange="tabsChange"
+  >
+  </wow-tab>
+  <swiper
+    current="{{ numCurrIndex }}"
+    data-valkey="current"
+    class="s-wiper-box"
+    duration="300"
+    bindchange="tabsChange"
+  >
+    <swiper-item>
+      <search-result-goods
+        keyword="{{ keyword }}"
+        params="{{ params }}"
+        is-show="{{ numCurrIndex === 0 }}"
+      ></search-result-goods>
+    </swiper-item>
+    <swiper-item>
+      <search-result-store
+        keyword="{{ keyword }}"
+        is-show="{{ numCurrIndex === 1 }}"
+      ></search-result-store>
+    </swiper-item>
+    <swiper-item>
+      <search-result-special
+        keyword="{{ keyword }}"
+        is-show="{{ numCurrIndex === 2 }}"
+      ></search-result-special>
+    </swiper-item>
+  </swiper>
+</view>

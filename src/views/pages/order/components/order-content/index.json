@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wow-skeleton": "/components/wow-skeleton/index",
+        "wow-scroll": "/components/wow-scroll/index",
+        "wow-end": "/components/wow-end/index",
+        "order-cell": "../order-cell/index"
+    }
+}

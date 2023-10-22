@@ -1,4 +1,14 @@
-const config = {}
+const config = {
+  // 订单状态
+  ORDER_STATUS: {
+    UN_PAY: "1", // 待付款
+    UN_SEND: "2", // 待发货
+    SEND: "3", // 待收货
+    SUCCESS: "4", // 订单完成
+    CLOSE: "5", // 关闭
+    UN_COMMENT: "6", // 待评价
+  },
+}
 
 for (let k in config) {
   let item = config[k]

@@ -1,0 +1,80 @@
+@import "~src/assets/scss/define";
+
+.wrap {
+  @extend %df;
+  @extend %aic;
+  @extend %bw05;
+  @extend %bwb;
+  background-color: #fff;
+  .iconfont {
+    @extend %c9;
+    @extend %pr;
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    @extend %dn;
+    width: j(56);
+    height: j(56);
+    font-size: j(18);
+  }
+  .iconEdit {
+    @extend %cp;
+    @extend %c3;
+  }
+  &.mode-edit {
+    .iconMore {
+      @extend %dn;
+    }
+    .iconEdit {
+      @extend %df;
+    }
+  }
+  &.mode-arrow {
+    @extend %cp;
+    .iconMore {
+      @extend %df;
+    }
+    .iconEdit {
+      @extend %dn;
+    }
+  }
+}
+.inner {
+  @extend %df1;
+  @extend %cp;
+  @extend %pr;
+  padding: $num-margin;
+}
+.content {
+  @extend %df1;
+}
+.head {
+  @extend %df;
+  @extend %aic;
+  @extend %c3;
+  font-size: j(14);
+  height: j(20);
+}
+.name {
+  margin-right: j(20);
+}
+.phone {
+}
+.prompt {
+  @extend %c9;
+  margin-top: j(4);
+  font-size: j(12);
+  line-height: j(17);
+}
+.type {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %bsb;
+  width: j(60);
+  height: j(20);
+  font-size: j(12);
+  border: j(1) solid $color-primary;
+  margin-top: j(5);
+  color: $color-primary;
+}

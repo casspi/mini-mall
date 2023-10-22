@@ -1,4 +1,4 @@
-import PageMixin from 'wow-wx/mixins/wx/page.mixin'
+import PageMixin from "wow-wx/mixins/wx/page.mixin"
 
 let tabItemIndex = 0
 
@@ -9,7 +9,7 @@ export default {
   },
   onShow() {
     if (!this.data._flag) {
-      const index = ['home', 'community', 'mall', 'mine'].findIndex((item) =>
+      const index = ["home", "community", "mall", "mine"].findIndex((item) =>
         this.route.includes(item),
       )
       if (tabItemIndex !== index) {

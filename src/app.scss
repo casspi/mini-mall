@@ -1,6 +1,125 @@
 @import "src/assets/scss/define";
 @import "src/assets/scss/iconfont";
+@import "src/assets/scss/iconfont-mall";
 
 page {
   @extend %bsb;
+}
+
+// .c-button-reset {
+//   padding: 0;
+//   background: none;
+//   border-radius: 0;
+// }
+// .c-button-reset::after {
+//   border: none;
+// }
+// .c-button-reset[disabled] {
+//   color: #fff !important;
+//   background: linear-gradient(
+//     -12deg,
+//     rgba(47, 30, 136, 0.3) 0%,
+//     rgba(205, 3, 128, 0.3) 100%
+//   ) !important;
+// }
+.c-button-reset {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  font-size: 1em;
+  background-color: transparent;
+}
+
+.c-button-reset::after {
+  border: none;
+  height: 100%;
+  content: "";
+  display: none;
+}
+
+.c-button {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %ma;
+  @extend %cfff;
+  height: j(40);
+  font-size: j(15);
+  padding: 0;
+  border-radius: j(2);
+  max-width: j(355);
+  background-color: $color-primary;
+
+  &.c-button-warning {
+    background-color: $color-warning;
+  }
+  &.c-button-plain {
+    border: j(1) solid $color-primary;
+    background-color: #fff;
+    color: $color-primary;
+    @extend %bsb;
+  }
+  &.c-button-wx {
+    background-color: $color-wx;
+  }
+  &.c-in-fixed {
+    margin: inherit;
+    flex: 1;
+  }
+
+  &[disabled],
+  &.disabled,
+  &:disabled {
+    color: #fff !important;
+    background-color: #8cd8ca !important;
+  }
+
+  &:after {
+    @extend %dn;
+  }
+
+  &.normal {
+    font-size: j(16);
+    margin-top: j(30);
+    border-radius: j(20);
+    background-color: $color-primary;
+    width: j(200);
+    height: j(40);
+  }
+}
+.c-button-group {
+  @extend %df;
+  @extend %aic;
+  @extend %w100;
+  .c-button {
+    border-radius: 0;
+    height: j(50);
+    &:nth-child(1) {
+      @extend %c6;
+      width: j(100);
+      background-color: #eee;
+    }
+    &:nth-child(2) {
+      @extend %df1;
+    }
+  }
+}
+
+.c-bar {
+  @extend %bw05;
+  @extend %w100;
+  height: j(10);
+  &.bg1 {
+    background-color: $color-bg;
+  }
+  &.bg {
+    background-color: #fff;
+  }
+  &.bt {
+    @extend %bwt;
+  }
+  &.bb {
+    @extend %bwb;
+  }
 }

@@ -37,8 +37,28 @@
   </view>
 </view>
 <goods-detail></goods-detail>
-<wow-fixed-bottom height="50">
-  <button open-type="contact" class="iconfont iconweixin contact-icon"></button>
-  <button class="iconfont iconcart"></button>
-  <button class="iconfont iconweixin contact-icon"></button>
+<wow-fixed-bottom height="68">
+  <button
+    open-type="contact"
+    class="icon c-button-reset iconfont iconweixin"
+  ></button>
+  <!-- <view class="icon _iconfont _icon-kefu"></view> -->
+
+  <view class="icon _iconfont _icon-cart"></view>
+  <view
+    class="operate-button first-child"
+    data-async="true"
+    data-fn="handleAddedCart"
+    bindtap="jumpPageOrFireFn"
+  >
+    <text>{{ params$.otc === "1" ? "加入购物车" : "加入清单" }}</text>
+  </view>
+  <view
+    class="operate-button last-child"
+    data-async="true"
+    data-fn="handleBuyNow"
+    bindtap="jumpPageOrFireFn"
+  >
+    <text>{{ params$.otc === "1" ? "立即购买" : "提交需求" }}</text>
+  </view>
 </wow-fixed-bottom>

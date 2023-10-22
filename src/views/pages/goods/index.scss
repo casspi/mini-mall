@@ -69,7 +69,41 @@ page {
   }
 }
 
-.contact-icon {
-  color: #07c160;
-  height: j(40);
+.wow-fixed-bottom-content {
+  padding: j(10) j(10) !important;
+  height: j(48);
+  justify-content: space-around !important;
+  .icon {
+    font-size: j(24);
+    margin-right: j(10);
+    margin-left: 0;
+  }
+  .iconweixin {
+    color: #07c160;
+  }
+  ._icon-cart {
+  }
+}
+
+.operate-button {
+  @extend %df;
+  @extend %pr;
+  @extend %aic;
+  @extend %jcc;
+  @extend %cp;
+  @extend %h100;
+  @extend %bsb;
+  width: j(120);
+  font-size: j(16);
+  color: #fff;
+  height: j(44);
+  &.first-child {
+    @extend %bw05;
+    @extend %bwl;
+    background-color: #f5b666;
+  }
+  &.last-child {
+    @extend %cfff;
+    background-color: #ec5952;
+  }
 }

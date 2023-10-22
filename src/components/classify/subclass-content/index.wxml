@@ -26,9 +26,8 @@
     </block>
   </view>
 
-  <wow-loading-footer
-    wx:if="{{ total > 0 }}"
-    is-loading="{{ total > numTotal }}"
-    prompt="{{ total > numTotal ? '加载中...' : '到底了哦' }}"
-  ></wow-loading-footer>
+  <wow-end
+    wx:if="{{ pagingTotal > 0 }}"
+    is-loading="{{ pagingTotal > pagingNumTotal }}"
+  ></wow-end>
 </scroll-view>

@@ -1,5 +1,7 @@
 export default {
     "ad_index": "/pages/ad/index",
+    "address_details_index": "/pages/address/details/index",
+    "address_index": "/pages/address/index",
     "cart_index": "/pages/cart/index",
     "classify_index": "/pages/classify/index",
     "demo_index": "/pages/demo/index",

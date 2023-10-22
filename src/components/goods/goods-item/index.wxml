@@ -1,0 +1,27 @@
+<wxs src="../../../wxs/filter.wxs" module="filter" />
+
+<view
+  class="wrap class-external {{ classes }}"
+  data-url="goods_details_index"
+  data-params="{{ data }}"
+  bindtap="jumpPageOrFireFn"
+>
+  <view class="image-box class-image-box">
+    <image class="image class-image" src="{{ data.pic }}"></image>
+  </view>
+  <view class="info-box">
+    <view class="name">
+      <text>{{ data.name }}</text>
+    </view>
+    <view class="spec">
+      <text>{{ data.spec }}</text>
+    </view>
+    <view class="company">
+      <text>{{ data.company }}</text>
+    </view>
+    <view class="price" wx:if="{{ data.price }}">
+      <text>￥{{ data.price }}</text>
+      <view catchtap="handleCart" class="_iconfont _icon-cart"> </view>
+    </view>
+  </view>
+</view>

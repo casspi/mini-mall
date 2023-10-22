@@ -1,0 +1,20 @@
+<import src="/templates/form-template/index.wxml" />
+<template is="fromTemplate" data="{{ objInput: objInput }}"></template>
+
+<view class="c-bar"></view>
+<!-- <wow-cell
+  wx:if="{{ 1 || params$.id }}"
+  label="删除收货地址"
+  icon-right=""
+  bindtap="handleDelete"
+></wow-cell> -->
+
+<view
+  wx:if="{{ params$.id }}"
+  bindtap="handleDelete"
+  class="c-button c-button-plain"
+  ><text>删除收货地址</text></view
+>
+<view class="c-bar"></view>
+
+<view class="c-button" bindtap="handleSubmit"><text>提交</text></view>

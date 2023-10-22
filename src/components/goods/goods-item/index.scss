@@ -1,0 +1,75 @@
+@import "src/assets/scss/define";
+@import "src/assets/scss/iconfont-mall";
+
+.wrap {
+  @extend %w100;
+  @extend %df;
+  @extend %aic;
+  white-space: normal;
+  margin-bottom: j(16);
+  // &.column-3 {
+  //   width: j(104);
+  //   margin-right: j(12);
+  // }
+  // &.column-2 {
+  //   width: j(160);
+  //   margin-right: j(15);
+  // }
+}
+.image-box {
+  @extend %pr;
+  width: j(100);
+  height: j(80);
+  margin-right: j(10);
+}
+.image {
+  @extend %pa;
+  @extend %t0;
+  @extend %l0;
+  @extend %r0;
+  @extend %b0;
+  @extend %w100;
+  @extend %h100;
+  background-color: #f2f2f2;
+}
+.info-box {
+  @extend %df;
+  @extend %fdc;
+  flex: 1;
+}
+.name {
+  @extend %w100;
+  @extend %c3;
+  @include twno(2);
+  margin-top: j(8);
+  line-height: j(20);
+  font-size: j(16);
+  margin-bottom: j(10);
+}
+.company {
+  @include twno(1);
+}
+.company,
+.spec {
+  @extend %c9;
+  @extend %w100;
+  line-height: j(17);
+  font-size: j(14);
+  margin-bottom: j(4);
+  &.line-through {
+    text-decoration: line-through;
+  }
+}
+.price {
+  @extend %w100;
+  @extend %df;
+  @extend %jcs;
+  @extend %aic;
+  color: $color-primary;
+  line-height: j(22);
+  font-size: j(16);
+}
+._icon-cart {
+  font-size: j(18);
+  padding: j(4);
+}

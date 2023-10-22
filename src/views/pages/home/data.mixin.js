@@ -114,6 +114,7 @@ export default {
         subName: "感康",
         img: "https://img30.360buyimg.com/babel/s320x320_jfs/t1/118182/26/17983/255703/5f61b07aE48622c4f/224c98e42d16e58b.png!cc_320x320.webp",
         price: 100,
+        otc: "1",
       },
       {
         id: 2,

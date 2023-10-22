@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "地址管理",
+    "usingComponents": {
+        "wow-end": "/components/wow-end/index",
+        "wow-skeleton": "/components/wow-skeleton/index",
+        "wow-fixed-bottom": "/components/wow-fixed-bottom/index",
+        "address-add-item": "/components/address/address-add-item/index",
+        "address-item": "/components/address/address-item/index"
+    }
+}

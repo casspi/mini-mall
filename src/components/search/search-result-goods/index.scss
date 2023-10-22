@@ -1,0 +1,44 @@
+@import "src/assets/scss/wow-define";
+
+.tab-section {
+  @extend %df;
+  @extend %aic;
+}
+.tab-item {
+  @extend %df;
+  @extend %df1;
+  @extend %aic;
+  @extend %jcc;
+  @extend %cp;
+  height: j(48);
+  font-size: j(14);
+  color: #acacac;
+  &.active {
+    color: $color-primary;
+  }
+}
+.tab-icon {
+  width: j(16);
+  height: j(16);
+}
+.inner {
+  @extend %df1;
+  @extend %pr;
+  overflow: auto;
+  height: j(200);
+}
+.content {
+  @extend %df;
+  // @extend %aic;
+  @extend %fww;
+  @extend %fdc;
+  padding: j(10);
+}
+.cell {
+  width: j(160);
+  margin-bottom: j(16);
+  margin-right: j(15);
+}
+.class-image {
+  background-color: #f2f2f2;
+}

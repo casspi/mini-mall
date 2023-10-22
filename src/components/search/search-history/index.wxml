@@ -1,0 +1,22 @@
+
+<scroll-view
+    scroll-y
+    class="s-wiper-item">
+
+    <view class="dl" wx:if="{{data.length}}">
+        <view class="dt">
+            <text>历史搜索</text>
+            <view bindtap="inputEvent" data-event="clear" class="iconfont iconDelete"></view>
+        </view>
+        <view class="con">
+            <view class="dd"
+                  data-item="{{item}}"
+                  bindtap="handleKeyword"
+                  wx:for="{{data}}"
+                  wx:key="index">
+                <text>{{item}}</text>
+            </view>
+        </view>
+    </view>
+
+</scroll-view>

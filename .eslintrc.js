@@ -9,13 +9,14 @@ module.exports = {
     wx: true,
   },
 
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  extends: ["eslint:recommended", "plugin:prettier/recommended"],
   overrides: [],
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
   rules: {
-    'no-unused-vars': 'warn',
+    "no-unused-vars": "warn",
+    "single-quote": "off",
   },
 }

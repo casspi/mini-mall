@@ -1,14 +1,37 @@
-<view class="header-section">
-  <view class="search-box">
+<view class="search-wrap">
+  <view class="search-inner">
     <view class="iconfont iconserch"></view>
-    <input
-      bindconfirm="handleKeywordConfirm"
-      confirm-type="search"
-      value="{{ queryText }}"
-      bindinput="handleKeywordInput"
-      type="text"
-      class="search-input"
-      placeholder="搜索药品"
-    />
+    <view class="search-content">
+      <input
+        bindinput="handleInput"
+        value="{{ keyword }}"
+        type="text"
+        class="search-input"
+        placeholder="输入药品名称"
+        placeholder-class="search-place"
+      />
+    </view>
+    <view
+      bindtap="handleInput"
+      data-value=""
+      class="iconfont iconClose {{ keyword && 'active' }}"
+    ></view>
+  </view>
+  <view class="search-button" bindtap="handleSearch">
+    <text>搜索</text>
   </view>
 </view>
+<search-history
+  wx:if="{{ numCurrIndex === 0 }}"
+  class="s-wiper-box"
+  data="{{ arrHistory }}"
+  bindkeyword="handleKeyword"
+  bindclear="clearHistoryKeywords"
+></search-history>
+
+<search-result-goods
+  wx:if="{{ numCurrIndex === 1 }}"
+  class="result-goods"
+  keyword="{{ keyword }}"
+  params="{{ params$ }}"
+></search-result-goods>

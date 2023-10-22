@@ -1,0 +1,87 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
+
+<view class="c-bar"></view>
+
+<view
+  class="store-section"
+  bindtap="jumpPageOrFireFn"
+  data-params="{{ data }}"
+  data-url="order_details_index"
+>
+  <view class="iconfont iconShop"></view>
+  <view class="store-name">
+    <text>{{ data.storeName }}</text>
+  </view>
+  <view class="status">
+    <text>{{ config$.ORDER_STATUS_TIP[data.status] }}</text>
+  </view>
+</view>
+
+<view class="c-border mr"></view>
+
+<view
+  class="goods-section"
+  bindtap="jumpPageOrFireFn"
+  data-params="{{ data }}"
+  data-url="order_details_index"
+>
+  <view class="goods-image-group">
+    <image
+      class="goods-image"
+      wx:for="{{ data.orderDetailList }}"
+      wx:key="index"
+      wx:if="{{ index < 3 }}"
+      src="{{ item.pic }}"
+    ></image>
+  </view>
+  <view class="goods-info">
+    <view class="c-flex1"></view>
+    <view class="goods-name">
+      <text>共{{ data.orderDetailList.length }}件商品</text>
+    </view>
+    <view class="goods-amount">
+      <text>¥{{ filter.filterAmount(data.payAmount) }}</text>
+    </view>
+  </view>
+</view>
+<!-- <text
+  >{{
+    data.status === config$.ORDER_STATUS.UN_PAY ||
+      data.status === config$.ORDER_STATUS.SEND ||
+      data.status === config$.ORDER_STATUS.SUCCESS
+  }}
+  {{ data.status === config$.ORDER_STATUS.UN_PAY }}
+  {{ data.status === config$.ORDER_STATUS.SEND }}
+  {{
+    data.status === config$.ORDER_STATUS.SUCCESS &&
+      data.isComment === config$.ORDER_COMMENT_STATUS.UNCOMMENT
+  }}
+</text> -->
+<block>
+  <view class="c-border mr"></view>
+  <view class="operate">
+    <view
+      wx:if="{{ data.status === config$.ORDER_STATUS.UN_PAY }}"
+      class="operate-button"
+      bindtap="inputEvent"
+      data-event="payment"
+    >
+      <text>立即付款</text>
+    </view>
+    <view
+      wx:if="{{ data.status === config$.ORDER_STATUS.SEND }}"
+      class="operate-button"
+      bindtap="handleConfirmReceived"
+    >
+      <text>确认收货</text>
+    </view>
+    <!-- <view
+      class="operate-button"
+      bindtap="jumpPageOrFireFn"
+      data-params="{{ data }}"
+      data-url="order_comment_index"
+    >
+      <text>立即评价</text>
+    </view> -->
+  </view>
+</block>

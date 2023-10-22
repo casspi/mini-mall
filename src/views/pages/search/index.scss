@@ -1,35 +1,75 @@
-@import "src/assets/scss/define";
-// 搜索区域
-.header-section {
-  @extend %df;
-  @extend %aic;
-  @extend %bsb;
-  height: j(54);
-  padding: 0 j(15);
+@import "~src/assets/scss/define";
+
+page {
+  @extend %h100;
   background-color: #fff;
-  width: 100%;
-}
-
-.search-box {
   @extend %df;
-  @extend %df1;
-  @extend %aic;
-  height: j(36);
-  padding: 0 j(12);
-  background-color: #f6f7fa;
-  border-radius: j(4);
-
-  .iconfont {
-    @extend %c9;
+  @extend %fdc;
+  @extend %oh;
+  &:before {
+    @extend %dn;
   }
 }
-
-.search-input {
+.search-wrap {
+  @extend %pr;
+  @extend %df;
+  @extend %bw05;
+  @extend %bwb;
+  @extend %aic;
+  padding: j(12) 0 j(12) j(20);
+  z-index: 1;
+}
+.search-inner {
+  @extend %pr;
+  @extend %df1;
+  @extend %df;
+  @extend %aic;
+  height: j(36);
+  background-color: #f6f6f6;
+  .iconfont {
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    @extend %c9;
+    @extend %h100;
+    width: j(36);
+    font-size: j(20);
+  }
+  .iconClose {
+    @extend %cp;
+    @extend %dn;
+    font-size: j(12);
+    &.active {
+      @extend %df;
+    }
+  }
+}
+.search-content {
   @extend %df1;
   @extend %h100;
-  @extend %c9;
-  height: j(36);
-  margin-left: j(8);
+}
+.search-input {
+  @extend %h100;
+  @extend %c3;
+  @extend %w100;
   font-size: j(14);
-  font-weight: 300;
+}
+.search-place {
+  color: #acacac;
+}
+.search-button {
+  @extend %pr;
+  @extend %h100;
+  @extend %df;
+  @extend %cp;
+  @extend %aic;
+  @extend %jcc;
+  width: j(72);
+}
+
+.result-goods {
+  @extend %df;
+  @extend %fdc;
+  @extend %oh;
+  flex: 1;
 }

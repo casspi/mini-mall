@@ -1,0 +1,50 @@
+@import '~src/assets/scss/define';
+.s-wiper-box{
+    height: j(100);
+}
+.dl{
+    padding: j(16) 0 j(8);
+}
+.dt {
+    @extend %df;
+    @extend %aic;
+    @extend %jcs;
+    @extend %w100;
+    @extend %bsb;
+    @extend %c3;
+    @extend %pr;
+    padding: 0 j(20);
+    font-size: j(14);
+    .iconfont{
+        @extend %df;
+        @extend %pa;
+        @extend %aic;
+        @extend %jcc;
+        @extend %cp;
+        @extend %t50;
+        @extend %r0;
+        margin-top: j(-26);
+        height: j(52);
+        width: j(52);
+        color: #d00000;
+        font-size: j(18);
+    }
+}
+.con{
+    @extend %df;
+    @extend %fww;
+    margin-top: j(12);
+    padding: 0 j(20);
+}
+.dd{
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    @extend %c3;
+    @extend %cp;
+    font-size: j(14);
+    margin: 0 j(8) j(8) 0;
+    height: j(36);
+    background-color: #f2f2f2;
+    padding: 0 j(12);
+}

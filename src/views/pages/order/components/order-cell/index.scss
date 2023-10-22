@@ -1,0 +1,71 @@
+@import "src/assets/scss/define";
+
+.store-section {
+  @extend %df;
+  @extend %aic;
+  @extend %c3;
+  height: j(64);
+  padding: 0 j(20);
+  background-color: #fff;
+  .iconfont {
+    @extend %c3;
+    font-size: j(18);
+    margin-right: j(4);
+  }
+}
+.store-name {
+  @extend %df1;
+  font-size: j(16);
+}
+.status {
+  font-size: j(14);
+}
+.goods-section {
+  @extend %df;
+  background-color: #fff;
+  padding: j(20);
+}
+.goods-image-group {
+  @extend %df1;
+  @extend %df;
+}
+.goods-image {
+  width: j(80);
+  height: j(80);
+  margin-right: j(4);
+  background-color: #f2f2f2;
+}
+.goods-info {
+  @extend %df;
+  @extend %fdc;
+  @extend %aie;
+}
+.goods-name {
+  @extend %c9;
+  font-size: j(12);
+  line-height: j(17);
+}
+.goods-amount {
+  @extend %tar;
+  color: #dd0000;
+  margin-top: j(2);
+  font-size: j(16);
+  line-height: j(22);
+}
+.operate {
+  @extend %df;
+  background-color: #fff;
+  justify-content: flex-end;
+  padding: j(20);
+}
+.operate-button {
+  @extend %df;
+  @extend %cp;
+  @extend %aic;
+  @extend %jcc;
+  @extend %cfff;
+  font-size: j(14);
+  width: j(80);
+  height: j(32);
+  background-color: $color-primary;
+}

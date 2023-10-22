@@ -1,0 +1,26 @@
+<view class="wow-cell {{ classes }} class-external">
+  <view class="iconfont {{ iconLeft }}" wx:if="{{ iconLeft }}"></view>
+  <slot name="cell-left"></slot>
+  <view class="label">
+    <text>{{ label }}</text>
+  </view>
+  <view class="value {{ !value && 'value-place' }}" wx:if="{{ useRight }}">
+    <block wx:if="{{ useRightContent }}">
+      <text class="value-text">{{ value || placeholder }}</text>
+      <input
+        bindinput="handleInput"
+        class="value-input {{ iconRight ? '' : 'padding-right' }}"
+        placeholder-class="value-place"
+        type="{{ type || 'text' }}"
+        value="{{ value }}"
+        maxlength="{{ maxlength || 999999 }}"
+        placeholder="{{ placeholder }}"
+      />
+    </block>
+  </view>
+  <slot name="cell-right"></slot>
+  <view
+    class="iconfont icon-right {{ iconRight }}"
+    wx:if="{{ iconRight }}"
+  ></view>
+</view>

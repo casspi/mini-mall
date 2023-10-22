@@ -23,13 +23,8 @@ new WowComponent({
   },
   methods: {
     handleSelect(event) {
-      let { index } = this.inputParams(event)
-      let { storeId, data } = this.data
-      let { subData, name, id } = data
-      subData = subData.map(({ name, id }) => {
-        return { name, id }
-      })
-      this.routerPush("search_index", { name, id, index, storeId })
+      let { item } = this.inputParams(event)
+      this.routerPush("search_index", { item })
     },
   },
 })
