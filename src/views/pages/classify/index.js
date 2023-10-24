@@ -8,7 +8,7 @@ import WowPage from "wow-wx/lib/page"
 new WowPage({
   mixins: [
     WowPage.wow$.mixins.Input,
-    WowPage.wow$.mixins.Http,
+    WowPage.wow$.mixins.Curl,
     WowPage.wow$.mixins.Config,
     WowPage.wow$.mixins.Router,
   ],

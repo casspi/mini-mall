@@ -10,8 +10,8 @@ new WowComponent({
     WowComponent.wow$.mixins.Jump,
     WowComponent.wow$.mixins.Router,
     WowComponent.wow$.mixins.Input,
-    WowComponent.wow$.mixins.Http,
     WowComponent.wow$.mixins.Modal,
+    WowComponent.wow$.mixins.Curl,
   ],
   externalClasses: ["class-external"],
   options: {
@@ -49,6 +49,10 @@ new WowComponent({
           this.triggerEvent("refresh")
         })
         .toast()
+    },
+    handleReturn() {
+      let { data, api$ } = this.data
+      console.log(data, api$)
     },
   },
 })

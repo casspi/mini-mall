@@ -44,11 +44,22 @@ if (typeof Array.prototype.flat !== "function") {
 wowApp.init({
   globalData: {
     classifyId: 0,
+    cart: [
+      {
+        name: 11,
+      },
+    ],
   },
   onError(msg) {
     console.log("[APP ERROR] => ", msg)
   },
   onPageNotFound() {
     this.wow$.mixins.Router.routerPush("home_index")
+  },
+  setCartTabBarBadge() {
+    wx.setTabBarBadge({
+      index: 2,
+      text: this.globalData.cart.length.toString(),
+    })
   },
 })

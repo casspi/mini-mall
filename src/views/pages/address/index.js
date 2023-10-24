@@ -10,7 +10,7 @@ new WowPage({
     WowPage.wow$.mixins.Router,
     WowPage.wow$.mixins.Jump,
     WowPage.wow$.mixins.Input,
-    WowPage.wow$.mixins.Http,
+    WowPage.wow$.mixins.Curl,
     WowPage.wow$.mixins.Paging,
     WowPage.wow$.mixins.Helper,
   ],

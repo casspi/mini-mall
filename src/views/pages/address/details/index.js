@@ -9,7 +9,7 @@ import DataMixin from "./data.mixin"
 new WowPage({
   mixins: [
     DataMixin,
-    WowPage.wow$.mixins.Http,
+    WowPage.wow$.mixins.Curl,
     WowPage.wow$.mixins.Router,
     WowPage.wow$.mixins.Navbar,
     WowPage.wow$.mixins.Validate,

@@ -30,6 +30,10 @@ new WowComponent({
       //获取参数
       console.log(this.data.data)
       this.modalToast("已加入购物车~")
+      // eslint-disable-next-line no-undef
+      var appInstance = getApp()
+      appInstance.globalData.cart.push(this.data.data)
+      appInstance.setCartTabBarBadge()
     },
   },
 })

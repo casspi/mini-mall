@@ -20,6 +20,7 @@
     wx:for-index="arrIndex"
   >
     <order-cell
+      bindrefresh="pagingRefresh"
       wx:for="{{ arrData }}"
       wx:key="index"
       wx:for-item="item"

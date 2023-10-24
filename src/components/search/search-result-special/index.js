@@ -5,7 +5,7 @@ import "./index.scss"
 import WowComponent from "wow-wx/lib/component"
 
 new WowComponent({
-  mixins: [WowComponent.wow$.mixins.Http, WowComponent.wow$.mixins.Paging],
+  mixins: [WowComponent.wow$.mixins.Curl, WowComponent.wow$.mixins.Paging],
   externalClasses: ["class-external"],
   options: {
     multipleSlots: true,

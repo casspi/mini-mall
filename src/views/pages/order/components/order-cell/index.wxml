@@ -75,13 +75,8 @@
     >
       <text>确认收货</text>
     </view>
-    <!-- <view
-      class="operate-button"
-      bindtap="jumpPageOrFireFn"
-      data-params="{{ data }}"
-      data-url="order_comment_index"
-    >
-      <text>立即评价</text>
-    </view> -->
+    <view class="operate-button" bindtap="handleReturn">
+      <text>申请退货</text>
+    </view>
   </view>
 </block>

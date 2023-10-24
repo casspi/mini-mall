@@ -6,7 +6,7 @@ import WowComponent from "wow-wx/lib/component"
 
 new WowComponent({
   mixins: [
-    WowComponent.wow$.mixins.Http,
+    WowComponent.wow$.mixins.Curl,
     WowComponent.wow$.mixins.Input,
     WowComponent.wow$.mixins.Paging,
   ],

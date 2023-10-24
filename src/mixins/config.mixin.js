@@ -8,6 +8,15 @@ const config = {
     CLOSE: "5", // 关闭
     UN_COMMENT: "6", // 待评价
   },
+  // 订单对应的文案
+  ORDER_STATUS_TIP: {
+    1: "待付款",
+    2: "待发货",
+    3: "待收货",
+    4: "已完成",
+    5: "已取消",
+    6: "待评价",
+  },
 }
 
 for (let k in config) {

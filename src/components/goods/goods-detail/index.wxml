@@ -11,13 +11,13 @@
   <view class="detail-tab-item {{ 0 === index && 'active' }}">
     <image
       class="detail-img"
-      src="https://img30.360buyimg.com/sku/jfs/t1/182790/35/35200/131661/6470484bF49db5b64/f93f741e4dbefd41.jpg"
+      src="https://images.autostreets.com/group1/M00/B3/E0/667B02E3-4E4F-460E-8236-8F4BDA276BB5.jpg"
       mode="widthFix"
       lazy-load="true"
     ></image>
     <image
       class="detail-img"
-      src="https://img30.360buyimg.com/sku/jfs/t1/182790/35/35200/131661/6470484bF49db5b64/f93f741e4dbefd41.jpg"
+      src="https://images.autostreets.com/group1/M00/B3/E0/667B02E3-4E4F-460E-8236-8F4BDA276BB5.jpg"
       mode="widthFix"
       lazy-load="true"
     ></image>
@@ -27,7 +27,7 @@
       <view class="detail-table-col" wx:for="{{ 9 }}" wx:key="item">
         <view class="detail-table-row"> 名称</view>
         <view class="detail-table-row row-value">
-          值：https://img30.360buyimg.com/sku/jfs/t1/182790/35/35200/131661/6470484bF49db5b64/f93f741e4dbefd41.jpg</view
+          值：https://images.autostreets.com/group1/M00/B3/E0/667B02E3-4E4F-460E-8236-8F4BDA276BB5.jpg</view
         >
       </view>
     </view>
