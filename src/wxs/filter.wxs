@@ -43,10 +43,7 @@ function filterDate(v, format) {
   // eslint-disable-next-line no-undef
   var reg1 = getRegExp("(y+)", "i").exec(format)
   if (reg1) {
-    format = format.replace(
-      reg1[1],
-      (realDate.getFullYear() + "").substring(4 - reg1[1].length),
-    )
+    format = format.replace(reg1[1], (realDate.getFullYear() + "").substring(4 - reg1[1].length))
   }
   for (var i = 0; i < date.length; i++) {
     var k = date[i][0]
@@ -56,10 +53,7 @@ function filterDate(v, format) {
     // eslint-disable-next-line no-undef
     var reg2 = getRegExp("(" + k + ")").exec(format)
     if (reg2) {
-      format = format.replace(
-        reg2[1],
-        reg2[1].length == 1 ? v : ("00" + v).substring(("" + v).length),
-      )
+      format = format.replace(reg2[1], reg2[1].length == 1 ? v : ("00" + v).substring(("" + v).length))
     }
   }
   return format
@@ -124,5 +118,22 @@ module.exports = {
       return item.specName
     })
     return arr.join("/")
+  },
+  isPhone: function (val) {
+    // eslint-disable-next-line no-undef, prettier/prettier
+    return getRegExp('^1\d{10}$').test(val)
+  },
+  isCode: function (val) {
+    // eslint-disable-next-line no-undef, prettier/prettier
+    return getRegExp('^\d{6}$').test(val)
+  },
+  // 验证码文案
+  renderCodeBtn: function (conut) {
+    if (conut === "") return "获取验证码"
+    if (conut > 0) {
+      return conut + "秒后重新获取"
+    } else {
+      return "重新获取"
+    }
   },
 }

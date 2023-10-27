@@ -6,6 +6,7 @@
   wx:for="{{ arrData }}"
   wx:key="index"
   data="{{ item }}"
+  classes="{{ 'mode-arrow' }}"
 ></address-item>
 
 <address-add-item
@@ -17,10 +18,7 @@
 
 <!-- 底部导航 -->
 <wow-fixed-bottom height="40">
-  <view
-    class="c-button c-button-wx c-in-fixed"
-    bindtap="handleReadAddressFormWx"
-  >
+  <view class="c-button c-button-wx c-in-fixed" bindtap="handleReadAddressFormWx">
     <text> 微信添加 </text>
   </view>
 </wow-fixed-bottom>

@@ -47,6 +47,7 @@ new WowPage({
     this.reqAddressList()
   },
   handleSelect(event) {
+    console.log(this.data, this.inputParams(event))
     let { from } = this.data.params$
     if (["mine_index", "merchant_index"].indexOf(from) > -1) {
       return null
@@ -60,7 +61,7 @@ new WowPage({
   },
   reqAddressList() {
     let { api$, params$ } = this.data
-    this.httpRequest(
+    this.curl(
       api$.REQ_ADDRESS_LIST,
       {},
       {

@@ -7,12 +7,7 @@ import WowPage from "wow-wx/lib/page"
 import DataMixin from "./data.mixin"
 
 new WowPage({
-  mixins: [
-    DataMixin,
-    WowPage.wow$.mixins.Input,
-    WowPage.wow$.mixins.Router,
-    WowPage.wow$.mixins.Tabs,
-  ],
+  mixins: [DataMixin, WowPage.wow$.mixins.Input, WowPage.wow$.mixins.Router, WowPage.wow$.mixins.Tabs],
   data: {
     numCurrIndex: -1,
   },

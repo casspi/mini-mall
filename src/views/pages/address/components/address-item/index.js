@@ -5,11 +5,7 @@ import "./index.scss"
 import WowComponent from "wow-wx/lib/component"
 
 new WowComponent({
-  mixins: [
-    WowComponent.wow$.mixins.Jump,
-    WowComponent.wow$.mixins.Router,
-    WowComponent.wow$.mixins.Input,
-  ],
+  mixins: [WowComponent.wow$.mixins.Jump, WowComponent.wow$.mixins.Router, WowComponent.wow$.mixins.Input],
   externalClasses: ["class-external"],
   options: {
     multipleSlots: true,

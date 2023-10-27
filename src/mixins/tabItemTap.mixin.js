@@ -9,9 +9,7 @@ export default {
   },
   onShow() {
     if (!this.data._flag) {
-      const index = ["home", "community", "mall", "mine"].findIndex((item) =>
-        this.route.includes(item),
-      )
+      const index = ["home", "community", "mall", "mine"].findIndex((item) => this.route.includes(item))
       if (tabItemIndex !== index) {
         this.tabItemTapCallback && this.tabItemTapCallback()
       }

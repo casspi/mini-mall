@@ -1,5 +1,9 @@
 {
   "navigationBarTitleText": "购物车",
   "usingComponents": {
+    "wow-settlement": "/components/wow-settlement/index",
+    "wow-end": "/components/wow-end/index",
+    "wow-skeleton": "/components/wow-skeleton/index",
+    "wow-fixed-bottom": "/components/wow-fixed-bottom/index"
   }
 }

@@ -6,12 +6,7 @@ import "./index.wxml"
 import WowPage from "wow-wx/lib/page"
 
 new WowPage({
-  mixins: [
-    WowPage.wow$.mixins.Input,
-    WowPage.wow$.mixins.Curl,
-    WowPage.wow$.mixins.Config,
-    WowPage.wow$.mixins.Router,
-  ],
+  mixins: [WowPage.wow$.mixins.Input, WowPage.wow$.mixins.Curl, WowPage.wow$.mixins.Config, WowPage.wow$.mixins.Router],
   data: {
     arrData: [
       {
@@ -91,15 +86,12 @@ new WowPage({
     let { arrData, numCurrIndex, config$ } = this.data
     let options = { storeId: config$.SELF_STORE_ID }
     if (parentId) {
-      if (
-        arrData[numCurrIndex].subData &&
-        arrData[numCurrIndex].subData.length
-      ) {
+      if (arrData[numCurrIndex].subData && arrData[numCurrIndex].subData.length) {
         return null
       }
       options.parentId = parentId
     }
-    this.httpRequest(this.data.api$.REQ_CLASSIFY_LIST, options, {
+    this.curl(this.data.api$.REQ_CLASSIFY_LIST, options, {
       loading: false,
     })
       .then((res) => {

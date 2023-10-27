@@ -1,1 +1,178 @@
-@import 'src/assets/scss/define';
+@import "src/assets/scss/define";
+
+.null {
+  height: j(48);
+}
+
+.button {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %cfff;
+  @extend %cp;
+  border-radius: j(4);
+  margin-top: j(20);
+  font-size: j(12);
+  width: j(120);
+  height: j(32);
+  box-shadow: 0 j(2) 0 0 $color-primary;
+  background-color: #fb2d0f;
+}
+
+.select-all-wrap {
+  @extend %pf;
+  @extend %t0;
+  @extend %w100;
+  @extend %l0;
+  @extend %df;
+  @extend %bw05;
+  @extend %bwb;
+  @extend %aic;
+  @extend %jcs;
+  @extend %bsb;
+  z-index: 1;
+  padding: 0 j(10);
+  background-color: #fff;
+  height: j(48);
+  .iconDelete {
+    @extend %cp;
+    @extend %df;
+    @extend %aic;
+    @extend %c9;
+    @extend %jcc;
+    @extend %pr;
+    color: #d00000;
+    width: j(40);
+    height: j(40);
+  }
+}
+.select-btn {
+  @extend %df;
+  @extend %pr;
+  @extend %aic;
+  @extend %c3;
+  @extend %cp;
+  font-size: j(16);
+}
+.select-icon {
+  @extend %cp;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %bsb;
+  font-size: j(16);
+  width: j(40);
+  height: j(40);
+  &.iconyuanhuan {
+    @extend %c9;
+    font-size: j(18);
+  }
+  &.iconxuanze {
+    color: $color-primary;
+  }
+}
+
+.goods-dl {
+  @extend %bw05;
+  @extend %bwt;
+  @extend %bwb;
+  margin: j(10) 0;
+  background-color: #fff;
+}
+.goods-dt {
+  @extend %pr;
+  @extend %df;
+  @extend %aic;
+  height: j(48);
+  padding: 0 j(10);
+  .iconMore {
+    @extend %cp;
+    @extend %df;
+    @extend %aic;
+    @extend %c9;
+    @extend %jcc;
+    @extend %c9;
+    width: j(40);
+    height: j(40);
+  }
+}
+.goods-store {
+  @extend %df1;
+  @extend %twno;
+}
+.goods-dd {
+  @extend %df;
+  @extend %pr;
+  @extend %aic;
+  padding: 0 $num-margin 0 j(10);
+  height: j(120);
+}
+.goods-dd-content {
+  @extend %df;
+  @extend %df1;
+  @extend %oh;
+  @extend %pr;
+  @extend %aic;
+}
+.goods-image {
+  width: j(80);
+  height: j(80);
+  background-color: #f2f2f2;
+  margin-right: j(12);
+}
+.goods-info {
+  @extend %df1;
+  @extend %df;
+  @extend %oh;
+  @extend %fdc;
+  @extend %fdc;
+  height: j(80);
+}
+.goods-name {
+  @extend %c3;
+  @extend %twno;
+  line-height: j(20);
+  font-size: j(14);
+}
+.goods-prompt {
+  @extend %c9;
+  margin-top: j(4);
+  line-height: j(17);
+  font-size: j(12);
+}
+.goods-flex1 {
+  @extend %df1;
+}
+.goods-amount {
+  @extend %df1;
+  color: #d00000;
+  font-size: j(14);
+  line-height: j(20);
+}
+.goods-operate {
+  @extend %df;
+  @extend %aic;
+}
+.goods-count {
+  @extend %df;
+  @extend %aic;
+}
+.goods-count-item {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %c3;
+  width: j(36);
+  height: j(20);
+  font-size: j(12);
+  background-color: #f2f2f2;
+  &.disabled {
+    color: #dedede;
+  }
+}
+.goods-count-btn {
+  @extend %cp;
+  @extend %fwb;
+  font-size: j(14);
+  background-color: transparent;
+}

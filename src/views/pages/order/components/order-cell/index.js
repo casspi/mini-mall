@@ -40,7 +40,7 @@ new WowComponent({
       let { data, api$ } = this.data
       this.modalConfirm(`确认已收货？`)
         .then(() => {
-          return this.httpRequest(api$.DO_ORDER_CONFIRM, {
+          return this.curl(api$.DO_ORDER_CONFIRM, {
             orderId: data.orderId,
           })
         })

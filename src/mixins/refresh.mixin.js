@@ -1,7 +1,7 @@
 export default {
   onPullDownRefresh() {
-    this.handleRefresh &&
-      this.handleRefresh(() =>
+    this.pagingRefresh &&
+      this.pagingRefresh(() =>
         setTimeout(() => {
           wx.stopPullDownRefresh()
         }, 500),

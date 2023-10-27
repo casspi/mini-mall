@@ -1,0 +1,13 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
+
+<view class="wrap">
+  <view class="label">
+    <text>总金额：</text>
+  </view>
+  <view class="amount">
+    <text>￥{{ filter.filterAmount(amount) }}</text>
+  </view>
+  <view class="button {{ disabled && 'disabled' }}" bindtap="handleClick">
+    <text>{{ buttonText }}</text>
+  </view>
+</view>

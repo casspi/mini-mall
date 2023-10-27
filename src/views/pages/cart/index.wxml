@@ -1,1 +1,87 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
 
+<wow-skeleton
+  wx:if="{{ pagingTotal < 1 }}"
+  is-loading="{{ isNullLoading || (user$ && pagingTotal === -1) }}"
+  title="{{ user$ ? '您的购物车还没有商品哦~' : '登录才能查看购物车哦~' }}"
+>
+  <view class="button" wx:if="{{ !isNullLoading && !user$ }}" data-sync="{{ user$ }}" bindtap="jumpPageOrFireFn">
+    <text>去登录</text>
+  </view>
+</wow-skeleton>
+
+<block wx:if="{{ pagingTotal > 0 }}">
+  <view class="select-all-wrap">
+    <view class="select-btn" bindtap="handleAllSelect">
+      <view class="select-icon iconfont {{ isAllSelected ? 'iconxuanze' : 'iconyuanhuan' }}"></view>
+      <text>全选</text>
+    </view>
+    <view class="iconfont iconDelete" wx:if="{{ numAmount }}" bindtap="handleDelete"></view>
+  </view>
+
+  <view class="null"></view>
+
+  <view class="goods-dl">
+    <view class="goods-dd" wx:for="{{ pagingData }}" wx:for-item="item" wx:key="index">
+      <view
+        class="select-icon iconfont {{ item.selected ? 'iconxuanze' : 'iconyuanhuan' }}"
+        bindtap="handleItemSelect"
+        data-store="{{ storeIndex }}"
+        data-index="{{ index }}"
+      ></view>
+      <view
+        class="goods-dd-content"
+        data-params="{{ { goodsId: item.goodsId } }}"
+        data-url="goods_details_index"
+        bindtap="jumpPageOrFireFn"
+      >
+        <image class="goods-image" src="{{ item.pic }}"></image>
+        <view class="goods-info">
+          <view class="goods-name">
+            <text>{{ item.goodsName }}</text>
+          </view>
+          <view class="goods-prompt">
+            <text>{{ item.spec }}</text>
+            <text>x{{ item.num }}</text>
+          </view>
+          <view class="c-flex1"></view>
+          <view class="goods-operate">
+            <view class="goods-amount">￥{{ filter.filterAmount(item.price) }}</view>
+            <view class="goods-count">
+              <view
+                class="goods-count-btn goods-count-item {{ item.num == 1 && 'disabled' }}"
+                data-storeindex="{{ storeIndex }}"
+                data-index="{{ index }}"
+                data-number="{{ -1 }}"
+                catchtap="handleCountNumber"
+              >
+                <text>-</text>
+              </view>
+              <view class="goods-count-item">
+                <text>{{ item.num }}</text>
+              </view>
+              <view
+                class="goods-count-btn goods-count-item"
+                data-storeindex="{{ storeIndex }}"
+                data-index="{{ index }}"
+                data-number="{{ 1 }}"
+                catchtap="handleCountNumber"
+              >
+                <text>+</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <wow-end
+    is-loading="{{ pagingTotal > pagingNumTotal }}"
+    prompt="{{ total > pagingNumTotal ? '加载中...' : '到底了哦' }}"
+  ></wow-end>
+
+  <view class="null"></view>
+
+  <wow-settlement disabled="{{ !numAmount }}" amount="{{ numAmount }}" bindclick="handleSubmit"></wow-settlement>
+</block>

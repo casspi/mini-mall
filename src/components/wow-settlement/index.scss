@@ -1,0 +1,43 @@
+@import "~src/assets/scss/define";
+
+.wrap {
+  @extend %df;
+  @extend %w100;
+  @extend %bw05;
+  @extend %bwt;
+  @extend %aic;
+  @extend %pf;
+  @extend %l0;
+  @extend %bsb;
+  @extend %r0;
+  @extend %b0;
+  z-index: 8;
+  background-color: #fff;
+  height: j(48);
+  padding-left: $num-margin;
+}
+.label {
+  @extend %c3;
+  font-size: j(16);
+}
+.amount {
+  @extend %df1;
+  color: $color-primary;
+  font-size: j(16);
+}
+.button {
+  @extend %h100;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %cp;
+  @extend %pr;
+  @extend %cfff;
+  background-color: $color-primary;
+  font-size: j(16);
+  width: j(135);
+  &.disabled {
+    background-color: #acacac;
+    cursor: default;
+  }
+}

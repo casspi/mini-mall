@@ -1,4 +1,4 @@
-@import 'src/assets/scss/wow-define';
+@import "src/assets/scss/wow-define";
 
 @include b(skeleton) {
   @extend %pa;
@@ -52,7 +52,7 @@
     width: j(60);
     height: j(60);
     border-radius: j(10);
-    background-color: rgba(0, 0, 0, .05);
+    background-color: rgba(0, 0, 0, 0.05);
   }
 
   @include e(empty) {
@@ -66,9 +66,8 @@
     @include m(icon) {
       @extend %db;
       margin-bottom: j(10);
-      width: j(130 / 2);
-      height: j(126 / 2);
+      width: j(130);
+      height: j(126);
     }
   }
-
 }

@@ -38,27 +38,18 @@
 </view>
 <goods-detail></goods-detail>
 <wow-fixed-bottom height="68">
-  <button
-    open-type="contact"
-    class="icon c-button-reset iconfont iconweixin"
-  ></button>
+  <button open-type="contact" class="icon c-button-reset iconfont iconweixin"></button>
   <!-- <view class="icon _iconfont _icon-kefu"></view> -->
 
-  <view class="icon _iconfont _icon-cart"></view>
-  <view
-    class="operate-button first-child"
-    data-async="true"
-    data-fn="handleAddedCart"
-    bindtap="jumpPageOrFireFn"
-  >
+  <view class="icon _iconfont _icon-cart" data-async="true" data-url="cart_index" bindtap="jumpPageOrFireFn">
+    <view class="badge" wx:if="{{ shopTotal$.text }}">
+      <text>{{ shopTotal$.text }}</text>
+    </view>
+  </view>
+  <view class="operate-button first-child" data-async="true" data-fn="handleAddedCart" bindtap="jumpPageOrFireFn">
     <text>{{ params$.otc === "1" ? "加入购物车" : "加入清单" }}</text>
   </view>
-  <view
-    class="operate-button last-child"
-    data-async="true"
-    data-fn="handleBuyNow"
-    bindtap="jumpPageOrFireFn"
-  >
+  <view class="operate-button last-child" data-async="true" data-fn="handleBuyNow" bindtap="jumpPageOrFireFn">
     <text>{{ params$.otc === "1" ? "立即购买" : "提交需求" }}</text>
   </view>
 </wow-fixed-bottom>

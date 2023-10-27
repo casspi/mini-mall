@@ -4,12 +4,7 @@ export default {
     let { objHidden } = this.data
     let [province, city, region] = value
     if (objHidden) {
-      this.validateAssignment(
-        this,
-        { province, city, region },
-        objHidden,
-        "objHidden",
-      )
+      this.validateAssignment(this, { province, city, region }, objHidden, "objHidden")
     }
     this.setData({ [`${item.key}.value`]: value.join(" ") })
   },
@@ -26,7 +21,7 @@ export default {
         return this.fileToBase64(res.tempFilePaths[0])
       })
       .then((res) => {
-        return this.httpRequest(api$.DO_IMAGE_UPLOAD, {
+        return this.curl(api$.DO_IMAGE_UPLOAD, {
           fileType: "jpg",
           fileExt: "jpg",
           base64FileContent: res,

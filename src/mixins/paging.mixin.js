@@ -14,10 +14,9 @@ export default {
 
   pagingRefresh(event, cb) {
     console.log("pagingRefresh", event)
-    const {
-      loading = typeof event === "boolean" ? event : false,
-      callback = cb,
-    } = this.inputParams(typeof event === "object" ? event : {})
+    const { loading = typeof event === "boolean" ? event : false, callback = cb } = this.inputParams(
+      typeof event === "object" ? event : {},
+    )
     this.pagingReqDataList(1, loading, callback)
   },
 
@@ -27,11 +26,7 @@ export default {
 
   pagingReqDataList(pagingIndex = 1, loading = false, callback) {
     this.setData({ pagingIsLoading: true })
-    let {
-      url,
-      params = {},
-      options = {},
-    } = this.pagingGetUrlParamsOptions({ pagingIndex })
+    let { url, params = {}, options = {} } = this.pagingGetUrlParamsOptions({ pagingIndex })
     let { pagingSize, pagingData, pagingNumTotal } = this.data
     options = {
       loading: loading && typeof callback !== "function",
@@ -48,8 +43,7 @@ export default {
       options,
     )
       .then((res) => {
-        const { Count: pagingTotal = 0, Data: list = [] } =
-          this.pagingFormatResult(res)
+        const { Count: pagingTotal = 0, Data: list = [] } = this.pagingFormatResult(res)
         if (this.pagingCallbackResult) {
           this.pagingCallbackResult(
             {
@@ -104,13 +98,7 @@ export default {
   },
 
   pagingLoad() {
-    const {
-      pagingTotal,
-      pagingData,
-      pagingNumTotal,
-      pagingIsLoading,
-      pagingIndex,
-    } = this.data
+    const { pagingTotal, pagingData, pagingNumTotal, pagingIsLoading, pagingIndex } = this.data
     if (pagingIsLoading) {
       return console.log("正在加载中...")
     }

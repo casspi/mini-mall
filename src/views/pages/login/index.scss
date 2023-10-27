@@ -1,0 +1,146 @@
+@import "src/assets/scss/define";
+
+.header {
+  padding: j(10) 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .logo {
+    width: j(100);
+    height: j(100);
+    border-radius: 50%;
+    margin-bottom: j(10);
+  }
+
+  .title {
+    font-size: j(18);
+    font-weight: bold;
+    line-height: j(18);
+  }
+}
+
+.login-form {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 j(22);
+}
+
+.form-item {
+  border-bottom: 1px solid $gary;
+  padding-bottom: j(8);
+
+  &:not(frist-child) {
+    margin-top: j(25);
+  }
+}
+
+.form-item__title {
+  margin-bottom: j(10);
+  font-size: j(14);
+  font-weight: bold;
+}
+
+.form-item_input {
+  line-height: j(24);
+  font-size: j(14);
+  caret-color: $color-primary;
+}
+
+.btn-code {
+  border: none;
+  background-color: #fff !important;
+  color: $color-primary !important;
+  padding: 0;
+  margin: 0;
+  line-height: j(24);
+  font-size: j(14);
+
+  &::after {
+    display: none;
+  }
+
+  &[disabled] {
+    color: $primary-disabled !important;
+    opacity: 0.6;
+  }
+}
+
+.form-item-code .form-item_input {
+  display: flex;
+  justify-content: space-between;
+}
+
+// 按钮
+@include b(button) {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %cp;
+  @extend %ma;
+  margin-top: auto;
+  font-size: j(16);
+  background-color: #fff;
+  border: 1px solid $gary;
+  color: #333;
+  height: j(44);
+  width: j(315);
+  border-radius: j(22);
+  &.disabled,
+  &:disabled,
+  &[disabled] {
+    color: #fff !important;
+    background-color: #ddd !important;
+  }
+  &:after {
+    @extend %dn;
+  }
+  @include when(submit) {
+    @extend %cfff;
+    background-color: $color-primary;
+    border: none;
+    &[disabled] {
+      background-color: $primary-disabled !important;
+      opacity: 0.6;
+    }
+  }
+}
+
+.mt-80 {
+  margin-top: j(40);
+}
+
+.mt-30 {
+  margin-top: j(15);
+}
+
+// 协议
+@include b(agreement) {
+  @extend %df;
+  @extend %aic;
+  @extend %c3;
+  width: j(315);
+  margin: j(20) auto 0;
+  font-size: j(12);
+  color: #c0c0c0;
+  @include e(icon) {
+    font-size: j(18);
+    margin-right: j(8);
+  }
+
+  @include e(text) {
+    @extend %df1;
+    @extend %df;
+    @extend %fww;
+    line-height: j(18);
+    .strong {
+      color: $color-primary;
+    }
+  }
+
+  @include when(active) {
+    .agreement-icon {
+      color: $color-primary;
+    }
+  }
+}

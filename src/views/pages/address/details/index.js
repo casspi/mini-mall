@@ -49,10 +49,8 @@ new WowPage({
     if (params$.id) {
       options.id = params$.id
     }
-    this.httpRequest(
-      params$.source === "merchant"
-        ? api$.DO_MERCHANT_ADDRESS_ADDED_UPDATE
-        : api$.DO_ADDRESS_ADDED_UPDATE,
+    this.curl(
+      params$.source === "merchant" ? api$.DO_MERCHANT_ADDRESS_ADDED_UPDATE : api$.DO_ADDRESS_ADDED_UPDATE,
       {
         ...options,
       },
@@ -72,10 +70,8 @@ new WowPage({
     let { api$, params$ } = this.data
     this.modalConfirm(`确认删除该收货地址吗？`)
       .then(() => {
-        return this.httpRequest(
-          params$.source === "merchant"
-            ? api$.DO_MERCHANT_ADDRESS_DELETE
-            : api$.DO_ADDRESS_DELETE,
+        return this.curl(
+          params$.source === "merchant" ? api$.DO_MERCHANT_ADDRESS_DELETE : api$.DO_ADDRESS_DELETE,
           {
             id: params$.id,
           },

@@ -1,0 +1,90 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
+
+<wow-skeleton wx:if="{{ !arrData }}"></wow-skeleton>
+
+<block wx:else>
+  <address-item
+    wx:if="{{ objAddress }}"
+    bindtap="jumpPageOrFireFn"
+    data-url="mine_address_index"
+    data-params="{{ { from: 'cart_confirm_index' } }}"
+    data="{{ objAddress }}"
+    classes="mode-arrow"
+  ></address-item>
+
+  <address-add-item wx:else bindtap="jumpPageOrFireFn" data-url="mine_address_details_index"></address-add-item>
+
+  <view class="goods-dl" wx:for="{{ arrData }}" wx:for-item="store" wx:for-index="storeIndex" wx:key="storeIndex">
+    <view
+      class="goods-dt"
+      bindtap="jumpPageOrFireFn"
+      data-url="store_index"
+      data-params="{{ { storeId: store.storeId } }}"
+    >
+      <view class="iconfont iconShop"></view>
+      <text class="goods-store">{{ store.storeName }}</text>
+      <view class="iconfont iconMore"></view>
+    </view>
+    <view
+      class="goods-dd"
+      bindtap="jumpPageOrFireFn"
+      data-url="goods_details_index"
+      data-params="{{ { goodsId: item.goodsId } }}"
+      wx:for="{{ store.goodInfoRespDtoList }}"
+      wx:key="index"
+    >
+      <image class="goods-image" src="{{ item.pic }}"></image>
+      <view class="goods-info">
+        <view class="goods-name">
+          <text>{{ item.goodsName }}</text>
+        </view>
+        <view class="goods-prompt">
+          <text>{{ item.spec }}</text>
+          <text>x{{ item.num }}</text>
+        </view>
+        <view class="c-flex1"></view>
+        <view class="goods-amount">￥{{ filter.filterAmount(item.price) }}</view>
+      </view>
+    </view>
+    <view class="goods-cell">
+      <view class="goods-cell-label">
+        <text>订单留言</text>
+      </view>
+      <view class="goods-cell-value goods-cell-input-box">
+        <input
+          value="{{ store.note || '' }}"
+          bindinput="inputHandle"
+          data-item="{{ 'arrData[' + storeIndex + '].note' }}"
+          placeholder="如需给商家备注，请在此输入"
+          placeholder-class="goods-placeholder-class"
+          type="text"
+          class="goods-cell-input"
+        />
+      </view>
+    </view>
+    <view class="goods-cell">
+      <view class="goods-cell-label">
+        <text>运费</text>
+      </view>
+      <view class="goods-cell-value">
+        <text>{{ filter.filterAmount(store.feightFee) }}</text>
+      </view>
+    </view>
+    <view class="goods-cell">
+      <view class="goods-cell-label">
+        <text>合计金额</text>
+      </view>
+      <view class="goods-cell-value">
+        <text>{{ filter.filterStoreTotalAmount(store) }}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="null"></view>
+
+  <wow-settlement
+    disabled="{{ !numAmount || !objAddress }}"
+    amount="{{ numAmount }}"
+    bindclick="handleSubmit"
+  ></wow-settlement>
+</block>

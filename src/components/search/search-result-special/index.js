@@ -17,7 +17,7 @@ new WowComponent({
       value: false,
       observer(value) {
         if (value && this.data.total === -1) {
-          this.handleRefresh()
+          this.pagingRefresh()
         }
       },
     },

@@ -77,6 +77,21 @@ page {
     font-size: j(24);
     margin-right: j(10);
     margin-left: 0;
+    @extend %pr;
+    .badge {
+      @extend %pa;
+      @extend %cfff;
+      @extend %df;
+      @extend %aic;
+      @extend %jcc;
+      @extend %br50;
+      top: j(-2);
+      right: j(-10);
+      font-size: j(10);
+      width: j(16);
+      height: j(16);
+      background-color: $color-primary;
+    }
   }
   .iconweixin {
     color: #07c160;

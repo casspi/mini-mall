@@ -1,0 +1,76 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
+
+<view class="login-page">
+  <view class="header">
+    <image class="logo" src="/assets/images/logo.png" />
+  </view>
+  <view class="login-form">
+    <view class="form-item">
+      <view class="form-item__title">手机号</view>
+      <view class="form-item-cells form-item_after-title">
+        <view class="form-item-cells form-item_input">
+          <input
+            value="{{ phone }}"
+            bindinput="inputHandle"
+            data-item="phone"
+            class="form-input"
+            type="number"
+            maxlength="11"
+            placeholder="请输入手机号"
+          />
+        </view>
+      </view>
+    </view>
+    <view class="form-item form-item-code">
+      <view class="form-item__title">验证码</view>
+      <view class="form-item-cells form-item_after-title">
+        <view class="form-item-cells form-item_input">
+          <input
+            value="{{ code }}"
+            bindinput="inputHandle"
+            data-item="code"
+            class="form-input"
+            type="number"
+            maxlength="6"
+            placeholder="请输入验证码"
+          />
+          <button class="btn-code" disabled="{{ !filter.isPhone(phone) || count > 0 }}" bindtap="handleCode">{{
+            filter.renderCodeBtn(count)
+          }}</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button
+    class="button is-submit mt-80"
+    disabled="{{ !filter.isPhone(phone) || !filter.isCode(code) || !isAgreement }}"
+    bindtap="handleLogin"
+    >立即登录</button
+  >
+  <view
+    class="agreement {{ isAgreement && 'is-active' }}"
+    bindtap="inputHandle"
+    data-value="{{ !isAgreement }}"
+    data-item="isAgreement"
+  >
+    <view class="agreement-icon _iconfont {{ isAgreement ? '_icon-xuanzhong' : '_icon-radio' }} "></view>
+    <view class="agreement-text">
+      <text>已认真阅读荣昇企业网上药店</text>
+      <text
+        class="strong"
+        catchtap="jumpPageOrFireFn"
+        data-url="webview_index"
+        data-params="{{ { title: '用户服务协议', link: api$.USER_AGREEMENT } }}"
+        >《用户服务协议》
+      </text>
+      <text
+        class="strong"
+        catchtap="jumpPageOrFireFn"
+        data-url="webview_index"
+        data-params="{{ { title: '隐私政策', link: api$.PRIVACY_POLICY } }}"
+        >《隐私政策》
+      </text>
+      <text>并接受协议内容</text>
+    </view>
+  </view>
+</view>
