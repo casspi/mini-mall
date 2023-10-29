@@ -15,17 +15,7 @@ new WowPage({
     WowPage.wow$.mixins.Helper,
   ],
   data: {
-    arrData: [
-      {
-        id: 1,
-        name: "伊斯兰",
-        phoneNumber: "13800138000",
-        province: "上海",
-        city: "上海市",
-        region: "嘉定区",
-        detailAddress: "安亭镇123号",
-      },
-    ],
+    arrData: [],
   },
   onLoad(options) {
     this.routerGetParams(options)

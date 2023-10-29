@@ -13,7 +13,39 @@ new WowPage({
     WowPage.wow$.mixins.Jump,
     WowPage.wow$.mixins.Modal,
     WowPage.wow$.mixins.Call,
+    WowPage.wow$.mixins.User,
+    WowPage.wow$.mixins.Curl,
+    WowPage.wow$.mixins.Refresh,
   ],
+  data: {
+    userInfo: {},
+  },
+  onShow() {
+    this.getDetail()
+    this.userGet()
+      .then(
+        (res) => {},
+        (err) => {
+          console.log("err", err)
+        },
+      )
+      .null()
+  },
+  pagingRefresh(callback) {
+    this.getDetail().finally(() => {
+      typeof callback === "function" && callback()
+    })
+  },
+  getDetail() {
+    const { api$ } = this.data
+    return this.curl(api$.REQ_USER_INFO, {}, { method: "get", loading: false })
+      .then((res) => {
+        this.setData({
+          userInfo: res.user,
+        })
+      })
+      .toast()
+  },
   handleCustomerService(options) {
     const { item } = options
     console.log(item, options)

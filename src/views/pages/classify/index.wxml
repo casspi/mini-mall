@@ -1,7 +1,4 @@
-<wow-skeleton
-  wx:if="{{ !arrData || !arrData.length }}"
-  is-loading="{{ !arrData }}"
-></wow-skeleton>
+<wow-skeleton wx:if="{{ !arrData || !arrData.length }}" is-loading="{{ !arrData }}"></wow-skeleton>
 
 <vertical-tab-switch
   class="tab"
@@ -16,6 +13,5 @@
     wx:key="index"
     class="content {{ numCurrIndex === index && 'active' }}"
     data="{{ item }}"
-    store-id="{{ config$.SELF_STORE_ID }}"
   ></classify-content>
 </view>

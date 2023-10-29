@@ -36,14 +36,14 @@ export default {
     this.curl(
       url,
       {
-        PageIndex: pagingIndex,
-        PageSize: pagingSize,
+        currentPage: pagingIndex,
+        pageSize: pagingSize,
         ...params,
       },
       options,
     )
       .then((res) => {
-        const { Count: pagingTotal = 0, Data: list = [] } = this.pagingFormatResult(res)
+        const { totalPage: pagingTotal = 0, dataList: list = [] } = this.pagingFormatResult(res)
         if (this.pagingCallbackResult) {
           this.pagingCallbackResult(
             {

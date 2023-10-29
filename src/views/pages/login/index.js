@@ -28,16 +28,16 @@ new WowPage({
   },
   // 获取验证码
   handleCode() {
-    const { phone, code } = this.data
+    const { phone, code, api$ } = this.data
     console.log(phone, code)
     this.countDown()
-    this.curl(this.data.api$.REQ_MSG_CODE, { phone }, { method: "get" })
+    this.curl(api$.REQ_CODE + "?phone=" + phone, {}, { method: "post" })
       .then(() => {})
       .toast()
   },
   // 倒计时
   countDown() {
-    let count = 60
+    let count = 10
     this.setData({
       count,
     })
@@ -55,21 +55,21 @@ new WowPage({
     const { phone, code, api$ } = this.data
     this.curl(
       api$.REQ_LOGIN,
-      { phone, code },
+      { userId: phone, password: code, mode: "phoneCode", mac: "string" },
       {
         method: "post",
-        header: {
-          "content-type": "application/x-www-form-urlencoded",
-        },
+        // header: {
+        //   "content-type": "application/x-www-form-urlencoded",
+        // },
       },
     )
       .then((res) => {
-        const { __gsessionId } = res
+        const { token } = res
         User.userUpdate({
-          __gsessionId,
+          token,
         })
-        wx.setStorageSync("home_refresh", "1")
         this.routerRoot("home_index")
+        // wx.setStorageSync("home_refresh", "1")
       })
       .toast()
   },

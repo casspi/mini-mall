@@ -1,124 +1,123 @@
-
 @import "~src/assets/scss/define";
 
-page{
-    background-color: $color-bg;
+page {
+  background-color: $color-bg;
 }
 
-.null{
-    height: j(48);
+.null {
+  height: j(48);
 }
 
-.goods-dl{
-    @extend %bw05;
-    @extend %bwt;
-    @extend %bwb;
-    margin: j(10) 0;
-    background-color: #fff;
+.goods-dl {
+  @extend %bw05;
+  @extend %bwt;
+  @extend %bwb;
+  margin: j(10) 0;
+  background-color: #fff;
 }
-.goods-dt{
-    @extend %pr;
-    @extend %df;
-    @extend %aic;
-    @extend %bw05;
-    @extend %bwb;
-    height: j(64);
-    margin: 0 $num-margin;
-    .iconfont{
-        @extend %c9;
-        font-size: j(18);
-        &.iconShop{
-            @extend %c3;
-            margin-right: j(10);
-            font-size: j(24);
-        }
-    }
-}
-.goods-store{
-    @extend %df1;
-    @extend %twno;
-}
-.goods-dd{
-    @extend %df;
-    @extend %pr;
-    @extend %aic;
-    padding: 0 $num-margin;
-    height: j(120);
-}
-.goods-image{
-    width: j(80);
-    height: j(80);
-    background-color: #f2f2f2;
-    margin-right: j(12);
-}
-.goods-info{
-    @extend %df1;
-    @extend %df;
-    @extend %oh;
-    @extend %fdc;
-    @extend %fdc;
-    height: j(80);
-}
-.goods-name{
-    @extend %c3;
-    @extend %twno;
-    line-height: j(20);
-    font-size: j(14);
-}
-.goods-prompt{
+.goods-dt {
+  @extend %pr;
+  @extend %df;
+  @extend %aic;
+  @extend %bw05;
+  @extend %bwb;
+  height: j(64);
+  margin: 0 $num-margin;
+  .iconfont {
     @extend %c9;
-    @include twno(2);
-    margin-top: j(4);
-    line-height: j(17);
-    font-size: j(12);
+    font-size: j(18);
+    &.iconShop {
+      @extend %c3;
+      margin-right: j(10);
+      font-size: j(24);
+    }
+  }
 }
-.goods-amount{
-    color: #D00000;
-    font-size: j(14);
-    line-height: j(20);
+.goods-store {
+  @extend %df1;
+  @extend %twno;
+}
+.goods-dd {
+  @extend %df;
+  @extend %pr;
+  @extend %aic;
+  padding: 0 $num-margin;
+  height: j(120);
+}
+.goods-image {
+  width: j(80);
+  height: j(80);
+  background-color: #f2f2f2;
+  margin-right: j(12);
+}
+.goods-info {
+  @extend %df1;
+  @extend %df;
+  @extend %oh;
+  @extend %fdc;
+  @extend %fdc;
+  height: j(80);
+}
+.goods-name {
+  @extend %c3;
+  @extend %twno;
+  line-height: j(20);
+  font-size: j(14);
+}
+.goods-prompt {
+  @extend %c9;
+  @include twno(2);
+  margin-top: j(4);
+  line-height: j(17);
+  font-size: j(12);
+}
+.goods-amount {
+  color: #d00000;
+  font-size: j(14);
+  line-height: j(20);
 }
 
-.goods-cell{
-    @extend %df;
-    @extend %pr;
-    @extend %aic;
-    height: j(48);
-    padding-left: $num-margin;
-    &.clickable{
-        @extend %cp;
-    }
+.goods-cell {
+  @extend %df;
+  @extend %pr;
+  @extend %aic;
+  height: j(48);
+  padding-left: $num-margin;
+  &.clickable {
+    @extend %cp;
+  }
 }
-.goods-cell-label{
-    @extend %c3;
-    font-size: j(14);
+.goods-cell-label {
+  @extend %c3;
+  font-size: j(14);
 }
-.goods-cell-value{
-    @extend %df1;
-    @extend %df;
-    @extend %aic;
+.goods-cell-value {
+  @extend %df1;
+  @extend %df;
+  @extend %aic;
+  @extend %c9;
+  @extend %jce;
+  font-size: j(14);
+  padding-right: $num-margin;
+  &.goods-cell-input-box {
+    padding-right: 0;
+  }
+  .iconfont {
     @extend %c9;
-    @extend %jce;
-    font-size: j(14);
-    padding-right: $num-margin;
-    &.goods-cell-input-box{
-        padding-right: 0;
-    }
-    .iconfont{
-        @extend %c9;
-    }
-    &.active{
-        color: $color-main;
-    }
+  }
+  &.active {
+    color: $color-primary;
+  }
 }
-.goods-cell-input{
-    @extend %w100;
-    @extend %h100;
-    @extend %tar;
-    @extend %bsb;
-    @extend %c9;
-    padding-right: $num-margin;
-    font-size: j(14);
+.goods-cell-input {
+  @extend %w100;
+  @extend %h100;
+  @extend %tar;
+  @extend %bsb;
+  @extend %c9;
+  padding-right: $num-margin;
+  font-size: j(14);
 }
-.goods-placeholder-class{
-    color: #dedede;
+.goods-placeholder-class {
+  color: #dedede;
 }

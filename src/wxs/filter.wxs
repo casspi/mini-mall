@@ -136,4 +136,7 @@ module.exports = {
       return "重新获取"
     }
   },
+  filterPhone: function (value) {
+    return value ? value.substring(0, 3) + '****' + value.substring(7) : '';
+  },
 }

@@ -7,14 +7,14 @@
   bindtap="jumpPageOrFireFn"
 >
   <view class="image-box class-image-box">
-    <image class="image class-image" src="{{ data.pic }}"></image>
+    <image class="image class-image" src="{{ data.url }}"></image>
   </view>
   <view class="info-box">
     <view class="name">
       <text>{{ data.name }}</text>
     </view>
     <view class="spec">
-      <text>{{ data.spec }}</text>
+      <text>{{ data.specifications }}</text>
     </view>
     <view class="company">
       <text>{{ data.company }}</text>

@@ -11,6 +11,7 @@ new WowComponent({
     WowComponent.wow$.mixins.Jump,
     WowComponent.wow$.mixins.Modal,
     WowComponent.wow$.mixins.Paging,
+    WowComponent.wow$.mixins.Curl,
   ],
   externalClasses: ["class-external", "class-image-box", "class-image"],
   options: {
@@ -39,7 +40,19 @@ new WowComponent({
       console.log(this.data.data)
       this.modalToast("已加入购物车~")
     },
-    pagingRefresh() {
+    pagingGetUrlParamsOptions() {
+      let { api$, data } = this.data
+
+      return {
+        url: api$.REQ_ORDER_LIST,
+        params: { status: data.status },
+        options: {
+          useAuth: true,
+          methods: "get",
+        },
+      }
+    },
+    pagingRefresh1() {
       this.setData({
         pagingNumTotal: 2,
         pagingTotal: 1,

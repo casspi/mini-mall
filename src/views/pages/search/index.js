@@ -25,10 +25,7 @@ new WowPage({
     const { params$ } = this.data
     console.log("params$=>", params$)
     this.getHistoryKeywords(() => {
-      console.log(
-        "this.getHistoryKeywords=>",
-        params$.item && params$.item.names,
-      )
+      console.log("this.getHistoryKeywords=>", params$.item && params$.item.names)
       if (params$.item && params$.item.name) {
         this.setData({
           keyword: params$.item.name || "",

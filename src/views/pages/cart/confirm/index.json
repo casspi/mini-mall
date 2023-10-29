@@ -2,8 +2,8 @@
     "navigationBarTitleText": "填写订单",
     "usingComponents": {
         "wow-skeleton": "/components/wow-skeleton/index",
-        "address-item": "/components/address/address-item/index",
-        "address-add-item": "/components/address/address-add-item/index",
+        "address-item": "../../address/components/address-item/index",
+        "address-add-item": "../../address/components/address-add-item/index",
         "wow-settlement": "/components/wow-settlement/index"
     }
 }

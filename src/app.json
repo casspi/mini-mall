@@ -4,6 +4,7 @@
         "pages/ad/index",
         "pages/address/details/index",
         "pages/address/index",
+        "pages/cart/confirm/index",
         "pages/cart/index",
         "pages/classify/index",
         "pages/demo/index",

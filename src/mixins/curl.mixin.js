@@ -5,7 +5,7 @@ import Router from "wow-wx/mixins/wx/router.mixin"
 import ApiConfig, { isProd } from "src/config/api.config"
 
 const curl = new Curl({
-  baseURI: isProd ? "https://rochecrm.g2digi.com/" : "https://roche.jiappo.cn/",
+  baseURI: isProd ? "https://rochecrm.g2digi.com/" : " http://101.132.140.21:8080/",
 })
 
 // 日志输出
@@ -32,18 +32,18 @@ curl.interceptors.request.use(
         })
         .catch(() => {})
         .finally(() => {
-          let { AccessToken } = objUser
-          if (data.AccessToken) {
-            AccessToken = data.AccessToken
-            delete data.AccessToken
+          let { token } = objUser
+          if (data.token) {
+            token = data.token
+            delete data.token
           }
-          if (AccessToken) {
-            config.header = Object.assign({ AccessToken }, header)
+          if (token) {
+            config.header = Object.assign({ Authorization: token }, header)
           }
           if (typeof extend === "function") {
             config.data = Object.assign(config.data, extend(objUser) || {})
           }
-          if (useAuth && (!config.header || !config.header.AccessToken)) {
+          if (useAuth && (!config.header || !config.header.Authorization)) {
             return reject("")
           }
           resolve(config)
@@ -54,33 +54,34 @@ curl.interceptors.request.use(
 curl.interceptors.response.use(
   (response) =>
     new Promise((resolve, reject) => {
-      const { requestConfig, statusCode, data: respData } = response
+      const { requestConfig, statusCode, data: respData = {} } = response
       delete response.requestConfig
+      console.log(response)
       let { url, method } = requestConfig
       if (statusCode !== 200 || !respData) {
         console.log(`${url} [${method}] 请求失败 => `, response)
         return reject(`网络繁忙，请稍后再试[${statusCode}]`)
       }
       console.log(`${url} [${method}] 请求返回 => `, respData)
-      let { Status, Data, Extend, Message } = respData
-      if ([201].indexOf(Status) > -1) {
-        reject(Message || "token已过期，请重新登录")
+      let { status, data, Extend, message } = respData
+      if ([201].indexOf(status) > -1) {
+        reject(message || "token已过期，请重新登录")
         return gotoLogin()
       }
-      if (Status === 202) {
+      if (status === 202) {
         reject("")
         return Router.routerPush("webview_index", {
           link: Extend,
           title: "关注公众号",
         })
       }
-      if (Status !== 0) {
+      if (status !== 200) {
         return reject(respData)
       }
-      if (Extend && typeof Extend === "object" && typeof Data === "object") {
-        Data = Object.assign({}, Extend, Data)
+      if (Extend && typeof Extend === "object" && typeof data === "object") {
+        data = Object.assign({}, Extend, data)
       }
-      resolve(Data)
+      resolve(data)
     }),
   (error) => {
     if (error && error.errMsg) {
