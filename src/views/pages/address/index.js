@@ -16,14 +16,13 @@ new WowPage({
   ],
   data: {
     arrData: [],
+    classes: "mode-arrow",
   },
   onLoad(options) {
     this.routerGetParams(options)
   },
   onShow() {
-    console.log("onShow", this.data.params$)
     let { from, cacheFrom, ...reset } = this.data.params$
-
     // 从wx地址选择回来的
     if (from === "wx") {
       this.setData({
@@ -32,8 +31,12 @@ new WowPage({
           from: cacheFrom,
         },
       })
+      console.log("onShow", this.data.params$)
       return
     }
+    this.setData({
+      classes: from === "mine_index" ? "mode-edit" : "mode-arrow",
+    })
     this.reqAddressList()
   },
   handleSelect(event) {
@@ -55,6 +58,7 @@ new WowPage({
       api$.REQ_ADDRESS_LIST,
       {},
       {
+        method: "get",
         loading: false,
         callback: (res) => {
           return { storeId: res.storeId || "" }
@@ -71,6 +75,7 @@ new WowPage({
   },
   handleReadAddressFormWx() {
     const { from } = this.data.params$
+    const { api$ } = this.data
     this.setData({
       params$: {
         ...this.data.params$,
@@ -80,6 +85,34 @@ new WowPage({
     })
     this.helperFnPromise("chooseAddress").then((res) => {
       console.log("chooseAddress", res)
+      const {
+        cityName: city,
+        countyName: county,
+        detailInfo: detail,
+        provinceName: province,
+        telNumber: phone,
+        userName: name,
+      } = res
+      this.curl(
+        api$.DO_ADD_ADDRESS,
+        {
+          province,
+          city,
+          county,
+          detail,
+          name,
+          phone,
+          status: "0",
+        },
+        {
+          method: "post",
+        },
+      )
+        .then(() => {
+          this.modalToast("添加成功")
+          this.reqAddressList()
+        })
+        .toast()
     })
   },
 })

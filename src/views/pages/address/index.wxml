@@ -6,19 +6,20 @@
   wx:for="{{ arrData }}"
   wx:key="index"
   data="{{ item }}"
-  classes="{{ 'mode-arrow' }}"
+  classes="{{ classes }}"
 ></address-item>
+<bolck wx:if="!arrData || arrData.length <=5">
+  <address-add-item
+    wx:if="{{ arrData }}"
+    bindtap="jumpPageOrFireFn"
+    data-url="address_details_index"
+    data-params="{{ params$ }}"
+  ></address-add-item>
 
-<address-add-item
-  wx:if="{{ arrData }}"
-  bindtap="jumpPageOrFireFn"
-  data-url="address_details_index"
-  data-params="{{ params$ }}"
-></address-add-item>
-
-<!-- 底部导航 -->
-<wow-fixed-bottom height="40">
-  <view class="c-button c-button-wx c-in-fixed" bindtap="handleReadAddressFormWx">
-    <text> 微信添加 </text>
-  </view>
-</wow-fixed-bottom>
+  <!-- 底部导航 -->
+  <wow-fixed-bottom height="60">
+    <view class="c-button c-button-wx c-in-fixed" bindtap="handleReadAddressFormWx">
+      <text> 微信添加 </text>
+    </view>
+  </wow-fixed-bottom>
+</bolck>

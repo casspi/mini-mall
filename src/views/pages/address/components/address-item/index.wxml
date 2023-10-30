@@ -2,19 +2,16 @@
   <view class="inner">
     <view class="head">
       <view class="name">
-        <text>{{ data.name || data.userName }}</text>
+        <text>{{ data.name }}</text>
       </view>
       <view class="phone">
-        <text>{{ data.phoneNumber || data.mobile }}</text>
+        <text>{{ data.phone }}</text>
       </view>
     </view>
     <view class="prompt">
-      <text
-        >{{ data.province }} {{ data.city }} {{ data.region }}
-        {{ data.detailAddress || data.address }}</text
-      >
+      <text>{{ data.province }} {{ data.city }} {{ data.county }} {{ data.address }}</text>
     </view>
-    <view class="type" wx:if="{{ data.defaultStatus === 1 }}">
+    <view class="type" wx:if="{{ data.status === 1 }}">
       <text>默认地址</text>
     </view>
   </view>

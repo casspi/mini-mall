@@ -6,7 +6,7 @@
 
 <view class="user-wrap">
   <image class="user-avatar" src="/assets/images/doctor.png"></image>
-  <view class="user-inner">
+  <view class="user-inner" data-sync="{{ user$ }}" bindtap="jumpPageOrFireFn">
     <view class="user-phone">
       <text>{{ user$ ? filter.filterPhone(userInfo.name) : "还未登录，点我登录" }}</text>
     </view>
@@ -49,7 +49,14 @@
 </view>
 
 <view class="menu-wrap">
-  <view class="menu-item" bindtap="jumpPageOrFireFn" data-item="{{ item }}" wx:for="{{ objMenu }}" wx:key="index">
+  <view
+    class="menu-item"
+    bindtap="jumpPageOrFireFn"
+    data-sync="{{ user$ }}"
+    data-item="{{ item }}"
+    wx:for="{{ objMenu }}"
+    wx:key="index"
+  >
     <view class="menu-label">
       <text>{{ item.label }}</text>
     </view>

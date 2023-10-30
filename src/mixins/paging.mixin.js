@@ -43,7 +43,7 @@ export default {
       options,
     )
       .then((res) => {
-        const { totalPage: pagingTotal = 0, dataList: list = [] } = this.pagingFormatResult(res)
+        const { total: pagingTotal = 0, dataList: list = [] } = this.pagingFormatResult(res)
         if (this.pagingCallbackResult) {
           this.pagingCallbackResult(
             {
@@ -92,7 +92,7 @@ export default {
 
   pagingFormatResult(res) {
     if (Array.isArray(res)) {
-      res = { Count: res.length, Data: res }
+      res = { total: res.length, dataList: res }
     }
     return res
   },

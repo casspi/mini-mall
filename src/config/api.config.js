@@ -23,19 +23,25 @@ export default {
 
   // 商品列表查询
   REQ_GOODS_LIST: "app/drug/wtProduct/page",
+  // 商品详情
+  REQ_GOODS_DETAIL: "app/drug/wtProduct/",
 
   // 获取分类数据
 
   //获取购物车数据
   REQ_SHOP_CART_TOTAL: "api/shop/cart/total",
-
-  REQ_SHOP_CART_LIST: "wtShoppingCartRelProduct/list",
+  // 加入购物车
+  REQ_ADD_CART: "app/drug/wtShoppingCartRelProduct",
+  // 获取购物车列表
+  REQ_SHOP_CART_LIST: "app/drug/wtShoppingCartRelProduct/page", //"app/drug/wtShoppingCartRelProduct/listAll",
 
   // 地址列表
-  REQ_ADDRESS_LIST: "wtAddress/list",
+  REQ_ADDRESS_LIST: "app/drug/wtAddress/listAll",
+  // 新增地址
+  DO_ADD_ADDRESS: "app/drug/wtAddress",
 
   // 订单列表
-  REQ_ORDER_LIST: "wtOrder",
+  REQ_ORDER_LIST: "app/drug/wtOrder/page",
 
   // 获取手机号验证码
   REQ_CODE: "app/system/phone/sendCode",

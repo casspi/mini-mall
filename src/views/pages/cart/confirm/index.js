@@ -35,7 +35,7 @@ new WowPage({
   // 团购订单提交
   handleGroupSubmit() {
     let { objAddress, arrData, api$, params$ } = this.data
-    let { province, city, region, detailAddress: address, name: userName, phoneNumber: mobile } = objAddress
+    let { province, city, county, detailAddress: address, name: userName, phoneNumber: mobile } = objAddress
     let store = arrData[0]
     let { storeId, goodInfoRespDtoList, couponList, note = "" } = store
     let { userCouponId = "" } = couponList.filter((item) => item.selected)[0] || {}
@@ -45,7 +45,7 @@ new WowPage({
       groupRecordId: params$.groupRecordId || "",
       province,
       city,
-      region,
+      county,
       address,
       userName,
       mobile,
@@ -90,7 +90,7 @@ new WowPage({
     if (params$.orderType === config$.ORDER_TYPE.GROUP) {
       return this.handleGroupSubmit()
     }
-    let { province, city, region, detailAddress: address, name: userName, phoneNumber: mobile } = objAddress
+    let { province, city, county, detailAddress: address, name: userName, phoneNumber: mobile } = objAddress
     let storeReqDtoList = arrData.map((store) => {
       let { storeId, goodInfoRespDtoList, couponList, note = "" } = store
       let { userCouponId = "" } = couponList.filter((item) => item.selected)[0] || {}
@@ -110,7 +110,7 @@ new WowPage({
       ...objLiveParams,
       province,
       city,
-      region,
+      county,
       address,
       userName,
       mobile,

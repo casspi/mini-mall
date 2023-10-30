@@ -41,7 +41,7 @@ new WowPage({
     return this.curl(api$.REQ_USER_INFO, {}, { method: "get", loading: false })
       .then((res) => {
         this.setData({
-          userInfo: res.user,
+          userInfo: res.user || {},
         })
       })
       .toast()

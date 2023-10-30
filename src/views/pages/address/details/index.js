@@ -23,15 +23,15 @@ new WowPage({
   },
   assignmentData() {
     let { params$, objInput, objHidden } = this.data
-    let { id, defaultStatus, province, city, region } = params$
+    let { id, status, province, city, county } = params$
     this.navBarSetTitle(id ? "修改地址" : "添加地址")
     if (id) {
       this.validateAssignment(
         this,
         {
           ...params$,
-          address: `${province} ${city} ${region}`,
-          defaultStatus: defaultStatus === 1,
+          address: `${province} ${city} ${county}`,
+          status: status === 1,
         },
         objInput,
         "objInput",
@@ -45,19 +45,17 @@ new WowPage({
       return null
     }
     let options = this.validateInput(objHidden, objInput)
-    options.defaultStatus = options.defaultStatus ? "1" : "0"
+    options.status = options.status ? "1" : "0"
     if (params$.id) {
       options.id = params$.id
     }
     this.curl(
-      params$.source === "merchant" ? api$.DO_MERCHANT_ADDRESS_ADDED_UPDATE : api$.DO_ADDRESS_ADDED_UPDATE,
+      api$.DO_ADD_ADDRESS,
       {
         ...options,
       },
       {
-        callback: (res) => {
-          return { storeId: res.storeId || "" }
-        },
+        method: params$.id ? "put" : "post",
       },
     )
       .then(() => {
@@ -71,14 +69,10 @@ new WowPage({
     this.modalConfirm(`确认删除该收货地址吗？`)
       .then(() => {
         return this.curl(
-          params$.source === "merchant" ? api$.DO_MERCHANT_ADDRESS_DELETE : api$.DO_ADDRESS_DELETE,
+          api$.DO_ADD_ADDRESS + "?idList=" + params$.id,
+          {},
           {
-            id: params$.id,
-          },
-          {
-            callback: (res) => {
-              return { storeId: res.storeId || "" }
-            },
+            method: "delete",
           },
         )
       })

@@ -3,7 +3,7 @@ export default {
     objHidden: {
       province: { value: "" },
       city: { value: "" },
-      region: { value: "" },
+      county: { value: "" },
     },
     objInput: {
       name: {
@@ -15,10 +15,10 @@ export default {
         iconRight: "",
         use: [{ nonempty: true, prompt: "请输入收货人姓名" }],
       },
-      phoneNumber: {
+      phone: {
         label: "电话",
         value: "",
-        key: "objInput.phoneNumber",
+        key: "objInput.phone",
         placeholder: "收货人联系电话",
         mode: "mode-input",
         type: "number",
@@ -37,18 +37,18 @@ export default {
         mode: "mode-region",
         use: [{ nonempty: true, prompt: "请选择省市区" }],
       },
-      detailAddress: {
+      detail: {
         label: "详细地址",
         value: "",
-        key: "objInput.detailAddress",
+        key: "objInput.detail",
         placeholder: "请输入详细地址",
         mode: "mode-input",
         iconRight: "",
         use: [{ nonempty: true, prompt: "请输入详细地址" }],
       },
-      defaultStatus: {
+      status: {
         value: false,
-        key: "objInput.defaultStatus",
+        key: "objInput.status",
         useTopBlock: true,
         label: "设为默认地址",
         mode: "mode-switch",

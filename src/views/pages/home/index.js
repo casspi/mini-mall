@@ -9,9 +9,19 @@ import DataMixin from "./data.mixin"
 var appInstance = getApp()
 console.log(appInstance.globalData)
 new WowPage({
-  mixins: [DataMixin, WowPage.wow$.mixins.Jump, WowPage.wow$.mixins.Router],
+  mixins: [
+    DataMixin,
+    WowPage.wow$.mixins.Jump,
+    WowPage.wow$.mixins.Router,
+    WowPage.wow$.mixins.Shop,
+    WowPage.wow$.mixins.Curl,
+    WowPage.wow$.mixins.Tabbar,
+  ],
   handleClassify(options) {
     appInstance.globalData.classifyId = options.id
     this.routerRoot("classify_index")
+  },
+  onShow() {
+    this.reqShopCartTotal()
   },
 })

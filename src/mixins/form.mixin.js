@@ -2,9 +2,10 @@ export default {
   formAddressHandle(event) {
     let { code, postcode, value, item } = this.inputParams(event)
     let { objHidden } = this.data
-    let [province, city, region] = value
+    let [province, city, county] = value
+    console.log(value)
     if (objHidden) {
-      this.validateAssignment(this, { province, city, region }, objHidden, "objHidden")
+      this.validateAssignment(this, { province, city, county }, objHidden, "objHidden")
     }
     this.setData({ [`${item.key}.value`]: value.join(" ") })
   },

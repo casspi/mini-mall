@@ -10,6 +10,8 @@ new WowComponent({
     WowComponent.wow$.mixins.Input,
     WowComponent.wow$.mixins.Jump,
     WowComponent.wow$.mixins.Modal,
+    WowComponent.wow$.mixins.Curl,
+    WowComponent.wow$.mixins.Api,
   ],
   externalClasses: ["class-external", "class-image-box", "class-image"],
   options: {
@@ -29,11 +31,15 @@ new WowComponent({
     handleCart() {
       //获取参数
       console.log(this.data.data)
-      this.modalToast("已加入购物车~")
+      const { data, api$ } = this.data
+      this.curl(api$.REQ_ADD_CART, { id: data.id }, { method: "post" }).then((res) => {
+        console.log("已加入购物车", res)
+        this.modalToast("已加入购物车~")
+      })
       // eslint-disable-next-line no-undef
-      var appInstance = getApp()
-      appInstance.globalData.cart.push(this.data.data)
-      appInstance.setCartTabBarBadge()
+      // var appInstance = getApp()
+      // appInstance.globalData.cart.push(this.data.data)
+      // appInstance.setCartTabBarBadge()
     },
   },
 })

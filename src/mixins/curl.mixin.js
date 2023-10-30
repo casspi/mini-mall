@@ -64,16 +64,9 @@ curl.interceptors.response.use(
       }
       console.log(`${url} [${method}] 请求返回 => `, respData)
       let { status, data, Extend, message } = respData
-      if ([201].indexOf(status) > -1) {
+      if ([401].indexOf(status) > -1) {
         reject(message || "token已过期，请重新登录")
         return gotoLogin()
-      }
-      if (status === 202) {
-        reject("")
-        return Router.routerPush("webview_index", {
-          link: Extend,
-          title: "关注公众号",
-        })
       }
       if (status !== 200) {
         return reject(respData)
