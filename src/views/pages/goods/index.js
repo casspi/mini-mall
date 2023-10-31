@@ -16,11 +16,7 @@ new WowPage({
   ],
   data: {
     goodsInfo: {},
-    arrBanner: [
-      "https://img30.360buyimg.com/babel/s320x320_jfs/t1/118182/26/17983/255703/5f61b07aE48622c4f/224c98e42d16e58b.png!cc_320x320.webp",
-      "https://img30.360buyimg.com/babel/s320x320_jfs/t1/118182/26/17983/255703/5f61b07aE48622c4f/224c98e42d16e58b.png!cc_320x320.webp",
-      "https://img30.360buyimg.com/babel/s320x320_jfs/t1/118182/26/17983/255703/5f61b07aE48622c4f/224c98e42d16e58b.png!cc_320x320.webp",
-    ],
+    arrBanner: [],
   },
   onLoad(options) {
     this.routerGetParams(options)
@@ -32,6 +28,7 @@ new WowPage({
   },
   getDetail() {
     const { api$, params$ } = this.data
+    console.log(params$)
     this.curl(
       api$.REQ_GOODS_DETAIL + params$.id,
       {},
@@ -40,9 +37,20 @@ new WowPage({
         method: "get",
       },
     ).then((res) => {
+      res.imagesIcon = params$.imagesIcon
+      res.imagesGuidance = params$.imagesGuidance
+      res.imagesDetail = params$.imagesDetail
       this.setData({
         goodsInfo: res,
       })
+      if (res.imagesIcon && res.imagesIcon.length) {
+        const arrBanner = res.imagesIcon.map((item) => {
+          return api$.IMG_SOURCE + item.imagePath
+        })
+        this.setData({
+          arrBanner,
+        })
+      }
     })
   },
 })

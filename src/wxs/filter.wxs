@@ -68,7 +68,7 @@ function filterTime(date, fmt) {
 
 module.exports = {
   source: function (src) {
-    return src ? "https://xxx.com/images/v2/" + src : ""
+    return src ? "http://101.132.140.21:8080/app/system/icon/viewIconById/" + src : ""
   },
   filterDate: filterDate,
   filterTime: filterTime,

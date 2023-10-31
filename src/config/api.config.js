@@ -17,6 +17,7 @@ export const isProd = (() => {
 
 export default {
   H5_BASE_URL: isProd ? "" : "",
+  IMG_SOURCE: "http://101.132.140.21:8080/app/system/icon/viewIconById/",
 
   // 获取分类
   REQ_CLASSIFY_LIST: "app/drug/wtProductType/listDic",
@@ -31,9 +32,9 @@ export default {
   //获取购物车数据
   REQ_SHOP_CART_TOTAL: "api/shop/cart/total",
   // 加入购物车
-  REQ_ADD_CART: "app/drug/wtShoppingCartRelProduct",
+  REQ_ADD_CART: "app/system/wtShoppingCartRelProduct",
   // 获取购物车列表
-  REQ_SHOP_CART_LIST: "app/drug/wtShoppingCartRelProduct/page", //"app/drug/wtShoppingCartRelProduct/listAll",
+  REQ_SHOP_CART_LIST: "app/system/wtShoppingCartRelProduct/page",
 
   // 地址列表
   REQ_ADDRESS_LIST: "app/drug/wtAddress/listAll",

@@ -7,7 +7,7 @@
   bindtap="jumpPageOrFireFn"
 >
   <view class="image-box class-image-box">
-    <image class="image class-image" src="{{ data.url }}"></image>
+    <image class="image class-image" src="{{ filter.source(data.imagesIcon[0].imagePath) }}"></image>
   </view>
   <view class="info-box">
     <view class="name">
@@ -17,7 +17,7 @@
       <text>{{ data.specifications }}</text>
     </view>
     <view class="company">
-      <text>{{ data.company }}</text>
+      <text>{{ data.brandCn }}</text>
     </view>
     <view class="price" wx:if="{{ data.price }}">
       <text>￥{{ data.price }}</text>

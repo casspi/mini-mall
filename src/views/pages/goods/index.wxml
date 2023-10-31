@@ -1,18 +1,12 @@
-<goods-banner data="{{ arrBanner }}">
-  <!-- <view
-    class="count-down"
-    wx:if="{{ config$.GOODS_TYPE.FLASH === objData.goodsType }}"
-  >
-    <text>距离秒杀结束还剩：</text>
-    <wow-count-down end-time="{{ objData.flashEndTime }}"></wow-count-down>
-  </view> -->
-</goods-banner>
+<goods-banner data="{{ arrBanner }}"> </goods-banner>
 <view class="base-info">
   <view class="left">
     <view class="price"
       ><text>￥{{ goodsInfo.price }}</text>
     </view>
-    <view class="name"><text>健胃消食片(成人)(合糖)(江中)</text> </view>
+    <view class="name"
+      ><text>{{ goodsInfo.name }}{{ goodsInfo.alias ? "(" + goodsInfo.alias + ")" : "" }}</text>
+    </view>
   </view>
 
   <button open-type="share" class="c-button-normal share-button">
@@ -24,21 +18,19 @@
   <view class="cell-group">
     <view class="cell">
       <text class="label">功效</text>
-      <text class="value"
-        >用于预防和治疗维生素A及D的缺乏用于预防和治疗维生素A及D的缺乏用于预防和治疗维生素A及D的缺乏</text
-      >
+      <text class="value">{{ goodsInfo.effect }}</text>
     </view>
     <view class="cell">
       <text class="label">厂家</text>
-      <text class="value">上海医药有限责任公司</text>
+      <text class="value">{{ data.brandCn || "-" }}</text>
     </view>
     <view class="cell">
       <text class="label">规格</text>
-      <text class="value">{{ goodsInfo.specifications }}</text>
+      <text class="value">{{ goodsInfo.specifications || "-" }}</text>
     </view>
   </view>
 </view>
-<goods-detail></goods-detail>
+<goods-detail data="{{ goodsInfo }}"></goods-detail>
 <wow-fixed-bottom height="68">
   <button open-type="contact" class="icon c-button-reset iconfont iconweixin"></button>
   <!-- <view class="icon _iconfont _icon-kefu"></view> -->

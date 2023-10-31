@@ -16,8 +16,8 @@ new WowComponent({
   },
   properties: {
     data: {
-      type: Array,
-      value: [],
+      type: Object,
+      value: {},
     },
   },
   methods: {

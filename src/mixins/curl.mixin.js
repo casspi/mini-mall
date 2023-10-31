@@ -5,7 +5,7 @@ import Router from "wow-wx/mixins/wx/router.mixin"
 import ApiConfig, { isProd } from "src/config/api.config"
 
 const curl = new Curl({
-  baseURI: isProd ? "https://rochecrm.g2digi.com/" : " http://101.132.140.21:8080/",
+  baseURI: isProd ? "https://rochecrm.g2digi.com/" : "http://101.132.140.21:8080/",
 })
 
 // 日志输出
