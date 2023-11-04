@@ -169,7 +169,7 @@
       bindtap="jumpPageOrFireFn"
       useRight=""
     >
-      <view class="health-content" slot="cell-right">2222</view>
+      <view class="health-content" slot="cell-right">{{ item.value.length }}</view>
     </wow-cell>
     <view class="c-border mr" wx:if="{{ item.useBottomBorder }}"></view>
 

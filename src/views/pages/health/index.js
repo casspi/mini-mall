@@ -6,7 +6,7 @@ import "./index.wxml"
 import WowPage from "wow-wx/lib/page"
 
 new WowPage({
-  mixins: [WowPage.wow$.mixins.Router],
+  mixins: [WowPage.wow$.mixins.Router, WowPage.wow$.mixins.Page],
   data: {
     arrData: [
       {
@@ -97,5 +97,12 @@ new WowPage({
       [`arrData[${index}].${valueKey}`]: value,
     })
   },
-  handleSubmit() {},
+  handleSubmit() {
+    const { arrData } = this.data
+    let objPage = this.pagesGetByIndex(1)
+    if (objPage) {
+      objPage.setData({ [`objInput.healthInfo.value`]: arrData })
+    }
+    this.routerPop()
+  },
 })

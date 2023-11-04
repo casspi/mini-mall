@@ -121,11 +121,11 @@ module.exports = {
   },
   isPhone: function (val) {
     // eslint-disable-next-line no-undef, prettier/prettier
-    return getRegExp("^1d{10}$").test(val)
+    return getRegExp('^1\d{10}$').test(val)
   },
   isCode: function (val) {
     // eslint-disable-next-line no-undef, prettier/prettier
-    return getRegExp("^d{6}$").test(val)
+    return getRegExp('^\d{6}$').test(val)
   },
   // 验证码文案
   renderCodeBtn: function (conut) {
@@ -137,7 +137,7 @@ module.exports = {
     }
   },
   filterPhone: function (value) {
-    return value ? value.substring(0, 3) + "****" + value.substring(7) : ""
+    return value ? value.substring(0, 3) + '****' + value.substring(7) : '';
   },
   filterIncludes: function (arr, v) {
     return arr.indexOf(v) > -1
