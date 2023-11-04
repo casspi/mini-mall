@@ -13,6 +13,7 @@ new WowPage({
     WowPage.wow$.mixins.User,
     WowPage.wow$.mixins.Tabbar,
     WowPage.wow$.mixins.Curl,
+    WowPage.wow$.mixins.Api,
   ],
   data: {
     goodsInfo: {},
@@ -37,9 +38,9 @@ new WowPage({
         method: "get",
       },
     ).then((res) => {
-      res.imagesIcon = params$.imagesIcon
-      res.imagesGuidance = params$.imagesGuidance
-      res.imagesDetail = params$.imagesDetail
+      // res.imagesIcon = params$.imagesIcon
+      // res.imagesGuidance = params$.imagesGuidance
+      // res.imagesDetail = params$.imagesDetail
       this.setData({
         goodsInfo: res,
       })
@@ -53,4 +54,12 @@ new WowPage({
       }
     })
   },
+  handleAddedCart() {
+    const { api$, params$, goodsInfo } = this.data
+    this.curl(api$.REQ_ADD_CART, { id: params$.id }, { method: "post" }).then((res) => {
+      console.log("已加入购物车", res)
+      this.modalToast(goodsInfo.otc === "1" ? "已加入购物车~" : "已加入清单")
+    })
+  },
+  handleBuyNow() {},
 })

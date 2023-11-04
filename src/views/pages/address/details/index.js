@@ -9,21 +9,24 @@ import DataMixin from "./data.mixin"
 new WowPage({
   mixins: [
     DataMixin,
-    WowPage.wow$.mixins.Curl,
     WowPage.wow$.mixins.Router,
     WowPage.wow$.mixins.Navbar,
+    WowPage.wow$.mixins.Curl,
     WowPage.wow$.mixins.Validate,
     WowPage.wow$.mixins.Form,
     WowPage.wow$.mixins.Input,
     WowPage.wow$.mixins.Modal,
+    WowPage.wow$.mixins.File,
+    WowPage.wow$.mixins.Image,
   ],
   onLoad(options) {
     this.routerGetParams(options)
+    console.log("onLoad", this.data.params$)
     this.assignmentData()
   },
   assignmentData() {
     let { params$, objInput, objHidden } = this.data
-    let { id, status, province, city, county } = params$
+    let { id, def, province, city, county } = params$
     this.navBarSetTitle(id ? "修改地址" : "添加地址")
     if (id) {
       this.validateAssignment(
@@ -31,7 +34,7 @@ new WowPage({
         {
           ...params$,
           address: `${province} ${city} ${county}`,
-          status: status === 1,
+          def: def === 1,
         },
         objInput,
         "objInput",
@@ -45,7 +48,7 @@ new WowPage({
       return null
     }
     let options = this.validateInput(objHidden, objInput)
-    options.status = options.status ? "1" : "0"
+    options.def = options.def ? "1" : "0"
     if (params$.id) {
       options.id = params$.id
     }

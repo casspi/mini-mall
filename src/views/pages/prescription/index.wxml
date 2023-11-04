@@ -1,0 +1,23 @@
+<import src="/templates/form-view/index.wxml" />
+<template is="fromView" data="{{ objInput: objInput }}"></template>
+
+<!-- 底部导航 -->
+<wow-fixed-bottom height="158" class="bottom-bar">
+  <view
+    class="agreement {{ isAgreement && 'is-active' }}"
+    bindtap="inputHandle"
+    data-value="{{ !isAgreement }}"
+    data-item="isAgreement"
+  >
+    <view class="agreement-icon _iconfont {{ isAgreement ? '_icon-xuanzhong' : '_icon-radio' }} "></view>
+    <view class="agreement-text">
+      <text
+        >我确认已确诊此疾病并使用过该药，无过敏史、无相关禁忌症和不良反应。确认处方药须凭处方在药师指导下购买和使用</text
+      >
+    </view>
+  </view>
+  <view class="c-bar"></view>
+  <view class="c-button round {{ !isAgreement && 'disabled' }}" bindtap="handleSubmit">
+    <text> 保存并同意问诊 </text>
+  </view>
+</wow-fixed-bottom>

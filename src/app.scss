@@ -1,6 +1,7 @@
 @import "src/assets/scss/define";
 @import "src/assets/scss/iconfont";
 @import "src/assets/scss/iconfont-mall";
+@import "src/templates/form-view/index";
 
 page {
   @extend %bsb;
@@ -72,13 +73,16 @@ page {
   &.disabled,
   &:disabled {
     color: #fff !important;
-    background-color: #8cd8ca !important;
+    opacity: 0.5;
+    // background-color: #8cd8ca !important;
   }
 
   &:after {
     @extend %dn;
   }
-
+  &.round {
+    border-radius: j(20);
+  }
   &.normal {
     font-size: j(16);
     margin-top: j(30);
@@ -121,5 +125,57 @@ page {
   }
   &.bb {
     @extend %bwb;
+  }
+}
+
+.c-button-normal {
+  @extend %bsb;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background-color: #fff;
+  &:after {
+    @extend %dn;
+    border: none;
+  }
+}
+
+.ios-seat {
+  @extend %w100;
+  height: constant(safe-area-inset-bottom);
+  height: env(safe-area-inset-bottom);
+}
+
+.cursor-pointer {
+  @extend %cp;
+}
+
+// 协议
+@include b(agreement) {
+  @extend %df;
+  @extend %aic;
+  @extend %c9;
+  width: j(315);
+  margin: j(20) auto 0;
+  font-size: j(12);
+  @include e(icon) {
+    font-size: j(18);
+    margin-right: j(8);
+  }
+
+  @include e(text) {
+    @extend %df1;
+    @extend %df;
+    @extend %fww;
+    line-height: j(18);
+    .strong {
+      color: $color-primary;
+    }
+  }
+
+  @include when(active) {
+    .agreement-icon {
+      color: $color-primary;
+    }
   }
 }

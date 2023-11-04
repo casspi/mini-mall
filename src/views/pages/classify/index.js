@@ -6,7 +6,13 @@ import "./index.wxml"
 import WowPage from "wow-wx/lib/page"
 
 new WowPage({
-  mixins: [WowPage.wow$.mixins.Input, WowPage.wow$.mixins.Curl, WowPage.wow$.mixins.Config, WowPage.wow$.mixins.Router],
+  mixins: [
+    WowPage.wow$.mixins.Input,
+    WowPage.wow$.mixins.Curl,
+    WowPage.wow$.mixins.Config,
+    WowPage.wow$.mixins.Router,
+    WowPage.wow$.mixins.Shop,
+  ],
   data: {
     arrData: [],
     numCurrIndex: 0,
@@ -17,12 +23,8 @@ new WowPage({
     console.log("params$=>", params$)
   },
   onShow() {
-    // eslint-disable-next-line no-undef
-    const appInstance = getApp()
-    console.log("options=>", appInstance.globalData)
-    this.setData({ numCurrIndex: appInstance.globalData.classifyId }, () => {
-      appInstance.globalData.classifyId = 0
-    })
+    this.reqShopCartTotal()
+
     this.reqClassifyList()
   },
   handleClassifyChange(event) {
@@ -30,30 +32,32 @@ new WowPage({
     this.setData({ numCurrIndex: index })
     // this.reqClassifyList(item.id)
   },
-  reqClassifyList(parentId = "") {
-    let { arrData, numCurrIndex, config$ } = this.data
-    let options = { storeId: config$.SELF_STORE_ID }
-    if (parentId) {
-      if (arrData[numCurrIndex].subData && arrData[numCurrIndex].subData.length) {
-        return null
-      }
-      options.parentId = parentId
-    }
-    this.curl(this.data.api$.REQ_CLASSIFY_LIST, options, {
-      loading: false,
-    })
+  reqClassifyList() {
+    let { api$ } = this.data
+    this.curl(
+      api$.REQ_CLASSIFY_LIST,
+      {},
+      {
+        loading: false,
+      },
+    )
       .then((res) => {
-        if (!parentId) {
-          this.setData({ arrData: res || [] })
-          const { id } = this.data.arrData[numCurrIndex] || {}
-          if (id) {
-            this.reqClassifyList(id)
-          }
-          return null
-        }
-        arrData[numCurrIndex].subData = res
-        this.setData({ arrData })
+        this.setData({ arrData: res || [] }, () => {
+          this.setCurrIndex()
+        })
       })
       .toast()
+  },
+  setCurrIndex() {
+    const { arrData } = this.data
+    // eslint-disable-next-line no-undef
+    const appInstance = getApp()
+    console.log("options=>", appInstance.globalData)
+    if (appInstance.globalData.classifyId) {
+      const numCurrIndex = arrData.findIndex((item) => item.id === appInstance.globalData.classifyId)
+      this.setData({ numCurrIndex }, () => {
+        appInstance.globalData.classifyId = ""
+      })
+    }
   },
 })

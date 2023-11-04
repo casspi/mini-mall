@@ -1,4 +1,4 @@
-@import 'src/assets/scss/define';
+@import "src/assets/scss/define";
 
 page {
   background-color: $color-bg;
@@ -15,7 +15,7 @@ page {
   @extend %w100;
   height: j(118);
   z-index: -1;
-  background-color: #CD4545;
+  background-color: #cd4545;
 
   .bg-image {
     @extend %w100;
@@ -151,7 +151,7 @@ page {
   right: j(-8);
   top: j(-8);
   font-size: j(10);
-  background-color: #DD0000;
+  background-color: #dd0000;
   width: j(16);
   height: j(16);
 }
@@ -191,5 +191,13 @@ page {
 
 .menu-value {
   @extend %c9;
+  font-size: j(14);
+}
+
+.contact-button {
+  text-align: left;
+  font-weight: normal;
+  @extend %df1;
+  @extend %c3;
   font-size: j(14);
 }

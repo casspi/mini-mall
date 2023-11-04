@@ -46,9 +46,9 @@ export default {
         iconRight: "",
         use: [{ nonempty: true, prompt: "请输入详细地址" }],
       },
-      status: {
+      def: {
         value: false,
-        key: "objInput.status",
+        key: "objInput.def",
         useTopBlock: true,
         label: "设为默认地址",
         mode: "mode-switch",

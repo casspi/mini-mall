@@ -9,9 +9,11 @@
         "pages/classify/index",
         "pages/demo/index",
         "pages/goods/index",
+        "pages/health/index",
         "pages/login/index",
         "pages/mine/index",
         "pages/order/index",
+        "pages/prescription/index",
         "pages/search/index",
         "pages/webview/index"
     ],

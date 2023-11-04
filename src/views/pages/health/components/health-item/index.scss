@@ -1,0 +1,74 @@
+@import "~src/assets/scss/define";
+
+.wrap {
+  @extend %df;
+  @extend %fdc;
+  @extend %c3;
+  background-color: #fff;
+  padding: j(10) j(20) 0;
+  font-size: j(14);
+}
+
+.radio-cell,
+.radio,
+.radio-button {
+  @extend %df;
+  @extend %jcs;
+}
+.radio-cell {
+  margin-bottom: j(10);
+}
+.radio-button {
+  margin-left: j(10);
+  cursor: pointer;
+  ._iconfont {
+    font-size: j(18);
+    margin-right: j(8);
+    @extend %c9;
+    &._icon-xuanzhong {
+      color: $color-primary;
+    }
+  }
+}
+
+.option-cell {
+  @extend %df;
+  @extend %fww;
+}
+.option-item {
+  padding: j(3) j(8);
+  line-height: j(18);
+  border-radius: j(26);
+  background-color: #f6f6f6;
+  margin-right: j(10);
+  margin-bottom: j(10);
+  border: j(1) solid #f6f6f6;
+  font-size: j(12);
+  &.active {
+    border: j(1) solid $color-primary;
+    background-color: #fff;
+    color: $color-primary;
+  }
+}
+
+.other-cell {
+  line-height: 1.6;
+  @extend %df;
+  @extend %fdc;
+  align-items: flex-start;
+  .label {
+    margin-bottom: j(10);
+  }
+}
+.textarea-content {
+  @extend %w100;
+  @extend %c3;
+  @extend %db;
+  @extend %w100;
+  @extend %bsb;
+  background-color: #f6f6f6;
+  border-radius: j(4);
+  height: j(150);
+  padding: j(15) j(10);
+  font-size: j(14);
+}

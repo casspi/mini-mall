@@ -2,9 +2,13 @@
 
 <view class="detail-warp">
   <view class="detail-tab">
-    <text class="detail-tab-title" bindtap="handleChange" data-index="{{ 0 }}">图文详情 </text>
+    <text class="detail-tab-title {{ 0 === index && 'active' }}" bindtap="handleChange" data-index="{{ 0 }}"
+      >图文详情
+    </text>
     <text class="line"> | </text>
-    <text class="detail-tab-title" bindtap="handleChange" data-index="{{ 1 }}">药师用药指导 </text>
+    <text class="detail-tab-title {{ 1 === index && 'active' }}" bindtap="handleChange" data-index="{{ 1 }}"
+      >药师用药指导
+    </text>
   </view>
   <view class="detail-tab-item {{ 0 === index && 'active' }}">
     <image

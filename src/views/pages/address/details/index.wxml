@@ -1,5 +1,5 @@
-<import src="/templates/form-template/index.wxml" />
-<template is="fromTemplate" data="{{ objInput: objInput }}"></template>
+<import src="/templates/form-view/index.wxml" />
+<template is="fromView" data="{{ objInput: objInput }}"></template>
 
 <view class="c-bar"></view>
 <!-- <wow-cell
@@ -9,10 +9,7 @@
   bindtap="handleDelete"
 ></wow-cell> -->
 
-<view
-  wx:if="{{ params$.id }}"
-  bindtap="handleDelete"
-  class="c-button c-button-plain"
+<view wx:if="{{ params$.id && params$.def !== 1 }}" bindtap="handleDelete" class="c-button c-button-plain"
   ><text>删除收货地址</text></view
 >
 <view class="c-bar"></view>

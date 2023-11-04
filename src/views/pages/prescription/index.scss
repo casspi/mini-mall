@@ -1,0 +1,16 @@
+@import "src/assets/scss/define";
+
+page {
+  background-color: $color-bg;
+}
+
+.wow-fixed-bottom-content {
+  @extend %fdc;
+  .agreement {
+    width: 100%;
+    margin-top: 0;
+  }
+  .c-button {
+    width: j(315);
+  }
+}

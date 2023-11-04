@@ -113,34 +113,3 @@
 .mt-30 {
   margin-top: j(15);
 }
-
-// 协议
-@include b(agreement) {
-  @extend %df;
-  @extend %aic;
-  @extend %c3;
-  width: j(315);
-  margin: j(20) auto 0;
-  font-size: j(12);
-  color: #c0c0c0;
-  @include e(icon) {
-    font-size: j(18);
-    margin-right: j(8);
-  }
-
-  @include e(text) {
-    @extend %df1;
-    @extend %df;
-    @extend %fww;
-    line-height: j(18);
-    .strong {
-      color: $color-primary;
-    }
-  }
-
-  @include when(active) {
-    .agreement-icon {
-      color: $color-primary;
-    }
-  }
-}

@@ -49,20 +49,26 @@
 </view>
 
 <view class="menu-wrap">
-  <view
-    class="menu-item"
-    bindtap="jumpPageOrFireFn"
-    data-sync="{{ user$ }}"
-    data-item="{{ item }}"
-    wx:for="{{ objMenu }}"
-    wx:key="index"
-  >
-    <view class="menu-label">
-      <text>{{ item.label }}</text>
+  <block wx:for="{{ objMenu }}" wx:key="index">
+    <view
+      wx:if="{{ index !== 'online' }}"
+      class="menu-item"
+      bindtap="jumpPageOrFireFn"
+      data-sync="{{ user$ }}"
+      data-item="{{ item }}"
+    >
+      <view class="menu-label">
+        <text>{{ item.label }}</text>
+      </view>
+      <view class="menu-value">
+        <text>{{ item.value || "" }}</text>
+      </view>
+      <view class="iconfont iconMore"></view>
     </view>
-    <view class="menu-value">
-      <text>{{ item.value || "" }}</text>
+
+    <view wx:else class="menu-item" data-item="{{ item }}">
+      <button class="c-button-normal contact-button" open-type="contact">在线客服</button>
+      <view class="iconfont iconMore"></view>
     </view>
-    <view class="iconfont iconMore"></view>
-  </view>
+  </block>
 </view>

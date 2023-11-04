@@ -22,17 +22,11 @@ const formatKey = (key, cut) => {
   return key.substring(0, 1).toUpperCase() + key.substring(1)
 }
 
-WowApp.requireDir(
-  require.context("./mixins", true, /\.mixin\.js$/),
-  (key, value) => {
-    wowApp.use("mixins", formatKey(key, ".mixin"), value.default || value)
-  },
-).requireDir(
-  require.context("wow-wx/mixins", true, /\.mixin\.js$/),
-  (key, value) => {
-    wowApp.use("mixins", formatKey(key, ".mixin"), value.default || value)
-  },
-)
+WowApp.requireDir(require.context("./mixins", true, /\.mixin\.js$/), (key, value) => {
+  wowApp.use("mixins", formatKey(key, ".mixin"), value.default || value)
+}).requireDir(require.context("wow-wx/mixins", true, /\.mixin\.js$/), (key, value) => {
+  wowApp.use("mixins", formatKey(key, ".mixin"), value.default || value)
+})
 
 // 数组降纬 某些微信版本手机没有这个方法
 if (typeof Array.prototype.flat !== "function") {

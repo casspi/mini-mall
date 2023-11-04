@@ -11,11 +11,7 @@
         placeholder-class="search-place"
       />
     </view>
-    <view
-      bindtap="handleInput"
-      data-value=""
-      class="iconfont iconClose {{ keyword && 'active' }}"
-    ></view>
+    <view bindtap="handleInput" data-value="" class="iconfont iconClose {{ keyword && 'active' }}"></view>
   </view>
   <view class="search-button" bindtap="handleSearch">
     <text>搜索</text>
@@ -35,3 +31,5 @@
   keyword="{{ keyword }}"
   params="{{ params$ }}"
 ></search-result-goods>
+
+<view class="cart-btn _iconfont _icon-cart" data-url="cart_index" bindtap="jumpTabBarPage"> </view>

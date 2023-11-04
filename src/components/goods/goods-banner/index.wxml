@@ -1,20 +1,16 @@
 <view class="wrap">
-  <view class="otc">
+  <view wx:if="{{ data.goodsInfo.prescriptionDrugs === 0 }}" class="otc">
     <text>OTC</text>
   </view>
   <swiper bindchange="handleChange" class="wrap" circular>
     <swiper-item
       class="swiper-cell"
-      wx:for="{{ data }}"
+      wx:for="{{ data.arrBanner }}"
       wx:key="index"
       data-item="{{ item }}"
       bindtap="handleSelect"
     >
-      <image
-        class="image"
-        src="{{ item[key] || item }}"
-        mode="aspectFill"
-      ></image>
+      <image class="image" src="{{ item[key] || item }}" mode="aspectFill"></image>
     </swiper-item>
   </swiper>
   <view class="indicator">

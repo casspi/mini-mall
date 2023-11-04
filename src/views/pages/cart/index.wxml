@@ -15,7 +15,7 @@
       <view class="select-icon iconfont {{ isAllSelected ? 'iconxuanze' : 'iconyuanhuan' }}"></view>
       <text>全选</text>
     </view>
-    <view class="iconfont iconDelete" wx:if="{{ numAmount }}" bindtap="handleDelete"></view>
+    <view class="iconfont iconDelete" wx:if="{{ 1 || numAmount }}" bindtap="handleDelete"></view>
   </view>
   <view class="null"></view>
   <wow-scroll id="wowScroll" bindscrolltolower="pagingLoad" bindrefresh="pagingRefresh" class="content">
@@ -25,41 +25,47 @@
           <view
             class="select-icon iconfont {{ item.selected ? 'iconxuanze' : 'iconyuanhuan' }}"
             bindtap="handleItemSelect"
+            data-arrindex="{{ arrIndex }}"
             data-index="{{ index }}"
           ></view>
           <view
             class="goods-dd-content"
-            data-params="{{ { goodsId: item.goodsId } }}"
-            data-url="goods_details_index"
+            data-params="{{ { id: item.productId || item.id } }}"
+            data-url="goods_index"
             bindtap="jumpPageOrFireFn"
           >
-            <image class="goods-image" src="{{ item.pic }}"></image>
+            <image class="goods-image" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
             <view class="goods-info">
               <view class="goods-name">
-                <text>{{ item.goodsName }}</text>
+                <text>{{ item.name }}({{ item.alias || "-" }})</text>
+              </view>
+              <view class="goods-brand">
+                {{ item.brandCn }}
               </view>
               <view class="goods-prompt">
-                <text>{{ item.spec }}</text>
-                <text>x{{ item.num }}</text>
+                <text>{{ item.specifications[0] }} </text>
+                <text> x {{ item.productCount }}</text>
               </view>
               <view class="c-flex1"></view>
               <view class="goods-operate">
-                <view class="goods-amount">￥{{ filter.filterAmount(item.productPrice) }}</view>
+                <view class="goods-amount">￥{{ filter.filterAmount(item.price) }}</view>
                 <view class="goods-count">
                   <view
-                    class="goods-count-btn goods-count-item {{ item.num == 1 && 'disabled' }}"
+                    class="goods-count-btn goods-count-item {{ item.productCount == 1 && 'disabled' }}"
                     data-index="{{ index }}"
+                    data-arrindex="{{ arrIndex }}"
                     data-number="{{ -1 }}"
                     catchtap="handleCountNumber"
                   >
                     <text>-</text>
                   </view>
                   <view class="goods-count-item">
-                    <text>{{ item.num }}</text>
+                    <text>{{ item.productCount }}</text>
                   </view>
                   <view
                     class="goods-count-btn goods-count-item"
                     data-index="{{ index }}"
+                    data-arrindex="{{ arrIndex }}"
                     data-number="{{ 1 }}"
                     catchtap="handleCountNumber"
                   >
@@ -75,6 +81,5 @@
     <wow-end wx:if="{{ pagingTotal > 0 }}" is-loading="{{ pagingTotal > pagingNumTotal }}"></wow-end>
   </wow-scroll>
   <view class="null"></view>
-
   <wow-settlement disabled="{{ !numAmount }}" amount="{{ numAmount }}" bindclick="handleSubmit"></wow-settlement>
 </block>

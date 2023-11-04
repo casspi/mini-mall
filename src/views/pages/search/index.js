@@ -14,6 +14,7 @@ new WowPage({
     WowPage.wow$.mixins.Storage,
     WowPage.wow$.mixins.Modal,
     WowPage.wow$.mixins.Router,
+    WowPage.wow$.mixins.Jump,
   ],
   data: {
     keyword: "",

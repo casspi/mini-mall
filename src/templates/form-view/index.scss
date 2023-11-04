@@ -1,0 +1,208 @@
+@import "~src/assets/scss/define";
+
+.form-textarea {
+  @extend %df;
+  @extend %fdc;
+  background-color: #fff;
+  .textarea {
+    @extend %c9;
+    @extend %w100;
+    @extend %bsb;
+    line-height: j(20);
+    padding: j(12) $num-padding;
+    height: j(170);
+    font-size: j(14);
+  }
+  .input-place {
+    color: #dedede;
+  }
+}
+.form-textarea-tip {
+  @extend %c9;
+  @extend %tar;
+  padding: j(12) $num-padding;
+  font-size: j(16);
+  line-height: j(22);
+}
+.form-switch {
+  zoom: 0.55;
+}
+.form-block {
+  @extend %bw05;
+  @extend %bwb;
+  height: j(10);
+}
+
+.upload-box {
+  padding: $num-padding;
+  background-color: #fff;
+}
+.upload-label {
+  @extend %c3;
+  @extend %df;
+  @extend %aic;
+  height: j(22);
+  font-size: j(14);
+}
+.upload-tip {
+  @extend %c9;
+  margin-left: j(12);
+  font-size: j(12);
+}
+.upload-content {
+  @extend %df;
+  @extend %aic;
+  @extend %fww;
+}
+.upload-cell {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %pr;
+  height: j(80);
+  width: j(80);
+  margin: j(10) j(10) 0 0;
+  background-color: #f2f2f2;
+  .iconClose {
+    @extend %pa;
+    @extend %df;
+    @extend %aic;
+    @extend %cp;
+    @extend %jcc;
+    @extend %br50;
+    @extend %cfff;
+    font-size: j(9);
+    top: j(-6);
+    right: j(-6);
+    width: j(16);
+    height: j(16);
+    background-color: red;
+  }
+  &.iconCamera {
+    @extend %c6;
+    @extend %cp;
+    font-size: j(24);
+  }
+}
+.upload-image {
+  @extend %w100;
+  @extend %h100;
+  border-radius: j(6);
+}
+
+.form-grade {
+  @extend %df;
+  @extend %aic;
+  padding: 0 j(20);
+  height: j(48);
+  font-size: j(16);
+}
+.form-grade-label {
+  @extend %c3;
+}
+.form-grade-tip {
+  @extend %c9;
+}
+.form-grade-value {
+  @extend %df;
+  @extend %aic;
+  margin: 0 j(20);
+  .iconfont {
+    @extend %cp;
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    font-size: j(18);
+    color: #bdbdbd;
+    width: j(24);
+    height: j(24);
+  }
+  .iconStarFilling {
+    color: $color-primary;
+  }
+}
+
+.form-photo,
+.form-file {
+  @extend %df;
+  @extend %fdc;
+  align-items: flex-start;
+
+  .tips {
+    @extend %df;
+    @extend %fdc;
+    font-size: j(12);
+    line-height: j(18);
+    padding: j(5) 0;
+    color: #666;
+  }
+}
+
+.photo-group {
+  @extend %df;
+  @extend %fww;
+  //padding: j(10) j(32);
+}
+
+.photo-box {
+  @extend %pr;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %bsb;
+
+  &:nth-child(1),
+  &:nth-child(2),
+  &:nth-child(3) {
+    margin-top: 0;
+  }
+
+  margin-top: j(10);
+  margin-right: j(10);
+  width: j(80);
+  height: j(80);
+  border-radius: j(6);
+  background-color: #fff;
+  border: 1px solid #ddd;
+
+  .icon-zengjia {
+    color: #e4b81b;
+    font-size: j(20);
+  }
+
+  .icon-shanchu {
+    @extend %pa;
+    @extend %br50;
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    @extend %cp;
+    @extend %cfff;
+    top: j(-5);
+    right: j(-5);
+    width: j(16);
+    height: j(16);
+    background-color: #7d7c7c;
+  }
+}
+
+.photo {
+  @extend %w100;
+  @extend %pa;
+  @extend %t0;
+  @extend %l0;
+  @extend %h100;
+  border-radius: j(6);
+}
+
+.photo-added {
+  width: j(24);
+  height: j(24);
+}
+
+.health-content {
+  flex: 1;
+  @extend %bsb;
+  padding: 0 j(20);
+  text-align: right;
+}

@@ -43,7 +43,7 @@ export default {
       options,
     )
       .then((res) => {
-        const { total: pagingTotal = 0, dataList: list = [] } = this.pagingFormatResult(res)
+        const { totalPage: pagingTotal = 0, dataList: list = [] } = this.pagingFormatResult(res)
         if (this.pagingCallbackResult) {
           this.pagingCallbackResult(
             {

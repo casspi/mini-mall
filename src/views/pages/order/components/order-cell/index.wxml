@@ -2,15 +2,10 @@
 
 <view class="c-bar"></view>
 
-<view
-  class="store-section"
-  bindtap="jumpPageOrFireFn"
-  data-params="{{ data }}"
-  data-url="order_details_index"
->
+<view class="store-section" bindtap="jumpPageOrFireFn" data-params="{{ data }}" data-url="order_details_index">
   <view class="iconfont iconShop"></view>
   <view class="store-name">
-    <text>{{ data.storeName }}</text>
+    <text>荣昇企业网上药店</text>
   </view>
   <view class="status">
     <text>{{ config$.ORDER_STATUS_TIP[data.status] }}</text>
@@ -19,12 +14,7 @@
 
 <view class="c-border mr"></view>
 
-<view
-  class="goods-section"
-  bindtap="jumpPageOrFireFn"
-  data-params="{{ data }}"
-  data-url="order_details_index"
->
+<view class="goods-section" bindtap="jumpPageOrFireFn" data-params="{{ data }}" data-url="order_details_index">
   <view class="goods-image-group">
     <image
       class="goods-image"

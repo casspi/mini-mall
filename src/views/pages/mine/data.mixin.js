@@ -29,9 +29,12 @@ export default {
         url: "address_index",
         from: "mine_index",
       },
-      help: {
+      call: {
+        label: "电话客服",
+        fn: "callService",
+      },
+      online: {
         label: "在线客服",
-        fn: "handleCustomerService",
       },
       // setting: {
       //   label: '设置',

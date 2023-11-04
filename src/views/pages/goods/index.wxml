@@ -1,4 +1,4 @@
-<goods-banner data="{{ arrBanner }}"> </goods-banner>
+<goods-banner data="{{ { arrBanner: arrBanner, goodsInfo: goodsInfo } }}"> </goods-banner>
 <view class="base-info">
   <view class="left">
     <view class="price"
@@ -26,7 +26,7 @@
     </view>
     <view class="cell">
       <text class="label">规格</text>
-      <text class="value">{{ goodsInfo.specifications || "-" }}</text>
+      <text class="value">{{ goodsInfo.specifications[0] || "-" }}</text>
     </view>
   </view>
 </view>
@@ -35,7 +35,7 @@
   <button open-type="contact" class="icon c-button-reset iconfont iconweixin"></button>
   <!-- <view class="icon _iconfont _icon-kefu"></view> -->
 
-  <view class="icon _iconfont _icon-cart" data-async="true" data-url="cart_index" bindtap="jumpPageOrFireFn">
+  <view class="icon _iconfont _icon-cart" data-async="true" data-url="cart_index" bindtap="jumpTabBarPage">
     <view class="badge" wx:if="{{ shopTotal$.text }}">
       <text>{{ shopTotal$.text }}</text>
     </view>

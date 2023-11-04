@@ -19,28 +19,44 @@ export default {
   H5_BASE_URL: isProd ? "" : "",
   IMG_SOURCE: "http://101.132.140.21:8080/app/system/icon/viewIconById/",
 
+  DO_UPLOAD: "https://vas-wap.autostreets.com/fileUpload/base64-image",
+  // 文件上传
+  REQ_UPLOAD_FILE: "app/system/file/upload",
+
   // 获取分类
   REQ_CLASSIFY_LIST: "app/drug/wtProductType/listDic",
 
+  //所有商品
+  REQ_ALL_GOODS: "app/drug/wtProduct/list",
   // 商品列表查询
   REQ_GOODS_LIST: "app/drug/wtProduct/page",
   // 商品详情
   REQ_GOODS_DETAIL: "app/drug/wtProduct/",
 
   // 获取分类数据
+  REQ_HOME_DIC: "app/drug/wtProductType/listTopLevelDic",
 
-  //获取购物车数据
-  REQ_SHOP_CART_TOTAL: "api/shop/cart/total",
   // 加入购物车
-  REQ_ADD_CART: "app/system/wtShoppingCartRelProduct",
+  REQ_ADD_CART: "app/drug/wtShoppingCartRelProduct",
   // 获取购物车列表
-  REQ_SHOP_CART_LIST: "app/system/wtShoppingCartRelProduct/page",
+  REQ_SHOP_CART_LIST: "app/drug/wtShoppingCartRelProduct/page",
 
   // 地址列表
   REQ_ADDRESS_LIST: "app/drug/wtAddress/listAll",
+
   // 新增地址
   DO_ADD_ADDRESS: "app/drug/wtAddress",
 
+  // 新增处方
+  REQ_ADD_PRESCRIPTION: "app/drug/wtPrescription/add",
+
+  // 新增用药人
+  REQ_ADD_PATIENT: "app/drug/wtPatient",
+  // 查询用药人
+  REQ_PATIENT_LIST: "app​/drug​/wtPatient​/listAll",
+
+  // 下单
+  DO_ORDER_SUBMIT: "app/drug/wtOrder/add",
   // 订单列表
   REQ_ORDER_LIST: "app/drug/wtOrder/page",
 

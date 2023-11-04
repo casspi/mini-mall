@@ -1,0 +1,19 @@
+@import "src/assets/scss/define";
+
+page {
+  @extend %df;
+  @extend %oh;
+  @extend %fdc;
+  height: 100%;
+  background-color: $color-bg;
+}
+.content {
+  flex: 1;
+  overflow-y: auto;
+  margin: j(10) auto;
+  width: j(355);
+  border-radius: j(6);
+}
+.c-button {
+  width: j(710);
+}

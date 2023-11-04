@@ -45,7 +45,7 @@ new WowComponent({
       value: "text",
     },
     maxlength: {
-      type: String,
+      type: String | undefined,
       value: "",
     },
     placeholder: {

@@ -1,0 +1,45 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
+
+<view class="wrap {{ classes }}">
+  <view class="radio-cell">
+    <view class="name">
+      {{ data.name }}
+    </view>
+    <view class="radio">
+      <view class="radio-button" bindtap="radioHandle" data-value="{{ false }}">
+        <view class=" _iconfont {{ !data.value ? '_icon-xuanzhong' : '_icon-radio' }} "></view>
+        <view class="">无</view>
+      </view>
+      <view class="radio-button" bindtap="radioHandle" data-value="{{ true }}">
+        <view class=" _iconfont {{ data.value ? '_icon-xuanzhong' : '_icon-radio' }} "></view>
+        <view class="">有</view>
+      </view>
+    </view>
+  </view>
+  <view class="option-cell" wx:if="{{ data.options && data.options.length && data.value }}">
+    <view
+      class="option-item  {{ filter.filterIncludes(data.selected, item) && 'active' }}"
+      wx:for="{{ data.options }}"
+      wx:key="index"
+      data-selected="{{ data.selected }}"
+      data-item="{{ item }}"
+      bindtap="optionHandle"
+    >
+      <text class=""> {{ item }} </text>
+    </view>
+  </view>
+  <view class="other-cell" wx:if="{{ data.options && data.options.length && data.value }}">
+    <view class="label">
+      <text>其他</text>
+    </view>
+    <textarea
+      class="textarea-content"
+      value="{{ data.other }}"
+      bindinput="textareaChange"
+      data-item="{{ data.other }}"
+      placeholder-class="c-input-place"
+      placeholder="补充您的确诊信息"
+      maxlength="100 "
+    ></textarea>
+  </view>
+</view>

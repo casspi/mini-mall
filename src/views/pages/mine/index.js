@@ -46,20 +46,32 @@ new WowPage({
       })
       .toast()
   },
-  handleCustomerService(options) {
-    const { item } = options
-    console.log(item, options)
+  // handleCustomerService(options) {
+  //   const { item } = options
+  //   console.log(item, options)
+  //   this.modalActionSheet(["电话客服", "在线客服"])
+  //     .then((res) => {
+  //       const actions = ["callService", "onlineService"]
+  //       this[actions[res.tapIndex]]()
+  //     })
+  //     .null()
+  // },
+  callService() {
+    const phoneNumber = "400-8882222"
     this.modalConfirm({
-      content: `拨打客服电话400-8882222？`,
+      content: `拨打客服电话${phoneNumber}`,
       confirmText: "确定",
       cancelText: "取消",
     })
       .then(() => {
-        return this.callPhone(13817674594)
+        return this.callPhone(phoneNumber)
       })
       .finally((r) => {
         console.log("finally", r)
       })
       .null()
+  },
+  onlineService() {
+    console.log("onlineService")
   },
 })

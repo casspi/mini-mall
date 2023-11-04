@@ -1,6 +1,6 @@
 <wxs src="/wxs/filter.wxs" module="filter" />
 
-<view class="wrap">
+<view class="wrap class-external">
   <view class="label">
     <text>总金额：</text>
   </view>

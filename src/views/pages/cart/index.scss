@@ -134,6 +134,12 @@
   line-height: j(20);
   font-size: j(14);
 }
+.goods-brand {
+  @extend %c9;
+  @extend %twno;
+  line-height: j(20);
+  font-size: j(12);
+}
 .goods-prompt {
   @extend %c9;
   margin-top: j(4);

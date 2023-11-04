@@ -54,7 +54,7 @@ curl.interceptors.request.use(
 curl.interceptors.response.use(
   (response) =>
     new Promise((resolve, reject) => {
-      const { requestConfig, statusCode, data: respData = {} } = response
+      let { requestConfig, statusCode, data: respData = {} } = response
       delete response.requestConfig
       console.log(response)
       let { url, method } = requestConfig
@@ -62,13 +62,16 @@ curl.interceptors.response.use(
         console.log(`${url} [${method}] 请求失败 => `, response)
         return reject(`网络繁忙，请稍后再试[${statusCode}]`)
       }
+      if (typeof respData === "string") {
+        respData = JSON.parse(respData)
+      }
       console.log(`${url} [${method}] 请求返回 => `, respData)
-      let { status, data, Extend, message } = respData
+      let { status, data, Extend, message, success } = respData
       if ([401].indexOf(status) > -1) {
         reject(message || "token已过期，请重新登录")
         return gotoLogin()
       }
-      if (status !== 200) {
+      if (!(status === 200 || success)) {
         return reject(respData)
       }
       if (Extend && typeof Extend === "object" && typeof data === "object") {

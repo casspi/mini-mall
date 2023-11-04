@@ -1,0 +1,14 @@
+<view class="content">
+  <health-item
+    bindchange="handleChange"
+    wx:for="{{ arrData }}"
+    data="{{ item }}"
+    index="{{ index }}"
+    wx:key="index"
+  ></health-item>
+</view>
+
+<view class="c-button round" bindtap="handleSubmit">
+  <text> 确定 </text>
+</view>
+<view class="ios-seat"> </view>

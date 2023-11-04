@@ -107,39 +107,6 @@ export default {
         desc: "hjhhjj",
       },
     ],
-    arrGoods: [
-      {
-        id: 1,
-        name: "999感冒灵",
-        subName: "感康",
-        img: "https://img30.360buyimg.com/babel/s320x320_jfs/t1/118182/26/17983/255703/5f61b07aE48622c4f/224c98e42d16e58b.png!cc_320x320.webp",
-        price: 100,
-        otc: "1",
-      },
-      {
-        id: 2,
-        name: "999感冒灵",
-        img: "https://img10.360buyimg.com/babel/s320x320_jfs/t1/142789/24/38907/123163/64f53109Fbdad0723/f98d3035cb846f31.jpg!cc_320x320.webp",
-        price: 100.0,
-      },
-      {
-        id: 3,
-        name: "999感冒灵",
-        img: "https://img30.360buyimg.com/babel/s320x320_jfs/t1/118182/26/17983/255703/5f61b07aE48622c4f/224c98e42d16e58b.png!cc_320x320.webp",
-        price: 100.0,
-      },
-      {
-        id: 4,
-        name: "999感冒灵",
-        img: "https://img30.360buyimg.com/babel/s320x320_jfs/t1/118182/26/17983/255703/5f61b07aE48622c4f/224c98e42d16e58b.png!cc_320x320.webp",
-        price: 100.0,
-      },
-      {
-        id: 5,
-        name: "999感冒灵",
-        img: "https://img30.360buyimg.com/babel/s320x320_jfs/t1/118182/26/17983/255703/5f61b07aE48622c4f/224c98e42d16e58b.png!cc_320x320.webp",
-        price: 100.01,
-      },
-    ],
+    arrGoods: [],
   },
 }

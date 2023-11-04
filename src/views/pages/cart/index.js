@@ -28,10 +28,10 @@ new WowPage({
     this.userGet().finally(() => {
       this.setData({ isNullLoading: false })
     })
-    this.reqShopCartTotal()
   },
   onShow() {
     this.handleRefresh()
+    this.reqShopCartTotal()
   },
   handleRefresh(cb) {
     this.pagingRefresh(cb)
@@ -47,21 +47,32 @@ new WowPage({
       },
     }
   },
+  pagingFormatResult(res) {
+    if (res && Array.isArray(res.dataList)) {
+      res.dataList = res.dataList.map((item) => {
+        item = { ...item, ...item.wtProduct }
+        delete item.wtProduct
+        return item
+      })
+    }
+    return res
+  },
   handleAllSelect() {
     let { isAllSelected, pagingData } = this.data
     isAllSelected = !isAllSelected
-    pagingData.forEach((item) => {
-      item.selected = isAllSelected
+    pagingData.forEach((arrItem) => {
+      arrItem.forEach((item) => {
+        item.selected = isAllSelected
+      })
     })
     this.setData({ isAllSelected, pagingData })
     this.judgeItemSelect()
   },
   handleItemSelect(event) {
-    let { store: storeIndex, index } = this.inputParams(event)
+    let { arrindex, index } = this.inputParams(event)
     let { pagingData } = this.data
-    pagingData[storeIndex].goodInfoRespDtoList[index].selected =
-      !pagingData[storeIndex].goodInfoRespDtoList[index].selected
-    this.setData({ pagingData })
+    console.log(arrindex, index, pagingData, pagingData[arrindex][index])
+    this.setData({ [`pagingData[${arrindex}][${index}].selected`]: !pagingData[arrindex][index].selected })
     this.judgeItemSelect()
   },
   judgeItemSelect() {
@@ -71,17 +82,20 @@ new WowPage({
     if (!pagingData.length) {
       isAllSelected = false
     }
-    pagingData.forEach((item) => {
-      let { num, price, selected } = item
-      if (selected) {
-        numAmount += +num * +price
-      } else {
-        isAllSelected = false
-      }
-      if (numAmount < 0) {
-        numAmount = 0
-      }
+    pagingData.forEach((arrItem) => {
+      arrItem.forEach((item) => {
+        let { productCount, price, selected } = item
+        if (selected) {
+          numAmount += +productCount * +price
+        } else {
+          isAllSelected = false
+        }
+        if (numAmount < 0) {
+          numAmount = 0
+        }
+      })
     })
+
     this.setData({ numAmount, isAllSelected, pagingData })
   },
   handleSubmit() {
@@ -89,19 +103,21 @@ new WowPage({
     if (!numAmount) {
       return null
     }
-    let arrArrResult = pagingData.filter((store) => {
-      store.goodInfoRespDtoList = store.goodInfoRespDtoList.filter((item) => item.selected)
-      return !!store.goodInfoRespDtoList.length
+    let arrArrResult = []
+    pagingData.forEach((arrItem) => {
+      arrItem.forEach((item) => {
+        if (item.selected) arrArrResult.push(item)
+      })
     })
-    this.routerPush("cart_confirm_index", { arrData: arrArrResult, numAmount })
+    this.routerPush("cart_confirm_index", { arrData: arrArrResult, numAmount: 1 })
   },
   handleDelete() {
     let { pagingData, api$ } = this.data
     let arrData = []
-    pagingData.forEach((store) => {
-      store.goodInfoRespDtoList.forEach((item) => {
+    pagingData.forEach((arrItem) => {
+      arrItem.forEach((item) => {
         if (item.selected) {
-          arrData.push(item.cartItemId)
+          arrData.push(item.id)
         }
       })
     })
@@ -123,19 +139,27 @@ new WowPage({
   },
   handleCountNumber(event) {
     let { pagingData, api$ } = this.data
-    let { index, number } = this.inputParams(event)
-    let { num, cartItemId } = pagingData[index]
-    num = +num + number
-    if (num <= 0) {
+    let { arrindex, index, number } = this.inputParams(event)
+    console.log(arrindex, index, number)
+    let { productCount, productId, price } = pagingData[arrindex][index]
+    productCount = +productCount + number
+    if (productCount <= 0) {
       return null
     }
-    this.curl(api$.DO_SHOP_CART_UPDATE, {
-      cartItemId,
-      num,
-    })
+    this.curl(
+      api$.REQ_ADD_CART,
+      {
+        productId,
+        productCount,
+        productPrice: price,
+      },
+      {
+        method: "put",
+      },
+    )
       .then(() => {
         this.setData({
-          [`pagingData[${index}][num]`]: num,
+          [`pagingData[${arrindex}][${index}].productCount`]: productCount,
         })
         this.judgeItemSelect()
       })

@@ -1,3 +1,5 @@
+import ApiConfig from "src/config/api.config"
+
 export default {
   formAddressHandle(event) {
     let { code, postcode, value, item } = this.inputParams(event)
@@ -19,18 +21,23 @@ export default {
         return this.imageChoose({ sourceType: sourceType[res.tapIndex] })
       })
       .then((res) => {
-        return this.fileToBase64(res.tempFilePaths[0])
+        return this.curl(
+          api$.REQ_UPLOAD_FILE,
+          {
+            storeKey: item.storeKey,
+            businessId: "",
+          },
+          {
+            filePath: res.tempFilePaths[0],
+            loading: true,
+            fn: "uploadFile",
+            name: "file",
+          },
+        )
       })
       .then((res) => {
-        return this.curl(api$.DO_IMAGE_UPLOAD, {
-          fileType: "jpg",
-          fileExt: "jpg",
-          base64FileContent: res,
-        })
-      })
-      .then((res) => {
-        item.value.push(res.url)
-        this.setData({ [`${item.key}.value`]: item.value })
+        // item.value.push("https://images.autostreets.com/" + res.saveUrl)
+        this.setData({ [`${item.key}.value`]: [...item.value, { id: res.id, src: ApiConfig.IMG_SOURCE + res.id }] })
       })
       .toast()
   },
@@ -39,5 +46,13 @@ export default {
     let { index, item } = this.inputParams(event)
     item.value.splice(index, 1)
     this.setData({ [`${item.key}.value`]: item.value })
+  },
+  formUploadPreviewHandle(event) {
+    let { index, item } = this.inputParams(event)
+    const urls = item.value.map((item) => item.src)
+    this.imagePreview({
+      current: urls[index],
+      urls,
+    }).toast()
   },
 }

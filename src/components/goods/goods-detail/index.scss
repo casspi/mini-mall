@@ -17,6 +17,9 @@
     margin: 0 j(15);
     color: #eee;
   }
+  .detail-tab-title.active {
+    font-weight: bold;
+  }
 }
 .detail-tab-item {
   display: none;

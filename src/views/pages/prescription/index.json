@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "处方信息",
+  "usingComponents": {
+    "wow-cell": "/components/wow-cell/index",
+    "wow-fixed-bottom": "/components/wow-fixed-bottom/index"
+  }
+}

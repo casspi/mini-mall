@@ -32,7 +32,8 @@ new WowComponent({
       //获取参数
       console.log(this.data.data)
       const { data, api$ } = this.data
-      this.curl(api$.REQ_ADD_CART, { id: data.id }, { method: "post" }).then((res) => {
+      const { productPrice, id: productId } = data
+      this.curl(api$.REQ_ADD_CART, { productCount: 1, productId, productPrice }, { method: "post" }).then((res) => {
         console.log("已加入购物车", res)
         this.modalToast("已加入购物车~")
       })

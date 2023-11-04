@@ -1,81 +1,83 @@
 <wxs src="/wxs/filter.wxs" module="filter" />
 
-<wow-skeleton wx:if="{{ !arrData }}"></wow-skeleton>
+<wow-skeleton wx:if="{{ !params$.arrData }}"></wow-skeleton>
 
 <block wx:else>
   <address-item
     wx:if="{{ objAddress }}"
     bindtap="jumpPageOrFireFn"
-    data-url="mine_address_index"
+    data-url="address_index"
     data-params="{{ { from: 'cart_confirm_index' } }}"
     data="{{ objAddress }}"
     classes="mode-arrow"
   ></address-item>
 
-  <address-add-item wx:else bindtap="jumpPageOrFireFn" data-url="mine_address_details_index"></address-add-item>
+  <address-add-item wx:else bindtap="jumpPageOrFireFn" data-url="address_details_index"></address-add-item>
 
-  <view class="goods-dl" wx:for="{{ arrData }}" wx:for-item="store" wx:for-index="storeIndex" wx:key="storeIndex">
-    <view
-      class="goods-dt"
-      bindtap="jumpPageOrFireFn"
-      data-url="store_index"
-      data-params="{{ { storeId: store.storeId } }}"
-    >
+  <view
+    class="patient"
+    data-params="{{ { objPrescription: objPrescription } }}"
+    bindtap="jumpPageOrFireFn"
+    data-url="prescription_index"
+  >
+    <view class="patient-label">
+      <text wx:if="{{ objPrescription }}"> 用药人:{{ objPrescription.patient.userName }} </text>
+      <text wx:else> 尚未添加用药人，请添加 </text>
+    </view>
+    <view class="patient-text">
+      <text> 处方信息 </text>
+    </view>
+    <view class="iconfont iconMore"></view>
+  </view>
+  <view class="goods-dl">
+    <view class="goods-dt">
       <view class="iconfont iconShop"></view>
-      <text class="goods-store">{{ store.storeName }}</text>
-      <view class="iconfont iconMore"></view>
+      <text class="goods-store">荣昇企业网上药店</text>
     </view>
     <view
+      wx:for="{{ params$.arrData }}"
+      wx:for-index="index"
+      wx:key="index"
       class="goods-dd"
       bindtap="jumpPageOrFireFn"
-      data-url="goods_details_index"
-      data-params="{{ { goodsId: item.goodsId } }}"
-      wx:for="{{ store.goodInfoRespDtoList }}"
-      wx:key="index"
+      data-url="goods_index"
+      data-params="{{ { id: item.productId } }}"
     >
-      <image class="goods-image" src="{{ item.pic }}"></image>
+      <image class="goods-image" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
       <view class="goods-info">
         <view class="goods-name">
-          <text>{{ item.goodsName }}</text>
+          <text>{{ item.name }}</text>
         </view>
         <view class="goods-prompt">
-          <text>{{ item.spec }}</text>
-          <text>x{{ item.num }}</text>
+          <text>{{ item.specifications[0] }}</text>
+          <text> x {{ item.productCount }}</text>
         </view>
         <view class="c-flex1"></view>
         <view class="goods-amount">￥{{ filter.filterAmount(item.price) }}</view>
       </view>
     </view>
-    <view class="goods-cell">
+    <!-- <view class="goods-cell">
       <view class="goods-cell-label">
         <text>订单留言</text>
       </view>
       <view class="goods-cell-value goods-cell-input-box">
         <input
-          value="{{ store.note || '' }}"
           bindinput="inputHandle"
-          data-item="{{ 'arrData[' + storeIndex + '].note' }}"
+          data-item="remark"
           placeholder="如需给商家备注，请在此输入"
           placeholder-class="goods-placeholder-class"
           type="text"
           class="goods-cell-input"
         />
       </view>
-    </view>
+    </view> -->
     <view class="goods-cell">
       <view class="goods-cell-label">
-        <text>运费</text>
+        <text>配送方式</text>
       </view>
       <view class="goods-cell-value">
-        <text>{{ filter.filterAmount(store.feightFee) }}</text>
-      </view>
-    </view>
-    <view class="goods-cell">
-      <view class="goods-cell-label">
-        <text>合计金额</text>
-      </view>
-      <view class="goods-cell-value">
-        <text>{{ filter.filterStoreTotalAmount(store) }}</text>
+        <!-- {{ filter.filterAmount(store.feightFee) }} -->
+        <text>普通快递5元</text>
       </view>
     </view>
   </view>
@@ -83,7 +85,8 @@
   <view class="null"></view>
 
   <wow-settlement
-    disabled="{{ !numAmount || !objAddress }}"
+    class-external="settlement"
+    disabled="{{ !numAmount || !objAddress || !objPrescription }}"
     amount="{{ numAmount }}"
     bindclick="handleSubmit"
   ></wow-settlement>

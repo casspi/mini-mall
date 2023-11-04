@@ -1,7 +1,4 @@
-<wow-skeleton
-  wx:if="{{ pagingTotal < 1 }}"
-  is-loading="{{ pagingTotal === -1 }}"
-></wow-skeleton>
+<wow-skeleton wx:if="{{ pagingTotal < 1 }}" is-loading="{{ pagingTotal === -1 }}"></wow-skeleton>
 
 <block wx:if="{{ pagingTotal > 0 }}">
   <view class="tab-section">
@@ -14,47 +11,19 @@
     >
       <text>{{ item }}</text>
       <block wx:if="{{ index === 2 }}">
-        <image
-          wx:if="{{ numTypeIndex !== index }}"
-          class="tab-icon"
-          src="/assets/images/SortPupN.png"
-        ></image>
-        <image
-          wx:elif="{{ orderByType === 'PRICE_ASC' }}"
-          class="tab-icon"
-          src="/assets/images/SortPup.png"
-        ></image>
-        <image
-          wx:else
-          class="tab-icon"
-          src="/assets/images/SortPdown.png"
-        ></image>
+        <image wx:if="{{ numTypeIndex !== index }}" class="tab-icon" src="/assets/images/SortPupN.png"></image>
+        <image wx:elif="{{ orderByType === 'PRICE_ASC' }}" class="tab-icon" src="/assets/images/SortPup.png"></image>
+        <image wx:else class="tab-icon" src="/assets/images/SortPdown.png"></image>
       </block>
     </view>
   </view>
-  <wow-scroll
-    id="wowScroll"
-    bindscrolltolower="pagingLoad"
-    bindrefresh="pagingRefresh"
-    class="inner"
-  >
+  <wow-scroll id="wowScroll" bindscrolltolower="pagingLoad" bindrefresh="pagingRefresh" class="inner">
     <view class="content">
-      <block
-        wx:for="{{ pagingData }}"
-        wx:for-item="arrData"
-        wx:for-index="arrIndex"
-        wx:key="arrIndex"
-      >
-        <goods-item
-          wx:for="{{ arrData }}"
-          wx:key="index"
-          data="{{ item }}"
-        ></goods-item>
+      <block wx:for="{{ pagingData }}" wx:for-item="arrData" wx:for-index="arrIndex" wx:key="arrIndex">
+        <goods-item wx:for="{{ arrData }}" wx:key="index" data="{{ item }}"></goods-item>
       </block>
     </view>
-    <wow-end
-      wx:if="{{ pagingTotal > 0 }}"
-      is-loading="{{ pagingTotal > pagingNumTotal }}"
-    ></wow-end>
+    <view> pagingTotal{{ pagingTotal }} pagingNumTotal{{ pagingNumTotal }} </view>
+    <wow-end wx:if="{{ pagingTotal > 0 }}" is-loading="{{ pagingTotal > pagingNumTotal }}"></wow-end>
   </wow-scroll>
 </block>

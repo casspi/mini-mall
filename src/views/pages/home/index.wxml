@@ -1,18 +1,9 @@
-<wow-search
-  placeholder="搜索商品"
-  classes="none-input"
-  bindtap="jumpPageOrFireFn"
-  data-url="search_index"
-></wow-search>
+<wxs src="/wxs/filter.wxs" module="filter" />
+
+<wow-search placeholder="搜索商品" classes="none-input" bindtap="jumpPageOrFireFn" data-url="search_index"></wow-search>
 <view class="space-block"></view>
 <scroll-view class="classify-warp" scroll-x enable-flex>
-  <view
-    wx:for="{{ arrClassify }}"
-    wx:for-item="arrData"
-    wx:for-index="index"
-    wx:key="index"
-    class="classify-block"
-  >
+  <view wx:for="{{ arrClassify }}" wx:for-item="arrData" wx:for-index="index" wx:key="index" class="classify-block">
     <view class="item-inner">
       <view
         wx:for="{{ arrData }}"
@@ -20,16 +11,10 @@
         wx:for-index="index"
         wx:key="index"
         class="classify-item"
-        bindtap="jumpPageOrFireFn"
+        bindtap="handleClassify"
         data-item="{{ item }}"
       >
-        <image
-          class="icon"
-          src="{{ item.icon }}"
-          mode="aspectFit|aspectFill|widthFix"
-          lazy-load="false"
-        >
-        </image>
+        <image class="icon" src="{{ item.icon }}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"> </image>
         <text class="name">{{ item.name }}</text>
       </view>
     </view>
@@ -63,11 +48,8 @@
     data-url="goods_index"
     data-params="{{ item }}"
   >
-    <image class="img" src="{{ item.img }}"> </image>
-    <text class="name"
-      >{{ item.name }}
-      <!-- {{item.subName?`(${item.subName})`:''}} -->
-    </text>
+    <image class="img" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"> </image>
+    <text class="name">{{ item.name }}{{ item.alias ? "(" + item.alias + ")" : "" }} </text>
     <view class="price"
       ><text>￥{{ item.price }}</text></view
     >

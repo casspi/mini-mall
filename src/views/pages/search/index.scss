@@ -73,3 +73,19 @@ page {
   @extend %oh;
   flex: 1;
 }
+
+.cart-btn {
+  position: fixed;
+  font-size: j(28);
+  font-weight: bold;
+  right: j(25);
+  bottom: j(50);
+  width: j(50);
+  height: j(50);
+  border-radius: 50%;
+  background: $color-primary;
+  color: #fff;
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+}

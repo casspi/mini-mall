@@ -11,7 +11,7 @@
     <view class="prompt">
       <text>{{ data.province }} {{ data.city }} {{ data.county }} {{ data.address }}</text>
     </view>
-    <view class="type" wx:if="{{ data.status === 1 }}">
+    <view class="type" wx:if="{{ data.def === 1 }}">
       <text>默认地址</text>
     </view>
   </view>

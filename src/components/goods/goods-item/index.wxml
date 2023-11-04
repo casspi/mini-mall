@@ -14,7 +14,7 @@
       <text>{{ data.name }}</text>
     </view>
     <view class="spec">
-      <text>{{ data.specifications }}</text>
+      <text>{{ data.specifications || data.specifications[0] }}</text>
     </view>
     <view class="company">
       <text>{{ data.brandCn }}</text>

@@ -13,6 +13,7 @@ new WowPage({
     WowPage.wow$.mixins.Curl,
     WowPage.wow$.mixins.Paging,
     WowPage.wow$.mixins.Helper,
+    WowPage.wow$.mixins.Pages,
   ],
   data: {
     arrData: [],
@@ -40,7 +41,6 @@ new WowPage({
     this.reqAddressList()
   },
   handleSelect(event) {
-    console.log(this.data, this.inputParams(event))
     let { from } = this.data.params$
     if (["mine_index", "merchant_index"].indexOf(from) > -1) {
       return null
@@ -58,11 +58,8 @@ new WowPage({
       api$.REQ_ADDRESS_LIST,
       {},
       {
-        method: "get",
+        method: "post",
         loading: false,
-        callback: (res) => {
-          return { storeId: res.storeId || "" }
-        },
       },
     )
       .then((res) => {
