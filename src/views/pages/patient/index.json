@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "用药人管理",
+    "usingComponents": {
+        "wow-end": "/components/wow-end/index",
+        "wow-skeleton": "/components/wow-skeleton/index",
+        "wow-fixed-bottom": "/components/wow-fixed-bottom/index",
+        "patient-add-item": "./components/patient-add-item/index",
+        "patient-item": "./components/patient-item/index"
+    }
+}

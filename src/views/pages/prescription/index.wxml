@@ -1,4 +1,16 @@
 <import src="/templates/form-view/index.wxml" />
+<patient-item
+  wx:if="{{ objPatient }}"
+  bindtap="jumpPageOrFireFn"
+  data-url="patient_index"
+  data-params="{{ { from: 'prescription_index' } }}"
+  data="{{ objPatient }}"
+  classes="mode-arrow"
+  tips="true"
+></patient-item>
+
+<patient-add-item wx:else bindtap="jumpPageOrFireFn" data-url="patient_details_index"></patient-add-item>
+
 <template is="fromView" data="{{ objInput: objInput }}"></template>
 
 <!-- 底部导航 -->

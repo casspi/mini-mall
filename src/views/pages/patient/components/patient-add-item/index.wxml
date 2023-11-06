@@ -1,0 +1,12 @@
+<view class="wrap">
+  <view class="iconfont iconFllow"></view>
+  <view class="inner">
+    <view class="title">
+      <text>添加用药人</text>
+    </view>
+    <view class="prompt">
+      <text>新增一个用药人</text>
+    </view>
+  </view>
+  <view class="iconfont iconMore"></view>
+</view>

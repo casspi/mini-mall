@@ -17,6 +17,7 @@ new WowPage({
     WowPage.wow$.mixins.Loadmore,
     WowPage.wow$.mixins.Modal,
     WowPage.wow$.mixins.Tabbar,
+    WowPage.wow$.mixins.Goods,
   ],
   data: {
     isNullLoading: true,
@@ -30,11 +31,11 @@ new WowPage({
     })
   },
   onShow() {
-    this.handleRefresh()
+    this.handleRefresh(this.judgeItemSelect)
     this.reqShopCartTotal()
   },
   handleRefresh(cb) {
-    this.pagingRefresh(cb)
+    this.pagingRefresh(false, cb)
   },
   pagingGetUrlParamsOptions() {
     const { api$ } = this.data
@@ -50,8 +51,11 @@ new WowPage({
   pagingFormatResult(res) {
     if (res && Array.isArray(res.dataList)) {
       res.dataList = res.dataList.map((item) => {
-        item = { ...item, ...item.wtProduct }
-        delete item.wtProduct
+        const { id: wtProductId, ...wtProduct } = item.wtProduct || {}
+        if (wtProductId) {
+          item = { ...item, wtProductId, ...wtProduct }
+          delete item.wtProduct
+        }
         return item
       })
     }
@@ -77,6 +81,7 @@ new WowPage({
   },
   judgeItemSelect() {
     let { pagingData } = this.data
+    console.log("judgeItemSelectjudgeItemSelect", pagingData)
     let numAmount = 0
     let isAllSelected = true
     if (!pagingData.length) {
@@ -109,6 +114,7 @@ new WowPage({
         if (item.selected) arrArrResult.push(item)
       })
     })
+    if (this.judgeGoods(arrArrResult)) return
     this.routerPush("cart_confirm_index", { arrData: arrArrResult, numAmount: 1 })
   },
   handleDelete() {
@@ -126,9 +132,13 @@ new WowPage({
     }
     this.modalConfirm(`确认移出这${arrData.length}件宝贝么？`)
       .then(() => {
-        return this.curl(api$.DO_SHOP_CART_DELETE, {
-          cartItemIdList: arrData,
-        })
+        return this.curl(
+          api$.REQ_ADD_CART + "?idList=" + arrData[0],
+          {
+            idList: arrData,
+          },
+          { method: "DELETE" },
+        )
       })
       .then(() => {
         this.pagingRefresh()
@@ -141,7 +151,7 @@ new WowPage({
     let { pagingData, api$ } = this.data
     let { arrindex, index, number } = this.inputParams(event)
     console.log(arrindex, index, number)
-    let { productCount, productId, price } = pagingData[arrindex][index]
+    let { productCount, productId, price, shoppingCartId, id } = pagingData[arrindex][index]
     productCount = +productCount + number
     if (productCount <= 0) {
       return null
@@ -151,7 +161,8 @@ new WowPage({
       {
         productId,
         productCount,
-        productPrice: price,
+        shoppingCartId,
+        id,
       },
       {
         method: "put",

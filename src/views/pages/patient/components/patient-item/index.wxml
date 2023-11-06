@@ -1,0 +1,31 @@
+<view class="wrap {{ classes }}">
+  <view class="inner">
+    <view class="head">
+      <view class="name">
+        <text>{{ data.userName }}</text>
+      </view>
+      <view class="phone">
+        <text>{{ data.phone }}</text>
+      </view>
+    </view>
+    <view class="prompt">
+      <text>
+        {{ data.idCard }}
+      </text>
+      <!-- <text>{{ filterIDcard(data.idCard, 2) }} {{ filterIDcard(data.idCard, 3) }}</text> -->
+    </view>
+    <view class="type" wx:if="{{ data.def === 1 }}">
+      <text>默认</text>
+    </view>
+    <view wx:if="{{ tips }}" class="tips">
+      <text> 请选择实际使用的用药人，降低拒方风险 </text>
+    </view>
+  </view>
+  <view class="iconfont iconMore"></view>
+  <view
+    class="iconfont iconEdit"
+    catchtap="jumpPageOrFireFn"
+    data-params="{{ data }}"
+    data-url="patient_details_index"
+  ></view>
+</view>

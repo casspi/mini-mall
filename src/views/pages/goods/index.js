@@ -9,11 +9,10 @@ new WowPage({
   mixins: [
     WowPage.wow$.mixins.Router,
     WowPage.wow$.mixins.Shop,
+    WowPage.wow$.mixins.Tabbar,
     WowPage.wow$.mixins.Jump,
     WowPage.wow$.mixins.User,
-    WowPage.wow$.mixins.Tabbar,
     WowPage.wow$.mixins.Curl,
-    WowPage.wow$.mixins.Api,
   ],
   data: {
     goodsInfo: {},

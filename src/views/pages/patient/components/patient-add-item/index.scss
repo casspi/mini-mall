@@ -1,0 +1,41 @@
+@import '~src/assets/scss/define';
+
+.wrap{
+    @extend %df;
+    @extend %cp;
+    @extend %aic;
+    @extend %bw05;
+    @extend %bwb;
+    background-color: #fff;
+    padding: $num-margin;
+    .iconfont{
+        @extend %c9;
+        font-size: j(18);
+    }
+    .iconFllow{
+        @extend %br50;
+        @extend %df;
+        @extend %aic;
+        @extend %jcc;
+        @extend %c3;
+        color: #fff;
+        margin-right: j(15);
+        background-color: #999;
+        width: j(30);
+        height: j(30);
+    }
+}
+.inner{
+    @extend %df1;
+}
+.title{
+    @extend %c3;
+    font-size: j(14);
+    line-height: j(20);
+}
+.prompt{
+    @extend %c9;
+    margin-top: j(4);
+    font-size: j(12);
+    line-height: j(17);
+}

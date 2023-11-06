@@ -7,7 +7,7 @@
         value="{{ keyword }}"
         type="text"
         class="search-input"
-        placeholder="输入药品名称"
+        placeholder="搜索药品"
         placeholder-class="search-place"
       />
     </view>
@@ -30,6 +30,11 @@
   class="result-goods"
   keyword="{{ keyword }}"
   params="{{ params$ }}"
+  bindcartchange="reqShopCartTotal"
 ></search-result-goods>
 
-<view class="cart-btn _iconfont _icon-cart" data-url="cart_index" bindtap="jumpTabBarPage"> </view>
+<view class="cart-btn _iconfont _icon-cart" data-url="cart_index" bindtap="jumpTabBarPage">
+  <view class="badge">
+    <text>{{ shopTotal$.text }}</text>
+  </view>
+</view>

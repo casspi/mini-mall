@@ -8,9 +8,10 @@
   data="{{ item }}"
   classes="{{ classes }}"
 ></address-item>
-<bolck wx:if="!arrData || arrData.length <=5">
+<bolck wx:if="{{ arrData }}">
   <address-add-item
     wx:if="{{ arrData }}"
+    data-filter="addFilter"
     bindtap="jumpPageOrFireFn"
     data-url="address_details_index"
     data-params="{{ params$ }}"

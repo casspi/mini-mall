@@ -120,11 +120,12 @@ page {
     margin-top: j(10);
   }
   .price {
+    color: $color-primary;
+    line-height: j(22);
+    font-size: j(16);
+    margin-top: j(10);
     &::first-letter {
       font-size: j(12);
     }
-    font-size: j(16);
-    color: red;
-    margin-top: j(10);
   }
 }

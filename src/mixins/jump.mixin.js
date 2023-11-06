@@ -23,7 +23,7 @@ export default {
     if (disabled) {
       return null
     }
-
+    console.log("filterfilterfilterfilterfilterfilter", filter, rest)
     // 过滤拦截器
     if (filter) {
       filter = filter.split(",")

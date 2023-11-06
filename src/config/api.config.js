@@ -36,7 +36,7 @@ export default {
   // 获取分类数据
   REQ_HOME_DIC: "app/drug/wtProductType/listTopLevelDic",
 
-  // 加入购物车
+  // 购物车
   REQ_ADD_CART: "app/drug/wtShoppingCartRelProduct",
   // 获取购物车列表
   REQ_SHOP_CART_LIST: "app/drug/wtShoppingCartRelProduct/page",
@@ -50,10 +50,12 @@ export default {
   // 新增处方
   REQ_ADD_PRESCRIPTION: "app/drug/wtPrescription/add",
 
-  // 新增用药人
-  REQ_ADD_PATIENT: "app/drug/wtPatient",
+  // 用药人
+  DO_ADD_PATIENT: "app/drug/wtPatient",
   // 查询用药人
-  REQ_PATIENT_LIST: "app​/drug​/wtPatient​/listAll",
+  REQ_PATIENT_LIST: "app/drug/wtPatient/listAll",
+  // 查询用药人分页
+  REQ_PATIENT_PAGE: "app/drug/wtPatient/page",
 
   // 下单
   DO_ORDER_SUBMIT: "app/drug/wtOrder/add",

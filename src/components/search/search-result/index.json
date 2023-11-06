@@ -1,8 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "wow-tab": "/components/wow-tab/index",
-        "search-result-goods": "/components/search/search-result-goods/index",
-        "search-result-special": "/components/search/search-result-special/index"
-    }
-}

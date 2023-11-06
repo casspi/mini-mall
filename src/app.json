@@ -13,6 +13,8 @@
         "pages/login/index",
         "pages/mine/index",
         "pages/order/index",
+        "pages/patient/details/index",
+        "pages/patient/index",
         "pages/prescription/index",
         "pages/search/index",
         "pages/webview/index"

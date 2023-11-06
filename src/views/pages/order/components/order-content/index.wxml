@@ -6,31 +6,17 @@
   wx:if="{{ pagingTotal <= 0 }}"
   is-loading="{{ pagingTotal === -1 }}"
 ></wow-skeleton>
-<wow-scroll
-  wx:else
-  id="wowScroll"
-  bindscrolltolower="pagingLoad"
-  bindrefresh="pagingRefresh"
-  class="content"
->
-  <block
-    wx:for="{{ pagingData }}"
-    wx:key="arrIndex"
-    wx:for-item="arrData"
-    wx:for-index="arrIndex"
-  >
+<wow-scroll wx:else id="wowScroll" bindscrolltolower="pagingLoad" bindrefresh="pagingRefresh" class="content">
+  <block wx:for="{{ pagingData }}" wx:key="arrIndex" wx:for-item="arrData" wx:for-index="arrIndex">
     <order-cell
       bindrefresh="pagingRefresh"
       wx:for="{{ arrData }}"
       wx:key="index"
       wx:for-item="item"
       wx:for-index="index"
-      data="{{ {...item, status: data.status} }}"
+      data="{{ item }}"
       status="{{ data.status }}"
     ></order-cell>
   </block>
-  <wow-end
-    wx:if="{{ pagingTotal > 0 }}"
-    is-loading="{{ pagingTotal > pagingNumTotal }}"
-  ></wow-end>
+  <wow-end wx:if="{{ pagingTotal > 0 }}" is-loading="{{ pagingTotal > pagingNumTotal }}"></wow-end>
 </wow-scroll>

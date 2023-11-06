@@ -2,6 +2,8 @@
   "navigationBarTitleText": "处方信息",
   "usingComponents": {
     "wow-cell": "/components/wow-cell/index",
-    "wow-fixed-bottom": "/components/wow-fixed-bottom/index"
+    "wow-fixed-bottom": "/components/wow-fixed-bottom/index",
+    "patient-add-item": "../patient/components/patient-add-item/index",
+    "patient-item": "../patient/components/patient-item/index"
   }
 }

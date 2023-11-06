@@ -1,0 +1,10 @@
+
+@import "~src/assets/scss/define";
+
+page{
+    background-color: $color-bg;
+}
+
+.button{
+    margin: j(20) auto j(72) !important;
+}

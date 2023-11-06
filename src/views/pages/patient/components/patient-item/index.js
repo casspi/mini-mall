@@ -3,32 +3,30 @@ import "./index.wxml"
 import "./index.scss"
 
 import WowComponent from "wow-wx/lib/component"
-import DataMixin from "./data.mixin"
 
 new WowComponent({
-  mixins: [
-    DataMixin,
-    WowComponent.wow$.mixins.Input,
-    WowComponent.wow$.mixins.Tabs,
-  ],
+  mixins: [WowComponent.wow$.mixins.Jump, WowComponent.wow$.mixins.Router, WowComponent.wow$.mixins.Input],
   externalClasses: ["class-external"],
   options: {
     multipleSlots: true,
     addGlobalClass: true,
   },
   properties: {
-    isShow: {
+    isDefault: {
       type: Boolean,
       value: false,
-      observer(value) {},
     },
-    keyword: {
+    classes: {
       type: String,
-      value: "",
+      value: "mode-edit",
     },
-    params: {
+    data: {
       type: Object,
       value: "",
+    },
+    tips: {
+      type: Boolean,
+      value: false,
     },
   },
 })

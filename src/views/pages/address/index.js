@@ -16,7 +16,7 @@ new WowPage({
     WowPage.wow$.mixins.Pages,
   ],
   data: {
-    arrData: [],
+    arrData: "",
     classes: "mode-arrow",
   },
   onLoad(options) {
@@ -63,6 +63,7 @@ new WowPage({
       },
     )
       .then((res) => {
+        res = res || []
         res.forEach((item) => {
           item.source = params$.source
         })
@@ -71,6 +72,9 @@ new WowPage({
       .toast()
   },
   handleReadAddressFormWx() {
+    if (this.addFilter()) {
+      return
+    }
     const { from } = this.data.params$
     const { api$ } = this.data
     this.setData({
@@ -111,5 +115,13 @@ new WowPage({
         })
         .toast()
     })
+  },
+  addFilter() {
+    const { arrData } = this.data
+    console.log("arrData", arrData, arrData.length)
+    if (arrData.length >= 10) {
+      this.modalToast("最多添加10个，如需添加请先删除")
+      return true
+    }
   },
 })

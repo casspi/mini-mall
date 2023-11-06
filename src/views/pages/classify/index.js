@@ -12,6 +12,7 @@ new WowPage({
     WowPage.wow$.mixins.Config,
     WowPage.wow$.mixins.Router,
     WowPage.wow$.mixins.Shop,
+    WowPage.wow$.mixins.Tabbar,
   ],
   data: {
     arrData: [],

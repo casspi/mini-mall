@@ -1,4 +1,5 @@
 export default {
+  // 0：待付款 1：待收货 2： 已完成
   data: {
     arrStatus: [
       {
@@ -7,7 +8,7 @@ export default {
       },
       {
         label: "待付款",
-        status: "1",
+        status: "0",
       },
       // {
       //   label: "待发货",
@@ -15,11 +16,11 @@ export default {
       // },
       {
         label: "待收货",
-        status: "3",
+        status: "1",
       },
       {
         label: "已完成",
-        status: "4",
+        status: "2",
       },
     ],
   },

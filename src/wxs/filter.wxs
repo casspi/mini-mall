@@ -142,4 +142,43 @@ module.exports = {
   filterIncludes: function (arr, v) {
     return arr.indexOf(v) > -1
   },
+  filterHealth: function (v) {
+    if (typeof v === 'string') {
+      return v
+    }
+    var res = []
+    v.forEach(function (item, index) {
+      if (item.type) {
+        var str = (item.value ? '有' : '无') + item.type
+        res.push(str)
+      }
+    })
+    return res.join(',')
+  },
+  filterIDcard: function (IdCard, type) {
+    //获取出生日期
+    if (type == 1) {
+      var birth = IdCard.substring(6, 10) + "-" + IdCard.substring(10, 12) + "-" + IdCard.substring(12, 14);
+      return birth;
+    }
+    //获取性别
+    if (type == 2) {
+      if (parseInt(IdCard.substr(16, 1)) % 2 == 1) {
+        return "男";
+      } else {
+        return "女";
+      }
+    }
+    //获取年龄
+    if (type == 3) {
+      var myDate = getDate();
+      var month = myDate.getMonth() + 1;
+      var day = myDate.getDate();
+      var age = myDate.getFullYear() - UIdCard.substring(6, 10) - 1;
+      if (IdCard.substring(10, 12) < month || IdCard.substring(10, 12) == month && IdCard.substring(12, 14) <= day) {
+        age++;
+      }
+      return age;
+    }
+  }
 }

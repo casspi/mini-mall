@@ -33,40 +33,43 @@ new WowComponent({
     },
   },
   data: {
-    orderByType: "",
+    orderBy: "",
     numTypeIndex: 0,
     arrType: ["综合", "销量", "价格"],
   },
   methods: {
+    bindCartChange() {
+      this.triggerEvent("cartchange")
+    },
     pagingGetUrlParamsOptions() {
-      let { api$, keyword, orderByType } = this.data
+      let { api$, keyword, orderBy } = this.data
       return {
         url: api$.REQ_GOODS_LIST,
         params: {
-          key: keyword,
-          orderByType,
+          keyword,
+          orderBy,
         },
       }
     },
     handleSelectType(event) {
       let { index } = this.inputParams(event)
-      let { numTypeIndex, orderByType } = this.data
+      let { numTypeIndex, orderBy } = this.data
       if (index === 0) {
-        orderByType = ""
+        orderBy = ""
       } else if (index === 1) {
-        orderByType = "SALE"
+        orderBy = "sale desc"
       } else if (index === 2) {
         if (numTypeIndex === 2) {
-          if (orderByType === "PRICE_ASC") {
-            orderByType = "PRICE_DESC"
+          if (orderBy === "price asc") {
+            orderBy = "price desc"
           } else {
-            orderByType = "PRICE_ASC"
+            orderBy = "price asc"
           }
         } else {
-          orderByType = "PRICE_ASC"
+          orderBy = "price asc"
         }
       }
-      this.setData({ orderByType, numTypeIndex: index })
+      this.setData({ orderBy, numTypeIndex: index })
       this.setData({ arrArrData: "", numTotal: 0 })
       this.pagingRefresh()
     },

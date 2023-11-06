@@ -1,5 +1,5 @@
 <view class="wrap">
-  <view wx:if="{{ data.goodsInfo.prescriptionDrugs === 0 }}" class="otc">
+  <view wx:if="{{ data.goodsInfo.prescriptionDrugs === 1 }}" class="otc">
     <text>OTC</text>
   </view>
   <swiper bindchange="handleChange" class="wrap" circular>
@@ -14,7 +14,7 @@
     </swiper-item>
   </swiper>
   <view class="indicator">
-    <text>{{ index }}/{{ data.length }}</text>
+    <text>{{ index }}/{{ data.arrBanner.length }}</text>
   </view>
   <slot></slot>
 </view>

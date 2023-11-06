@@ -34,16 +34,17 @@
             maxlength="6"
             placeholder="请输入验证码"
           />
-          <button class="btn-code" disabled="{{ !filter.isPhone(phone) || count > 0 }}" bindtap="handleCode">{{
+          <button disabled="{{ !filter.isPhone(phone) || count > 0 }}" class="btn-code" bindtap="handleCode">{{
             filter.renderCodeBtn(count)
           }}</button>
         </view>
       </view>
     </view>
   </view>
+
   <button
-    class="button is-submit mt-80"
     disabled="{{ !filter.isPhone(phone) || !filter.isCode(code) || !isAgreement }}"
+    class="button is-submit mt-80"
     bindtap="handleLogin"
     >立即登录</button
   >

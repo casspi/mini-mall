@@ -22,10 +22,10 @@ new WowPage({
   ],
   data: {
     isAgreement: false,
+    objPatient: "",
   },
   onLoad(options) {
     this.routerGetParams(options)
-    console.log(this.data)
     let { params$, objInput } = this.data
     let {
       objPrescription: { id, patient },
@@ -34,9 +34,11 @@ new WowPage({
       this.validateAssignment(this, patient, objInput, "objInput")
     }
   },
-  onShow() {},
+  onShow() {
+    this.reqPatientList()
+  },
   handleSubmit() {
-    let { params$, api$, objInput, isAgreement } = this.data
+    let { params$, objPatient, api$, objInput, isAgreement } = this.data
     if (!isAgreement) {
       this.modalToast(
         "请确认已确诊此疾病并使用过该药，无过敏史、无相关禁忌症和不良反应。确认处方药须凭处方在药师指导下购买和使用",
@@ -50,23 +52,22 @@ new WowPage({
     let options = this.validateInput(objInput)
     console.log(options)
     const { caseFileIds, labelFileIds, ...wtPatient } = options
-    const caseIds = caseFileIds.map((item) => item.id)
-    const labelIds = labelFileIds.map((item) => item.id)
-    this.curl(
-      api$.REQ_ADD_PRESCRIPTION,
-      {
-        wtPatient,
-        caseFileIds: caseIds,
-        labelFileIds: labelIds,
-      },
-      {},
-    ).then((res) => {
+    const params = {}
+    params.caseFileIds = caseFileIds.map((item) => item.id)
+    params.labelFileIds = labelFileIds.map((item) => item.id)
+    if (objPatient && objPatient.id) {
+      params.patientId = objPatient.id
+    } else {
+      this.modalToast("请添加用药人信息")
+      return
+    }
+    // params.wtPatient = wtPatient
+    this.curl(api$.REQ_ADD_PRESCRIPTION, params, {}).then((res) => {
       this.backToOrder({
         patient: { ...res.wtPatient, caseFileIds, labelFileIds },
         id: res.id,
       })
     })
-    // this.curl(api$.DO_ADD_ADDRESS, { ...options }, {})
   },
   backToOrder(objPrescription) {
     let objPage = this.pagesGetByIndex(1)
@@ -74,5 +75,32 @@ new WowPage({
       objPage.setData({ objPrescription })
     }
     this.routerPop()
+  },
+  reqPatientList() {
+    let { api$, objPatient } = this.data
+    this.curl(
+      api$.REQ_PATIENT_LIST,
+      {
+        def: 1,
+      },
+      {
+        method: "post",
+      },
+    )
+      .then((res) => {
+        res = res || []
+        if (objPatient) {
+          objPatient = res.filter((item) => item.id === objPatient.id)[0]
+        }
+        // 有默认取默认，无默认取第一个
+        if (!objPatient) {
+          objPatient = res.filter((item) => item.def === 1)[0]
+        }
+        if (!objPatient) {
+          objPatient = res[0]
+        }
+        this.setData({ objPatient: objPatient || "" })
+      })
+      .toast()
   },
 })

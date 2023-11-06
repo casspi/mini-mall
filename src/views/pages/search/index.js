@@ -15,6 +15,8 @@ new WowPage({
     WowPage.wow$.mixins.Modal,
     WowPage.wow$.mixins.Router,
     WowPage.wow$.mixins.Jump,
+    WowPage.wow$.mixins.Shop,
+    WowPage.wow$.mixins.Curl,
   ],
   data: {
     keyword: "",
@@ -24,6 +26,7 @@ new WowPage({
   onLoad(options) {
     this.routerGetParams(options)
     const { params$ } = this.data
+    this.reqShopCartTotal()
     console.log("params$=>", params$)
     this.getHistoryKeywords(() => {
       console.log("this.getHistoryKeywords=>", params$.item && params$.item.names)

@@ -27,6 +27,7 @@ export default {
         use: [
           { nonempty: true, prompt: "请输入收货人联系电话" },
           { rule: (v) => v.length === 11, prompt: "请输入11位手机号" },
+          { rule: (v) => /'^1\d{10}$'/.test(v), prompt: "手机号不合法" },
         ],
       },
       address: {

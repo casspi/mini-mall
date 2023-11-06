@@ -1,8 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "null-view": "/components/wow-skeleton/index",
-        "wow-loading-footer": "/components/wow-loading-footer/index",
-        "goods-item": "/components/goods/goods-item/index"
-    }
-}

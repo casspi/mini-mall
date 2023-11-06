@@ -1,3 +1,5 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
+
 <template name="fromView">
   <block wx:for="{{ objInput }}" wx:for-index="key" wx:key="key">
     <view class="form-block" wx:if="{{ item.useTopBlock }}"></view>
@@ -163,13 +165,12 @@
       class="cell-health"
       classes="{{ item.classes || 'border-bottom cursor-pointer mode-input' }}"
       label="{{ item.label }}"
-      value="{{ item.value }}"
       placeholder="{{ item.placeholder }}"
       data-item="{{ item }}"
       bindtap="jumpPageOrFireFn"
       useRight=""
     >
-      <view class="health-content" slot="cell-right">{{ item.value.length }}</view>
+      <view class="health-content" slot="cell-right">{{ filter.filterHealth(item.value) }}</view>
     </wow-cell>
     <view class="c-border mr" wx:if="{{ item.useBottomBorder }}"></view>
 

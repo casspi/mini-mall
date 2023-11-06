@@ -12,7 +12,6 @@ new WowPage({
     WowPage.wow$.mixins.Input,
     WowPage.wow$.mixins.Jump,
     WowPage.wow$.mixins.Curl,
-    WowPage.wow$.mixins.Api,
     WowPage.wow$.mixins.User,
     WowPage.wow$.mixins.Modal,
   ],

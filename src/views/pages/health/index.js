@@ -27,6 +27,7 @@ new WowPage({
           "肝病",
           "肾病",
         ],
+        type: "疾病史",
       },
       {
         name: "药物过敏史",
@@ -47,6 +48,7 @@ new WowPage({
           "安定",
           "去痛片",
         ],
+        type: "过敏史",
       },
       {
         name: "食物/接触过敏史",
@@ -54,6 +56,7 @@ new WowPage({
         selected: [],
         other: "",
         options: ["鸡蛋", "面粉", "坚果", "海鲜", "豆制品", "花粉", "动物毛发", "酒精", "牛奶", "粉尘", "螨虫"],
+        type: "过敏史",
       },
       {
         name: "家族遗传病史",
@@ -76,6 +79,7 @@ new WowPage({
           "骨质疏松",
           "冠心病",
         ],
+        type: "家族遗传史",
       },
       {
         name: "吸烟",
@@ -88,8 +92,13 @@ new WowPage({
     ],
   },
   onLoad(options) {
-    // this.routerGetParams(options)
-    // console.log(this.data)
+    this.routerGetParams(options)
+    console.log(this.data)
+    let { params$, arrData } = this.data
+    if (Array.isArray(params$.value)) {
+      arrData = params$.value
+    }
+    this.setData({ arrData })
   },
   handleChange(options) {
     let { index, valueKey, value } = options.detail

@@ -76,7 +76,7 @@ page {
 
 .cart-btn {
   position: fixed;
-  font-size: j(28);
+  font-size: j(20);
   font-weight: bold;
   right: j(25);
   bottom: j(50);
@@ -88,4 +88,19 @@ page {
   @extend %df;
   @extend %aic;
   @extend %jcc;
+  @extend %pr;
+  .badge {
+    @extend %pa;
+    @extend %cfff;
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    @extend %br50;
+    top: j(-2);
+    right: j(-10);
+    font-size: j(10);
+    width: j(16);
+    height: j(16);
+    background-color: $color-primary;
+  }
 }

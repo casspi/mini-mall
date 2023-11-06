@@ -12,7 +12,8 @@ page {
     @extend %fdc;
     flex: 1;
     .price {
-      color: red;
+      color: $color-primary;
+      line-height: j(22);
       font-size: j(16);
       &:first-letter {
         font-size: j(12);

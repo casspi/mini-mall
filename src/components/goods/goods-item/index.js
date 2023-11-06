@@ -11,7 +11,6 @@ new WowComponent({
     WowComponent.wow$.mixins.Jump,
     WowComponent.wow$.mixins.Modal,
     WowComponent.wow$.mixins.Curl,
-    WowComponent.wow$.mixins.Api,
   ],
   externalClasses: ["class-external", "class-image-box", "class-image"],
   options: {
@@ -30,11 +29,10 @@ new WowComponent({
   methods: {
     handleCart() {
       //获取参数
-      console.log(this.data.data)
       const { data, api$ } = this.data
       const { productPrice, id: productId } = data
       this.curl(api$.REQ_ADD_CART, { productCount: 1, productId, productPrice }, { method: "post" }).then((res) => {
-        console.log("已加入购物车", res)
+        this.triggerEvent("cartchange")
         this.modalToast("已加入购物车~")
       })
       // eslint-disable-next-line no-undef
