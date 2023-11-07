@@ -31,7 +31,9 @@ page {
   font-size: 1em;
   background-color: transparent;
 }
-
+.c-placeholder {
+  @extend %c9;
+}
 .c-button-reset::after {
   border: none;
   height: 100%;

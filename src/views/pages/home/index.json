@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "首页",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "wow-search": "/components/wow-search/index",
     "wow-skeleton": "/components/wow-skeleton/index"

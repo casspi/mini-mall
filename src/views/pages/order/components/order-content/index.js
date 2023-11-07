@@ -27,6 +27,9 @@ new WowComponent({
       value: "",
     },
   },
+  data: {
+    reason: "",
+  },
   lifetimes: {
     attached: function () {
       console.log(this.data.data)
@@ -50,6 +53,15 @@ new WowComponent({
           methods: "get",
         },
       }
+    },
+    handleReturn(data) {
+      let { api$, reason } = this.data
+      console.log(data)
+      return this.selectComponent("#refWowModal")
+        .show()
+        .then((res) => {
+          console.log(reason)
+        })
     },
   },
 })

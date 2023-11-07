@@ -36,6 +36,9 @@ export default {
   // 获取分类数据
   REQ_HOME_DIC: "app/drug/wtProductType/listTopLevelDic",
 
+  // 活动页
+  REQ_ACTIVITY_ALL: "app/drug/wtActivityPage/listAll",
+
   // 购物车
   REQ_ADD_CART: "app/drug/wtShoppingCartRelProduct",
   // 获取购物车列表

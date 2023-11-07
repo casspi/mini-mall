@@ -1,5 +1,5 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
+
 <view class="ad-page">
-  <image mode="widthFix" src="{{ params$.img }}"> </image>
-  <image mode="widthFix" src="{{ params$.img }}"> </image>
-  <image mode="widthFix" src="{{ params$.img }}"> </image>
+  <image wx:for="{{ params$.detailImagesIds }}" wx:key="index" mode="widthFix" src="{{ filter.source(item) }}"> </image>
 </view>

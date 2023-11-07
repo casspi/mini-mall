@@ -5,15 +5,8 @@
 <scroll-view class="classify-warp" scroll-x enable-flex>
   <view wx:for="{{ arrClassify }}" wx:for-item="arrData" wx:for-index="index" wx:key="index" class="classify-block">
     <view class="item-inner">
-      <view
-        wx:for="{{ arrData }}"
-        wx:for-item="item"
-        wx:for-index="index"
-        wx:key="index"
-        class="classify-item"
-        bindtap="handleClassify"
-        data-item="{{ item }}"
-      >
+      <view wx:for="{{ arrData }}" wx:for-item="item" wx:for-index="index" wx:key="index" class="classify-item"
+        bindtap="handleClassify" data-item="{{ item }}">
         <image class="icon" src="{{ item.icon }}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"> </image>
         <text class="name">{{ item.name }}</text>
       </view>
@@ -21,37 +14,19 @@
   </view>
 </scroll-view>
 <view class="ad-warp">
-  <view
-    class="ad-item"
-    bindtap="jumpPageOrFireFn"
-    data-url="ad_index"
-    data-params="{{ item }}"
-    wx:for="{{ arrAd }}"
-    wx:for-item="item"
-    wx:for-index="index"
-    wx:key="index"
-  >
-    <image class="img" src="{{ item.img }}"></image>
+  <view class="ad-item" bindtap="jumpPageOrFireFn" data-url="ad_index" data-params="{{ item }}" wx:for="{{ arrAd }}"
+    wx:key="index">
+    <image class="img" src="{{ filter.source(item.coverImageId[0].imagePath) }}"></image>
   </view>
 </view>
 <view class="goods-title">
   <text> 为你推荐 </text>
 </view>
 <view class="goods-warp">
-  <view
-    class="goods"
-    wx:for="{{ arrGoods }}"
-    wx:for-item="item"
-    wx:for-index="id"
-    wx:key="id"
-    bindtap="jumpPageOrFireFn"
-    data-url="goods_index"
-    data-params="{{ item }}"
-  >
+  <view class="goods" wx:for="{{ arrGoods }}" wx:for-item="item" wx:for-index="id" wx:key="id"
+    bindtap="jumpPageOrFireFn" data-url="goods_index" data-params="{{ item }}">
     <image class="img" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"> </image>
     <text class="name">{{ item.name }}{{ item.alias ? "(" + item.alias + ")" : "" }} </text>
-    <view class="price"
-      ><text>￥{{ item.price }}</text></view
-    >
+    <view class="price"><text>￥{{ item.price }}</text></view>
   </view>
 </view>

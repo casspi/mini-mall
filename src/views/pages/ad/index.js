@@ -10,6 +10,6 @@ new WowPage({
   onLoad(options) {
     this.routerGetParams(options)
     const { params$ } = this.data
-    wx.setNavigationBarTitle({ title: params$.title })
+    wx.setNavigationBarTitle({ title: params$.title || "详情" })
   },
 })

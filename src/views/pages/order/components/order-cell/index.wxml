@@ -15,13 +15,8 @@
 
 <view class="goods-section" bindtap="jumpPageOrFireFn" data-params="{{ data }}" data-url="order_details_index">
   <view class="goods-image-group">
-    <image
-      class="goods-image"
-      wx:for="{{ data.wtProducts }}"
-      wx:key="index"
-      wx:if="{{ index < 3 }}"
-      src="{{ filter.source(item.imagesIcon[0].imagePath) }}"
-    ></image>
+    <image class="goods-image" wx:for="{{ data.wtProducts }}" wx:key="index" wx:if="{{ index < 3 }}"
+      src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
   </view>
   <view class="goods-info">
     <view class="c-flex1"></view>
@@ -36,12 +31,8 @@
 <block>
   <view class="c-border mr"></view>
   <view class="operate">
-    <view
-      wx:if="{{ status === config$.ORDER_STATUS.UN_PAY }}"
-      class="operate-button"
-      bindtap="inputEvent"
-      data-event="payment"
-    >
+    <view wx:if="{{ status === config$.ORDER_STATUS.UN_PAY }}" class="operate-button" bindtap="inputEvent"
+      data-event="payment">
       <text>立即付款</text>
     </view>
     <view wx:if="{{ status === config$.ORDER_STATUS.SEND }}" class="operate-button" bindtap="handleConfirmReceived">

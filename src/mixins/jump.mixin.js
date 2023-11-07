@@ -23,7 +23,6 @@ export default {
     if (disabled) {
       return null
     }
-    console.log("filterfilterfilterfilterfilterfilter", filter, rest)
     // 过滤拦截器
     if (filter) {
       filter = filter.split(",")
@@ -60,43 +59,6 @@ export default {
           premise = premise.split(",")
           for (let i = 0, len = premise.length; i < len; i++) {
             const p = premise[i]
-            // 未绑定机器
-            if (p === "isBindDevice" && !IsBindMachine) {
-              return this.modalConfirm({
-                confirmText: "立即绑定",
-                cancelText: "以后再说",
-                content: "请先绑定您的血糖仪，绑定罗氏血糖仪，获取更多积分",
-              })
-                .then(() => {
-                  this.routerPush("device_ocr_index")
-                })
-                .catch(() => {
-                  fireFn()
-                })
-            }
-
-            // 新客身份 是否选择
-            if (
-              p === "isGuestIdentity" &&
-              IsNewUser && // 新客
-              !IsDrawPrize // 没有抽奖
-            ) {
-              // 没有身份 或者身份不是糖尿病患者
-              if (Identity !== 1) {
-                return this.jumpPopupGuestHandle()
-              }
-              // 没有建档
-              if (!IsTestPlan) {
-                return this.routerPush("measure_diagnose_index")
-              }
-              // 没有抽奖
-              if (!IsDrawPrize && PrizeBasicId) {
-                return this.routerPush("turntable_index", {
-                  Type: 2,
-                  PrizeBasicId,
-                })
-              }
-            }
           }
           fireFn()
         })

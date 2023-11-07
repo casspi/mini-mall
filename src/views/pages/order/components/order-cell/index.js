@@ -3,7 +3,7 @@ import "./index.wxml"
 import "./index.scss"
 
 import WowComponent from "wow-wx/lib/component"
-console.log(WowComponent.wow$.mixins.Config)
+
 new WowComponent({
   mixins: [
     WowComponent.wow$.mixins.Config,
@@ -52,7 +52,7 @@ new WowComponent({
     },
     handleReturn() {
       let { data, api$ } = this.data
-      console.log(data, api$)
+      this.triggerEvent("return", data)
     },
   },
 })

@@ -16,6 +16,7 @@ new WowPage({
     WowPage.wow$.mixins.Shop,
     WowPage.wow$.mixins.Tabbar,
     WowPage.wow$.mixins.Curl,
+    WowPage.wow$.mixins.Refresh,
   ],
   handleClassify(e) {
     const { item } = this.inputParams(e)
@@ -25,6 +26,13 @@ new WowPage({
   onLoad() {
     this.reqShopCartTotal()
     this.getClassifyList()
+    this.getActivity()
+    this.getGoodsList()
+  },
+  pagingRefresh() {
+    this.reqShopCartTotal()
+    this.getClassifyList()
+    this.getActivity()
     this.getGoodsList()
   },
   getClassifyList() {
@@ -40,6 +48,14 @@ new WowPage({
       console.log(arrClassify)
       this.setData({
         arrClassify,
+      })
+    })
+  },
+  getActivity() {
+    const { api$ } = this.data
+    this.curl(api$.REQ_ACTIVITY_ALL, { status: 0 }).then((res) => {
+      this.setData({
+        arrAd: res || [],
       })
     })
   },
