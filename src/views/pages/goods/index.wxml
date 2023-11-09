@@ -1,11 +1,9 @@
 <goods-banner data="{{ { arrBanner: arrBanner, goodsInfo: goodsInfo } }}"> </goods-banner>
 <view class="base-info">
   <view class="left">
-    <view class="price"
-      ><text>￥{{ goodsInfo.price }}</text>
+    <view class="price"><text>￥{{ goodsInfo.price }}</text>
     </view>
-    <view class="name"
-      ><text>{{ goodsInfo.name }}{{ goodsInfo.alias ? "(" + goodsInfo.alias + ")" : "" }}</text>
+    <view class="name"><text>{{ goodsInfo.name }}{{ goodsInfo.alias ? "(" + goodsInfo.alias + ")" : "" }}</text>
     </view>
   </view>
 
@@ -41,9 +39,9 @@
     </view>
   </view>
   <view class="operate-button first-child" data-async="true" data-fn="handleAddedCart" bindtap="jumpPageOrFireFn">
-    <text>{{ params$.otc === "1" ? "加入购物车" : "加入清单" }}</text>
+    <text>{{ params$.prescriptionDrugs === 1 ? "加入购物车" : "加入清单" }}</text>
   </view>
   <view class="operate-button last-child" data-async="true" data-fn="handleBuyNow" bindtap="jumpPageOrFireFn">
-    <text>{{ params$.otc === "1" ? "立即购买" : "提交需求" }}</text>
+    <text>{{ params$.prescriptionDrugs === 1 ? "立即购买" : "提交需求" }}</text>
   </view>
 </wow-fixed-bottom>

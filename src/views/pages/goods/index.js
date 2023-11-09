@@ -57,8 +57,12 @@ new WowPage({
     const { api$, params$, goodsInfo } = this.data
     this.curl(api$.REQ_ADD_CART, { id: params$.id }, { method: "post" }).then((res) => {
       console.log("已加入购物车", res)
-      this.modalToast(goodsInfo.otc === "1" ? "已加入购物车~" : "已加入清单")
+      this.modalToast(goodsInfo.prescriptionDrugs === 1 ? "已加入购物车~" : "已加入清单")
     })
   },
-  handleBuyNow() {},
+  handleBuyNow() {
+    const { goodsInfo } = this.data
+    console.log("立即购买", goodsInfo)
+    this.routerPush("cart_confirm_index", { arrData: [goodsInfo] })
+  },
 })

@@ -115,7 +115,7 @@ new WowPage({
       })
     })
     if (this.judgeGoods(arrArrResult)) return
-    this.routerPush("cart_confirm_index", { arrData: arrArrResult, numAmount: 1 })
+    this.routerPush("cart_confirm_index", { arrData: arrArrResult })
   },
   handleDelete() {
     let { pagingData, api$ } = this.data

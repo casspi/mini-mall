@@ -24,7 +24,7 @@
   "homepage": "https://github.com/casspi/mini-mall#readme",
   "dependencies": {
     "@daysnap/define-sass": "0.0.9",
-    "wow-wx": "^0.1.15"
+    "wow-wx": "^0.1.16"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
