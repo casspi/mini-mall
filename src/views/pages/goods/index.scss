@@ -1,4 +1,4 @@
-@import "src/assets/scss/define";
+@import 'src/assets/scss/define';
 page {
   background-color: #f2f2f2;
   @extend %h100;
@@ -31,6 +31,7 @@ page {
     @extend %cp;
     @extend %jcc;
     @extend %c9;
+    margin-left: j(10);
     font-size: j(12);
     line-height: j(17);
     background-color: inherit;

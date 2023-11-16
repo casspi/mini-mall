@@ -19,38 +19,60 @@
 }
 .status {
   font-size: j(14);
+  color: $color-primary;
 }
 .goods-section {
   @extend %df;
+  @extend %fdc;
   background-color: #fff;
   padding: j(20);
 }
-.goods-image-group {
+.goods-group {
   @extend %df1;
   @extend %df;
+}
+.goods-group-inner {
+  @extend %df;
+}
+.goods-name {
+  @extend %df;
+  @extend %fdc;
+  @extend %c9;
+  font-size: j(12);
+  line-height: j(17);
+  .name {
+    @extend %c3;
+    font-size: j(16);
+    margin-bottom: j(10);
+  }
 }
 .goods-image {
   width: j(80);
   height: j(80);
-  margin-right: j(4);
+  margin-right: j(8);
   background-color: #f2f2f2;
 }
 .goods-info {
   @extend %df;
   @extend %fdc;
   @extend %aie;
+  margin-top: j(8);
 }
-.goods-name {
+.goods-num {
   @extend %c9;
   font-size: j(12);
   line-height: j(17);
 }
 .goods-amount {
   @extend %tar;
-  color: #dd0000;
-  margin-top: j(2);
-  font-size: j(16);
+  @extend %c3;
+  margin-top: j(4);
+  font-size: j(12);
   line-height: j(22);
+  .amount {
+    font-size: j(16);
+    color: #dd0000;
+  }
 }
 .operate {
   @extend %df;

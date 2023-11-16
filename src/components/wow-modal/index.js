@@ -1,8 +1,8 @@
-import "./index.json"
-import "./index.wxml"
-import "./index.scss"
+import './index.json'
+import './index.wxml'
+import './index.scss'
 
-import WowComponent from "wow-wx/lib/component"
+import WowComponent from 'wow-wx/lib/component'
 
 new WowComponent({
   mixins: [WowComponent.wow$.mixins.Input],
@@ -12,12 +12,12 @@ new WowComponent({
   },
   data: {
     visible: false,
-    content: "",
+    content: '',
   },
   properties: {
     classes: {
       type: String,
-      value: "",
+      value: '',
     },
     overlayClose: {
       type: Boolean,
@@ -29,19 +29,19 @@ new WowComponent({
     },
     title: {
       type: String,
-      value: "温馨提示",
+      value: '温馨提示',
     },
     sureText: {
       type: String,
-      value: "确认",
+      value: '确认',
     },
     cancelText: {
       type: String,
-      value: "取消",
+      value: '取消',
     },
     openType: {
       type: String,
-      value: "",
+      value: '',
     },
     showCancel: {
       type: Boolean,
@@ -63,15 +63,15 @@ new WowComponent({
     },
     hide(forced) {
       if (forced !== true && this.data.beforeClose) {
-        return this.data.beforeClose("cancel", () => this.hide(true))
+        return this.data.beforeClose('cancel', () => this.hide(true))
       }
       if (this.reject) this.reject()
       this.setData({ visible: false })
-      this.triggerEvent("cancel")
+      this.triggerEvent('cancel')
     },
     handleConfirm(event) {
       if (this.data.beforeClose) {
-        return this.data.beforeClose("confirm", () => this.confirm(event))
+        return this.data.beforeClose('confirm', () => this.confirm(event))
       }
       this.confirm(event)
     },
@@ -81,7 +81,7 @@ new WowComponent({
         this.reject = null
         this.resolve(data)
       }
-      this.triggerEvent("confirm", data)
+      this.triggerEvent('confirm', data)
       this.setData({ visible: false })
     },
   },

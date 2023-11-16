@@ -1,4 +1,4 @@
-import ApiConfig from "src/config/api.config"
+import ApiConfig from 'src/config/api.config'
 
 export default {
   formAddressHandle(event) {
@@ -7,37 +7,37 @@ export default {
     let [province, city, county] = value
     console.log(value)
     if (objHidden) {
-      this.validateAssignment(this, { province, city, county }, objHidden, "objHidden")
+      this.validateAssignment(this, { province, city, county }, objHidden, 'objHidden')
     }
-    this.setData({ [`${item.key}.value`]: value.join(" ") })
+    this.setData({ [`${item.key}.value`]: value.join(' ') })
   },
 
   formUploadHandle(event) {
     let { item } = this.inputParams(event)
     let { api$ } = this.data
-    this.modalActionSheet(["从手机相册选择", "拍照"])
+    this.modalActionSheet(['从手机相册选择', '拍照'])
       .then((res) => {
-        let sourceType = [["album"], ["camera"]]
+        let sourceType = [['album'], ['camera']]
         return this.imageChoose({ sourceType: sourceType[res.tapIndex] })
       })
       .then((res) => {
         return this.curl(
-          api$.REQ_UPLOAD_FILE,
+          api$.DO_UPLOAD_FILE,
           {
-            storeKey: item.storeKey,
-            businessId: "",
+            storeKey: item.storeKey, // 存储控价key
+            businessId: '',
           },
           {
             filePath: res.tempFilePaths[0],
             loading: true,
-            fn: "uploadFile",
-            name: "file",
+            fn: 'uploadFile',
+            name: 'file',
           },
         )
       })
       .then((res) => {
         // item.value.push("https://images.autostreets.com/" + res.saveUrl)
-        this.setData({ [`${item.key}.value`]: [...item.value, { id: res.id, src: ApiConfig.IMG_SOURCE + res.id }] })
+        this.setData({ [`${item.key}.value`]: [...item.value, { id: res.id, src: ApiConfig.IMAGE_BASE_URL + res.id }] })
       })
       .toast()
   },

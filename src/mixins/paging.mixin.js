@@ -1,4 +1,4 @@
-import InputMixin from "wow-wx/mixins/wx/input.mixin"
+import InputMixin from 'wow-wx/mixins/wx/input.mixin'
 
 export default {
   mixins: [InputMixin],
@@ -7,21 +7,19 @@ export default {
     pagingIndex: 1,
     pagingSize: 10,
     pagingTotal: -1,
-    pagingData: "", // 二维数组
+    pagingData: '', // 二维数组
     pagingIsLoading: false,
     pagingNumTotal: -1, // 加载的 total
   },
 
   pagingRefresh(event, cb) {
-    console.log("pagingRefresh", event)
-    const { loading = typeof event === "boolean" ? event : false, callback = cb } = this.inputParams(
-      typeof event === "object" ? event : {},
-    )
+    console.log('pagingRefresh', event)
+    const { loading = typeof event === 'boolean' ? event : false, callback = cb } = this.inputParams(typeof event === 'object' ? event : {})
     this.pagingReqDataList(1, loading, callback)
   },
 
   pagingGetUrlParamsOptions() {
-    return { url: "", params: {}, options: {} }
+    return { url: '', params: {}, options: {} }
   },
 
   pagingReqDataList(pagingIndex = 1, loading = false, callback) {
@@ -29,7 +27,7 @@ export default {
     let { url, params = {}, options = {} } = this.pagingGetUrlParamsOptions({ pagingIndex })
     let { pagingSize, pagingData, pagingNumTotal } = this.data
     options = {
-      loading: loading && typeof callback !== "function",
+      loading: loading && typeof callback !== 'function',
       useError: true,
       ...options,
     }
@@ -85,7 +83,7 @@ export default {
       })
       .toast()
       .finally(() => {
-        typeof callback === "function" && callback()
+        typeof callback === 'function' && callback()
         this.setData({ pagingIsLoading: false })
       })
   },
@@ -100,10 +98,10 @@ export default {
   pagingLoad() {
     const { pagingTotal, pagingData, pagingNumTotal, pagingIsLoading, pagingIndex } = this.data
     if (pagingIsLoading) {
-      return console.log("正在加载中...")
+      return console.log('正在加载中...')
     }
     if (pagingData && pagingTotal <= pagingNumTotal) {
-      return console.log("没有更多了...")
+      return console.log('没有更多了...')
     }
     this.pagingReqDataList(pagingIndex + 1)
   },

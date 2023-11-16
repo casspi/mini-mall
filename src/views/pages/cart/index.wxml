@@ -1,10 +1,6 @@
 <wxs src="/wxs/filter.wxs" module="filter" />
 
-<wow-skeleton
-  wx:if="{{ pagingTotal <= 0 }}"
-  is-loading="{{ isNullLoading || (user$ && pagingTotal === -1) }}"
-  title="{{ user$ ? '您的购物车还没有商品哦~' : '登录才能查看购物车哦~' }}"
->
+<wow-skeleton wx:if="{{ pagingTotal <= 0 }}" is-loading="{{ isNullLoading || (user$ && pagingTotal === -1) }}" title="{{ user$ ? '您的购物车还没有商品哦~' : '登录才能查看购物车哦~' }}">
   <view class="button" wx:if="{{ !isNullLoading && !user$ }}" data-sync="{{ user$ }}" bindtap="jumpPageOrFireFn">
     <text>去登录</text>
   </view>
@@ -18,29 +14,19 @@
     <view class="iconfont iconDelete" wx:if="{{ 1 || numAmount }}" bindtap="handleDelete"></view>
   </view>
   <view class="null"></view>
-  <wow-scroll id="wowScroll" bindscrolltolower="pagingLoad" bindrefresh="pagingRefresh" class="content">
+  <wow-scroll id="wowScroll" bindscrolltolower="pagingLoad" bindrefresh="pagingRefreshHandle" class="content">
     <block wx:for="{{ pagingData }}" wx:key="arrIndex" wx:for-item="arrData" wx:for-index="arrIndex">
       <view class="goods-dl">
         <view class="goods-dd" wx:for="{{ arrData }}" wx:for-item="item" wx:key="index">
-          <view
-            class="select-icon iconfont {{ item.selected ? 'iconxuanze' : 'iconyuanhuan' }}"
-            bindtap="handleItemSelect"
-            data-arrindex="{{ arrIndex }}"
-            data-index="{{ index }}"
-          ></view>
-          <view
-            class="goods-dd-content"
-            data-params="{{ { id: item.productId || item.id } }}"
-            data-url="goods_index"
-            bindtap="jumpPageOrFireFn"
-          >
+          <view class="select-icon iconfont {{ item.selected ? 'iconxuanze' : 'iconyuanhuan' }}" bindtap="handleItemSelect" data-arrindex="{{ arrIndex }}" data-index="{{ index }}"></view>
+          <view class="goods-dd-content" data-params="{{ { id: item.productId || item.id } }}" data-url="goods_index" bindtap="jumpPageOrFireFn">
             <image class="goods-image" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
             <view class="goods-info">
               <view class="goods-name">
-                <text>{{ item.name }}({{ item.alias || "-" }})</text>
+                <text>{{ item.name }}({{ item.alias || '-' }})</text>
               </view>
               <view class="goods-brand">
-                {{ item.brandCn }}
+                {{ item.brandCn || '-' }}
               </view>
               <view class="goods-prompt">
                 <text>{{ item.specifications[0] }} </text>
@@ -50,25 +36,13 @@
               <view class="goods-operate">
                 <view class="goods-amount">￥{{ filter.filterAmount(item.price) }}</view>
                 <view class="goods-count">
-                  <view
-                    class="goods-count-btn goods-count-item {{ item.productCount == 1 && 'disabled' }}"
-                    data-index="{{ index }}"
-                    data-arrindex="{{ arrIndex }}"
-                    data-number="{{ -1 }}"
-                    catchtap="handleCountNumber"
-                  >
+                  <view class="goods-count-btn goods-count-item {{ item.productCount == 1 && 'disabled' }}" data-index="{{ index }}" data-arrindex="{{ arrIndex }}" data-number="{{ -1 }}" catchtap="handleCountNumber">
                     <text>-</text>
                   </view>
                   <view class="goods-count-item">
                     <text>{{ item.productCount }}</text>
                   </view>
-                  <view
-                    class="goods-count-btn goods-count-item"
-                    data-index="{{ index }}"
-                    data-arrindex="{{ arrIndex }}"
-                    data-number="{{ 1 }}"
-                    catchtap="handleCountNumber"
-                  >
+                  <view class="goods-count-btn goods-count-item" data-index="{{ index }}" data-arrindex="{{ arrIndex }}" data-number="{{ 1 }}" catchtap="handleCountNumber">
                     <text>+</text>
                   </view>
                 </view>

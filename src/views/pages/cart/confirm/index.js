@@ -1,9 +1,9 @@
 //index.js
-import "./index.json"
-import "./index.scss"
-import "./index.wxml"
+import './index.json'
+import './index.scss'
+import './index.wxml'
 
-import WowPage from "wow-wx/lib/page"
+import WowPage from 'wow-wx/lib/page'
 
 new WowPage({
   mixins: [
@@ -18,47 +18,48 @@ new WowPage({
     WowPage.wow$.mixins.Goods,
   ],
   data: {
-    objAddress: "",
-    objPrescription: "",
-    arrData: "",
-    numAmount: "---",
-    remark: "",
+    objAddress: '',
+    objPrescription: '',
+    arrData: '',
+    numAmount: '---',
+    remark: '',
     isPrescriptionDrugs: false, // 是否有处方药
   },
   onLoad(options) {
     this.routerGetParams(options)
     console.log(this.data)
+  },
+  onShow() {
     this.reqAddressList()
   },
-  onShow() {},
   // 普通订单提交
   handleSubmit() {
     let { objAddress, objPrescription, api$, params$, config$ } = this.data
-    if (this.judgeGoods(params$.arrData)) return
+    let { from, arrData, ...reset } = params$
+    if (this.judgeGoods(arrData)) return
+    const submitParams = { addressId: objAddress.id, prescriptionId: objPrescription.id, deliveryMethod: '普通快递', wtOrderRelProducts: params$.arrData }
+    if (from !== 'goods_index') submitParams.shoppingCartRelProductIds = arrData.map((item) => item.id)
     let objPayParams
-    this.curl(api$.DO_ORDER_SUBMIT, {
-      addressId: objAddress.id,
-      prescriptionId: objPrescription.id,
-      deliveryMethod: "普通快递",
-      wtOrderRelProducts: params$.arrData,
-    }).then((res) => {
-      this.modalToast("下单成功")
-      setTimeout(() => {
-        this.routerPop()
-      }, 1000)
-      // objPayParams = res || {}
-      // let { timeStamp, nonceStr, packageDesc, signType, paySign } = objPayParams
-      // return this.paymentAmount({
-      //   package: packageDesc,
-      //   timeStamp,
-      //   nonceStr,
-      //   signType,
-      //   paySign,
-      // })
-    })
-    // .then((res) => {
-    //   return this.routerPush("cart_payment_index", { status: "success", from: "cart_confirm_index" }, true)
-    // })
+    this.curl(api$.DO_ORDER_SUBMIT, submitParams, { loading: true })
+      .then((res) => {
+        return this.modalToast('下单成功')
+
+        // objPayParams = res || {}
+        // let { timeStamp, nonceStr, packageDesc, signType, paySign } = objPayParams
+        // return this.paymentAmount({
+        //   package: packageDesc,
+        //   timeStamp,
+        //   nonceStr,
+        //   signType,
+        //   paySign,
+        // })
+      })
+      .then((res) => {
+        setTimeout(() => {
+          this.routerPop()
+        }, 1000)
+        // return this.routerPush('cart_payment_index', { status: 'success', from: 'cart_confirm_index' }, true)
+      })
     // .catch((err) => {
     //   if (err && err.errMsg && err.errMsg.indexOf("requestPayment") > -1) {
     //     return this.routerPush(
@@ -77,12 +78,7 @@ new WowPage({
     arrData.forEach((item) => {
       let price = +item.price
       let productCount = +item.productCount
-      console.log(price)
       numAmount += productCount * price
-      console.log("numAmount=>", numAmount)
-      if (item.feightFee) {
-        numAmount = numAmount + +item.feightFee
-      }
       if (numAmount < 0) {
         numAmount = 0
       }
@@ -91,6 +87,7 @@ new WowPage({
         isPrescriptionDrugs = true
       }
     })
+    console.log('numAmount=>', numAmount)
     this.setData({ numAmount, isPrescriptionDrugs })
   },
   reqAddressList() {
@@ -100,7 +97,7 @@ new WowPage({
       {},
       {
         loading: false,
-        method: "post",
+        method: 'post',
       },
     )
       .then((res) => {
@@ -115,7 +112,7 @@ new WowPage({
         if (!objAddress) {
           objAddress = res[0]
         }
-        this.setData({ objAddress: objAddress || "" })
+        this.setData({ objAddress: objAddress || '' })
       })
       .toast()
       .finally(() => {

@@ -1,0 +1,32 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
+
+<view class="c-bar"></view>
+
+<view class="store-section">
+  <view class="iconfont iconShop"></view>
+  <view class="store-name">
+    <text>荣昇企业网上药店</text>
+  </view>
+</view>
+<block wx:for="{{ data.wtProducts }}" wx:key="index">
+  <view class="c-border mr"></view>
+  <view class="goods-section">
+    <image class="goods-image" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
+    <view class="goods-info">
+      <view class="goods-name">
+        <text>{{ item.name }}({{ item.alias || '-' }})</text>
+      </view>
+      <view class="goods-prompt">
+        <text>{{ item.specifications[0] || '-' }}</text>
+        <text> x {{ item.productCount }}</text>
+      </view>
+      <view class="goods-prompt">{{ item.brandCn || '-' }}</view>
+      <view class="c-flex1"></view>
+      <view class="goods-operate">
+        <view class="goods-amount">
+          <text>¥{{ filter.filterAmount(item.price) }}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

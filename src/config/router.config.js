@@ -11,6 +11,7 @@ export default {
     "home_index": "/pages/home/index",
     "login_index": "/pages/login/index",
     "mine_index": "/pages/mine/index",
+    "order_details_index": "/pages/order/details/index",
     "order_index": "/pages/order/index",
     "patient_details_index": "/pages/patient/details/index",
     "patient_index": "/pages/patient/index",

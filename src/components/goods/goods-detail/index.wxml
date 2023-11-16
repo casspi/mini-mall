@@ -2,25 +2,12 @@
 
 <view class="detail-warp">
   <view class="detail-tab">
-    <text class="detail-tab-title {{ 0 === index && 'active' }}" bindtap="handleChange" data-index="{{ 0 }}"
-      >图文详情
-    </text>
+    <text class="detail-tab-title {{ 0 === index && 'active' }}" bindtap="handleChange" data-index="{{ 0 }}">图文详情 </text>
     <text class="line"> | </text>
-    <text class="detail-tab-title {{ 1 === index && 'active' }}" bindtap="handleChange" data-index="{{ 1 }}"
-      >药师用药指导
-    </text>
+    <text class="detail-tab-title {{ 1 === index && 'active' }}" bindtap="handleChange" data-index="{{ 1 }}">药师用药指导 </text>
   </view>
   <view class="detail-tab-item {{ 0 === index && 'active' }}">
-    <image
-      wx:for="{{ data.imagesDetail }}"
-      wx:for-item="item"
-      wx:for-index="index"
-      wx:key="key"
-      class="detail-img"
-      src="{{ filter.source(item.imagePath) }}"
-      mode="widthFix"
-      lazy-load="true"
-    ></image>
+    <image wx:for="{{ data.imagesDetail }}" wx:for-item="item" wx:for-index="index" wx:key="key" class="detail-img" src="{{ filter.source(item.imagePath) }}" mode="widthFix" lazy-load="true"></image>
   </view>
   <view class="detail-tab-item {{ 1 === index && 'active' }}">
     <image
@@ -32,6 +19,9 @@
       src="{{ filter.source(item.imagePath) }}"
       mode="widthFix"
       lazy-load="true"
+      data-index="{{ index }}"
+      data-item="{{ data.imagesGuidance }}"
+      bindtap="handlePreview"
     ></image>
   </view>
   <!-- <view class="detail-tab-item guidance-item {{ 1 === index && 'active' }}">

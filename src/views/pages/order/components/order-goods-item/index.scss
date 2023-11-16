@@ -1,0 +1,78 @@
+@import "~src/assets/scss/define";
+
+.store-section {
+  @extend %df;
+  @extend %aic;
+  @extend %c3;
+  height: j(64);
+  padding: 0 j(20);
+  background-color: #fff;
+  .iconfont {
+    @extend %c3;
+    font-size: j(18);
+    margin-right: j(4);
+  }
+}
+.store-name {
+  @extend %df1;
+  font-size: j(16);
+}
+.status {
+  font-size: j(14);
+}
+.goods-section {
+  @extend %df;
+  background-color: #fff;
+  padding: j(20);
+}
+.goods-image {
+  width: j(100);
+  height: j(100);
+  margin-right: j(12);
+  background-color: #f2f2f2;
+}
+.goods-info {
+  @extend %df1;
+  @extend %df;
+  @extend %fdc;
+  @extend %oh;
+}
+.goods-name {
+  @extend %c3;
+  @include twno(2);
+  font-size: j(14);
+  line-height: j(20);
+}
+.goods-prompt {
+  @extend %c9;
+  margin-top: j(4);
+  line-height: j(17);
+  font-size: j(12);
+}
+.goods-amount {
+  color: #dd0000;
+  font-size: j(16);
+  line-height: j(22);
+}
+.goods-operate {
+  @extend %df;
+  @extend %jcs;
+  @extend %aic;
+}
+.goods-button {
+  @extend %cp;
+  @extend %df;
+  @extend %aic;
+  @extend %bsb;
+  @extend %jcc;
+  //width: j(72);
+  padding: 0 j(12);
+  height: j(28);
+  font-size: j(12);
+  color: $color-primary;
+  border: j(1) solid $color-primary;
+}
+.goods-status {
+  @extend %c9;
+  font-size: j(12);
+}

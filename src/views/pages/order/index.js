@@ -1,10 +1,10 @@
 //index.js
-import "./index.json"
-import "./index.scss"
-import "./index.wxml"
+import './index.json'
+import './index.scss'
+import './index.wxml'
 
-import WowPage from "wow-wx/lib/page"
-import DataMixin from "./data.mixin"
+import WowPage from 'wow-wx/lib/page'
+import DataMixin from './data.mixin'
 
 new WowPage({
   mixins: [DataMixin, WowPage.wow$.mixins.Input, WowPage.wow$.mixins.Router, WowPage.wow$.mixins.Tabs],

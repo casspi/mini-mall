@@ -14,31 +14,36 @@
 <view class="c-border mr"></view>
 
 <view class="goods-section" bindtap="jumpPageOrFireFn" data-params="{{ data }}" data-url="order_details_index">
-  <view class="goods-image-group">
-    <image class="goods-image" wx:for="{{ data.wtProducts }}" wx:key="index" wx:if="{{ index < 3 }}"
-      src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
+  <view class="goods-group">
+    <view class="goods-group-inner" wx:for="{{ data.wtProducts }}" wx:key="index" wx:if="{{ index < 3 }}">
+      <image class="goods-image" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
+      <view class="goods-name" wx:if="{{ data.wtProducts.length === 1 }}">
+        <text class="name">{{ item.name }}</text>
+        <text class="spec">规格:{{ item.specifications[0] || '-' }}</text>
+        <text class=""> {{ item.brandCn || '-' }}</text>
+      </view>
+    </view>
   </view>
   <view class="goods-info">
     <view class="c-flex1"></view>
-    <view class="goods-name">
+    <view class="goods-num">
       <text>共{{ data.wtProducts.length }}件商品</text>
     </view>
     <view class="goods-amount">
-      <text>¥{{ filter.filterAmount(data.price) }}</text>
+      共计：<text class="amount">¥{{ filter.filterAmount(data.price) }}</text>
     </view>
   </view>
 </view>
 <block>
   <view class="c-border mr"></view>
   <view class="operate">
-    <view wx:if="{{ status === config$.ORDER_STATUS.UN_PAY }}" class="operate-button" bindtap="inputEvent"
-      data-event="payment">
+    <view wx:if="{{ 1 || status === config$.ORDER_STATUS.UN_PAY }}" class="operate-button" bindtap="inputEvent" data-event="payment">
       <text>立即付款</text>
     </view>
-    <view wx:if="{{ status === config$.ORDER_STATUS.SEND }}" class="operate-button" bindtap="handleConfirmReceived">
+    <view wx:if="{{ 1 || status === config$.ORDER_STATUS.SEND }}" class="operate-button" bindtap="handleConfirmReceived">
       <text>确认收货</text>
     </view>
-    <view wx:if="{{ status === config$.ORDER_STATUS.SUCCESS }}" class="operate-button" bindtap="handleReturn">
+    <view wx:if="{{ 1 || status === config$.ORDER_STATUS.SUCCESS }}" class="operate-button" bindtap="handleReturn">
       <text>申请退货</text>
     </view>
   </view>

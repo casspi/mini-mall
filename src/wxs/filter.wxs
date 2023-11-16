@@ -156,6 +156,9 @@ module.exports = {
     return res.join(',')
   },
   filterIDcard: function (IdCard, type) {
+    if(typeof IdCard === 'number'){
+      IdCard = ''+IdCard
+    }
     //获取出生日期
     if (type == 1) {
       var birth = IdCard.substring(6, 10) + "-" + IdCard.substring(10, 12) + "-" + IdCard.substring(12, 14);
@@ -163,7 +166,7 @@ module.exports = {
     }
     //获取性别
     if (type == 2) {
-      if (parseInt(IdCard.substr(16, 1)) % 2 == 1) {
+      if (parseInt(IdCard.substring(16, 1)) % 2 == 1) {
         return "男";
       } else {
         return "女";
@@ -174,11 +177,18 @@ module.exports = {
       var myDate = getDate();
       var month = myDate.getMonth() + 1;
       var day = myDate.getDate();
-      var age = myDate.getFullYear() - UIdCard.substring(6, 10) - 1;
+      var age = myDate.getFullYear() - IdCard.substring(6, 10) - 1;
       if (IdCard.substring(10, 12) < month || IdCard.substring(10, 12) == month && IdCard.substring(12, 14) <= day) {
         age++;
       }
       return age;
     }
+  },
+  filterGoodsTotal: function(goods){
+    var total = 0 
+    goods.forEach(function(item){
+      total += item.number
+    })
+    return total
   }
 }

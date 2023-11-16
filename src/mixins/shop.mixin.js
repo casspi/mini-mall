@@ -1,6 +1,6 @@
 export default {
   data: {
-    shopTotal$: "",
+    shopTotal$: '',
   },
   reqShopCartTotal() {
     let { api$ } = this.data
@@ -14,8 +14,8 @@ export default {
     )
       .then((res) => {
         let number = res.total || 0
-        let text = number > 99 ? "..." : number <= 0 ? "" : `${number}`
-        console.log("resresres", res, number, text)
+        let text = number > 99 ? '...' : number <= 0 ? '' : `${number}`
+        console.log('resresres', res, number, text)
         this.setData({ shopTotal$: { text, number } })
         if (text) {
           if (this.tabBarBadgeShow) {

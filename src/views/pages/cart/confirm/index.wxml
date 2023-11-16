@@ -22,7 +22,15 @@
     data-url="prescription_index"
   >
     <view class="patient-label">
-      <text wx:if="{{ objPrescription }}"> 用药人:{{ objPrescription.patient.userName }} </text>
+      <view wx:if="{{ objPrescription }}">
+        <text class="label">用药人</text>
+        <text class="name">{{ objPrescription.patient.userName }}</text>
+        <text class="age"
+          >{{ filter.filterIDcard(objPrescription.patient.idCard, 3) }}岁，{{
+            filter.filterIDcard(objPrescription.patient.idCard, 2)
+          }}</text
+        >
+      </view>
       <text wx:else> 尚未添加用药人，请添加 </text>
     </view>
     <view class="patient-text">

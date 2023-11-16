@@ -1,9 +1,11 @@
 <goods-banner data="{{ { arrBanner: arrBanner, goodsInfo: goodsInfo } }}"> </goods-banner>
 <view class="base-info">
   <view class="left">
-    <view class="price"><text>￥{{ goodsInfo.price }}</text>
+    <view class="price"
+      ><text>￥{{ goodsInfo.price }}</text>
     </view>
-    <view class="name"><text>{{ goodsInfo.name }}{{ goodsInfo.alias ? "(" + goodsInfo.alias + ")" : "" }}</text>
+    <view class="name"
+      ><text>{{ goodsInfo.name }}{{ goodsInfo.alias ? '(' + goodsInfo.alias + ')' : '' }}</text>
     </view>
   </view>
 
@@ -20,11 +22,11 @@
     </view>
     <view class="cell">
       <text class="label">厂家</text>
-      <text class="value">{{ data.brandCn || "-" }}</text>
+      <text class="value">{{ goodsInfo.brandCn || '-' }}</text>
     </view>
     <view class="cell">
       <text class="label">规格</text>
-      <text class="value">{{ goodsInfo.specifications[0] || "-" }}</text>
+      <text class="value">{{ goodsInfo.specifications[0] || '-' }}</text>
     </view>
   </view>
 </view>
@@ -39,9 +41,9 @@
     </view>
   </view>
   <view class="operate-button first-child" data-async="true" data-fn="handleAddedCart" bindtap="jumpPageOrFireFn">
-    <text>{{ params$.prescriptionDrugs === 1 ? "加入购物车" : "加入清单" }}</text>
+    <text>{{ params$.prescriptionDrugs === 1 ? '加入购物车' : '加入清单' }}</text>
   </view>
   <view class="operate-button last-child" data-async="true" data-fn="handleBuyNow" bindtap="jumpPageOrFireFn">
-    <text>{{ params$.prescriptionDrugs === 1 ? "立即购买" : "提交需求" }}</text>
+    <text>{{ params$.prescriptionDrugs === 1 ? '立即购买' : '提交需求' }}</text>
   </view>
 </wow-fixed-bottom>

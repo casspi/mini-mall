@@ -1,11 +1,6 @@
 <wxs src="../../../wxs/filter.wxs" module="filter" />
 
-<view
-  class="wrap class-external {{ classes }}"
-  data-url="goods_index"
-  data-params="{{ data }}"
-  bindtap="jumpPageOrFireFn"
->
+<view class="wrap class-external {{ classes }}" data-url="goods_index" data-params="{{ data }}" bindtap="jumpPageOrFireFn">
   <view class="image-box class-image-box">
     <image class="image class-image" src="{{ filter.source(data.imagesIcon[0].imagePath) }}"></image>
   </view>
@@ -17,7 +12,7 @@
       <text>{{ data.specifications || data.specifications[0] }}</text>
     </view>
     <view class="company">
-      <text>{{ data.brandCn }}</text>
+      <text>{{ data.brandCn || '-' }}</text>
     </view>
     <view class="price" wx:if="{{ data.price }}">
       <text>￥{{ data.price }}</text>

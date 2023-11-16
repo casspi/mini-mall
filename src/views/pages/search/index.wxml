@@ -2,14 +2,7 @@
   <view class="search-inner">
     <view class="iconfont iconserch"></view>
     <view class="search-content">
-      <input
-        bindinput="handleInput"
-        value="{{ keyword }}"
-        type="text"
-        class="search-input"
-        placeholder="搜索药品"
-        placeholder-class="search-place"
-      />
+      <input bindinput="handleInput" value="{{ keyword }}" type="text" class="search-input" placeholder="搜索药品" placeholder-class="search-place" />
     </view>
     <view bindtap="handleInput" data-value="" class="iconfont iconClose {{ keyword && 'active' }}"></view>
   </view>
@@ -17,24 +10,12 @@
     <text>搜索</text>
   </view>
 </view>
-<search-history
-  wx:if="{{ numCurrIndex === 0 }}"
-  class="s-wiper-box"
-  data="{{ arrHistory }}"
-  bindkeyword="handleKeyword"
-  bindclear="clearHistoryKeywords"
-></search-history>
+<search-history wx:if="{{ numCurrIndex === 0 }}" class="s-wiper-box" data="{{ arrHistory }}" bindkeyword="handleKeyword" bindclear="clearHistoryKeywords"></search-history>
 
-<search-result-goods
-  wx:if="{{ numCurrIndex === 1 }}"
-  class="result-goods"
-  keyword="{{ keyword }}"
-  params="{{ params$ }}"
-  bindcartchange="reqShopCartTotal"
-></search-result-goods>
+<search-result-goods wx:if="{{ numCurrIndex === 1 }}" class="result-goods" keyword="{{ keyword }}" params="{{ params$ }}" bindcartchange="reqShopCartTotal"></search-result-goods>
 
 <view class="cart-btn _iconfont _icon-cart" data-url="cart_index" bindtap="jumpTabBarPage">
-  <view class="badge">
+  <view class="badge" wx:if="{{ shopTotal$.number }}">
     <text>{{ shopTotal$.text }}</text>
   </view>
 </view>

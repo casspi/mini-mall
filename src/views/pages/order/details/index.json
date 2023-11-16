@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "订单详情",
+    "usingComponents": {
+        "wow-skeleton": "/components/wow-skeleton/index",
+        "address-item": "../../address/components/address-item/index",
+        "order-goods-item": "../components/order-goods-item/index"
+    }
+}

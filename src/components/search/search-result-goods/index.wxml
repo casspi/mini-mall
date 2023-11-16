@@ -2,13 +2,7 @@
 
 <block wx:if="{{ pagingTotal > 0 }}">
   <view class="tab-section">
-    <view
-      class="tab-item {{ numTypeIndex === index && 'active' }}"
-      bindtap="handleSelectType"
-      data-index="{{ index }}"
-      wx:for="{{ arrType }}"
-      wx:key="index"
-    >
+    <view class="tab-item {{ numTypeIndex === index && 'active' }}" bindtap="handleSelectType" data-index="{{ index }}" wx:for="{{ arrType }}" wx:key="index">
       <text>{{ item }}</text>
       <block wx:if="{{ index === 2 }}">
         <image wx:if="{{ numTypeIndex !== index }}" class="tab-icon" src="/assets/images/SortPupN.png"></image>
@@ -20,15 +14,9 @@
   <wow-scroll id="wowScroll" bindscrolltolower="pagingLoad" bindrefresh="pagingRefresh" class="inner">
     <view class="content">
       <block wx:for="{{ pagingData }}" wx:for-item="arrData" wx:for-index="arrIndex" wx:key="arrIndex">
-        <goods-item
-          bindcartchange="bindCartChange"
-          wx:for="{{ arrData }}"
-          wx:key="index"
-          data="{{ item }}"
-        ></goods-item>
+        <goods-item bindcartchange="bindCartChange" wx:for="{{ arrData }}" wx:key="index" data="{{ item }}"></goods-item>
       </block>
     </view>
-    pagingTotal{{ pagingTotal }} pagingNumTotal{{ pagingNumTotal }}
     <wow-end wx:if="{{ pagingTotal > 0 }}" is-loading="{{ pagingTotal > pagingNumTotal }}"></wow-end>
   </wow-scroll>
 </block>

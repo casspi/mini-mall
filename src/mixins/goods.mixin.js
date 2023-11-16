@@ -1,4 +1,4 @@
-import ModalMixin from "wow-wx/mixins/wx/modal.mixin"
+import ModalMixin from 'wow-wx/mixins/wx/modal.mixin'
 
 export default {
   mixins: [ModalMixin],
@@ -7,7 +7,7 @@ export default {
     let res = false
     arr.forEach((item) => {
       if (item.status === 1 || item.productCount > item.inventory) {
-        this.modalToast("商品库存不足或已下架")
+        this.modalToast('商品库存不足或已下架')
         res = true
         return
       }

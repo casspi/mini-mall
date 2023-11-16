@@ -1,12 +1,12 @@
-import "./index.json"
-import "./index.wxml"
-import "./index.scss"
+import './index.json'
+import './index.wxml'
+import './index.scss'
 
-import WowComponent from "wow-wx/lib/component"
+import WowComponent from 'wow-wx/lib/component'
 
 new WowComponent({
-  mixins: [WowComponent.wow$.mixins.Input],
-  externalClasses: ["class-external"],
+  mixins: [WowComponent.wow$.mixins.Input, WowComponent.wow$.mixins.Image, WowComponent.wow$.mixins.Curl],
+  externalClasses: ['class-external'],
   options: {
     multipleSlots: true,
     addGlobalClass: true,
@@ -24,6 +24,16 @@ new WowComponent({
     handleChange(event) {
       let { index } = this.inputParams(event)
       this.setData({ index })
+    },
+    handlePreview(event) {
+      const { api$ } = this.data
+      let { index, item } = this.inputParams(event)
+      const urls = item.map((o) => api$.IMAGE_BASE_URL + o.imagePath)
+      console.log(urls, index)
+      this.imagePreview({
+        current: urls[index],
+        urls,
+      }).toast()
     },
   },
 })

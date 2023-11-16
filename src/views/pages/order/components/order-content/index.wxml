@@ -1,16 +1,13 @@
 <wxs src="/wxs/filter.wxs" module="filter" />
 
-<wow-skeleton bindrefresh="pagingRefresh" error="{{ error }}" wx:if="{{ pagingTotal <= 0 }}"
-  is-loading="{{ pagingTotal === -1 }}"></wow-skeleton>
+<wow-skeleton bindrefresh="pagingRefresh" error="{{ error }}" wx:if="{{ pagingTotal <= 0 }}" is-loading="{{ pagingTotal === -1 }}"></wow-skeleton>
 <wow-scroll wx:else id="wowScroll" bindscrolltolower="pagingLoad" bindrefresh="pagingRefresh" class="content">
   <block wx:for="{{ pagingData }}" wx:key="arrIndex" wx:for-item="arrData" wx:for-index="arrIndex">
-    <order-cell bindreturn="handleReturn" bindrefresh="pagingRefresh" wx:for="{{ arrData }}" wx:key="index"
-      wx:for-item="item" wx:for-index="index" data="{{ item }}" status="{{ data.status }}"></order-cell>
+    <order-cell bindreturn="handleReturn" bindrefresh="pagingRefresh" wx:for="{{ arrData }}" wx:key="index" wx:for-item="item" wx:for-index="index" data="{{ item }}" status="{{ item.orderStatus }}"></order-cell>
   </block>
   <wow-end wx:if="{{ pagingTotal > 0 }}" is-loading="{{ pagingTotal > pagingNumTotal }}"></wow-end>
 </wow-scroll>
 
-<wow-modal title="确定要申请退货？" cancel-text="我再想想" sure-text="申请退货" id="refWowModal">
-  <textarea class="return-textarea" value="{{ reason }}" data-item="reason" bindinput="inputHandle"
-    placeholder-class="c-placeholder" placeholder="请输入退货原因" maxlength="100"></textarea>
+<wow-modal title="确定要申请退货？" cancel-text="我再想想" sure-text="申请退货" id="refWowModal" beforeClose="{{ beforeClose }}">
+  <textarea class="return-textarea" value="{{ reason }}" data-item="reason" bindinput="inputHandle" placeholder-class="c-placeholder" placeholder="请输入退货原因" maxlength="100"></textarea>
 </wow-modal>
