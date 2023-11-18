@@ -6,7 +6,8 @@
   <view wx:for="{{ arrClassify }}" wx:for-item="arrData" wx:for-index="index" wx:key="index" class="classify-block">
     <view class="item-inner">
       <view wx:for="{{ arrData }}" wx:for-item="item" wx:for-index="index" wx:key="index" class="classify-item" bindtap="handleClassify" data-item="{{ item }}">
-        <image class="icon" src="{{ item.icon }}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"> </image>
+        <image wx:if="{{ item.icon }}" class="icon" src="{{ item.icon }}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"> </image>
+        <view wx:else class="icon {{ item.iconPath }}" selectable="false" space="false" decode="false"> </view>
         <text class="name">{{ item.name }}</text>
       </view>
     </view>

@@ -61,6 +61,6 @@ new WowPage({
   handleBuyNow() {
     const { goodsInfo } = this.data
     console.log('立即购买', goodsInfo)
-    this.routerPush('cart_confirm_index', { from: 'goods_index', arrData: [{ ...goodsInfo, productCount: 1 }] })
+    this.routerPush('cart_confirm_index', { from: 'goods_index', arrData: [{ ...goodsInfo, productId: goodsInfo.id, productCount: 1 }] })
   },
 })

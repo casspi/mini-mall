@@ -31,7 +31,7 @@ new WowPage({
     const { api$ } = this.data
     this.curl(api$.REQ_HOME_DIC, { recommendation: 0, status: 0 }, {}).then((res) => {
       console.log('getClassifyList', res)
-      res = [...res, { id: 0, name: '全部', icon: '/assets/images/home/pifuke.png' }]
+      res = [...res, { id: 0, name: '全部', icon: '/assets/images/all.png' }]
       let index = 0
       let arrClassify = []
       while (index < res.length) {

@@ -1,7 +1,8 @@
-@import "src/assets/scss/define";
-@import "src/assets/scss/iconfont";
-@import "src/assets/scss/iconfont-mall";
-@import "src/templates/form-view/index";
+@import 'src/assets/scss/define';
+@import 'src/assets/scss/iconfont';
+@import 'src/assets/scss/iconfont-mall';
+@import 'src/iconfont-classify/iconfont-classify.wxss';
+@import 'src/templates/form-view/index';
 
 page {
   @extend %bsb;
@@ -37,7 +38,7 @@ page {
 .c-button-reset::after {
   border: none;
   height: 100%;
-  content: "";
+  content: '';
   display: none;
 }
 
