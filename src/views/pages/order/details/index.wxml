@@ -33,9 +33,9 @@
           <text></text>
         </view>
         <view class="prompt-value">
-          <text>{{ objData.deliverySn || "快递单号" }}</text>
+          <text>{{ objData.expressTrackingNumber || '-' }}</text>
         </view>
-        <view class="prompt-copy" data-text="{{ objData.deliverySn || '快递单号' }}" bindtap="handleCopy">
+        <view class="prompt-copy" wx:if="{{ objData.expressTrackingNumber }}" data-text="{{ objData.expressTrackingNumber }}" bindtap="handleCopy">
           <text>复制</text>
         </view>
       </view>
@@ -68,7 +68,7 @@
         <text>实付款：</text>
       </view>
       <view class="prompt-value tar">
-        <text>￥{{ filter.filterAmount(objData.price) }}</text>
+        <text>￥{{ filter.filterAmount(objData.allPrice) }}</text>
       </view>
     </view>
   </view>

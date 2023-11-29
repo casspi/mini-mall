@@ -1,4 +1,4 @@
-@import "~src/assets/scss/define";
+@import '~src/assets/scss/define';
 
 .wrap {
   @extend %df;
@@ -6,6 +6,23 @@
   @extend %bw05;
   @extend %bwb;
   background-color: #fff;
+  .select-icon {
+    @extend %cp;
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    @extend %bsb;
+    font-size: j(16);
+    width: j(40);
+    height: j(40);
+    &.iconyuanhuan {
+      @extend %c9;
+      font-size: j(18);
+    }
+    &.iconxuanze {
+      color: $color-primary;
+    }
+  }
   .iconfont {
     @extend %c9;
     @extend %pr;
@@ -26,6 +43,9 @@
       @extend %dn;
     }
     .iconEdit {
+      @extend %df;
+    }
+    .select-icon {
       @extend %df;
     }
   }

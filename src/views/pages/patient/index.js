@@ -1,9 +1,9 @@
 //index.js
-import "./index.json"
-import "./index.scss"
-import "./index.wxml"
+import './index.json'
+import './index.scss'
+import './index.wxml'
 
-import WowPage from "wow-wx/lib/page"
+import WowPage from 'wow-wx/lib/page'
 
 new WowPage({
   mixins: [
@@ -18,16 +18,17 @@ new WowPage({
   ],
   data: {
     arrData: [],
-    classes: "mode-arrow",
+    classes: 'mode-arrow',
   },
   onLoad(options) {
     this.routerGetParams(options)
+    console.log(this.data.params$)
   },
   onShow() {
     let { from } = this.data.params$
     // 暂时只有
     this.setData({
-      classes: from === "prescription_index" ? "mode-edit" : "mode-arrow",
+      classes: from === 'prescription_index' ? 'mode-edit' : 'mode-arrow',
     })
     this.reqAddressList()
   },
@@ -49,7 +50,7 @@ new WowPage({
       api$.REQ_PATIENT_LIST,
       {},
       {
-        method: "post",
+        method: 'post',
         loading: false,
       },
     )
@@ -64,7 +65,7 @@ new WowPage({
   addFilter() {
     const { arrData } = this.data
     if (arrData.length >= 10) {
-      this.modalToast("最多添加10个，如需添加请先删除")
+      this.modalToast('最多添加10个，如需添加请先删除')
       return true
     }
   },

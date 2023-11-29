@@ -21,11 +21,12 @@ new WowPage({
     this.getActivity()
     this.getGoodsList()
   },
-  pagingRefresh() {
+  pagingRefresh(callback) {
     this.reqShopCartTotal()
     this.getClassifyList()
     this.getActivity()
     this.getGoodsList()
+    typeof callback === 'function' && callback()
   },
   getClassifyList() {
     const { api$ } = this.data

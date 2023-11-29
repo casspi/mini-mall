@@ -1,5 +1,8 @@
-@import "~src/assets/scss/define";
+@import '~src/assets/scss/define';
 
+page {
+  background-color: $color-bg;
+}
 .status-section {
   @extend %df;
   @extend %aic;

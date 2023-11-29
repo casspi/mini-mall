@@ -1,21 +1,8 @@
 <wow-skeleton wx:if="{{ !arrData }}"></wow-skeleton>
 
-<patient-item
-  bindtap="handleSelect"
-  data-item="{{ item }}"
-  wx:for="{{ arrData }}"
-  wx:key="index"
-  data="{{ item }}"
-  classes="{{ classes }}"
-></patient-item>
+<patient-item bindselect="handleSelect" currentId="{{ params$.objPatient.id }}" data-item="{{ item }}" wx:for="{{ arrData }}" wx:key="index" data="{{ item }}" classes="{{ classes }}"></patient-item>
 <bolck wx:if="!arrData || arrData.length <=5">
-  <patient-add-item
-    wx:if="{{ arrData }}"
-    data-filter="addFilter"
-    bindtap="jumpPageOrFireFn"
-    data-url="patient_details_index"
-    data-params="{{ params$ }}"
-  ></patient-add-item>
+  <patient-add-item wx:if="{{ arrData }}" data-filter="addFilter" bindtap="jumpPageOrFireFn" data-url="patient_details_index" data-params="{{ params$ }}"></patient-add-item>
 </bolck>
 
 <view class="ios-seat"> </view>

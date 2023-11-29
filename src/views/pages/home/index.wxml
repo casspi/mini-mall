@@ -7,7 +7,7 @@
     <view class="item-inner">
       <view wx:for="{{ arrData }}" wx:for-item="item" wx:for-index="index" wx:key="index" class="classify-item" bindtap="handleClassify" data-item="{{ item }}">
         <image wx:if="{{ item.icon }}" class="icon" src="{{ item.icon }}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"> </image>
-        <view wx:else class="icon {{ item.iconPath }}" selectable="false" space="false" decode="false"> </view>
+        <view wx:else class="icon icon-classify {{ item.iconPath }}" selectable="false" space="false" decode="false"> </view>
         <text class="name">{{ item.name }}</text>
       </view>
     </view>

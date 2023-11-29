@@ -1,10 +1,10 @@
 //index.js
-import "./index.json"
-import "./index.scss"
-import "./index.wxml"
+import './index.json'
+import './index.scss'
+import './index.wxml'
 
-import WowPage from "wow-wx/lib/page"
-import DataMixin from "./data.mixin"
+import WowPage from 'wow-wx/lib/page'
+import DataMixin from './data.mixin'
 
 new WowPage({
   mixins: [
@@ -22,7 +22,7 @@ new WowPage({
   ],
   data: {
     isAgreement: false,
-    objPatient: "",
+    objPatient: '',
   },
   onLoad(options) {
     this.routerGetParams(options)
@@ -31,7 +31,7 @@ new WowPage({
       objPrescription: { id, patient },
     } = params$
     if (id) {
-      this.validateAssignment(this, patient, objInput, "objInput")
+      this.validateAssignment(this, patient, objInput, 'objInput')
     }
   },
   onShow() {
@@ -40,9 +40,7 @@ new WowPage({
   handleSubmit() {
     let { params$, objPatient, api$, objInput, isAgreement } = this.data
     if (!isAgreement) {
-      this.modalToast(
-        "请确认已确诊此疾病并使用过该药，无过敏史、无相关禁忌症和不良反应。确认处方药须凭处方在药师指导下购买和使用",
-      )
+      this.modalToast('请确认已确诊此疾病并使用过该药，无过敏史、无相关禁忌症和不良反应。确认处方药须凭处方在药师指导下购买和使用')
       return
     }
 
@@ -58,7 +56,7 @@ new WowPage({
     if (objPatient && objPatient.id) {
       params.patientId = objPatient.id
     } else {
-      this.modalToast("请添加用药人信息")
+      this.modalToast('请添加用药人信息')
       return
     }
     // params.wtPatient = wtPatient
@@ -77,20 +75,25 @@ new WowPage({
     this.routerPop()
   },
   reqPatientList() {
-    let { api$, objPatient } = this.data
+    let { api$, objPatient, params$ } = this.data
     this.curl(
       api$.REQ_PATIENT_LIST,
       {
         def: 1,
       },
       {
-        method: "post",
+        method: 'post',
       },
     )
       .then((res) => {
         res = res || []
+
         if (objPatient) {
           objPatient = res.filter((item) => item.id === objPatient.id)[0]
+        }
+        // 订单确认页过来的
+        if (!objPatient && params$.objPrescription) {
+          objPatient = res.filter((item) => item.id === params$.objPrescription.patient.id)[0]
         }
         // 有默认取默认，无默认取第一个
         if (!objPatient) {
@@ -99,7 +102,7 @@ new WowPage({
         if (!objPatient) {
           objPatient = res[0]
         }
-        this.setData({ objPatient: objPatient || "" })
+        this.setData({ objPatient: objPatient || '' })
       })
       .toast()
   },

@@ -1,5 +1,6 @@
 <view class="wrap {{ classes }}">
-  <view class="inner">
+  <view class="select-icon iconfont {{ data.id === currentId ? 'iconxuanze' : 'iconyuanhuan' }}" bindtap="handleItemSelect"></view>
+  <view class="inner" bindtap="handleItemSelect">
     <view class="head">
       <view class="name">
         <text>{{ data.userName }}</text>
@@ -22,10 +23,5 @@
     </view>
   </view>
   <view class="iconfont iconMore"></view>
-  <view
-    class="iconfont iconEdit"
-    catchtap="jumpPageOrFireFn"
-    data-params="{{ data }}"
-    data-url="patient_details_index"
-  ></view>
+  <view class="iconfont iconEdit" catchtap="jumpPageOrFireFn" data-params="{{ data }}" data-url="patient_details_index"></view>
 </view>
