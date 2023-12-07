@@ -92,7 +92,7 @@ new WowPage({
     this.judgeItemSelect()
   },
   judgeItemSelect() {
-    let { pagingData } = this.data
+    let { pagingData = [] } = this.data
     let numAmount = 0
     let isAllSelected = true
     if (!pagingData.length) {

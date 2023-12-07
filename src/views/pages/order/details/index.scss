@@ -11,7 +11,7 @@ page {
   background-color: #fff;
 }
 .status-title {
-  @extend %c3;
+  color: $color-primary;
   font-size: j(18);
 }
 .status-button {
