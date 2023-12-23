@@ -111,7 +111,6 @@ new WowPage({
         }
       })
     })
-    console.log(numAmount, isAllSelected, pagingData)
     this.setData({ numAmount, isAllSelected, pagingData })
   },
   handleSubmit() {

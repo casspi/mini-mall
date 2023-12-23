@@ -5,6 +5,7 @@ import './index.wxml'
 
 import WowPage from 'wow-wx/lib/page'
 import DataMixin from './data.mixin'
+import User from 'wow-wx/mixins/utils/user.mixin'
 
 new WowPage({
   mixins: [DataMixin, WowPage.wow$.mixins.Router, WowPage.wow$.mixins.Jump, WowPage.wow$.mixins.Modal, WowPage.wow$.mixins.Call, WowPage.wow$.mixins.User, WowPage.wow$.mixins.Curl, WowPage.wow$.mixins.Refresh],
@@ -73,10 +74,13 @@ new WowPage({
       cancelText: '取消',
     })
       .then(() => {
+        User.userLogout().then(() => {
+          this.routerRoot('home_index')
+        })
         this.curl(api$.REQ_LOGOUT, {}, { method: 'DELETE' }).then(() => {
-          User.userLogout().then(() => {
-            this.routerRoot('home_index')
-          })
+          // User.userLogout().then(() => {
+          //   this.routerRoot('home_index')
+          // })
         })
       })
       .null()
