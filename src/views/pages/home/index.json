@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "首页",
+  "navigationBarTitleText": "荣昇企业网上药店",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "wow-search": "/components/wow-search/index",

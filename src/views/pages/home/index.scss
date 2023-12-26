@@ -1,7 +1,7 @@
 @import 'src/assets/scss/define';
 
 page {
-  background-color: #f2f2f2;
+  // background-color: #f2f2f2;
   &:before {
     @extend %dn;
   }
@@ -101,7 +101,12 @@ page {
   @extend %fww;
   @extend %bsb;
   @extend %oh;
+  // min-height: j(200);
   padding-bottom: j(10);
+  .empty-img {
+    width: 100%;
+    margin: 0 auto;
+  }
   .goods {
     @extend %df;
     @extend %fdc;

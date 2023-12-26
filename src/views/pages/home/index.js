@@ -16,16 +16,16 @@ new WowPage({
     this.routerRoot('classify_index')
   },
   onLoad() {
-    this.reqShopCartTotal()
-    this.getClassifyList()
+    // this.reqShopCartTotal()
+    // this.getClassifyList()
     this.getActivity()
-    this.getGoodsList()
+    // this.getGoodsList()
   },
   pagingRefresh(callback) {
-    this.reqShopCartTotal()
-    this.getClassifyList()
+    // this.reqShopCartTotal()
+    // this.getClassifyList()
     this.getActivity()
-    this.getGoodsList()
+    // this.getGoodsList()
     typeof callback === 'function' && callback()
   },
   getClassifyList() {

@@ -1,7 +1,7 @@
 <wxs src="/wxs/filter.wxs" module="filter" />
 
-<wow-search placeholder="搜索商品" classes="none-input" bindtap="jumpPageOrFireFn" data-url="search_index"></wow-search>
-<view class="space-block"></view>
+<!-- <wow-search placeholder="搜索商品" classes="none-input" bindtap="jumpPageOrFireFn" data-url="search_index"></wow-search>
+  <view class="space-block"></view>
 <scroll-view class="classify-warp" scroll-x enable-flex>
   <view wx:for="{{ arrClassify }}" wx:for-item="arrData" wx:for-index="index" wx:key="index" class="classify-block">
     <view class="item-inner">
@@ -12,7 +12,7 @@
       </view>
     </view>
   </view>
-</scroll-view>
+</scroll-view> -->
 <view class="ad-warp">
   <view class="ad-item" bindtap="jumpPageOrFireFn" data-url="ad_index" data-params="{{ item }}" wx:for="{{ arrAd }}" wx:key="index">
     <image class="img" src="{{ filter.source(item.coverImageId) }}"></image>
@@ -29,4 +29,5 @@
       ><text>￥{{ item.price }}</text></view
     >
   </view>
+  <image class="empty-img" src="/assets/images/comming-soon-1.jpg" alt="敬请期待"></image>
 </view>
