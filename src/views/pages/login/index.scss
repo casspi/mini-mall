@@ -1,4 +1,8 @@
-@import "src/assets/scss/define";
+@import 'src/assets/scss/define';
+
+page {
+  background-color: #fff;
+}
 
 .header {
   padding: j(10) 0 0;

@@ -5,7 +5,7 @@
 <view class="store-section">
   <view class="iconfont iconShop"></view>
   <view class="store-name">
-    <text>荣昇企业网上药店</text>
+    <text>荣昇线上药店</text>
   </view>
 </view>
 <block wx:for="{{ data.wtProducts }}" wx:key="index">

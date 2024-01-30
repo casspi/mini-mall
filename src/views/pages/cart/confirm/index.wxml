@@ -3,33 +3,16 @@
 <wow-skeleton wx:if="{{ !params$.arrData }}"></wow-skeleton>
 
 <block wx:else>
-  <address-item
-    wx:if="{{ objAddress }}"
-    bindtap="jumpPageOrFireFn"
-    data-url="address_index"
-    data-params="{{ { from: 'cart_confirm_index' } }}"
-    data="{{ objAddress }}"
-    classes="mode-arrow"
-  ></address-item>
+  <address-item wx:if="{{ objAddress }}" bindtap="jumpPageOrFireFn" data-url="address_index" data-params="{{ { from: 'cart_confirm_index' } }}" data="{{ objAddress }}" classes="mode-arrow"></address-item>
 
   <address-add-item wx:else bindtap="jumpPageOrFireFn" data-url="address_details_index"></address-add-item>
 
-  <view
-    wx:if="{{ isPrescriptionDrugs }}"
-    class="patient"
-    data-params="{{ { objPrescription: objPrescription } }}"
-    bindtap="jumpPageOrFireFn"
-    data-url="prescription_index"
-  >
+  <view wx:if="{{ isPrescriptionDrugs }}" class="patient" data-params="{{ { objPrescription: objPrescription } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
     <view class="patient-label">
       <view wx:if="{{ objPrescription }}">
         <text class="label">用药人</text>
         <text class="name">{{ objPrescription.patient.userName }}</text>
-        <text class="age"
-          >{{ filter.filterIDcard(objPrescription.patient.idCard, 3) }}岁，{{
-            filter.filterIDcard(objPrescription.patient.idCard, 2)
-          }}</text
-        >
+        <text class="age">{{ filter.filterIDcard(objPrescription.patient.idCard, 3) }}岁，{{ filter.filterIDcard(objPrescription.patient.idCard, 2) }}</text>
       </view>
       <text wx:else> 尚未添加用药人，请添加 </text>
     </view>
@@ -41,17 +24,9 @@
   <view class="goods-dl">
     <view class="goods-dt">
       <view class="iconfont iconShop"></view>
-      <text class="goods-store">荣昇企业网上药店</text>
+      <text class="goods-store">荣昇线上药店</text>
     </view>
-    <view
-      wx:for="{{ params$.arrData }}"
-      wx:for-index="index"
-      wx:key="index"
-      class="goods-dd"
-      bindtap="jumpPageOrFireFn"
-      data-url="goods_index"
-      data-params="{{ { id: item.productId } }}"
-    >
+    <view wx:for="{{ params$.arrData }}" wx:for-index="index" wx:key="index" class="goods-dd" bindtap="jumpPageOrFireFn" data-url="goods_index" data-params="{{ { id: item.productId } }}">
       <image class="goods-image" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
       <view class="goods-info">
         <view class="goods-name">
@@ -93,10 +68,5 @@
 
   <view class="null"></view>
 
-  <wow-settlement
-    class-external="settlement"
-    disabled="{{ !numAmount || !objAddress || (isPrescriptionDrugs && !objPrescription) }}"
-    amount="{{ numAmount }}"
-    bindclick="handleSubmit"
-  ></wow-settlement>
+  <wow-settlement class-external="settlement" disabled="{{ !numAmount || !objAddress || (isPrescriptionDrugs && !objPrescription) }}" amount="{{ numAmount }}" bindclick="handleSubmit"></wow-settlement>
 </block>
