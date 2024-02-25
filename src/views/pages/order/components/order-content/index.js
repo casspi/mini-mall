@@ -5,7 +5,16 @@ import './index.scss'
 import WowComponent from 'wow-wx/lib/component'
 
 new WowComponent({
-  mixins: [WowComponent.wow$.mixins.Router, WowComponent.wow$.mixins.Input, WowComponent.wow$.mixins.Jump, WowComponent.wow$.mixins.Modal, WowComponent.wow$.mixins.Paging, WowComponent.wow$.mixins.Curl],
+  mixins: [
+    WowComponent.wow$.mixins.User,
+    WowComponent.wow$.mixins.Router,
+    WowComponent.wow$.mixins.Input,
+    WowComponent.wow$.mixins.Jump,
+    WowComponent.wow$.mixins.Modal,
+    WowComponent.wow$.mixins.Paging,
+    WowComponent.wow$.mixins.Curl,
+    WowComponent.wow$.mixins.Payment,
+  ],
   externalClasses: ['class-external', 'class-image-box', 'class-image'],
   options: {
     multipleSlots: true,
@@ -55,6 +64,28 @@ new WowComponent({
           methods: 'get',
         },
       }
+    },
+    handlePayment(event) {
+      let item = this.inputParams(event)
+      let { api$ } = this.data
+      this.userLogin()
+        .then((wxCode) => {
+          return this.curl(api$.DO_PAY + `${item.id}/${wxCode}`, {}, { loading: true })
+        })
+        .then((res) => {
+          let { payParamJson } = res || {}
+          return this.paymentRequest(JSON.parse(payParamJson))
+        })
+        .then(() => {
+          return this.routerPush('payment_index', { status: 'success' }, true)
+        })
+        .catch((err) => {
+          if (err && err.errMsg && err.errMsg.indexOf('requestPayment') > -1) {
+            this.modalToast('取消付款')
+          } else {
+            this.modalToast('支付失败')
+          }
+        })
     },
     beforeClose(type, callback) {
       if (type === 'confirm') {

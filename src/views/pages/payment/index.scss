@@ -1,0 +1,62 @@
+@import '~src/assets/scss/define';
+
+.status {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %fdc;
+  padding: j(60) 0;
+  .iconfont {
+    @extend %df;
+    @extend %aic;
+    @extend %jcc;
+    font-size: j(58);
+    width: j(60);
+    height: j(60);
+  }
+  .iconFailed {
+    color: #e4ab59;
+  }
+  .iconxuanze,
+  .iconSuccess {
+    color: #029ade;
+  }
+}
+.status-title {
+  @extend %c3;
+  font-size: j(16);
+  margin-top: j(12);
+  line-height: j(22);
+}
+.status-prompt {
+  @extend %c9;
+  @extend %df;
+  @extend %fdc;
+  @extend %tac;
+  font-size: j(12);
+  margin-top: j(6);
+  line-height: j(17);
+}
+.operate {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+}
+.operate-button {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  @extend %cp;
+  @extend %bsb;
+  width: j(128);
+  height: j(40);
+  margin: 0 j(8);
+  &:first-child {
+    color: $color-primary;
+    border: j(1) solid $color-primary;
+  }
+  &:last-child {
+    @extend %cfff;
+    background-color: $color-primary;
+  }
+}

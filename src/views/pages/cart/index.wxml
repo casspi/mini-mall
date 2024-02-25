@@ -1,6 +1,6 @@
 <wxs src="/wxs/filter.wxs" module="filter" />
 
-<wow-skeleton wx:if="{{ pagingTotal <= 0 }}" is-loading="{{ isNullLoading || (user$ && pagingTotal === -1) }}" title="{{ user$ ? '您的购物车还没有商品哦~' : '登录才能查看购物车哦~' }}">
+<wow-skeleton wx:if="{{ pagingTotal <= 0 }}" is-loading="{{ isNullLoading || (user$ && pagingTotal === -1) }}" emptyPrompt="{{ user$ ? '您的购物车还没有商品哦~' : '登录才能查看购物车哦~' }}">
   <view class="button" wx:if="{{ !isNullLoading && !user$ }}" data-sync="{{ user$ }}" bindtap="jumpPageOrFireFn">
     <text>去登录</text>
   </view>

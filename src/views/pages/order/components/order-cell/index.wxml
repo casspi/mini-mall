@@ -25,25 +25,27 @@
     </view>
   </view>
   <view class="goods-info">
-    <view class="c-flex1"></view>
-    <view class="goods-num">
-      <text>共{{ data.wtProducts.length }}件商品</text>
-    </view>
-    <view class="goods-amount">
-      共计：<text class="amount">¥{{ filter.filterAmount(data.price) }}</text>
+    <view class="time"> 下单时间：{{ data.createTime }} </view>
+    <view class="other">
+      <view class="goods-num">
+        <text>共{{ data.wtProducts.length }}件商品</text>
+      </view>
+      <view class="goods-amount">
+        共计：<text class="amount">¥{{ filter.filterAmount(data.price) }}</text>
+      </view>
     </view>
   </view>
 </view>
 <block>
   <view class="c-border mr"></view>
   <view class="operate">
-    <view wx:if="{{ status === config$.ORDER_STATUS.UN_PAY }}" class="operate-button" bindtap="inputEvent" data-event="payment">
+    <view wx:if="{{ status === config$.ORDER_STATUS.UN_PAY }}" class="operate-button" bindtap="inputEvent" data-event="payment" data-params="{{ data }}">
       <text>立即付款</text>
     </view>
-    <view wx:if="{{ 1 || status === config$.ORDER_STATUS.SEND }}" class="operate-button" bindtap="handleConfirmReceived">
+    <view wx:if="{{ status === config$.ORDER_STATUS.SEND }}" class="operate-button" bindtap="handleConfirmReceived">
       <text>确认收货</text>
     </view>
-    <view wx:if="{{ 1 || status === config$.ORDER_STATUS.SUCCESS }}" class="operate-button" bindtap="handleReturn">
+    <view wx:if="{{ status === config$.ORDER_STATUS.SUCCESS }}" class="operate-button" bindtap="handleReturn">
       <text>申请退货</text>
     </view>
   </view>

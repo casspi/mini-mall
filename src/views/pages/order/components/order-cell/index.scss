@@ -1,4 +1,4 @@
-@import "src/assets/scss/define";
+@import 'src/assets/scss/define';
 
 .store-section {
   @extend %df;
@@ -54,9 +54,18 @@
 }
 .goods-info {
   @extend %df;
-  @extend %fdc;
   @extend %aie;
+  @extend %jcs;
   margin-top: j(8);
+  .time {
+    font-size: j(12);
+    @extend %c9;
+  }
+  .other {
+    @extend %df;
+    @extend %fdc;
+    align-items: flex-end;
+  }
 }
 .goods-num {
   @extend %c9;

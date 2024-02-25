@@ -16,6 +16,7 @@
         "pages/order/index",
         "pages/patient/details/index",
         "pages/patient/index",
+        "pages/payment/index",
         "pages/prescription/index",
         "pages/search/index",
         "pages/webview/index"

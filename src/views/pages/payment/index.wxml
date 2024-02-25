@@ -1,0 +1,51 @@
+
+
+<block wx:if="{{params$.status === 'success'}}">
+    <view class="status">
+        <view class="iconfont iconxuanze"></view>
+        <view class="status-title">
+            <text>付款成功</text>
+        </view>
+    </view>
+
+    <view class="operate" wx:if="{{ params$.from === 'cart_confirm_index' }}">
+        <view class="operate-button"
+              data-url="order_index"
+              data-close="true"
+              data-params="{{ {index:2} }}"
+              bindtap="jumpPageOrFireFn">
+            <text>查看订单</text>
+        </view>
+        <view class="operate-button"
+              bindtap="routerPop">
+            <text>继续逛</text>
+        </view>
+    </view>
+</block>
+
+<block wx:else>
+    <view class="status">
+        <view class="iconfont iconFailed"></view>
+        <view class="status-title">
+            <text>付款失败</text>
+        </view>
+        <view class="status-prompt">
+            <text>请在30分钟内完成付款</text>
+            <text>否则订单将会被系统取消</text>
+        </view>
+    </view>
+
+    <view class="operate" wx:if="{{ params$.from === 'cart_confirm_index' }}">
+        <view class="operate-button"
+              data-url="order_index"
+              data-close="true"
+              data-params="{{ {index:1} }}"
+              bindtap="jumpPageOrFireFn">
+            <text>查看订单</text>
+        </view>
+        <view class="operate-button"
+              bindtap="handlePayment">
+            <text>重新付款</text>
+        </view>
+    </view>
+</block>

@@ -64,6 +64,8 @@ export default {
 
   // 下单
   DO_ORDER_SUBMIT: 'app/drug/wtOrder/add',
+  // 支付
+  DO_PAY: 'app/drug/wtOrder/pay/',
   // 订单列表
   REQ_ORDER_LIST: 'app/drug/wtOrder/page',
   // 订单详情
