@@ -60,7 +60,7 @@
         <text>运费：</text>
       </view>
       <view class="prompt-value tar">
-        <text>￥5</text>
+        <text>￥0</text>
       </view>
     </view>
     <view class="prompt-item strong">

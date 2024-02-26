@@ -58,7 +58,7 @@ new WowComponent({
       let { api$, data } = this.data
       return {
         url: api$.REQ_ORDER_LIST,
-        params: { orderStatus: +data.status },
+        params: { orderStatus: data.status, createUser: true },
         options: {
           useAuth: true,
           methods: 'get',
@@ -77,7 +77,9 @@ new WowComponent({
           return this.paymentRequest(JSON.parse(payParamJson))
         })
         .then(() => {
-          return this.routerPush('payment_index', { status: 'success' }, true)
+          this.modalToast('支付成功')
+          this.pagingRefresh()
+          // return this.routerPush('payment_index', { status: 'success' }, true)
         })
         .catch((err) => {
           if (err && err.errMsg && err.errMsg.indexOf('requestPayment') > -1) {

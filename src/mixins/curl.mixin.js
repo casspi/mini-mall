@@ -5,7 +5,7 @@ import Router from 'wow-wx/mixins/wx/router.mixin'
 import ApiConfig, { isProd } from 'src/config/api.config'
 
 const curl = new Curl({
-  baseURI: isProd ? 'https://www.rs-superlink.com:8090/' : 'http://101.132.140.21:8080/', //'http://101.132.140.21:8080/',
+  baseURI: isProd ? 'https://www.rs-superlink.com:8090/' : 'https://www.rs-superlink.com:8090/', //'http://101.132.140.21:8080/',
 })
 
 // 日志输出
@@ -32,11 +32,15 @@ curl.interceptors.request.use(
         })
         .catch(() => {})
         .finally(() => {
-          let { token } = objUser
+          let { token, userInfo } = objUser
           if (data.token) {
             token = data.token
             delete data.token
           }
+          if (data.createUser) {
+            config.data.createUser = userInfo.id
+          }
+          console.log('objUser', data)
           if (token) {
             config.header = Object.assign({ Authorization: token }, header)
           }

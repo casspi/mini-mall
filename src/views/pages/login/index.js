@@ -1,28 +1,21 @@
 //index.js
-import "./index.json"
-import "./index.scss"
-import "./index.wxml"
+import './index.json'
+import './index.scss'
+import './index.wxml'
 
-import WowPage from "wow-wx/lib/page"
-import User from "wow-wx/mixins/utils/user.mixin"
+import WowPage from 'wow-wx/lib/page'
+import User from 'wow-wx/mixins/utils/user.mixin'
 
 new WowPage({
-  mixins: [
-    WowPage.wow$.mixins.Router,
-    WowPage.wow$.mixins.Input,
-    WowPage.wow$.mixins.Jump,
-    WowPage.wow$.mixins.Curl,
-    WowPage.wow$.mixins.User,
-    WowPage.wow$.mixins.Modal,
-  ],
+  mixins: [WowPage.wow$.mixins.Router, WowPage.wow$.mixins.Input, WowPage.wow$.mixins.Jump, WowPage.wow$.mixins.Curl, WowPage.wow$.mixins.User, WowPage.wow$.mixins.Modal],
   data: {
     isAgreement: false,
-    phone: "",
-    code: "",
-    count: "",
+    phone: '',
+    code: '',
+    count: '',
   },
   onLoad(o) {
-    console.log("decodeURIComponent", o)
+    console.log('decodeURIComponent', o)
     console.log(this.data)
   },
   // 获取验证码
@@ -30,7 +23,7 @@ new WowPage({
     const { phone, code, api$ } = this.data
     console.log(phone, code)
     this.countDown()
-    this.curl(api$.REQ_CODE + "?phone=" + phone, {}, { method: "post" })
+    this.curl(api$.REQ_CODE + '?phone=' + phone, {}, { method: 'post' })
       .then(() => {})
       .toast()
   },
@@ -52,23 +45,29 @@ new WowPage({
   },
   handleLogin() {
     const { phone, code, api$ } = this.data
+    let token
     this.curl(
       api$.REQ_LOGIN,
-      { userId: phone, password: code, mode: "phoneCode", mac: "string" },
+      { userId: phone, password: code, mode: 'phoneCode', mac: 'string' },
       {
-        method: "post",
-        // header: {
-        //   "content-type": "application/x-www-form-urlencoded",
-        // },
+        method: 'post',
       },
     )
       .then((res) => {
-        const { token } = res
-        User.userUpdate({
+        token = res.token
+        return User.userUpdate({
           token,
         })
-        this.routerRoot("home_index")
-        // wx.setStorageSync("home_refresh", "1")
+      })
+      .then(() => {
+        return this.curl(api$.REQ_USER_INFO, {}, { method: 'get', loading: false })
+      })
+      .then((res) => {
+        User.userUpdate({
+          token,
+          userInfo: res.user || {},
+        })
+        this.routerRoot('home_index')
       })
       .toast()
   },
