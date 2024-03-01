@@ -22,12 +22,14 @@
   <text> 为你推荐 </text>
 </view>
 <view class="goods-warp">
-  <view class="goods" wx:for="{{ arrGoods }}" wx:for-item="item" wx:for-index="id" wx:key="id" bindtap="jumpPageOrFireFn" data-url="goods_index" data-params="{{ item }}">
-    <image class="img" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"> </image>
-    <text class="name">{{ item.name }}{{ item.alias ? '(' + item.alias + ')' : '' }} </text>
-    <view class="price"
-      ><text>￥{{ item.price }}</text></view
-    >
-  </view>
-  <!-- <image class="empty-img" src="/assets/images/comming-soon-1.jpg" alt="敬请期待"></image> -->
+  <block wx:if="{{ arrGoods.length }}">
+    <view class="goods" wx:for="{{ arrGoods }}" wx:for-item="item" wx:for-index="id" wx:key="id" bindtap="jumpPageOrFireFn" data-url="goods_index" data-params="{{ item }}">
+      <image class="img" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"> </image>
+      <text class="name">{{ item.name }}{{ item.alias ? '(' + item.alias + ')' : '' }} </text>
+      <view class="price"
+        ><text>￥{{ item.price }}</text></view
+      >
+    </view>
+  </block>
+  <image wx:else class="empty-img" src="/assets/images/comming-soon-1.jpg" alt="敬请期待"></image>
 </view>

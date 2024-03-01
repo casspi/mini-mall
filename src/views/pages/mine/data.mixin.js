@@ -29,10 +29,10 @@ export default {
         url: 'address_index',
         from: 'mine_index',
       },
-      call: {
-        label: '电话客服',
-        fn: 'callService',
-      },
+      // call: {
+      //   label: '电话客服',
+      //   fn: 'callService',
+      // },
       online: {
         label: '在线客服',
       },
