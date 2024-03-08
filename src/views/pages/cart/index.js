@@ -30,6 +30,7 @@ new WowPage({
     })
   },
   onShow() {
+    this.userGet()
     this.handleRefresh(this.judgeItemSelect)
     this.reqShopCartTotal()
   },

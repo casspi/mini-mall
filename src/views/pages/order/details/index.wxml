@@ -6,13 +6,16 @@
   <!--头部-->
   <view class="status-section">
     <view class="status-title">
-      <text>订单{{ config$.ORDER_STATUS_TIP[objData.status] }}</text>
+      <text>订单{{ config$.ORDER_STATUS_TIP[objData.orderStatus] }}</text>
     </view>
-    <view class="status-button" bindtap="handlePayment" wx:if="{{ config$.ORDER_STATUS.UN_PAY === objData.status }}">
+    <view class="status-button" bindtap="handlePayment" wx:if="{{ config$.ORDER_STATUS.UN_PAY === objData.orderStatus }}">
       <text>去付款</text>
     </view>
-    <view class="status-button" bindtap="handleConfirm" wx:if="{{ config$.ORDER_STATUS.SEND === objData.status }}">
+    <view class="status-button" bindtap="handleConfirm" wx:if="{{ config$.ORDER_STATUS.SEND === objData.orderStatus }}">
       <text>确认收货</text>
+    </view>
+    <view class="status-button" bindtap="handleReturn" wx:if="{{ config$.ORDER_STATUS.SUCCESS === objData.orderStatus }}">
+      <text>申请退货</text>
     </view>
   </view>
 
@@ -97,30 +100,9 @@
     </view>
   </view>
 
-  <block wx:if="{{ config$.ORDER_STATUS.UN_PAY === objData.status }}">
-    <view class="c-border mr"></view>
-    <view class="button-group" bindtap="handleCancel">
-      <view class="button-item">
-        <text>取消订单</text>
-      </view>
-    </view>
-  </block>
-
-  <block wx:if="{{ config$.ORDER_STATUS.SUCCESS === objData.status || config$.ORDER_STATUS.CLOSE === objData.status || config$.ORDER_STATUS.UN_SEND === objData.status || config$.ORDER_STATUS.SEND === objData.status }}">
-    <view class="c-border mr"></view>
-    <view class="button-group">
-      <view class="button-item" wx:if="{{ config$.ORDER_STATUS.SUCCESS === objData.status || config$.ORDER_STATUS.CLOSE === objData.status }}" bindtap="handleDelete">
-        <text>删除订单</text>
-      </view>
-      <view
-        class="button-item"
-        wx:if="{{ config$.ORDER_STATUS.UN_SEND === objData.status || config$.ORDER_STATUS.SEND === objData.status || config$.ORDER_STATUS.SUCCESS === objData.status }}"
-        bindtap="handleRefundApply"
-      >
-        <text>申请售后</text>
-      </view>
-    </view>
-  </block>
+  <wow-modal title="确定要申请退货？" cancel-text="我再想想" sure-text="申请退货" id="refWowModal" beforeClose="{{ beforeClose }}">
+    <textarea class="return-textarea" value="{{ reason }}" data-item="reason" bindinput="inputHandle" placeholder-class="c-placeholder" placeholder="请输入退货原因" maxlength="100"></textarea>
+  </wow-modal>
 
   <view class="null"></view>
 </block>

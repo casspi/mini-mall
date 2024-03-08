@@ -1,12 +1,12 @@
 const config = {
   // 订单状态
   ORDER_STATUS: {
-    UN_PAY: '0', // 待付款
-    SEND: '1', // 待收货
-    SUCCESS: '2', // 订单完成
-    UN_RETURN: '3', //"待退货",
-    RETURNING: '4', //"退货中",
-    RETURNED: '5', //"已退货",
+    UN_PAY: 0, // 待付款
+    SEND: 1, // 待收货
+    SUCCESS: 2, // 订单完成
+    UN_RETURN: 3, //"待退货",
+    RETURNING: 4, //"退货中",
+    RETURNED: 5, //"已退货",
   },
   // 订单对应的文案
   ORDER_STATUS_TIP: {

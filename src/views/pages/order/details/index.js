@@ -7,6 +7,7 @@ import WowPage from 'wow-wx/lib/page'
 
 new WowPage({
   mixins: [
+    WowPage.wow$.mixins.User,
     WowPage.wow$.mixins.Router,
     WowPage.wow$.mixins.Config,
     WowPage.wow$.mixins.Clipboard,
@@ -20,6 +21,7 @@ new WowPage({
     objRelation: '',
     objData: '',
     objPrescription: '',
+    reason: '',
   },
   onLoad(options) {
     this.routerGetParams(options)
@@ -68,36 +70,6 @@ new WowPage({
       })
       .toast()
   },
-  handleCancel() {
-    let { params$, api$ } = this.data
-    this.modalConfirm(`确认取消该订单？`)
-      .then(() => {
-        return this.httpRequest(api$.DO_ORDER_RELATION_INFO, {
-          orderId: params$.orderId,
-        })
-      })
-      .then((res) => {
-        this.setData({ objRelation: res })
-        if (res.storePayList.length >= 1) {
-          return this.selectComponent('#relationCancel').show()
-        }
-        this.handleSureCancel()
-      })
-      .toast()
-  },
-  // 关联弹窗确认取消
-  handleSureCancel() {
-    this.selectComponent('#relationCancel').hide()
-    let { params$, api$ } = this.data
-    this.httpRequest(api$.DO_ORDER_CLOSE, {
-      orderId: params$.orderId,
-    })
-      .then(() => {
-        this.modalToast('取消成功')
-        setTimeout(this.routerPop.bind(this), 1000)
-      })
-      .toast()
-  },
   handleDelete() {
     let { params$, api$ } = this.data
     this.modalConfirm(`确认删除该订单？`)
@@ -112,13 +84,18 @@ new WowPage({
       })
       .toast()
   },
+  // 确认收货
   handleConfirm() {
     let { params$, api$ } = this.data
     this.modalConfirm(`确认已收货？`)
       .then(() => {
-        return this.httpRequest(api$.DO_ORDER_CONFIRM, {
-          orderId: params$.orderId,
-        })
+        return this.curl(
+          api$.REQ_RECEIPT_ORDER,
+          {
+            id: params$.id,
+          },
+          { method: 'put' },
+        )
       })
       .then(() => {
         this.modalToast('收货成功')
@@ -129,50 +106,50 @@ new WowPage({
   // 立即付款
   handlePayment() {
     let { api$, params$ } = this.data
-    this.httpRequest(api$.DO_ORDER_RELATION_INFO, {
-      orderId: params$.orderId,
-    })
-      .then((res) => {
-        this.setData({ objRelation: res })
-        if (res.storePayList.length >= 1) {
-          return this.selectComponent('#relationPayment').show()
-        }
-        this.handleSurePayment()
+    this.userLogin()
+      .then((wxCode) => {
+        return this.curl(api$.DO_PAY + `${params$.id}/${wxCode}`, {}, { loading: true })
       })
-      .toast()
-  },
-  // 关联弹窗确认支付
-  handleSurePayment() {
-    this.selectComponent('#relationPayment').hide()
-    let { objRelation } = this.data
-    let { timeStamp, nonceStr, packageDesc, signType, paySign } = objRelation.orderPayInfo
-    this.paymentAmount({
-      package: packageDesc,
-      timeStamp,
-      nonceStr,
-      signType,
-      paySign,
-    })
       .then((res) => {
-        return this.routerPush('cart_payment_index', { status: 'success' }, true)
+        let { payParamJson } = res || {}
+        return this.paymentRequest(JSON.parse(payParamJson))
+      })
+      .then(() => {
+        this.modalToast('支付成功')
+        this.reqOrderInfo()
       })
       .catch((err) => {
-        this.modalToast('取消付款')
+        if (err && err.errMsg && err.errMsg.indexOf('requestPayment') > -1) {
+          this.modalToast('取消付款')
+        } else {
+          this.modalToast('支付失败')
+        }
       })
   },
-  // 总售后申请
-  handleRefundApply() {
-    let { params$, config$ } = this.data
-    let orderDetailList = params$.orderDetailList.filter(
-      (item) => !item.refundApplyStatus || item.refundApplyStatus === config$.ORDER_REFUND_STATUS.REFUSE || item.refundApplyStatus === config$.ORDER_REFUND_STATUS.REVOKE,
-    )
-    if (!orderDetailList.length) {
-      return this.modalToast('商品已申请了售后')
-    }
-    if (orderDetailList.length > 1) {
-      this.routerPush('order_refund_select_index', { arrData: orderDetailList })
+  //申请退货
+  beforeClose(type, callback) {
+    if (type === 'confirm') {
+      let { reason } = this.data
+      if (reason) callback()
+      else this.modalToast('请填写退货原因')
     } else {
-      this.routerPush('order_refund_apply_index', orderDetailList[0])
+      callback()
     }
+  },
+  handleReturn(data) {
+    this.setData({ reason: '' })
+    return this.selectComponent('#refWowModal')
+      .show({
+        beforeClose: this.beforeClose.bind(this),
+      })
+      .then((res) => {
+        let { api$, reason } = this.data
+        return this.curl(api$.REQ_RETURN_ORDER, { reasonForReturn: reason, id: data.detail.id }, { method: 'put' })
+      })
+      .then(() => {
+        this.modalToast('申请退货成功')
+        setTimeout(this.routerPop.bind(this), 1000)
+      })
+      .toast()
   },
 })

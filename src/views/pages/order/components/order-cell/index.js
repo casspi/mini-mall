@@ -17,7 +17,7 @@ new WowComponent({
       value: '',
     },
     status: {
-      type: String,
+      type: Number,
       value: '',
     },
     from: {

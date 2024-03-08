@@ -19,7 +19,7 @@
       <image class="goods-image" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
       <view class="goods-name" wx:if="{{ data.wtProducts.length === 1 }}">
         <text class="name">{{ item.name }}</text>
-        <text class="spec">规格:{{ item.specifications[0] || '-' }}</text>
+        <text class="spec">规格:{{ item.specifications[0] || '-' }} x {{ item.productCount }}</text>
         <text class=""> {{ item.brandCn || '-' }}</text>
       </view>
     </view>

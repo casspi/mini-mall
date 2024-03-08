@@ -3,6 +3,7 @@
     "usingComponents": {
         "wow-skeleton": "/components/wow-skeleton/index",
         "address-item": "../../address/components/address-item/index",
-        "order-goods-item": "../components/order-goods-item/index"
+        "order-goods-item": "../components/order-goods-item/index",
+        "wow-modal": "/components/wow-modal/index"
     }
 }
