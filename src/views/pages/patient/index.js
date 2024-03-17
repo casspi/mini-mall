@@ -33,10 +33,6 @@ new WowPage({
     this.reqAddressList()
   },
   handleSelect(event) {
-    // let { from } = this.data.params$
-    // if (["mine_index", "merchant_index"].indexOf(from) > -1) {
-    //   return null
-    // }
     let { item } = this.inputParams(event)
     let objPage = this.pagesGetByIndex(1)
     if (objPage) {

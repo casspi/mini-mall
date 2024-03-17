@@ -18,6 +18,7 @@
         "pages/patient/index",
         "pages/payment/index",
         "pages/prescription/index",
+        "pages/qualification/index",
         "pages/search/index",
         "pages/webview/index"
     ],

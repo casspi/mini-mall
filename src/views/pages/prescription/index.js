@@ -32,11 +32,14 @@ new WowPage({
     } = params$
     if (id) {
       this.validateAssignment(this, patient, objInput, 'objInput')
+      console.log('objPatient=>>>>>', this.data.objPatient, params$)
     }
-  },
-  onShow() {
+    if (params$.form === 'order_details') {
+      this.validateAssignment(this, patient, objInput, 'objInput')
+    }
     this.reqPatientList()
   },
+  onShow() {},
   handleSubmit() {
     let { params$, objPatient, api$, objInput, isAgreement } = this.data
     if (!isAgreement) {
@@ -57,6 +60,16 @@ new WowPage({
       params.patientId = objPatient.id
     } else {
       this.modalToast('请添加用药人信息')
+      return
+    }
+    // 订单详情是审核中、审核驳回 可以编辑
+    if (params$.form === 'order_details') {
+      params.id = params$.objPrescription.prescriptionId
+      this.curl(api$.REQ_EDIT_PRESCRIPTION, params, { method: 'PUT' })
+        .then(() => {
+          this.routerPop()
+        })
+        .toast()
       return
     }
     // params.wtPatient = wtPatient
@@ -92,8 +105,12 @@ new WowPage({
           objPatient = res.filter((item) => item.id === objPatient.id)[0]
         }
         // 订单确认页过来的
-        if (!objPatient && params$.objPrescription) {
+        if (params$.form === 'cart_confirm_index' && params$.objPrescription) {
           objPatient = res.filter((item) => item.id === params$.objPrescription.patient.id)[0]
+        }
+        // 订单详情
+        if (params$.form === 'order_details' && params$.objPrescription) {
+          objPatient = res.find((item) => item.id === params$.objPrescription.patient.id)
         }
         // 有默认取默认，无默认取第一个
         if (!objPatient) {

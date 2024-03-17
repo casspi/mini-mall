@@ -28,9 +28,9 @@
   <view class="agreement {{ isAgreement && 'is-active' }}" bindtap="inputHandle" data-value="{{ !isAgreement }}" data-item="isAgreement">
     <view class="agreement-icon _iconfont {{ isAgreement ? '_icon-xuanzhong' : '_icon-radio' }} "></view>
     <view class="agreement-text">
-      <text>已认真阅读荣昇线上药店</text>
-      <text class="strong" catchtap="jumpPageOrFireFn" data-url="webview_index" data-params="{{ { title: '用户服务协议', link: api$.USER_AGREEMENT } }}">《用户服务协议》 </text>
-      <text class="strong" catchtap="jumpPageOrFireFn" data-url="webview_index" data-params="{{ { title: '隐私政策', link: api$.PRIVACY_POLICY } }}">《隐私政策》 </text>
+      <text>已认真阅读</text>
+      <text class="strong" catchtap="jumpPageOrFireFn" data-url="webview_index" data-params="{{ { title: '荣昇企业网上药店平台服务协议', link: api$.USER_AGREEMENT } }}">《荣昇企业网上药店平台服务协议》 </text>
+      <!-- <text class="strong" catchtap="jumpPageOrFireFn" data-url="webview_index" data-params="{{ { title: '隐私政策', link: api$.PRIVACY_POLICY } }}">《隐私政策》 </text> -->
       <text>并接受协议内容</text>
     </view>
   </view>

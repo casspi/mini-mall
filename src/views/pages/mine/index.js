@@ -28,8 +28,15 @@ new WowPage({
       typeof callback === 'function' && callback()
     })
   },
+  getOrderNumber() {
+    const { api$ } = this.data
+    this.curl(api$.REQ_ORDER_NUMBER, {}, { method: 'get', loading: false }).then((res) => {
+      console.log('REQ_ORDER_NUMBER', res)
+    })
+  },
   getDetail() {
     const { api$ } = this.data
+    this.getOrderNumber()
     return this.curl(api$.REQ_USER_INFO, {}, { method: 'get', loading: false })
       .then((res) => {
         this.setData({

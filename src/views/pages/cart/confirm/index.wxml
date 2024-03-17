@@ -7,7 +7,7 @@
 
   <address-add-item wx:else bindtap="jumpPageOrFireFn" data-url="address_details_index"></address-add-item>
 
-  <view wx:if="{{ isPrescriptionDrugs }}" class="patient" data-params="{{ { objPrescription: objPrescription } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
+  <view wx:if="{{ isPrescriptionDrugs }}" class="patient" data-params="{{ { objPrescription: objPrescription, from: 'cart_confirm_index' } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
     <view class="patient-label">
       <view wx:if="{{ objPrescription }}">
         <text class="label">用药人</text>

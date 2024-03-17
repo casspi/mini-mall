@@ -39,6 +39,9 @@
 <block>
   <view class="c-border mr"></view>
   <view class="operate">
+    <view wx:if="{{ status === config$.ORDER_STATUS.ORDER_CHCK_REFUSE }}" class="operate-button" bindtap="inputEvent" data-event="payment" data-params="{{ data }}">
+      <text>重新提交</text>
+    </view>
     <view wx:if="{{ status === config$.ORDER_STATUS.UN_PAY }}" class="operate-button" bindtap="inputEvent" data-event="payment" data-params="{{ data }}">
       <text>立即付款</text>
     </view>

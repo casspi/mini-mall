@@ -23,6 +23,6 @@
   </view>
   <view class="c-bar"></view>
   <view class="c-button round {{ !isAgreement && 'disabled' }}" bindtap="handleSubmit">
-    <text> 保存并同意问诊 </text>
+    <text> {{ params$.form === 'order_details' ? '修改处方信息' : '保存并同意问诊' }} </text>
   </view>
 </wow-fixed-bottom>

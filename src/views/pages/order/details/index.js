@@ -2,6 +2,7 @@
 import './index.json'
 import './index.scss'
 import './index.wxml'
+import ApiConfig from 'src/config/api.config'
 
 import WowPage from 'wow-wx/lib/page'
 
@@ -22,6 +23,7 @@ new WowPage({
     objData: '',
     objPrescription: '',
     reason: '',
+    isPrescriptionDrugs: false, // 是否有处方药
   },
   onLoad(options) {
     this.routerGetParams(options)
@@ -30,7 +32,7 @@ new WowPage({
     this.reqOrderInfo()
   },
   reqOrderInfo() {
-    let { api$, params$ } = this.data
+    let { api$, params$, config$ } = this.data
     this.curl(
       api$.REQ_ORDER_DETAIL + params$.id,
       {},
@@ -44,6 +46,10 @@ new WowPage({
         return res
       })
       .then((res) => {
+        // 判断是否显示处方信息
+        if (res.prescriptionId && [config$.ORDER_STATUS.ORDER_CHCK, config$.ORDER_STATUS.ORDER_CHCK_REFUSE].includes(res.orderStatus)) {
+          this.setData({ isPrescriptionDrugs: true })
+        }
         res.prescriptionId && this.reqPrescriptionInfo(res.prescriptionId)
       })
       .toast()
@@ -59,7 +65,17 @@ new WowPage({
         method: 'get',
       },
     ).then((res) => {
-      this.setData({ objPrescription: res })
+      console.log('reqPrescriptionInfores', res)
+      if (res.wtPatient) {
+        const patient = res.wtPatient
+        patient.caseFileIds = (res.caseFileIds || []).map((id) => {
+          return { id, src: ApiConfig.IMAGE_BASE_URL + id }
+        })
+        patient.labelFileIds = (res.labelFileIds || []).map((item) => {
+          return { id, src: ApiConfig.IMAGE_BASE_URL + id }
+        })
+        this.setData({ objPrescription: { patient, prescriptionId: id } })
+      }
     })
   },
   handleCopy(event) {

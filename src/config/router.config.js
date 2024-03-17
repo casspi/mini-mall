@@ -17,6 +17,7 @@ export default {
     "patient_index": "/pages/patient/index",
     "payment_index": "/pages/payment/index",
     "prescription_index": "/pages/prescription/index",
+    "qualification_index": "/pages/qualification/index",
     "search_index": "/pages/search/index",
     "webview_index": "/pages/webview/index"
 }

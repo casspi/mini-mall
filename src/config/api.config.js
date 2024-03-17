@@ -19,7 +19,7 @@ export default {
   H5_BASE_URL: isProd ? '' : '',
 
   // 图片地址
-  IMAGE_BASE_URL: 'https://www.rs-superlink.com:8090/app/system/icon/viewIconById/',
+  IMAGE_BASE_URL: (isProd ? 'https://www.rs-superlink.com:8090/' : 'http://101.132.140.21:8080/') + 'app/system/icon/viewIconById/',
 
   // 文件上传
   DO_UPLOAD_FILE: 'app/system/file/upload',
@@ -52,6 +52,8 @@ export default {
 
   // 新增处方
   REQ_ADD_PRESCRIPTION: 'app/drug/wtPrescription/add',
+  // 修改处方
+  REQ_EDIT_PRESCRIPTION: 'app/drug/wtPrescription/edit',
   // 处方详情
   REQ_PRESCRIPTION_DETAIL: 'app/drug/wtPrescription/',
 
@@ -74,6 +76,8 @@ export default {
   REQ_RETURN_ORDER: 'app/drug/wtOrder/returnOrder',
   // 确认收货
   REQ_RECEIPT_ORDER: 'app/drug/wtOrder/confirmReceipt',
+  // 订单统计
+  REQ_ORDER_NUMBER: 'app/drug/wtOrder/statisticByOrderStatus',
 
   // 获取手机号验证码
   REQ_CODE: 'app/system/phone/sendCode',
@@ -87,5 +91,5 @@ export default {
   // 隐私政策
   PRIVACY_POLICY: 'https://www.baidu.com',
   // 用户协议
-  USER_AGREEMENT: 'https://www.taobao.com',
+  USER_AGREEMENT: 'https://www.rs-superlink.com:8090/xy.html',
 }

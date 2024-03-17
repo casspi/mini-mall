@@ -1,0 +1,13 @@
+<view class="qualification-list">
+  <view class="qualification-item" wx:for="{{ arrData }}" wx:key="index" bindtap="handleqQualification" data-item="{{ item }}">
+    <view class="qualification-inner" hover-class="none" hover-stop-propagation="false">
+      <view class="qualification-label">
+        <text>{{ item.label }}</text>
+      </view>
+      <view class="qualification-value">
+        <text>{{ item.value || '' }}</text>
+      </view>
+    </view>
+    <view class="iconfont iconMore"></view>
+  </view>
+</view>

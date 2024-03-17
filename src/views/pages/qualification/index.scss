@@ -1,0 +1,33 @@
+@import 'src/assets/scss/define';
+
+.qualification-list {
+  border-radius: j(4);
+  padding: j(10) 0;
+  margin: j(10) j(10) j(20);
+  background-color: #fff;
+}
+.qualification-item {
+  @extend %df;
+  @extend %aic;
+  @extend %cp;
+  height: j(48);
+  padding: j(10) j(20);
+  justify-content: space-between;
+  &:not(:last-child) {
+    border-bottom: j(1) solid #eee;
+  }
+  .iconfont {
+    @extend %c9;
+    font-size: j(18);
+  }
+}
+.qualification-label {
+  font-size: j(14);
+  font-weight: bold;
+  color: $color-primary;
+}
+.qualification-value {
+  font-size: j(12);
+  color: #999;
+  margin-top: j(5);
+}

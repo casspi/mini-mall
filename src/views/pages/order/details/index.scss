@@ -121,3 +121,42 @@ page {
 .null {
   height: j(40);
 }
+
+.patient {
+  @extend %df;
+  @extend %aic;
+  background-color: #fff;
+  margin-top: j(10);
+  padding: j(14) j(20);
+  font-size: j(14);
+
+  .iconfont {
+    @extend %c9;
+  }
+}
+.patient-label {
+  @extend %df;
+  flex: 1;
+  margin-right: auto;
+  font-size: j(12);
+  .label {
+    border: j(1) solid $color-primary;
+    color: $color-primary;
+    font-size: j(12);
+    padding: 0 j(5);
+    border-radius: j(2);
+    line-height: j(20);
+    height: j(20);
+    margin-right: j(6);
+  }
+  .name {
+    margin-right: j(6);
+  }
+  .age {
+    @extend %c9;
+  }
+  @extend %c3;
+}
+.patient-text {
+  @extend %c6;
+}

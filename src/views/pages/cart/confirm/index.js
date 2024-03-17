@@ -33,7 +33,7 @@ new WowPage({
   onShow() {
     this.reqAddressList()
   },
-  // 普通订单提交
+  // 订单提交
   handleSubmit() {
     let { objAddress, objPrescription, api$, params$, config$ } = this.data
     let { from, arrData, ...reset } = params$
@@ -46,24 +46,28 @@ new WowPage({
         if (from !== 'goods_index') submitParams.shoppingCartRelProductIds = arrData.map((item) => item.id)
         return this.curl(api$.DO_ORDER_SUBMIT, submitParams, { loading: true })
       })
-      .then((res) => {
-        return this.curl(api$.DO_PAY + `${res.id}/${wxCode}`, {}, { loading: true })
+      .then(() => {
+        return this.routerPop()
       })
-      .then((res) => {
-        let { payParamJson } = res || {}
-        objPayParams = JSON.parse(payParamJson)
-        return this.paymentRequest(objPayParams)
-      })
-      .then((res) => {
-        this.modalToast('支付成功')
-        return this.routerPush('payment_index', { status: 'success', from: 'cart_confirm_index' }, true)
-      })
-      .catch((err) => {
-        if (err && err.errMsg && err.errMsg.indexOf('requestPayment') > -1) {
-          return this.routerPush('payment_index', { status: 'error', from: 'cart_confirm_index', objPayParams }, true)
-        }
-        this.modalToast(err)
-      })
+      .toast()
+    // .then((res) => {
+    //   return this.curl(api$.DO_PAY + `${res.id}/${wxCode}`, {}, { loading: true })
+    // })
+    // .then((res) => {
+    //   let { payParamJson } = res || {}
+    //   objPayParams = JSON.parse(payParamJson)
+    //   return this.paymentRequest(objPayParams)
+    // })
+    // .then((res) => {
+    //   this.modalToast('支付成功')
+    //   return this.routerPush('payment_index', { status: 'success', from: 'cart_confirm_index' }, true)
+    // })
+    // .catch((err) => {
+    //   if (err && err.errMsg && err.errMsg.indexOf('requestPayment') > -1) {
+    //     return this.routerPush('payment_index', { status: 'error', from: 'cart_confirm_index', objPayParams }, true)
+    //   }
+    //   this.modalToast(err)
+    // })
   },
   countTotalAmount() {
     let { arrData } = this.data.params$

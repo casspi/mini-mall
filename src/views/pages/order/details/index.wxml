@@ -44,7 +44,22 @@
       </view>
     </view>
   </block>
-
+  <!-- {{ objPrescription.id }}-{{ objPrescription.patient.userName }} -->
+  <!-- 处方 -->
+  <view wx:if="{{ isPrescriptionDrugs }}" class="patient" data-params="{{ { objPrescription: objPrescription, form: 'order_details' } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
+    <view class="patient-label">
+      <view wx:if="{{ objPrescription }}">
+        <text class="label">用药人</text>
+        <text class="name">{{ objPrescription.patient.userName }}</text>
+        <text class="age">{{ filter.filterIDcard(objPrescription.patient.idCard, 3) }}岁，{{ filter.filterIDcard(objPrescription.patient.idCard, 2) }}</text>
+      </view>
+      <text wx:else> 尚未添加用药人，请添加 </text>
+    </view>
+    <view class="patient-text">
+      <text> 修改处方信息 </text>
+    </view>
+    <view class="iconfont iconMore"></view>
+  </view>
   <!--商品-->
   <order-goods-item data="{{ objData }}"></order-goods-item>
 

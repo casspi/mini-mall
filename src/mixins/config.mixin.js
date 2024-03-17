@@ -7,6 +7,10 @@ const config = {
     UN_RETURN: 3, //"待退货",
     RETURNING: 4, //"退货中",
     RETURNED: 5, //"已退货",
+    ORDER_CHCK: 6, //下单待审核
+    ORDER_CHCK_REFUSE: 7, //下单审核不通过，
+    RETURNED_CHECK: 8, //退货待审核
+    RETURNED_CHECK_REFUSE: 9, //退货审核不通过
   },
   // 订单对应的文案
   ORDER_STATUS_TIP: {
@@ -16,6 +20,10 @@ const config = {
     3: '退货待审核',
     4: '退货中',
     5: '已退货',
+    6: '待审核',
+    7: '审核不通过',
+    8: '退货待审核',
+    9: '退货审核不通过',
   },
 }
 

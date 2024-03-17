@@ -1,4 +1,4 @@
-@import "src/assets/scss/define";
+@import 'src/assets/scss/define';
 
 page {
   background-color: $color-bg;
@@ -139,11 +139,13 @@ page {
   font-size: j(28);
   width: j(28);
   height: j(28);
+  &._icon-daishenhedingdan {
+    font-size: j(32);
+  }
 }
 
 .order-entry-badge {
   @extend %pa;
-  @extend %br50;
   @extend %cfff;
   @extend %df;
   @extend %aic;
@@ -152,8 +154,10 @@ page {
   top: j(-8);
   font-size: j(10);
   background-color: #dd0000;
-  width: j(16);
+  min-width: j(10);
   height: j(16);
+  padding: j(0) j(3);
+  border-radius: j(8);
 }
 
 .order-entry-label {
