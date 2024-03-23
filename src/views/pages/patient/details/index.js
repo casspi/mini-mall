@@ -19,7 +19,6 @@ new WowPage({
     WowPage.wow$.mixins.File,
     WowPage.wow$.mixins.Image,
     WowPage.wow$.mixins.Jump,
-    WowPage.wow$.mixins.validator,
   ],
   onLoad(options) {
     this.routerGetParams(options)

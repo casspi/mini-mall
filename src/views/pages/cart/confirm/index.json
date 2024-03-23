@@ -4,6 +4,7 @@
         "wow-skeleton": "/components/wow-skeleton/index",
         "address-item": "../../address/components/address-item/index",
         "address-add-item": "../../address/components/address-add-item/index",
-        "wow-settlement": "/components/wow-settlement/index"
+        "wow-settlement": "/components/wow-settlement/index",
+        "wow-cell": "/components/wow-cell/index"
     }
 }

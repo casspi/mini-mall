@@ -1,4 +1,4 @@
-@import "~src/assets/scss/define";
+@import '~src/assets/scss/define';
 
 .form-textarea {
   @extend %df;
@@ -205,4 +205,40 @@
   @extend %bsb;
   padding: 0 j(20);
   text-align: right;
+}
+
+.radio-group {
+  @extend %df;
+  @extend %aic;
+  @extend %c3;
+  background-color: #fff;
+  padding: j(14) j(20);
+  font-size: j(14);
+}
+
+.radio-group-content {
+  @extend %df1;
+  @extend %df;
+  @extend %aic;
+  justify-content: flex-end;
+}
+
+.radio-item {
+  @extend %df;
+  @extend %aic;
+  @extend %jcc;
+  width: j(67);
+  height: j(32);
+  border-radius: j(32);
+  border: 1px solid #ddd;
+
+  &:not(:first-child) {
+    margin-left: j(14);
+  }
+
+  &.is-active {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    @extend %cfff;
+  }
 }

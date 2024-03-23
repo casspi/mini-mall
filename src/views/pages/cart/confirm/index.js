@@ -4,9 +4,11 @@ import './index.scss'
 import './index.wxml'
 
 import WowPage from 'wow-wx/lib/page'
+import DataMixin from './data.mixin'
 
 new WowPage({
   mixins: [
+    DataMixin,
     WowPage.wow$.mixins.Curl,
     WowPage.wow$.mixins.Router,
     WowPage.wow$.mixins.Input,
@@ -17,6 +19,7 @@ new WowPage({
     WowPage.wow$.mixins.Config,
     WowPage.wow$.mixins.Cache,
     WowPage.wow$.mixins.Goods,
+    WowPage.wow$.mixins.Validate,
   ],
   data: {
     objAddress: '',
@@ -35,9 +38,31 @@ new WowPage({
   },
   // 订单提交
   handleSubmit() {
-    let { objAddress, objPrescription, api$, params$, config$ } = this.data
+    let { objAddress, objPrescription, api$, params$, config$, isPrescriptionDrugs, needDiagnosis, objInput, objHidden } = this.data
     let { from, arrData, ...reset } = params$
     if (this.judgeGoods(arrData)) return
+
+    // 验证
+    if (isPrescriptionDrugs) {
+      if (needDiagnosis) {
+        if (this.validateCheck(objInput)) {
+          return
+        }
+      } else {
+        if (!objPrescription) {
+          return this.modalToast('请选择处方')
+        }
+      }
+    }
+    // 原问诊逻辑
+    if (needDiagnosis) {
+      const res = this.validateInput(objInput, objHidden)
+      console.log('res=>', res)
+      if (!res) {
+      }
+      return
+    }
+    // 原下单逻辑
     let objPayParams, wxCode
     this.userLogin()
       .then((code) => {

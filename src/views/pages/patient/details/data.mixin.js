@@ -12,7 +12,6 @@ export default {
         iconRight: '',
         use: [{ nonempty: true, prompt: '请输入药品使用人姓名' }],
       },
-
       phone: {
         label: '联系电话',
         value: '',

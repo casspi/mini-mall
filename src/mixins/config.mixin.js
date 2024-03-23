@@ -1,4 +1,12 @@
 const config = {
+  // 与用药人关系
+  DIAGNOSIS_RELATIONSHIP: [
+    { label: '本人', value: 1 },
+    { label: '父母', value: 2 },
+    { label: '配偶', value: 3 },
+    { label: '子女', value: 4 },
+    { label: '其他', value: 5 },
+  ],
   // 订单状态
   ORDER_STATUS: {
     UN_PAY: 0, // 待付款

@@ -1,4 +1,5 @@
 <wxs src="/wxs/filter.wxs" module="filter" />
+<import src="/templates/form-view/index.wxml" />
 
 <wow-skeleton wx:if="{{ !params$.arrData }}"></wow-skeleton>
 
@@ -7,20 +8,28 @@
 
   <address-add-item wx:else bindtap="jumpPageOrFireFn" data-url="address_details_index"></address-add-item>
 
-  <view wx:if="{{ isPrescriptionDrugs }}" class="patient" data-params="{{ { objPrescription: objPrescription, from: 'cart_confirm_index' } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
-    <view class="patient-label">
-      <view wx:if="{{ objPrescription }}">
-        <text class="label">用药人</text>
-        <text class="name">{{ objPrescription.patient.userName }}</text>
-        <text class="age">{{ filter.filterIDcard(objPrescription.patient.idCard, 3) }}岁，{{ filter.filterIDcard(objPrescription.patient.idCard, 2) }}</text>
+  <block wx:if="{{ isPrescriptionDrugs }}">
+    {{ needDiagnosis }}{{ isPrescriptionDrugs }}
+    <wow-cell use-right-content="" icon-right="" bindtap="inputHandle" data-item="needDiagnosis" data-value="{{ !needDiagnosis }}" label="是否需要问诊">
+      <switch checked="{{ needDiagnosis }}" color="#B12C2C" class="form-switch" slot="cell-right"></switch>
+    </wow-cell>
+    <template wx:if="{{ needDiagnosis }}" is="fromView" data="{{ objInput: objInput }}"></template>
+    <view wx:else class="patient" data-params="{{ { objPrescription: objPrescription, from: 'cart_confirm_index' } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
+      <view class="patient-label">
+        <view wx:if="{{ objPrescription }}">
+          <text class="label">用药人</text>
+          <text class="name">{{ objPrescription.patient.userName }}</text>
+          <text class="age">{{ filter.filterIDcard(objPrescription.patient.idCard, 3) }}岁，{{ filter.filterIDcard(objPrescription.patient.idCard, 2) }}</text>
+        </view>
+        <text wx:else> 请添加用药人和处方 </text>
       </view>
-      <text wx:else> 尚未添加用药人，请添加 </text>
+      <view class="patient-text">
+        <text> 自有处方信息 </text>
+      </view>
+      <view class="iconfont iconMore"></view>
     </view>
-    <view class="patient-text">
-      <text> 处方信息 </text>
-    </view>
-    <view class="iconfont iconMore"></view>
-  </view>
+  </block>
+
   <view class="goods-dl">
     <view class="goods-dt">
       <view class="iconfont iconShop"></view>
@@ -40,21 +49,6 @@
         <view class="goods-amount">￥{{ filter.filterAmount(item.price) }}</view>
       </view>
     </view>
-    <!-- <view class="goods-cell">
-      <view class="goods-cell-label">
-        <text>订单留言</text>
-      </view>
-      <view class="goods-cell-value goods-cell-input-box">
-        <input
-          bindinput="inputHandle"
-          data-item="remark"
-          placeholder="如需给商家备注，请在此输入"
-          placeholder-class="goods-placeholder-class"
-          type="text"
-          class="goods-cell-input"
-        />
-      </view>
-    </view> -->
     <view class="goods-cell">
       <view class="goods-cell-label">
         <text>配送方式</text>
@@ -68,5 +62,11 @@
 
   <view class="null"></view>
 
-  <wow-settlement class-external="settlement" disabled="{{ !numAmount || !objAddress || (isPrescriptionDrugs && !objPrescription) }}" amount="{{ numAmount }}" bindclick="handleSubmit"></wow-settlement>
+  <wow-settlement
+    button-text="{{ needDiagnosis ? '去问诊' : '下单' }}"
+    class-external="settlement"
+    disabled="{{ !numAmount || !objAddress || (isPrescriptionDrugs && !(1 || objPrescription)) }}"
+    amount="{{ numAmount }}"
+    bindclick="handleSubmit"
+  ></wow-settlement>
 </block>

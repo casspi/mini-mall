@@ -67,6 +67,8 @@ export default {
             prompt: '请上传病例资料或处方签',
           },
         ],
+        // 对接问诊平台这里不需要了
+        hidden: true,
       },
       labelFileIds: {
         value: [],
