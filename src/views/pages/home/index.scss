@@ -141,3 +141,21 @@ page {
     }
   }
 }
+
+.qualification {
+  margin: j(15);
+  padding: j(10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: j(16);
+  border: j(1) solid #e6964f;
+  color: #e6964f;
+  border-radius: j(4);
+  cursor: pointer;
+  .icon {
+    width: j(48);
+    height: j(32);
+    margin-right: j(80);
+  }
+}

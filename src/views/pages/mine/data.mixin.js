@@ -51,7 +51,7 @@ export default {
         label: '在线客服',
       },
       qualification: {
-        label: '公司资质',
+        label: '企业资质',
         url: 'qualification_index',
       },
       logout: {

@@ -18,6 +18,7 @@
     <image class="img" src="{{ filter.source(item.coverImageId) }}"></image>
   </view>
 </view>
+
 <view class="goods-title">
   <text> 为你推荐 </text>
 </view>
@@ -32,4 +33,9 @@
     </view>
   </block>
   <image wx:else class="empty-img" src="/assets/images/comming-soon-1.jpg" alt="敬请期待"></image>
+</view>
+
+<view bindtap="jumpPageOrFireFn" class="qualification" data-url="qualification_index">
+  <image class="icon" src="/assets/images/zz.png"></image>
+  <text> 企业资质 </text>
 </view>
