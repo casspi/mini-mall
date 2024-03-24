@@ -32,7 +32,7 @@
       >
     </view>
   </block>
-  <image wx:else class="empty-img" src="/assets/images/comming-soon-1.jpg" alt="敬请期待"></image>
+  <!-- <image wx:else class="empty-img" src="/assets/images/comming-soon-1.jpg" alt="敬请期待"></image> -->
 </view>
 
 <view bindtap="jumpPageOrFireFn" class="qualification" data-url="qualification_index">

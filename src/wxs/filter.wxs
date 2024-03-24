@@ -68,7 +68,7 @@ function filterTime(date, fmt) {
 
 module.exports = {
   source: function (src) {
-    return src ? "https://www.rs-superlink.com:8090/app/system/icon/viewIconById/" + src : ""
+    return src ? "https://www.rs-superlink.com/app/system/icon/viewIconById/" + src : ""
   },
   filterDate: filterDate,
   filterTime: filterTime,

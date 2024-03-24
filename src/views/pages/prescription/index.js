@@ -92,9 +92,7 @@ new WowPage({
     let { api$, objPatient, params$ } = this.data
     this.curl(
       api$.REQ_PATIENT_LIST,
-      {
-        def: 1,
-      },
+      {},
       {
         method: 'post',
       },

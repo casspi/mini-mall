@@ -19,7 +19,7 @@ export default {
   H5_BASE_URL: isProd ? '' : '',
 
   // 图片地址
-  IMAGE_BASE_URL: 'https://www.rs-superlink.com:8090/' + 'app/system/icon/viewIconById/',
+  IMAGE_BASE_URL: 'https://www.rs-superlink.com/' + 'app/system/icon/viewIconById/',
   // IMAGE_BASE_URL: 'http://101.132.140.21:8080/' + 'app/system/icon/viewIconById/',
 
   // 文件上传
@@ -94,5 +94,5 @@ export default {
   // 隐私政策
   PRIVACY_POLICY: 'https://www.baidu.com',
   // 用户协议
-  USER_AGREEMENT: 'https://www.rs-superlink.com:8090/xy.html',
+  USER_AGREEMENT: 'https://www.rs-superlink.com/xy.html',
 }

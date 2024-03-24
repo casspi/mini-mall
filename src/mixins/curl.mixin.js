@@ -5,7 +5,7 @@ import Router from 'wow-wx/mixins/wx/router.mixin'
 import ApiConfig, { isProd } from 'src/config/api.config'
 
 const curl = new Curl({
-  baseURI: 'https://www.rs-superlink.com:8090/',
+  baseURI: 'https://www.rs-superlink.com/',
   // baseURI: 'http://101.132.140.21:8080/',
 })
 
