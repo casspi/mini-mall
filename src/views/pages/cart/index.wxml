@@ -10,7 +10,7 @@
       <view class="select-icon iconfont {{ isAllSelected ? 'iconxuanze' : 'iconyuanhuan' }}"></view>
       <text>全选</text>
     </view>
-    <view class="iconfont iconDelete" wx:if="{{ numAmount }}" bindtap="handleDelete"></view>
+    <view class="iconfont iconDelete" wx:if="{{ 1 || numAmount }}" bindtap="handleDelete"></view>
   </view>
   <view class="null"></view>
   <wow-scroll id="wowScroll" bindscrolltolower="pagingLoad" bindrefresh="pagingRefreshHandle" class="content">

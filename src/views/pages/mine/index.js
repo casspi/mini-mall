@@ -42,6 +42,9 @@ new WowPage({
   getOrderNumber() {
     const { api$, objOrder } = this.data
     this.curl(api$.REQ_ORDER_NUMBER, {}, { method: 'post', loading: false }).then((res) => {
+      Object.keys(objOrder).forEach((key) => {
+        objOrder[key].value = 0
+      })
       ;(res || []).forEach((item) => {
         const key = 'order' + item.orderStatus
         if (objOrder[key]) objOrder[key].value = item.orderCount
@@ -57,9 +60,11 @@ new WowPage({
     this.getOrderNumber()
     return this.curl(api$.REQ_USER_INFO, {}, { method: 'get', loading: false })
       .then((res) => {
-        this.setData({
-          userInfo: res.user || {},
-        })
+        if (res && res.user) {
+          this.setData({
+            userInfo: res.user || {},
+          })
+        }
       })
       .toast()
   },

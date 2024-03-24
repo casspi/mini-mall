@@ -5,6 +5,7 @@ page {
   &:before {
     @extend %dn;
   }
+  padding-bottom: j(10);
 }
 .wow-search {
   @extend %pa;
@@ -143,7 +144,7 @@ page {
 }
 
 .qualification {
-  margin: j(15) j(20);
+  margin: j(15) j(20) j(10);
   padding: j(10);
   display: flex;
   align-items: center;

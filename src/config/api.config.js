@@ -19,8 +19,8 @@ export default {
   H5_BASE_URL: isProd ? '' : '',
 
   // 图片地址
-  // IMAGE_BASE_URL: 'https://www.rs-superlink.com:8090/' + 'app/system/icon/viewIconById/',
-  IMAGE_BASE_URL: 'http://101.132.140.21:8080/' + 'app/system/icon/viewIconById/',
+  IMAGE_BASE_URL: 'https://www.rs-superlink.com:8090/' + 'app/system/icon/viewIconById/',
+  // IMAGE_BASE_URL: 'http://101.132.140.21:8080/' + 'app/system/icon/viewIconById/',
 
   // 文件上传
   DO_UPLOAD_FILE: 'app/system/file/upload',
