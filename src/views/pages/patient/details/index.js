@@ -19,6 +19,7 @@ new WowPage({
     WowPage.wow$.mixins.File,
     WowPage.wow$.mixins.Image,
     WowPage.wow$.mixins.Jump,
+    WowPage.wow$.mixins.Pages,
   ],
   onLoad(options) {
     this.routerGetParams(options)
@@ -64,6 +65,14 @@ new WowPage({
     )
       .then(() => {
         this.modalToast(params$.id ? '修改成功' : '添加成功')
+        console.log(params$)
+        // 如果是处方页过来的，这里返回刷新下用药人列表
+        if (params$.from === 'prescription_index') {
+          let objPage = this.pagesGetByIndex(1)
+          if (objPage && objPage.reqPatientList) {
+            objPage.reqPatientList()
+          }
+        }
         setTimeout(this.routerPop.bind(this), 1000)
       })
       .toast()

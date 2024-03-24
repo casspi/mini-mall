@@ -24,8 +24,8 @@
   <view class="order-entry">
     <view class="order-entry-item" bindtap="jumpPageOrFireFn" data-sync="{{ user$ }}" data-item="{{ item }}" wx:for="{{ objOrder }}" wx:key="index">
       <view class="order-entry-icon iconfont {{ item.icon }}">
-        <view class="order-entry-badge" wx:if="{{ item.value !== '0' && item.value }}">
-          <text>{{ item.value.length > 2 ? '99+' : item.value }}</text>
+        <view class="order-entry-badge" wx:if="{{ item.value }}">
+          <text>{{ item.value > 99 ? '99+' : item.value }}</text>
         </view>
       </view>
       <view class="order-entry-label">

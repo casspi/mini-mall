@@ -41,9 +41,9 @@ export default {
   onShareAppMessage(options) {
     return Object.assign(
       {
-        title: '小程序名称',
+        title: '荣昇线上药店',
         path: 'pages/home/index',
-        imageUrl: s('icon-share.jpg'),
+        // imageUrl: s('logo.png'),
       },
       this.shareGetConfig(options),
     )

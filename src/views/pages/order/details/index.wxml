@@ -18,32 +18,9 @@
       <text>申请退货</text>
     </view>
   </view>
-
-  <!--地址-->
-  <address-item data="{{ objData.wtAddress }}" classes=""></address-item>
-
-  <!--快递-->
-  <block wx:if="{{ objData.deliveryMethod }}">
-    <view class="c-bar"></view>
-    <view class="prompt-section">
-      <view class="prompt-item">
-        <view class="prompt-label">
-          <text>{{ objData.deliveryMethod }}</text>
-        </view>
-      </view>
-      <view class="prompt-item">
-        <view class="prompt-label">
-          <text></text>
-        </view>
-        <view class="prompt-value">
-          <text>{{ objData.expressTrackingNumber || '-' }}</text>
-        </view>
-        <view class="prompt-copy" wx:if="{{ objData.expressTrackingNumber }}" data-text="{{ objData.expressTrackingNumber }}" bindtap="handleCopy">
-          <text>复制</text>
-        </view>
-      </view>
-    </view>
-  </block>
+  <view wx:if="{{ config$.ORDER_STATUS.ORDER_CHCK_REFUSE === objData.orderStatus }}" class="status-tips">
+    <text decode="true">抱歉您的订单审核未通过。\n驳回理由："{{ objPrescriptionInfo.approveContent }}"，请修改处方，后台将重新审核。</text>
+  </view>
   <!-- {{ objPrescription.id }}-{{ objPrescription.patient.userName }} -->
   <!-- 处方 -->
   <view wx:if="{{ isPrescriptionDrugs }}" class="patient" data-params="{{ { objPrescription: objPrescription, form: 'order_details' } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
@@ -60,6 +37,34 @@
     </view>
     <view class="iconfont iconMore"></view>
   </view>
+  <view class="c-bar"> </view>
+
+  <!--地址-->
+  <address-item data="{{ objData.wtAddress }}" classes=""></address-item>
+
+  <!--快递-->
+  <block wx:if="{{ objData.deliveryMethod }}">
+    <view class="c-bar"></view>
+    <view class="prompt-section">
+      <view class="prompt-item">
+        <view class="prompt-label">
+          <text>{{ objData.deliveryMethod }}</text>
+        </view>
+      </view>
+      <view class="prompt-item">
+        <view class="prompt-label">
+          <text>快递单号：</text>
+        </view>
+        <view class="prompt-value">
+          <text>{{ objData.expressTrackingNumber || '-' }}</text>
+        </view>
+        <view class="prompt-copy" wx:if="{{ objData.expressTrackingNumber }}" data-text="{{ objData.expressTrackingNumber }}" bindtap="handleCopy">
+          <text>复制</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
   <!--商品-->
   <order-goods-item data="{{ objData }}"></order-goods-item>
 
@@ -78,7 +83,7 @@
         <text>运费：</text>
       </view>
       <view class="prompt-value tar">
-        <text>￥5</text>
+        <text>￥{{ objData.expressDeliveryFee }}</text>
       </view>
     </view>
     <view class="prompt-item strong">

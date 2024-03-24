@@ -6,7 +6,7 @@ import './index.wxml'
 import WowPage from 'wow-wx/lib/page'
 
 new WowPage({
-  mixins: [WowPage.wow$.mixins.Router, WowPage.wow$.mixins.Input, WowPage.wow$.mixins.Modal, WowPage.wow$.mixins.Image],
+  mixins: [WowPage.wow$.mixins.Router, WowPage.wow$.mixins.Input, WowPage.wow$.mixins.Modal, WowPage.wow$.mixins.Image, WowPage.wow$.mixins.Share],
   data: {
     arrData: [
       {
@@ -41,7 +41,7 @@ new WowPage({
       {
         label: '职业药师资格证',
         value: '',
-        url: ['https://www.rs-superlink.com:8090/zj1.jpeg', 'https://www.rs-superlink.com:8090/zj1.jpeg'],
+        url: ['https://www.rs-superlink.com:8090/doctor1.jpeg', 'https://www.rs-superlink.com:8090/doctor2.jpeg'],
       },
     ],
   },
@@ -51,6 +51,11 @@ new WowPage({
       this.imagePreview({ urls: item.url })
     } else {
       this.modalToast(item.value)
+    }
+  },
+  shareGetConfig() {
+    return {
+      path: '/pages/qualification/index',
     }
   },
 })

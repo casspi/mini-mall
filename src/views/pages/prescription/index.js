@@ -27,19 +27,17 @@ new WowPage({
   onLoad(options) {
     this.routerGetParams(options)
     let { params$, objInput } = this.data
-    let {
-      objPrescription: { id, patient },
-    } = params$
-    if (id) {
-      this.validateAssignment(this, patient, objInput, 'objInput')
-      console.log('objPatient=>>>>>', this.data.objPatient, params$)
-    }
-    if (params$.form === 'order_details') {
-      this.validateAssignment(this, patient, objInput, 'objInput')
+    let { objPrescription } = params$
+    // 回显处方相关信息，用药人信息在获取用药人列表reqPatientList方法里回显
+    // 下单页过来的、详情页过来的
+    if ((objPrescription && objPrescription.id) || params$.form === 'order_details') {
+      this.validateAssignment(this, objPrescription, objInput, 'objInput')
     }
     this.reqPatientList()
   },
-  onShow() {},
+  onShow() {
+    // this.reqPatientList()
+  },
   handleSubmit() {
     let { params$, objPatient, api$, objInput, isAgreement } = this.data
     if (!isAgreement) {
@@ -51,7 +49,7 @@ new WowPage({
       return null
     }
     let options = this.validateInput(objInput)
-    console.log(options)
+    console.log('options=====>', options)
     const { caseFileIds, labelFileIds, ...wtPatient } = options
     const params = {}
     params.caseFileIds = caseFileIds.map((item) => item.id)
@@ -67,7 +65,8 @@ new WowPage({
       params.id = params$.objPrescription.prescriptionId
       this.curl(api$.REQ_EDIT_PRESCRIPTION, params, { method: 'PUT' })
         .then(() => {
-          this.routerPop()
+          this.modalToast('处方信息已更新，我们将重新审核~')
+          setTimeout(this.routerPop.bind(this), 1000)
         })
         .toast()
       return
@@ -75,7 +74,9 @@ new WowPage({
     // params.wtPatient = wtPatient
     this.curl(api$.REQ_ADD_PRESCRIPTION, params, {}).then((res) => {
       this.backToOrder({
-        patient: { ...res.wtPatient, caseFileIds, labelFileIds },
+        patient: { ...res.wtPatient },
+        caseFileIds,
+        labelFileIds,
         id: res.id,
       })
     })
@@ -105,11 +106,11 @@ new WowPage({
           objPatient = res.filter((item) => item.id === objPatient.id)[0]
         }
         // 订单确认页过来的
-        if (params$.form === 'cart_confirm_index' && params$.objPrescription) {
+        if (params$.form === 'cart_confirm_index' && params$.objPrescription && params$.objPrescription.patient) {
           objPatient = res.filter((item) => item.id === params$.objPrescription.patient.id)[0]
         }
         // 订单详情
-        if (params$.form === 'order_details' && params$.objPrescription) {
+        if (params$.form === 'order_details' && params$.objPrescription && params$.objPrescription.patient) {
           objPatient = res.find((item) => item.id === params$.objPrescription.patient.id)
         }
         // 有默认取默认，无默认取第一个

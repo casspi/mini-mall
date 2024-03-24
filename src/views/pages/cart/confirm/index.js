@@ -28,6 +28,7 @@ new WowPage({
     numAmount: '---',
     remark: '',
     isPrescriptionDrugs: false, // 是否有处方药
+    expressDeliveryFee: '',
   },
   onLoad(options) {
     this.routerGetParams(options)
@@ -35,6 +36,20 @@ new WowPage({
   },
   onShow() {
     this.reqAddressList()
+    this.init()
+  },
+  init() {
+    let { api$ } = this.data
+    this.curl(
+      api$.REQ_EXPRESSDELIVERYFEE,
+      {},
+      {
+        loading: false,
+        method: 'get',
+      },
+    ).then((res) => {
+      this.setData({ expressDeliveryFee: res })
+    })
   },
   // 订单提交
   handleSubmit() {
@@ -42,19 +57,21 @@ new WowPage({
     let { from, arrData, ...reset } = params$
     if (this.judgeGoods(arrData)) return
 
-    // 验证
+    // 除方药
     if (isPrescriptionDrugs) {
+      // 需要问诊
       if (needDiagnosis) {
         if (this.validateCheck(objInput)) {
           return
         }
       } else {
+        // 自有处方
         if (!objPrescription) {
           return this.modalToast('请选择处方')
         }
       }
     }
-    // 原问诊逻辑
+    // 问诊逻辑
     if (needDiagnosis) {
       const res = this.validateInput(objInput, objHidden)
       console.log('res=>', res)
@@ -71,28 +88,33 @@ new WowPage({
         if (from !== 'goods_index') submitParams.shoppingCartRelProductIds = arrData.map((item) => item.id)
         return this.curl(api$.DO_ORDER_SUBMIT, submitParams, { loading: true })
       })
-      .then(() => {
-        return this.routerPop()
+      .then((res) => {
+        if (isPrescriptionDrugs) {
+          const tips = needDiagnosis ? '下单成功，等待问诊接单' : '下单成功，等待后台审核'
+          this.modalToast(tips)
+          setTimeout(this.routerPop.bind(this), 1500)
+          throw 'over'
+        }
+        // 非处方药走支付逻辑
+        return this.curl(api$.DO_PAY + `${res.id}/${wxCode}`, {}, { loading: true })
       })
-      .toast()
-    // .then((res) => {
-    //   return this.curl(api$.DO_PAY + `${res.id}/${wxCode}`, {}, { loading: true })
-    // })
-    // .then((res) => {
-    //   let { payParamJson } = res || {}
-    //   objPayParams = JSON.parse(payParamJson)
-    //   return this.paymentRequest(objPayParams)
-    // })
-    // .then((res) => {
-    //   this.modalToast('支付成功')
-    //   return this.routerPush('payment_index', { status: 'success', from: 'cart_confirm_index' }, true)
-    // })
-    // .catch((err) => {
-    //   if (err && err.errMsg && err.errMsg.indexOf('requestPayment') > -1) {
-    //     return this.routerPush('payment_index', { status: 'error', from: 'cart_confirm_index', objPayParams }, true)
-    //   }
-    //   this.modalToast(err)
-    // })
+      .then((res) => {
+        let { payParamJson } = res || {}
+        objPayParams = JSON.parse(payParamJson)
+        return this.paymentRequest(objPayParams)
+      })
+      .then((res) => {
+        this.modalToast('支付成功')
+        return this.routerPush('payment_index', { status: 'success', from: 'cart_confirm_index' }, true)
+      })
+      .catch((err) => {
+        console.log(err)
+        if (err === 'over') return
+        if (err && err.errMsg && err.errMsg.indexOf('requestPayment') > -1) {
+          return this.routerPush('payment_index', { status: 'error', from: 'cart_confirm_index', objPayParams }, true)
+        }
+        this.modalToast(err)
+      })
   },
   countTotalAmount() {
     let { arrData } = this.data.params$

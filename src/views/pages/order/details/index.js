@@ -21,7 +21,8 @@ new WowPage({
   data: {
     objRelation: '',
     objData: '',
-    objPrescription: '',
+    objPrescription: '', // 处方信息
+    objPrescriptionInfo: '', // 冗余页面显示的
     reason: '',
     isPrescriptionDrugs: false, // 是否有处方药
   },
@@ -66,16 +67,18 @@ new WowPage({
       },
     ).then((res) => {
       console.log('reqPrescriptionInfores', res)
+      const objPrescription = { prescriptionId: id }
       if (res.wtPatient) {
-        const patient = res.wtPatient
-        patient.caseFileIds = (res.caseFileIds || []).map((id) => {
-          return { id, src: ApiConfig.IMAGE_BASE_URL + id }
-        })
-        patient.labelFileIds = (res.labelFileIds || []).map((item) => {
-          return { id, src: ApiConfig.IMAGE_BASE_URL + id }
-        })
-        this.setData({ objPrescription: { patient, prescriptionId: id } })
+        objPrescription.patient = res.wtPatient
       }
+      objPrescription.caseFileIds = (res.caseFileIds || []).map((id) => {
+        return { id, src: ApiConfig.IMAGE_BASE_URL + id }
+      })
+
+      objPrescription.labelFileIds = (res.labelFileIds || []).map((id) => {
+        return { id, src: ApiConfig.IMAGE_BASE_URL + id }
+      })
+      this.setData({ objPrescriptionInfo: JSON.parse(JSON.stringify(res)), objPrescription })
     })
   },
   handleCopy(event) {
@@ -163,7 +166,7 @@ new WowPage({
         return this.curl(api$.REQ_RETURN_ORDER, { reasonForReturn: reason, id: data.detail.id }, { method: 'put' })
       })
       .then(() => {
-        this.modalToast('申请退货成功')
+        this.modalToast('申请退货成功，我们将进行审核，请耐心等待~')
         setTimeout(this.routerPop.bind(this), 1000)
       })
       .toast()

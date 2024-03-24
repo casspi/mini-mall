@@ -9,7 +9,7 @@ import DataMixin from './data.mixin'
 var appInstance = getApp()
 console.log(appInstance.globalData)
 new WowPage({
-  mixins: [DataMixin, WowPage.wow$.mixins.Jump, WowPage.wow$.mixins.Router, WowPage.wow$.mixins.Shop, WowPage.wow$.mixins.Tabbar, WowPage.wow$.mixins.Curl, WowPage.wow$.mixins.Refresh],
+  mixins: [DataMixin, WowPage.wow$.mixins.Jump, WowPage.wow$.mixins.Router, WowPage.wow$.mixins.Shop, WowPage.wow$.mixins.Tabbar, WowPage.wow$.mixins.Curl, WowPage.wow$.mixins.Refresh, WowPage.wow$.mixins.Share],
   handleClassify(e) {
     const { item } = this.inputParams(e)
     appInstance.globalData.classifyId = item.id || ''

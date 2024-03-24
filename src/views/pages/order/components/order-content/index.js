@@ -109,7 +109,7 @@ new WowComponent({
           return this.curl(api$.REQ_RETURN_ORDER, { reasonForReturn: reason, id: data.detail.id }, { method: 'put' })
         })
         .then(() => {
-          this.modalToast('申请退货成功')
+          this.modalToast('申请退货成功，我们将进行审核，请耐心等待~')
           this.pagingRefresh()
         })
         .toast()

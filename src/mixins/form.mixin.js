@@ -24,7 +24,7 @@ export default {
         return this.curl(
           api$.DO_UPLOAD_FILE,
           {
-            storeKey: item.storeKey, // 存储控价key
+            storeKey: item.storeKey, // 存储空间key
             businessId: '',
           },
           {
@@ -36,7 +36,6 @@ export default {
         )
       })
       .then((res) => {
-        // item.value.push("https://images.autostreets.com/" + res.saveUrl)
         this.setData({ [`${item.key}.value`]: [...item.value, { id: res.id, src: ApiConfig.IMAGE_BASE_URL + res.id }] })
       })
       .toast()

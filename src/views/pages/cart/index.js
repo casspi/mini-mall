@@ -30,6 +30,7 @@ new WowPage({
     })
   },
   onShow() {
+    // 更新登录态
     this.userGet()
     this.handleRefresh(this.judgeItemSelect)
     this.reqShopCartTotal()
@@ -143,13 +144,7 @@ new WowPage({
     }
     this.modalConfirm(`确认移出这${arrData.length}件宝贝么？`)
       .then(() => {
-        return this.curl(
-          api$.REQ_ADD_CART + '?idList=' + arrData[0],
-          {
-            idList: arrData,
-          },
-          { method: 'DELETE' },
-        )
+        return this.curl(api$.REQ_ADD_CART + '?idList=' + arrData, {}, { method: 'DELETE' })
       })
       .then(() => {
         this.handleRefresh(this.judgeItemSelect)

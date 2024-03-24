@@ -19,7 +19,8 @@ export default {
   H5_BASE_URL: isProd ? '' : '',
 
   // 图片地址
-  IMAGE_BASE_URL: (isProd ? 'https://www.rs-superlink.com:8090/' : 'http://101.132.140.21:8080/') + 'app/system/icon/viewIconById/',
+  // IMAGE_BASE_URL: 'https://www.rs-superlink.com:8090/' + 'app/system/icon/viewIconById/',
+  IMAGE_BASE_URL: 'http://101.132.140.21:8080/' + 'app/system/icon/viewIconById/',
 
   // 文件上传
   DO_UPLOAD_FILE: 'app/system/file/upload',
@@ -56,6 +57,8 @@ export default {
   REQ_EDIT_PRESCRIPTION: 'app/drug/wtPrescription/edit',
   // 处方详情
   REQ_PRESCRIPTION_DETAIL: 'app/drug/wtPrescription/',
+  //快递费
+  REQ_EXPRESSDELIVERYFEE: 'app/drug/wtOrder/expressDeliveryFee',
 
   // 用药人
   DO_ADD_PATIENT: 'app/drug/wtPatient',

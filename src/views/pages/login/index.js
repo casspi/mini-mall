@@ -21,7 +21,6 @@ new WowPage({
   // 获取验证码
   handleCode() {
     const { phone, code, api$ } = this.data
-    console.log(phone, code)
     this.countDown()
     this.curl(api$.REQ_CODE + '?phone=' + phone, {}, { method: 'post' })
       .then(() => {})
@@ -29,7 +28,7 @@ new WowPage({
   },
   // 倒计时
   countDown() {
-    let count = 10
+    let count = 60
     this.setData({
       count,
     })

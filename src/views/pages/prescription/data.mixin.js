@@ -52,39 +52,39 @@ export default {
       //   label: "设为默认用药人",
       //   mode: "mode-switch",
       // },
-      caseFileIds: {
+      labelFileIds: {
         value: [],
-        key: 'objInput.caseFileIds',
-        label: '上传病例资料（用于辅助医生诊断）',
+        key: 'objInput.labelFileIds',
+        label: '病例信息和处方',
         mode: 'mode-upload',
         maxlength: 2,
         useTopBlock: true,
         storeKey: 'drug-prescription',
         use: [
-          { nonempty: true, prompt: '请上传病例资料' },
+          { nonempty: true, prompt: '请上传病例信息和处方' },
           {
-            rule: (v, obj) => obj.caseFileIds.value.length || obj.labelFileIds.value.length,
-            prompt: '请上传病例资料或处方签',
+            rule: (v, obj) => obj.labelFileIds.value.length, //obj.caseFileIds.value.length || obj.labelFileIds.value.length,
+            prompt: '请上传病例信息和处方',
           },
         ],
-        // 对接问诊平台这里不需要了
-        hidden: true,
       },
-      labelFileIds: {
+      caseFileIds: {
         value: [],
-        key: 'objInput.labelFileIds',
-        label: '上传处方签',
+        key: 'objInput.caseFileIds',
+        label: '身份证正反面',
         mode: 'mode-upload',
-        maxlength: 1,
+        maxlength: 2,
         useTopBlock: true,
         storeKey: 'drug-prescription',
         use: [
-          { nonempty: true, prompt: '请上传处方签' },
+          { nonempty: true, prompt: '请上传身份证照片' },
           {
-            rule: (v, obj) => obj.caseFileIds.value.length || obj.labelFileIds.value.length,
-            prompt: '请上传病例资料或处方签',
+            rule: (v, obj) => obj.caseFileIds.value.length === 2,
+            prompt: '请上传身份证正反面',
           },
         ],
+        // 对接问诊平台这里不需要了
+        hidden: false,
       },
     },
   },

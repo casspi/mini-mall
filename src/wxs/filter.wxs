@@ -166,7 +166,7 @@ module.exports = {
     }
     //获取性别
     if (type == 2) {
-      if (parseInt(IdCard.substring(16, 1)) % 2 == 1) {
+      if (parseInt(IdCard.substring(17, 1)) % 2 == 1) {
         return "男";
       } else {
         return "女";

@@ -8,9 +8,20 @@ import DataMixin from './data.mixin'
 import User from 'wow-wx/mixins/utils/user.mixin'
 
 new WowPage({
-  mixins: [DataMixin, WowPage.wow$.mixins.Router, WowPage.wow$.mixins.Jump, WowPage.wow$.mixins.Modal, WowPage.wow$.mixins.Call, WowPage.wow$.mixins.User, WowPage.wow$.mixins.Curl, WowPage.wow$.mixins.Refresh],
+  mixins: [
+    DataMixin,
+    WowPage.wow$.mixins.Router,
+    WowPage.wow$.mixins.Jump,
+    WowPage.wow$.mixins.Modal,
+    WowPage.wow$.mixins.Call,
+    WowPage.wow$.mixins.User,
+    WowPage.wow$.mixins.Curl,
+    WowPage.wow$.mixins.Refresh,
+    WowPage.wow$.mixins.Share,
+  ],
   data: {
     userInfo: {},
+    orderNumber: {},
   },
   onShow() {
     this.getDetail()
@@ -29,9 +40,16 @@ new WowPage({
     })
   },
   getOrderNumber() {
-    const { api$ } = this.data
-    this.curl(api$.REQ_ORDER_NUMBER, {}, { method: 'get', loading: false }).then((res) => {
-      console.log('REQ_ORDER_NUMBER', res)
+    const { api$, objOrder } = this.data
+    this.curl(api$.REQ_ORDER_NUMBER, {}, { method: 'post', loading: false }).then((res) => {
+      ;(res || []).forEach((item) => {
+        const key = 'order' + item.orderStatus
+        if (objOrder[key]) objOrder[key].value = item.orderCount
+      })
+      this.setData({
+        orderNumber: res,
+        objOrder,
+      })
     })
   },
   getDetail() {
@@ -84,11 +102,13 @@ new WowPage({
         User.userLogout().then(() => {
           this.routerRoot('home_index')
         })
-        this.curl(api$.REQ_LOGOUT, {}, { method: 'DELETE' }).then(() => {
-          // User.userLogout().then(() => {
-          //   this.routerRoot('home_index')
-          // })
-        })
+        // return this.curl(api$.REQ_LOGOUT, {}, { method: 'DELETE' })
+        // return this.curl(api$.REQ_LOGOUT, {}, { method: 'DELETE' })
+        // .then(() => {
+        //   // User.userLogout().then(() => {
+        //   //   this.routerRoot('home_index')
+        //   // })
+        // })
       })
       .null()
   },

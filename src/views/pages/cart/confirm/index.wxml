@@ -9,10 +9,9 @@
   <address-add-item wx:else bindtap="jumpPageOrFireFn" data-url="address_details_index"></address-add-item>
 
   <block wx:if="{{ isPrescriptionDrugs }}">
-    {{ needDiagnosis }}{{ isPrescriptionDrugs }}
-    <wow-cell use-right-content="" icon-right="" bindtap="inputHandle" data-item="needDiagnosis" data-value="{{ !needDiagnosis }}" label="是否需要问诊">
+    <!-- <wow-cell use-right-content="" icon-right="" bindtap="inputHandle" data-item="needDiagnosis" data-value="{{ !needDiagnosis }}" label="是否需要问诊">
       <switch checked="{{ needDiagnosis }}" color="#B12C2C" class="form-switch" slot="cell-right"></switch>
-    </wow-cell>
+    </wow-cell> -->
     <template wx:if="{{ needDiagnosis }}" is="fromView" data="{{ objInput: objInput }}"></template>
     <view wx:else class="patient" data-params="{{ { objPrescription: objPrescription, from: 'cart_confirm_index' } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
       <view class="patient-label">
@@ -54,8 +53,7 @@
         <text>配送方式</text>
       </view>
       <view class="goods-cell-value">
-        <!-- {{ filter.filterAmount(store.feightFee) }} -->
-        <text>普通快递5元</text>
+        <text>普通快递{{ expressDeliveryFee }}元</text>
       </view>
     </view>
   </view>

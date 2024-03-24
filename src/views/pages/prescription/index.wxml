@@ -9,7 +9,7 @@
   tips="true"
 ></patient-item>
 
-<patient-add-item wx:else bindtap="jumpPageOrFireFn" data-url="patient_details_index"></patient-add-item>
+<patient-add-item wx:else bindtap="jumpPageOrFireFn" data-url="patient_details_index" data-params="{{ { from: 'prescription_index' } }}"></patient-add-item>
 
 <template is="fromView" data="{{ objInput: objInput }}"></template>
 

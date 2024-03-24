@@ -6,11 +6,11 @@
     <order-cell
       bindreturn="handleReturn"
       bindrefresh="pagingRefresh"
+      bindpayment="handlePayment"
       wx:for="{{ arrData }}"
       wx:key="index"
       wx:for-item="item"
       wx:for-index="index"
-      bindpayment="handlePayment"
       data="{{ item }}"
       status="{{ item.orderStatus }}"
     ></order-cell>

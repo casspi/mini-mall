@@ -11,7 +11,7 @@ export default {
         status: '6',
       },
       {
-        label: '已驳回',
+        label: '未通过',
         status: '7',
       },
       {
