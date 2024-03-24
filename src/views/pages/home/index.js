@@ -16,10 +16,12 @@ new WowPage({
     this.routerRoot('classify_index')
   },
   onLoad() {
-    this.reqShopCartTotal()
     this.getClassifyList()
     this.getActivity()
     this.getGoodsList()
+  },
+  onShow() {
+    this.reqShopCartTotal()
   },
   pagingRefresh(callback) {
     this.reqShopCartTotal()

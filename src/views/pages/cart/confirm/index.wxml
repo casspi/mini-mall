@@ -34,7 +34,7 @@
       <view class="iconfont iconShop"></view>
       <text class="goods-store">荣昇线上药店</text>
     </view>
-    <view wx:for="{{ params$.arrData }}" wx:for-index="index" wx:key="index" class="goods-dd" bindtap="jumpPageOrFireFn" data-url="goods_index" data-params="{{ { id: item.productId } }}">
+    <view wx:for="{{ params$.arrData }}" wx:for-index="index" wx:key="index" class="goods-dd">
       <image class="goods-image" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
       <view class="goods-info">
         <view class="goods-name">

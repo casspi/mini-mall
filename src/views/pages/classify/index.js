@@ -17,8 +17,8 @@ new WowPage({
     console.log('params$=>', params$)
   },
   onShow() {
+    // 搜索结果页加入购物车，由于不是tab页，无法更新tabBarBadgeShow数字，在这里触发更新
     this.reqShopCartTotal()
-
     this.reqClassifyList()
   },
   handleClassifyChange(event) {
