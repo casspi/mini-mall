@@ -39,7 +39,7 @@ new WowPage({
         url: ['https://www.rs-superlink.com/zj1.jpeg'],
       },
       {
-        label: '职业药师资格证',
+        label: '执业药师注册证',
         value: '',
         url: ['https://www.rs-superlink.com/doctor1.jpeg', 'https://www.rs-superlink.com/doctor2.jpeg'],
       },
