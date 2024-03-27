@@ -1,0 +1,78 @@
+@import 'src/assets/scss/define';
+
+page {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+}
+
+.remind {
+  color: #999;
+  font-size: j(12);
+  line-height: j(20);
+  @extend %db;
+}
+
+// 已选
+.selected {
+  @extend %df;
+  @extend %aic;
+  padding: j(15) 0;
+  font-size: j(14);
+}
+
+.select-warp {
+  padding: 0 j(20);
+}
+
+.select-item {
+  @extend %df;
+  @extend %aic;
+  @extend %jcs;
+
+  &:not(:first-child) {
+    @extend %bw05;
+    @extend %bwt;
+  }
+
+  padding: j(5) 0;
+  min-height: j(40);
+  color: #666;
+  font-size: j(14);
+
+  &-right {
+    @extend %df;
+    @extend %fdc;
+  }
+
+  .title {
+    color: #333;
+    font-size: j(16);
+    margin-bottom: j(5);
+  }
+
+  .tips {
+    color: $color-danger;
+    font-size: j(12);
+    visibility: hidden;
+  }
+
+  ._iconfont {
+    display: none;
+  }
+
+  &.is-active {
+    ._iconfont {
+      color: $color-primary;
+      display: block;
+    }
+
+    .tips {
+      visibility: visible;
+      margin-top: j(5);
+    }
+  }
+}
+.c-button {
+  width: 100%;
+}

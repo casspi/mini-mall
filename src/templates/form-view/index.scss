@@ -242,3 +242,55 @@
     @extend %cfff;
   }
 }
+
+.form-cell {
+  padding: j(14) j(20);
+  min-height: j(40);
+  font-size: j(14);
+  background-color: #fff;
+  @extend %df;
+  @extend %aic;
+  @extend %bsb;
+  @extend %c3;
+
+  &:not(:last-child) {
+    @extend %bwb;
+    @extend %bw05;
+  }
+
+  .label {
+    margin-right: j(9);
+  }
+
+  .label-suffix {
+    font-size: j(12);
+    @extend %c6;
+    margin-right: j(9);
+  }
+}
+
+.select-view-cell {
+  @extend %df;
+  @extend %aic;
+  //@extend %cp;
+  @extend %bwb;
+  color: #333;
+  .iconfont {
+    margin-right: j(8);
+  }
+
+  .icon-xieyang {
+    color: $color-danger;
+  }
+}
+
+.select-view-value {
+  margin-left: auto;
+  color: #999;
+  text {
+    max-width: j(260);
+    display: block;
+    word-break: break-all;
+    padding: j(5) 0;
+  }
+}

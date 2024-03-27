@@ -20,6 +20,7 @@
         "pages/prescription/index",
         "pages/qualification/index",
         "pages/search/index",
+        "pages/select/index",
         "pages/webview/index"
     ],
     "tabBar": {

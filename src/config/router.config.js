@@ -19,5 +19,6 @@ export default {
     "prescription_index": "/pages/prescription/index",
     "qualification_index": "/pages/qualification/index",
     "search_index": "/pages/search/index",
+    "select_index": "/pages/select/index",
     "webview_index": "/pages/webview/index"
 }

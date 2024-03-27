@@ -190,5 +190,13 @@ module.exports = {
       total += item.number
     })
     return total
+  },
+  filterArr:function(arr, key){
+    var str = ''
+    key = key || 'label'
+    arr.forEach(function(item, i){
+      str += (i > 0 ? ',' + item[key] : item[key])
+    })
+    return str
   }
 }

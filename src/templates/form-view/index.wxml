@@ -50,6 +50,18 @@
       <switch checked="{{ item.value }}" color="#B12C2C" class="form-switch" slot="cell-right"></switch>
     </wow-cell>
 
+    <view class="form-cell select-view-cell" data-item="{{ item }}" bindtap="jumpPageOrFireFn" wx:if="{{ item.mode === 'select-view' && !item.hidden }}">
+      <view class="iconfont {{ item.icon }}" wx:if="{{ item.icon }}"></view>
+      <view class="select-view-label">
+        <text>{{ item.label }}</text>
+      </view>
+      <view class="select-view-value {{ !item.value.length && 'c-input-place' }}">
+        <text wx:if="{{ item.value.length }}">{{ filter.filterArr(item.value) }}</text>
+        <text wx:else>{{ item.placeholder || '请选择' }}</text>
+      </view>
+      <view class="iconfont icon-right iconMore"></view>
+    </view>
+
     <view class="form-grade" wx:if="{{ item.mode === 'mode-grade' && !item.hidden }}">
       <view class="form-grade-label">
         <text>{{ item.label }}</text>

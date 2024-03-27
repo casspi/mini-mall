@@ -1,0 +1,16 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
+
+<view class="select-warp">
+  <text class="remind" wx:if="{{ params$.remind }}">{{ params$.remind }}</text>
+  <text class="selected" wx:if="{{ params$.multiple }}">已选择：{{ selectedText }}</text>
+  <view class="select-item {{ filter.includes(value, item.value, 'value') && 'is-active' }}" wx:for="{{ params$.options }}" wx:key="index" data-item="{{ item }}" bindtap="itemHandle">
+    <view class="select-item-right">
+      <text>{{ item.label }}</text>
+    </view>
+    <text class="_iconfont _icon-xuanzhong1"></text>
+  </view>
+</view>
+
+<wow-fixed-bottom height="60" class="bottom-bar">
+  <view class="c-button" bindtap="handleConfirm">确定</view>
+</wow-fixed-bottom>
