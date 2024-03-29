@@ -35,6 +35,7 @@ new WowPage({
     console.log(this.data)
   },
   onShow() {
+    this.userGet().null()
     this.reqAddressList()
     this.init()
   },
@@ -71,14 +72,16 @@ new WowPage({
         }
       }
     }
+    let diagnosisParams = {}
     // 问诊逻辑
     if (needDiagnosis) {
-      const res = this.validateInput(objInput, objHidden)
+      const res = this.validateInput(objHidden, objInput)
       console.log('res=>', res)
-      if (!res) {
-      }
-      return
+      diagnosisParams = this.formartDiagnosisParams(res)
     }
+    console.log('diagnosisParams=>', diagnosisParams)
+    return
+
     // 原下单逻辑
     let objPayParams, wxCode
     this.userLogin()

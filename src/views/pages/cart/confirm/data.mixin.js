@@ -3,11 +3,14 @@ import Config from '../../../../mixins/config.mixin.js'
 
 export default {
   data: {
+    //问诊平台需要的其他字段
     objHidden: {
       beforeAiDataList2: {
-        subjectId: 2, //题目ID，第二题存居民用药信息选择，固定为2
-        answer: '', //第二题该值为空
-        answerMedicine: '[{"medicineId":"1","number":1},{"medicineId":"2","number":2}]', //存问诊用药信息选择，medicineId为第三方药品ID，number为药品数量。该字段是一字符串。
+        value: {
+          subjectId: 2, //题目ID，第二题存居民用药信息选择，固定为2
+          answer: '', //第二题该值为空
+          answerMedicine: '', //'[{"medicineId":"1","number":1},{"medicineId":"2","number":2}]' 存问诊用药信息选择，medicineId为第三方药品ID，number为药品数量。该字段是一字符串。
+        },
       },
     },
     // 是否需要问诊
@@ -16,7 +19,7 @@ export default {
     objInput: {
       serviceType: {
         label: '问诊服务类型',
-        value: '',
+        value: 0,
         key: 'objInput.serviceType',
         mode: 'radio-group',
         options: [
@@ -28,8 +31,8 @@ export default {
       },
       userFamilyName: {
         label: '用药人姓名',
-        value: '',
-        key: 'objInput.name',
+        value: 'zhangsan',
+        key: 'objInput.userFamilyName',
         placeholder: ' 请输入用药人姓名',
         mode: 'mode-input',
         iconRight: '',
@@ -37,7 +40,7 @@ export default {
       },
       userFamilyIdCard: {
         label: '用药人身份证',
-        value: '',
+        value: '511112197506224516',
         key: 'objInput.userFamilyIdCard',
         placeholder: '请输入药品使用人身份证',
         mode: 'mode-input',
@@ -53,7 +56,7 @@ export default {
       },
       userFamilyAge: {
         label: '用药人年龄',
-        value: '',
+        value: '19',
         key: 'objInput.userFamilyAge',
         placeholder: '请输入用药人年龄',
         mode: 'mode-input',
@@ -64,7 +67,7 @@ export default {
       },
       userFamilyGender: {
         label: '用药人性别',
-        value: '',
+        value: 1,
         key: 'objInput.userFamilyGender',
         mode: 'radio-group',
         options: [
@@ -75,7 +78,7 @@ export default {
       },
       userFamilyPhone: {
         label: '用药人联系电话',
-        value: '',
+        value: '13766775544',
         key: 'objInput.userFamilyPhone',
         placeholder: '用药人联系电话',
         mode: 'mode-input',
@@ -88,6 +91,28 @@ export default {
           { rule: (v) => /^1\d{10}$/.test(v), prompt: '手机号不合法' },
         ],
         use: [{ nonempty: true, prompt: '请输入用药人联系电话' }],
+      },
+      isPregnantWoman: {
+        label: '是否是孕妇',
+        value: 1,
+        key: 'objInput.isPregnantWoman',
+        mode: 'radio-group',
+        options: [
+          { label: '是', value: 1 },
+          { label: '否', value: 0 },
+        ],
+        use: [{ nonempty: true, prompt: '请选择是否是孕妇' }],
+      },
+      isLactation: {
+        label: '是否在哺乳期',
+        value: '1',
+        key: 'objInput.isLactation',
+        mode: 'radio-group',
+        options: [
+          { label: '是', value: 1 },
+          { label: '否', value: 0 },
+        ],
+        use: [{ nonempty: true, prompt: '请选择是否在哺乳期' }],
       },
       relationship: {
         label: '与用药人关系',
@@ -118,7 +143,7 @@ export default {
       },
       beforeAiDataList3: {
         label: '是否使用过此类药物',
-        value: '',
+        value: '是',
         subjectId: 3,
         key: 'objInput.beforeAiDataList3',
         mode: 'radio-group',
@@ -130,7 +155,7 @@ export default {
       },
       beforeAiDataList4: {
         label: '是否有药物过敏史（青霉素,红霉素等）',
-        value: '',
+        value: '否',
         subjectId: 4,
         key: 'objInput.beforeAiDataList4',
         mode: 'radio-group',
@@ -138,11 +163,11 @@ export default {
           { label: '是', value: '是' },
           { label: '否', value: '否' },
         ],
-        use: [{ nonempty: true, prompt: '请选择是否有药物过敏史' }],
+        // use: [{ nonempty: true, prompt: '请选择是否有药物过敏史' }],
       },
       beforeAiDataList5: {
         label: '肝肾功能是否有异常',
-        value: '',
+        value: '否',
         subjectId: 5,
         key: 'objInput.beforeAiDataList5',
         mode: 'radio-group',
@@ -150,8 +175,46 @@ export default {
           { label: '是', value: '是' },
           { label: '否', value: '否' },
         ],
-        use: [{ nonempty: true, prompt: '请选择肝肾功能是否有异常' }],
+        // use: [{ nonempty: true, prompt: '请选择肝肾功能是否有异常' }],
       },
     },
+  },
+  formartDiagnosisParams(data) {
+    //是否需要审方（0为不需要，1为需要）
+    data.isExamine = 1
+    //来源:0为微信小程序，1为APP，2为H5，3为支付宝小程序
+    data.souceFrom = 0
+    // 第三方系统问诊人唯一标识(一般为患者手机号)
+    console.log(this.data.user$)
+    data.memberId = this.data.user$.userInfo.id
+
+    data.beforeAiDataList = Array.from(Array(5), (_, index) => {
+      const subjectId = index + 1
+      const subject = {
+        subjectId,
+        answer: data[`beforeAiDataList${subjectId}`] || '',
+      }
+      if (subjectId === 1) {
+        subject.answer = subject.answer.map((_) => _.label).join(',')
+      }
+      if (subjectId === 2) {
+        let { arrData } = this.data.params$
+        arrData = arrData.map((item) => {
+          return {
+            number: item.productCount,
+            medicineId: item.id,
+          }
+        })
+        subject.answerMedicine = JSON.stringify(arrData)
+        subject.answer = ''
+      }
+      delete data[`beforeAiDataList${subjectId}`]
+      return subject
+    })
+
+    const DIAGNOSIS_RELATIONSHIP = Config.data.config$.DIAGNOSIS_RELATIONSHIP
+    data.relationship = DIAGNOSIS_RELATIONSHIP.find((_) => _.label === data.relationship).value
+
+    return data
   },
 }
