@@ -15,12 +15,12 @@
 
 <view class="goods-section" bindtap="jumpPageOrFireFn" data-params="{{ data }}" data-url="order_details_index">
   <view class="goods-group">
-    <view class="goods-group-inner" wx:for="{{ data.wtProducts }}" wx:key="index" wx:if="{{ index < 3 }}">
-      <image class="goods-image" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
-      <view class="goods-name" wx:if="{{ data.wtProducts.length === 1 }}">
-        <text class="name">{{ item.name }}</text>
-        <text class="spec">规格:{{ item.specifications[0] || '-' }} x {{ item.productCount }}</text>
-        <text class=""> {{ item.brandCn || '-' }}</text>
+    <view class="goods-group-inner" wx:for="{{ data.wtOrderRelProducts }}" wx:key="index" wx:if="{{ index < 3 }}">
+      <image class="goods-image" src="{{ filter.source(item.wtProduct.imagesIcon[0].imagePath) }}"></image>
+      <view class="goods-name" wx:if="{{ data.wtOrderRelProducts.length === 1 }}">
+        <text class="name">{{ item.wtProduct.name }}</text>
+        <text class="spec">规格:{{ item.wtProduct.specifications[0] || '-' }} x {{ item.productCount }}</text>
+        <text class=""> {{ item.wtProduct.brandCn || '-' }}</text>
       </view>
     </view>
   </view>
@@ -28,10 +28,10 @@
     <view class="time"> 下单时间：{{ data.createTime }} </view>
     <view class="other">
       <view class="goods-num">
-        <text>共{{ data.wtProducts.length }}件商品</text>
+        <text>共{{ data.wtOrderRelProducts.length }}件商品</text>
       </view>
       <view class="goods-amount">
-        共计：<text class="amount">¥{{ filter.filterAmount(data.price) }}</text>
+        共计：<text class="amount">¥{{ filter.filterAmount(data.allPrice) }}</text>
       </view>
     </view>
   </view>

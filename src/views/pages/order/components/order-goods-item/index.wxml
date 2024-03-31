@@ -8,23 +8,23 @@
     <text>荣昇线上药店</text>
   </view>
 </view>
-<block wx:for="{{ data.wtProducts }}" wx:key="index">
+<block wx:for="{{ data.wtOrderRelProducts }}" wx:key="index">
   <view class="c-border mr"></view>
   <view class="goods-section">
-    <image class="goods-image" src="{{ filter.source(item.imagesIcon[0].imagePath) }}"></image>
+    <image class="goods-image" src="{{ filter.source(item.wtProduct.imagesIcon[0].imagePath) }}"></image>
     <view class="goods-info">
       <view class="goods-name">
-        <text>{{ item.name }}({{ item.alias || '-' }})</text>
+        <text>{{ item.wtProduct.name }}({{ item.wtProduct.alias || '-' }})</text>
       </view>
       <view class="goods-prompt">
-        <text>{{ item.specifications[0] || '-' }}</text>
+        <text>{{ item.wtProduct.specifications[0] || '-' }}</text>
         <text> x {{ item.productCount }}</text>
       </view>
       <view class="goods-prompt">{{ item.brandCn || '-' }}</view>
       <view class="c-flex1"></view>
       <view class="goods-operate">
         <view class="goods-amount">
-          <text>¥{{ filter.filterAmount(item.price) }}</text>
+          <text>¥{{ filter.filterAmount(item.wtProduct.price) }}</text>
         </view>
       </view>
     </view>
