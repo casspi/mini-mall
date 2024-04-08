@@ -48,5 +48,13 @@ new WowComponent({
       let { data, api$ } = this.data
       this.triggerEvent('return', data)
     },
+    handleDiagnosis() {
+      let { data, api$ } = this.data
+      this.triggerEvent('diagnosis', data)
+    },
+    handleOrder() {
+      let { data, api$ } = this.data
+      this.triggerEvent('order', data)
+    },
   },
 })

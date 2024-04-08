@@ -7,7 +7,7 @@ page {
   @extend %df;
   @extend %aic;
   @extend %jcs;
-  padding: j(30) j(20) j(6);
+  padding: j(30) j(20) j(10);
   background-color: #fff;
 }
 .status-title {
@@ -16,7 +16,7 @@ page {
 }
 .status-tips {
   padding: j(3) j(20) j(3);
-  // background-color: #fff;
+  background-color: #fff;
   color: $color-warning;
   font-size: j(16);
 }

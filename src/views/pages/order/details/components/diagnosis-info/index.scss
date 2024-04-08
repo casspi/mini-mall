@@ -1,0 +1,15 @@
+@import 'src/assets/scss/define';
+
+.diagnosis {
+  background: #fff;
+  padding: j(20);
+  font-size: j(12);
+}
+.item {
+  line-height: j(20);
+}
+.prescription {
+  text-decoration: underline;
+  color: $color-primary;
+  margin-left: j(20);
+}

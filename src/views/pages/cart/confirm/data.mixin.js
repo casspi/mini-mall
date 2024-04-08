@@ -14,7 +14,7 @@ export default {
       },
     },
     // 是否需要问诊
-    needDiagnosis: true,
+    isDiagnosis: true,
     // 问诊字段
     objInput: {
       serviceType: {
@@ -31,16 +31,16 @@ export default {
       },
       userFamilyName: {
         label: '用药人姓名',
-        value: 'zhangsan',
+        value: '',
         key: 'objInput.userFamilyName',
-        placeholder: ' 请输入用药人姓名',
+        placeholder: ' 请输入用药人姓名(汉字)',
         mode: 'mode-input',
         iconRight: '',
         use: [{ nonempty: true, prompt: '请输入用药人姓名' }],
       },
       userFamilyIdCard: {
         label: '用药人身份证',
-        value: '511112197506224516',
+        value: '',
         key: 'objInput.userFamilyIdCard',
         placeholder: '请输入药品使用人身份证',
         mode: 'mode-input',
@@ -56,7 +56,7 @@ export default {
       },
       userFamilyAge: {
         label: '用药人年龄',
-        value: '19',
+        value: '',
         key: 'objInput.userFamilyAge',
         placeholder: '请输入用药人年龄',
         mode: 'mode-input',
@@ -67,7 +67,7 @@ export default {
       },
       userFamilyGender: {
         label: '用药人性别',
-        value: 1,
+        value: '',
         key: 'objInput.userFamilyGender',
         mode: 'radio-group',
         options: [
@@ -78,7 +78,7 @@ export default {
       },
       userFamilyPhone: {
         label: '用药人联系电话',
-        value: '13766775544',
+        value: '',
         key: 'objInput.userFamilyPhone',
         placeholder: '用药人联系电话',
         mode: 'mode-input',
@@ -94,7 +94,7 @@ export default {
       },
       isPregnantWoman: {
         label: '是否是孕妇',
-        value: 1,
+        value: '',
         key: 'objInput.isPregnantWoman',
         mode: 'radio-group',
         options: [
@@ -105,7 +105,7 @@ export default {
       },
       isLactation: {
         label: '是否在哺乳期',
-        value: '1',
+        value: '',
         key: 'objInput.isLactation',
         mode: 'radio-group',
         options: [
@@ -184,9 +184,6 @@ export default {
     data.isExamine = 1
     //来源:0为微信小程序，1为APP，2为H5，3为支付宝小程序
     data.souceFrom = 0
-    // 第三方系统问诊人唯一标识(一般为患者手机号)
-    console.log(this.data.user$)
-    data.memberId = this.data.user$.userInfo.id
 
     data.beforeAiDataList = Array.from(Array(5), (_, index) => {
       const subjectId = index + 1
@@ -202,7 +199,7 @@ export default {
         arrData = arrData.map((item) => {
           return {
             number: item.productCount,
-            medicineId: item.id,
+            medicineId: item.productId,
           }
         })
         subject.answerMedicine = JSON.stringify(arrData)

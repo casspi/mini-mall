@@ -1,4 +1,4 @@
-<wow-tab data="{{ arrStatus }}" index="{{ numCurrIndex }}" data-item="numIndex" data-valkey="index" bindchange="tabsChange"></wow-tab>
+<wow-tab useScroll="true" data="{{ arrStatus }}" index="{{ numCurrIndex }}" data-item="numIndex" data-valkey="index" bindchange="tabsChange"></wow-tab>
 <swiper current="{{ numCurrIndex }}" data-valkey="current" class="s-wiper-box" duration="300" bindchange="tabsChange">
   <swiper-item wx:for="{{ arrStatus }}" wx:for-item="item" wx:for-index="statusIndex" wx:key="statuIndex">
     <order-content is-show="{{ numCurrIndex === statusIndex }}" data="{{ item }}"></order-content>

@@ -9,10 +9,10 @@
   <address-add-item wx:else bindtap="jumpPageOrFireFn" data-url="address_details_index"></address-add-item>
 
   <block wx:if="{{ isPrescriptionDrugs }}">
-    <wow-cell use-right-content="" icon-right="" bindtap="inputHandle" data-item="needDiagnosis" data-value="{{ !needDiagnosis }}" label="是否需要问诊">
-      <switch checked="{{ needDiagnosis }}" color="#B12C2C" class="form-switch" slot="cell-right"></switch>
+    <wow-cell use-right-content="" icon-right="" bindtap="inputHandle" data-item="isDiagnosis" data-value="{{ !isDiagnosis }}" label="是否需要问诊">
+      <switch checked="{{ isDiagnosis }}" color="#B12C2C" class="form-switch" slot="cell-right"></switch>
     </wow-cell>
-    <template wx:if="{{ needDiagnosis }}" is="fromView" data="{{ objInput: objInput }}"></template>
+    <template wx:if="{{ isDiagnosis }}" is="fromView" data="{{ objInput: objInput }}"></template>
     <view wx:else class="patient" data-params="{{ { objPrescription: objPrescription, from: 'cart_confirm_index' } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
       <view class="patient-label">
         <view wx:if="{{ objPrescription }}">
@@ -61,7 +61,7 @@
   <view class="null"></view>
 
   <wow-settlement
-    button-text="{{ needDiagnosis ? '去问诊' : '下单' }}"
+    button-text="{{ isDiagnosis ? '去问诊' : '下单' }}"
     class-external="settlement"
     disabled="{{ !numAmount || !objAddress || (isPrescriptionDrugs && !(1 || objPrescription)) }}"
     amount="{{ numAmount }}"

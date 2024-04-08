@@ -5,14 +5,14 @@ import Router from 'wow-wx/mixins/wx/router.mixin'
 import ApiConfig, { isProd } from 'src/config/api.config'
 
 const curl = new Curl({
-  baseURI: 'https://www.rs-superlink.com/',
-  // baseURI: 'http://101.132.140.21:8080/',
+  // baseURI: 'https://www.rs-superlink.com/',
+  baseURI: 'http://101.132.140.21:8080/',
 })
 
 // 日志输出
 curl.interceptors.request.use((config) => {
   const { url, method, data } = config
-  console.log(`${url} [${method}] 请求参数 => `, data)
+  console.log(`${url} [${method}] 请求参数 => `, data, JSON.stringify(data))
   return config
 })
 
@@ -61,7 +61,6 @@ curl.interceptors.response.use(
     new Promise((resolve, reject) => {
       let { requestConfig, statusCode, data: respData = {} } = response
       delete response.requestConfig
-      console.log(response)
       let { url, method } = requestConfig
       if (statusCode !== 200 || !respData) {
         console.log(`${url} [${method}] 请求失败 => `, response)

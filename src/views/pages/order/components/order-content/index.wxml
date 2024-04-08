@@ -1,5 +1,4 @@
 <wxs src="/wxs/filter.wxs" module="filter" />
-
 <wow-skeleton bindrefresh="pagingRefresh" error="{{ error }}" wx:if="{{ pagingTotal <= 0 }}" is-loading="{{ pagingTotal === -1 }}"></wow-skeleton>
 <wow-scroll wx:else id="wowScroll" bindscrolltolower="pagingLoad" bindrefresh="pagingRefresh" class="content">
   <block wx:for="{{ pagingData }}" wx:key="arrIndex" wx:for-item="arrData" wx:for-index="arrIndex">
@@ -7,6 +6,8 @@
       bindreturn="handleReturn"
       bindrefresh="pagingRefresh"
       bindpayment="handlePayment"
+      binddiagnosis="handleDiagnosis"
+      bindorder="handleOrder"
       wx:for="{{ arrData }}"
       wx:key="index"
       wx:for-item="item"

@@ -98,7 +98,7 @@ new WowComponent({
         callback()
       }
     },
-    handleReturn(data) {
+    handleReturn(options) {
       this.setData({ reason: '' })
       return this.selectComponent('#refWowModal')
         .show({
@@ -106,13 +106,38 @@ new WowComponent({
         })
         .then((res) => {
           let { api$, reason } = this.data
-          return this.curl(api$.REQ_RETURN_ORDER, { reasonForReturn: reason, id: data.detail.id }, { method: 'put' })
+          return this.curl(api$.REQ_RETURN_ORDER, { reasonForReturn: reason, id: options.detail.id }, { method: 'put' })
         })
         .then(() => {
           this.modalToast('申请退货成功，我们将进行审核，请耐心等待~')
           this.pagingRefresh()
         })
         .toast()
+    },
+    handleDiagnosis(options) {
+      let { api$ } = this.data
+      this.curl(
+        api$.REQ_ORDER_DETAIL + options.detail.id,
+        {},
+        {
+          loading: false,
+          method: 'get',
+        },
+      )
+        .then((res) => {
+          res.p580Url && this.routerPush('webview_index', { link: res.p580Url + '&thirdPlatform=0' })
+        })
+        .toast()
+    },
+    handleOrder(options) {
+      console.log(options)
+      const arrData = options.detail.wtOrderRelProducts.map((item) => {
+        return {
+          ...item,
+          ...item.wtProduct,
+        }
+      })
+      arrData.length && this.routerPush('cart_confirm_index', { from: 'order_index', arrData, orderDetail: options.detail })
     },
   },
 })

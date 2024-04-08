@@ -39,9 +39,6 @@
 <block>
   <view class="c-border mr"></view>
   <view class="operate">
-    <view wx:if="{{ status === config$.ORDER_STATUS.ORDER_CHCK_REFUSE }}" class="operate-button" bindtap="jumpPageOrFireFn" data-params="{{ data }}" data-url="order_details_index">
-      <text>重新提交</text>
-    </view>
     <view wx:if="{{ status === config$.ORDER_STATUS.UN_PAY }}" class="operate-button" bindtap="inputEvent" data-event="payment" data-params="{{ data }}">
       <text>立即付款</text>
     </view>
@@ -50,6 +47,15 @@
     </view>
     <view wx:if="{{ status === config$.ORDER_STATUS.SUCCESS }}" class="operate-button" bindtap="handleReturn">
       <text>申请退货</text>
+    </view>
+    <view wx:if="{{ status === config$.ORDER_STATUS.DIAGNOSIS_ING }}" class="operate-button" bindtap="handleDiagnosis">
+      <text>继续问诊</text>
+    </view>
+    <view wx:if="{{ data.isDiagnosis && (status === config$.ORDER_STATUS.DIAGNOSIS_FAIL || status === config$.ORDER_STATUS.ORDER_CHCK_REFUSE) }}" class="operate-button" bindtap="handleOrder">
+      <text>重新下单</text>
+    </view>
+    <view wx:if="{{ status === config$.ORDER_STATUS.ORDER_CHCK_REFUSE && !data.isDiagnosis }}" class="operate-button" bindtap="jumpPageOrFireFn" data-params="{{ data }}" data-url="order_details_index">
+      <text>重新提交</text>
     </view>
   </view>
 </block>

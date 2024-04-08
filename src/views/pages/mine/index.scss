@@ -116,12 +116,13 @@ page {
 .order-entry {
   @extend %df;
   @extend %aic;
+  @extend %fww;
   padding: 0 j(10);
   margin-top: j(8);
 }
 
 .order-entry-item {
-  @extend %df1;
+  // @extend %df1;
   @extend %df;
   @extend %aic;
   @extend %jcc;
@@ -129,6 +130,7 @@ page {
   @extend %cp;
   @extend %c3;
   height: j(80);
+  width: j(65);
 }
 
 .order-entry-icon {

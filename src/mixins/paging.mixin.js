@@ -41,7 +41,7 @@ export default {
       options,
     )
       .then((res) => {
-        const { totalPage: pagingTotal = 0, dataList: list = [] } = this.pagingFormatResult(res)
+        const { total: pagingTotal = 0, dataList: list = [] } = this.pagingFormatResult(res)
         if (this.pagingCallbackResult) {
           this.pagingCallbackResult(
             {
@@ -92,6 +92,7 @@ export default {
     if (Array.isArray(res)) {
       res = { total: res.length, dataList: res }
     }
+    console.log('pagingFormatResult', res)
     return res
   },
 
@@ -100,6 +101,7 @@ export default {
     if (pagingIsLoading) {
       return console.log('正在加载中...')
     }
+    console.log('pagingLoad', pagingData, pagingTotal, pagingNumTotal)
     if (pagingData && pagingTotal <= pagingNumTotal) {
       return console.log('没有更多了...')
     }

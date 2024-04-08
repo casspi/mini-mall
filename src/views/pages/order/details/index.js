@@ -5,9 +5,11 @@ import './index.wxml'
 import ApiConfig from 'src/config/api.config'
 
 import WowPage from 'wow-wx/lib/page'
+import DataMixin from '../../cart/confirm/data.mixin'
 
 new WowPage({
   mixins: [
+    DataMixin,
     WowPage.wow$.mixins.User,
     WowPage.wow$.mixins.Router,
     WowPage.wow$.mixins.Config,
@@ -25,6 +27,7 @@ new WowPage({
     objPrescriptionInfo: '', // 冗余页面显示的
     reason: '',
     isPrescriptionDrugs: false, // 是否有处方药
+    objP580Prescription: '',
   },
   onLoad(options) {
     this.routerGetParams(options)
@@ -52,6 +55,11 @@ new WowPage({
           this.setData({ isPrescriptionDrugs: true })
         }
         res.prescriptionId && this.reqPrescriptionInfo(res.prescriptionId)
+
+        // 问诊处方
+        if (res.isDiagnosis) {
+          this.reqDiagnosisInfo(res.id)
+        }
       })
       .toast()
   },
@@ -81,6 +89,22 @@ new WowPage({
       this.setData({ objPrescriptionInfo: JSON.parse(JSON.stringify(res)), objPrescription })
     })
   },
+  // 获取问诊处方信息
+  reqDiagnosisInfo(id) {
+    let { api$ } = this.data
+    this.curl(
+      api$.REQ_P580PRESCRIPTION_DETAIL + id,
+      {},
+      {
+        loading: false,
+        method: 'get',
+      },
+    ).then((res) => {
+      console.log('reqDiagnosisInfores', res)
+      this.setData({ objP580Prescription: res })
+    })
+  },
+
   handleCopy(event) {
     let { text } = this.inputParams(event)
     this.clipboardSetData(text)
@@ -170,5 +194,19 @@ new WowPage({
         setTimeout(this.routerPop.bind(this), 1000)
       })
       .toast()
+  },
+  handleDiagnosis() {
+    let { objData } = this.data
+    objData.p580Url && this.routerPush('webview_index', { link: objData.p580Url + '&thirdPlatform=0' })
+  },
+  handleOrder() {
+    let { objData } = this.data
+    const arrData = objData.wtOrderRelProducts.map((item) => {
+      return {
+        ...item,
+        ...item.wtProduct,
+      }
+    })
+    arrData.length && this.routerPush('cart_confirm_index', { from: 'order_details', arrData, orderDetail: objData }, true)
   },
 })

@@ -1,0 +1,14 @@
+<wxs src="/wxs/filter.wxs" module="filter" />
+
+<view class="c-bar"></view>
+<view class="diagnosis">
+  <view class="item">
+    <text> 问诊医院： </text>
+    <text> {{ data.hospitalName }}</text>
+  </view>
+  <view class="item">
+    <text> 问诊用药人： </text>
+    <text> {{ data.userFamilyName }} {{ data.userFamilyAge }} {{ data.userFamilyGender === 2 ? '女' : '男' }}</text>
+    <text class="prescription" bindtap="handlePreviewPrescription"> 处方</text>
+  </view>
+</view>

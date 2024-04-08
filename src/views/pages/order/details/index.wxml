@@ -1,4 +1,5 @@
 <wxs src="../../../wxs/filter.wxs" module="filter" />
+<import src="/templates/form-view/index.wxml" />
 
 <wow-skeleton wx:if="{{ !objData }}"></wow-skeleton>
 
@@ -17,28 +18,45 @@
     <view class="status-button" bindtap="handleReturn" wx:if="{{ config$.ORDER_STATUS.SUCCESS === objData.orderStatus }}">
       <text>申请退货</text>
     </view>
+    <view class="status-button" bindtap="handleDiagnosis" wx:if="{{ config$.ORDER_STATUS.DIAGNOSIS_ING === objData.orderStatus }}">
+      <text>继续问诊</text>
+    </view>
+    <view class="status-button" bindtap="handleOrder" wx:if="{{ objData.isDiagnosis && (config$.ORDER_STATUS.DIAGNOSIS_FAIL === objData.orderStatus || config$.ORDER_STATUS.ORDER_CHCK_REFUSE === objData.orderStatus) }}">
+      <text>重新下单</text>
+    </view>
   </view>
   <view wx:if="{{ config$.ORDER_STATUS.ORDER_CHCK_REFUSE === objData.orderStatus }}" class="status-tips">
-    <text decode="true">抱歉您的订单审核未通过。\n驳回理由："{{ objPrescriptionInfo.approveContent }}"，请修改处方，后台将重新审核。</text>
+    <text decode="true">驳回理由：{{ objPrescriptionInfo.approveContent || '-' }}{{ objData.isDiagnosis ? '' : '，请修改处方，后台将重新审核。' }}</text>
   </view>
-  <!-- {{ objPrescription.id }}-{{ objPrescription.patient.userName }} -->
+  <view class="status-tips" wx:elif="{{ config$.ORDER_STATUS.INVALID === objData.orderStatus }}">
+    <text decode="true">失效原因：{{ objData.reasonForDisable }}</text>
+  </view>
   <!-- 处方 -->
-  <view wx:if="{{ isPrescriptionDrugs }}" class="patient" data-params="{{ { objPrescription: objPrescription, form: 'order_details' } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
-    <view class="patient-label">
-      <view wx:if="{{ objPrescription }}">
-        <text class="label">用药人</text>
-        <text class="name">{{ objPrescription.patient.userName }}</text>
-        <text class="age">{{ filter.filterIDcard(objPrescription.patient.idCard, 3) }}岁，{{ filter.filterIDcard(objPrescription.patient.idCard, 2) }}</text>
+  <block wx:if="{{ isPrescriptionDrugs }}">
+    <!-- <wow-cell use-right-content="" icon-right="" bindtap="inputHandle" data-item="isDiagnosis" data-value="{{ !isDiagnosis }}" label="是否需要问诊">
+      <switch checked="{{ isDiagnosis }}" color="#B12C2C" class="form-switch" slot="cell-right"></switch>
+    </wow-cell>
+    <template wx:if="{{ isDiagnosis }}" is="fromView" data="{{ objInput: objInput }}"></template> -->
+    <view wx:if="{{ !objData.isDiagnosis }}" class="patient" data-params="{{ { objPrescription: objPrescription, form: 'order_details' } }}" bindtap="jumpPageOrFireFn" data-url="prescription_index">
+      <view class="patient-label">
+        <view wx:if="{{ objPrescription }}">
+          <text class="label">用药人</text>
+          <text class="name">{{ objPrescription.patient.userName }}</text>
+          <text class="age">{{ filter.filterIDcard(objPrescription.patient.idCard, 3) }}岁，{{ filter.filterIDcard(objPrescription.patient.idCard, 2) }}</text>
+        </view>
+        <text wx:else> 尚未添加用药人，请添加 </text>
       </view>
-      <text wx:else> 尚未添加用药人，请添加 </text>
+      <view class="patient-text">
+        <text> 修改处方信息 </text>
+      </view>
+      <view class="iconfont iconMore"></view>
     </view>
-    <view class="patient-text">
-      <text> 修改处方信息 </text>
-    </view>
-    <view class="iconfont iconMore"></view>
-  </view>
-  <view class="c-bar"> </view>
+  </block>
 
+  <!-- 问诊 -->
+  <diagnosis-info wx:if="{{ objP580Prescription && objP580Prescription.dstFilePath }}" data="{{ objP580Prescription }}"></diagnosis-info>
+
+  <view class="c-bar"> </view>
   <!--地址-->
   <address-item data="{{ objData.wtAddress }}" classes=""></address-item>
 

@@ -40,7 +40,7 @@ new WowPage({
     this.init()
   },
   init() {
-    let { api$ } = this.data
+    let { api$, from, params$ } = this.data
     this.curl(
       api$.REQ_EXPRESSDELIVERYFEE,
       {},
@@ -51,17 +51,22 @@ new WowPage({
     ).then((res) => {
       this.setData({ expressDeliveryFee: res })
     })
+    if (from === 'order_index' || from === 'order_details_index') {
+      this.setData({
+        isDiagnosis: !!params$.orderDetail.isDiagnosis,
+      })
+    }
   },
   // 订单提交
   handleSubmit() {
-    let { objAddress, objPrescription, api$, params$, config$, isPrescriptionDrugs, needDiagnosis, objInput, objHidden } = this.data
+    let { objAddress, objPrescription, api$, params$, config$, isPrescriptionDrugs, isDiagnosis, objInput, objHidden } = this.data
     let { from, arrData, ...reset } = params$
     if (this.judgeGoods(arrData)) return
 
-    // 除方药
+    // 处方药
     if (isPrescriptionDrugs) {
       // 需要问诊
-      if (needDiagnosis) {
+      if (isDiagnosis) {
         if (this.validateCheck(objInput)) {
           return
         }
@@ -72,30 +77,46 @@ new WowPage({
         }
       }
     }
-    let diagnosisParams = {}
+    let demandParam = {}
     // 问诊逻辑
-    if (needDiagnosis) {
+    if (isDiagnosis) {
       const res = this.validateInput(objHidden, objInput)
-      console.log('res=>', res)
-      diagnosisParams = this.formartDiagnosisParams(res)
+      demandParam = this.formartDiagnosisParams(res)
     }
-    console.log('diagnosisParams=>', diagnosisParams)
-    return
+    console.log('demandParam=>', demandParam)
 
     // 原下单逻辑
     let objPayParams, wxCode
     this.userLogin()
       .then((code) => {
         wxCode = code
-        const submitParams = { wxCode, addressId: objAddress.id, prescriptionId: objPrescription.id, deliveryMethod: '普通快递', wtOrderRelProducts: params$.arrData }
+        const submitParams = { isDiagnosis, wxCode, addressId: objAddress.id, prescriptionId: objPrescription.id, deliveryMethod: '普通快递', wtOrderRelProducts: params$.arrData }
         if (from !== 'goods_index') submitParams.shoppingCartRelProductIds = arrData.map((item) => item.id)
+        if (isDiagnosis) submitParams.demandParam = demandParam
         return this.curl(api$.DO_ORDER_SUBMIT, submitParams, { loading: true })
       })
       .then((res) => {
         if (isPrescriptionDrugs) {
-          const tips = needDiagnosis ? '下单成功，等待问诊接单' : '下单成功，等待后台审核'
-          this.modalToast(tips)
-          setTimeout(this.routerPop.bind(this), 1500)
+          if (isDiagnosis) {
+            const tips = '下单成功，等待问诊接单'
+            this.modalToast(tips)
+            console.log('tips=>', res)
+            setTimeout(
+              this.routerPush.bind(
+                this,
+                'webview_index',
+                {
+                  link: res.p580Url + '&thirdPlatform=0', //三方在获取到返回地址后需要在地址后拼接&thirdPlatform=0|1|2|3
+                },
+                true,
+              ),
+              1500,
+            )
+          } else {
+            const tips = '下单成功，等待后台审核'
+            this.modalToast(tips)
+            setTimeout(this.routerPop.bind(this), 1500)
+          }
           throw 'over'
         }
         // 非处方药走支付逻辑
